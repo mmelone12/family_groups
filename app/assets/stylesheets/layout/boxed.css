@@ -1,0 +1,44 @@
+/* Boxed Layout Styles */
+.hidden {
+	display: block;
+}
+body {
+	background: #999;
+}
+#wrap {
+	width:1030px;
+	margin: 0 auto;
+	background: #fff;
+	padding: 0;
+	box-shadow: 0 1px 5px rgba(0,0,0,0.2);
+}
+#wrap > header {
+	margin-top: 60px;
+}
+#wrap > footer {
+	margin-bottom: 60px;
+}
+
+/* #Media Queries
+================================================== */
+
+	/* Smaller than standard 1029 (devices and browsers)  */
+	@media only screen and (max-width: 1049px) {
+		#wrap { width: auto; margin: 0; background: #fff; padding: 0; box-shadow: none; }
+		#wrap > header { margin-top: 0; }
+		#wrap > footer { margin-bottom: 0; }
+	}
+	
+/* Body Backgrounds */
+body.wood { background: url(../../images/bgs/retina_wood.png) top left repeat; }
+body.greyfloral { background: url(../../images/bgs/greyfloral.png) top left repeat; }
+body.little_pluses { background: url(../../images/bgs/little_pluses.png) top left repeat; }
+body.norwegian_rose { background: url(../../images/bgs/norwegian_rose.png) top left repeat; }
+body.arab_tile { background: url(../../images/bgs/arab_tile.png) top left repeat; }
+body.escheresque { background: url(../../images/bgs/escheresque.png) top left repeat; }
+body.dark_wood { background: url(../../images/bgs/dark_wood.png) top left repeat; }
+body.tex2res1 { background: url(../../images/bgs/tex2res1.png) top left repeat; }
+body.tileable_wood_texture { background: url(../../images/bgs/tileable_wood_texture.png) top left repeat; }
+body.old_mathematics { background: url(../../images/bgs/old_mathematics.png) top left repeat; }
+body.random_grey_variations { background: url(../../images/bgs/random_grey_variations.png) top left repeat; }
+body.type { background: url(../../images/bgs/type.png) top left repeat; }

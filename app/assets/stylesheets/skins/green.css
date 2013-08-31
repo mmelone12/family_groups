@@ -1,0 +1,57 @@
+/* Color Styles */
+.navigation > ul > li:hover > a, .navigation ul li a.active, 
+.post-left .post-meta a.post-date,
+.navigation ul ul,
+.price-box.featured li:nth-child(1), .price-box.featured li:nth-child(2),
+.text-style-color-marker,
+.home-blog .home-date,
+#filters ul li a:hover,
+#filters ul li a.selected,
+.button,
+.flexslider .flex-control-nav li a.flex-active,
+input[type="submit"].submit {
+	background: #80b600;
+}
+.blockquote {
+	border-left: 5px solid #80b600;
+}
+.color,
+footer a:hover,
+.blog-post .post-title a:hover,
+.blog-post a.read-more,
+.blog-post .post-right .post-meta a,
+.sidebar-widget .blog-categories li a:hover,
+.sidebar-widget .blog-archives li a:hover,
+.sidebar-widget .popular-posts li p a:hover,
+.list-styles li a:hover,
+ul.tabs-nav li a:hover,
+a.reply,
+span.acc-trigger.active a,
+.dropcap,
+.text-style-colorize,
+.testimonials-author,
+.home-folio-style .our-work h3:hover a,
+.our-work h3:hover a,
+.home-blog h3:hover a {
+	color: #80b600;
+}
+footer {
+	border-top: 5px solid #80b600;
+}
+ul.tabs-nav li.active a {
+	border-top: 2px solid #80b600;
+}
+.pagination li a:hover,
+.home-blog a.img-overlay {
+	border-bottom: 1px solid #80b600;
+}
+.home-blog .home-post-type {
+	background: #80b600 url(../../images/home-post-type.png) no-repeat;
+}
+.post-left .post-meta a.post-type {
+	background: #80b600 url(../../images/post-type01.png) center no-repeat;
+}
+.our-work h3:hover {
+	border-bottom: 1px solid #80b600;
+	border-top: 2px solid #80b600;
+}

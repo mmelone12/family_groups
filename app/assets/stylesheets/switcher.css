@@ -1,0 +1,102 @@
+/* Switcher Styles */
+.switcher {
+	position: fixed;
+	z-index: 9999;
+	top: 125px;
+	width: 196px;
+	background: #fbfbfb;
+}
+.switcher h2 {
+	background: #333333;
+	color: #fff;
+	font-size: 14px;
+	font-weight: normal;
+	padding: 11px 0 10px 15px;
+	line-height: normal;
+	font-family: 'OpenSansRegular';
+}
+.switcher h3 {
+	color: #474646;
+	font-size: 13px;
+	margin: 1px 0 3px;
+	font-weight: normal;
+	font-family: 'OpenSansRegular';
+}
+.switcher h2 a {
+	position: absolute;
+	display: block;
+	height: 41px;
+	right: -39px;
+	top: 0;
+	width: 39px;
+	background: url(../images/switcher.png) top left no-repeat;
+}
+.switcher .content {
+	padding: 5px 16px 16px;
+}
+.layout-switcher a.layout {
+	background: #fff;
+	border: 1px solid #eaeaea;
+	border-radius: 5px;
+	color: #797878;
+	cursor: pointer;
+	display: block;
+	float: left;
+	margin: 0;
+	padding: 6px 7px 8px;
+	text-align: center;
+	width: 63px;
+}
+.layout-switcher a#wide.layout {
+	margin-right: 6px;
+}
+.layout-switcher a.layout:hover {
+	text-decoration: none;
+}
+.layout-switcher {
+	overflow: hidden;
+}
+.switcher-box, .bg.hidden {
+	overflow: hidden;
+	margin: 0 -2px 0;
+}
+.pattern {
+	cursor: pointer;
+	display: block;
+	height: 26px;
+	box-shadow: inset 0 0 0 1px #eaeaea;
+	margin: 0 2px 4px 2px;
+	width: 24px;
+	float: left;
+}
+.styleswitch {
+	cursor: pointer;
+	display: block;
+	float: left;
+	height: 26px;
+	margin: 0 4px 4px 0;
+	width: 24px;
+}
+
+/* Switcher Patterns */
+#wood.pattern { background: url(../images/bgs/retina_wood.png) top left no-repeat; }
+#greyfloral.pattern { background: url(../images/bgs/greyfloral.png) top left no-repeat; }
+#little_pluses.pattern { background: url(../images/bgs/little_pluses.png) top left no-repeat; }
+#norwegian_rose.pattern { background: url(../images/bgs/norwegian_rose.png) top left no-repeat; }
+#arab_tile.pattern { background: url(../images/bgs/arab_tile.png) top left no-repeat; }
+#escheresque.pattern { background: url(../images/bgs/escheresque.png) top left no-repeat; }
+#dark_wood.pattern { background: url(../images/bgs/dark_wood.png) top left no-repeat; }
+#tex2res1.pattern { background: url(../images/bgs/tex2res1.png) top left no-repeat; }
+#tileable_wood_texture.pattern { background: url(../images/bgs/tileable_wood_texture.png) top left no-repeat; }
+#old_mathematics.pattern { background: url(../images/bgs/old_mathematics.png) top left no-repeat; }
+#random_grey_variations.pattern { background: url(../images/bgs/random_grey_variations.png) top left no-repeat; }
+#type.pattern { background: url(../images/bgs/type.png) top left no-repeat; }
+
+/* Switcher Colors */
+#blue.styleswitch { background-color: #00aec8; }
+#navy.styleswitch { background-color: #495D7F; }
+#orange.styleswitch { background-color: #fa5b0f; }
+#green.styleswitch { background-color: #80b600; }
+#red.styleswitch { background-color: #C62020; }
+#purple.styleswitch { background-color: #6957AF; }
+#cherry.styleswitch { background-color: #911938; }
