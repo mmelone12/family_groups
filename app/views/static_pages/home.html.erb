@@ -1,44 +1,10 @@
-<!DOCTYPE html>
-<!--[if IE 7 ]><html class="ie ie7" lang="en"><![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"><![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"><!--<![endif]-->
-<head>
-
-<!-- Basic Page Needs
-================================================== -->
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>Black & Green</title>
-
-<meta name="description" content="">
-<meta name="author" content="">
-
 <!-- Mobile Specific
 ================================================== -->
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
 <!-- CSS
 ================================================== -->
-<link rel="stylesheet" type="text/css" href="css/flexslider.css">
-<link rel="stylesheet" type="text/css" href="css/style.css">
-
-<link rel="stylesheet" type="text/css" href="css/layout.css">
-<link rel="stylesheet" type="text/css" href="css/layout/wide.css" name="layout">
-<link rel="stylesheet" type="text/css" href="css/skins/green.css" name="skins">
-<link rel="stylesheet" type="text/css" href="css/switcher.css">
-
 <!-- Java Script
 ================================================== -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="js/jquery.cookie.js"></script>
-<script src="js/superfish.js"></script>
-<script src="js/isotope.js"></script>
-<script src="js/switcher.js"></script>
-<script src="js/main.js"></script>
-
-</head>
-<body>
-
 <!-- Wrapper Start -->
 <div id="wrap">
 
@@ -47,7 +13,7 @@
 			<div class="one-third column">
 				<div class="logo">
 					<a href="index.html">
-						<img alt="logo" src="images/logo.png" />
+						<%= image_tag("logo.png", :alt => "logo") %>
 					</a>
 				</div>
 			</div>
@@ -136,7 +102,7 @@
 					<div class="four columns portfolio-item design">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
-								<img src="images/imgs/work_big/work01.jpg" />
+								<img src="/assets/imgs/work_big/work01.jpg">
 								<div class="img-overlay-div"></div>
 							</a>
 							<h3><a href="#">Project no.1</a><span>features info</span></h3>
@@ -145,7 +111,7 @@
 					<div class="four columns portfolio-item design">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
-								<img src="images/imgs/work_big/work02.jpg" />
+								<%= image_tag "imgs/work_big/work02.jpg" %>
 								<div class="img-overlay-div"></div>
 							</a>
 							<h3><a href="#">Project no.2</a><span>features info</span></h3>
@@ -154,7 +120,7 @@
 					<div class="four columns portfolio-item identity photography">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
-								<img src="images/imgs/work_big/work03.jpg" />
+								<%= image_tag "imgs/work_big/work03.jpg" %>
 								<div class="img-overlay-div"></div>
 							</a>
 							<h3><a href="#">Project no.3</a><span>features info</span></h3>
@@ -163,7 +129,7 @@
 					<div class="four columns portfolio-item photography illustration">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
-								<img src="images/imgs/work_big/work04.jpg" />
+								<%= image_tag "imgs/work_big/work04.jpg" %>
 								<div class="img-overlay-div"></div>
 							</a>
 							<h3><a href="#">Project no.4</a><span>features info</span></h3>
@@ -173,7 +139,7 @@
 					<div class="four columns portfolio-item identity photography">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
-								<img src="images/imgs/work_big/work05.jpg" />
+								<%= image_tag "imgs/work_big/work05.jpg" %>
 								<div class="img-overlay-div"></div>
 							</a>
 							<h3><a href="#">Project no.5</a><span>features info</span></h3>
@@ -182,7 +148,7 @@
 					<div class="four columns portfolio-item identity illustration">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
-								<img src="images/imgs/work_big/work06.jpg" />
+								<%= image_tag "imgs/work_big/work06.jpg" %>
 								<div class="img-overlay-div"></div>
 							</a>
 							<h3><a href="#">Project no.6</a><span>features info</span></h3>
@@ -191,7 +157,7 @@
 					<div class="four columns portfolio-item illustration">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
-								<img src="images/imgs/work_big/work07.jpg" />
+								<%= image_tag "imgs/work_big/work07.jpg" %>
 								<div class="img-overlay-div"></div>
 							</a>
 							<h3><a href="#">Project no.7</a><span>features info</span></h3>
@@ -200,7 +166,7 @@
 					<div class="four columns portfolio-item design identity photography">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
-								<img src="images/imgs/work_big/work08.jpg" />
+								<%= image_tag "imgs/work_big/work08.jpg" %>
 								<div class="img-overlay-div"></div>
 							</a>
 							<h3><a href="#">Project no.8</a><span>features info</span></h3>
@@ -210,7 +176,7 @@
 					<div class="four columns portfolio-item design photography">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
-								<img src="images/imgs/work_big/work09.jpg" />
+								<%= image_tag "imgs/work_big/work09.jpg" %>
 								<div class="img-overlay-div"></div>
 							</a>
 							<h3><a href="#">Project no.9</a><span>features info</span></h3>
@@ -219,7 +185,7 @@
 					<div class="four columns portfolio-item photography illustration">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
-								<img src="images/imgs/work_big/work10.jpg" />
+								<%= image_tag "imgs/work_big/work10.jpg" %>
 								<div class="img-overlay-div"></div>
 							</a>
 							<h3><a href="#">Project no.10</a><span>features info</span></h3>
@@ -228,7 +194,7 @@
 					<div class="four columns portfolio-item design identity photography illustration">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
-								<img src="images/imgs/work_big/work11.jpg" />
+								<%= image_tag "imgs/work_big/work11.jpg" %>
 								<div class="img-overlay-div"></div>
 							</a>
 							<h3><a href="#">Project no.11</a><span>features info</span></h3>
@@ -237,7 +203,7 @@
 					<div class="four columns portfolio-item design identity">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
-								<img src="images/imgs/work_big/work12.jpg" />
+								<%= image_tag "imgs/work_big/work12.jpg" %>
 								<div class="img-overlay-div"></div>
 							</a>
 							<h3><a href="#">Project no.12</a><span>features info</span></h3>
@@ -247,7 +213,7 @@
 					<div class="four columns portfolio-item design photography illustration">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
-								<img src="images/imgs/work_big/work13.jpg" />
+								<%= image_tag "imgs/work_big/work13.jpg" %>
 								<div class="img-overlay-div"></div>
 							</a>
 							<h3><a href="#">Project no.13</a><span>features info</span></h3>
@@ -256,7 +222,7 @@
 					<div class="four columns portfolio-item identity illustration">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
-								<img src="images/imgs/work_big/work14.jpg" />
+								<%= image_tag "imgs/work_big/work14.jpg" %>
 								<div class="img-overlay-div"></div>
 							</a>
 							<h3><a href="#">Project no.14</a><span>features info</span></h3>
@@ -265,7 +231,7 @@
 					<div class="four columns portfolio-item design identity">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
-								<img src="images/imgs/work_big/work15.jpg" />
+								<%= image_tag "imgs/work_big/work15.jpg" %>
 								<div class="img-overlay-div"></div>
 							</a>
 							<h3><a href="#">Project no.15</a><span>features info</span></h3>
@@ -274,7 +240,7 @@
 					<div class="four columns portfolio-item design identity photography illustration">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
-								<img src="images/imgs/work_big/work16.jpg" />
+								<%= image_tag "imgs/work_big/work16.jpg" %>
 								<div class="img-overlay-div"></div>
 							</a>
 							<h3><a href="#">Project no.16</a><span>features info</span></h3>
