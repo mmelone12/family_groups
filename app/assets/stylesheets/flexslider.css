@@ -50,8 +50,8 @@ html[xmlns] .slides {display: block;}
 /* Direction Nav */
 .flex-direction-nav {*height: 0;}
 .flex-direction-nav a {width: 35px; height: 35px; margin: -20px 0 0; display: block; position: absolute; bottom: 20px; right: 20px; z-index: 10; cursor: pointer; text-indent: -9999px; opacity: 0; -webkit-transition: all .3s ease;}
-.flex-direction-nav .flex-next { right: 56px; background: rgba(0,0,0,0.5) url(../images/slider-control-left.png) no-repeat center; }
-.flex-direction-nav .flex-prev { background: rgba(0,0,0,0.5) url(../images/slider-control-right.png) no-repeat center; }
+.flex-direction-nav .flex-next { right: 56px; background: rgba(0,0,0,0.5) url(../assets/slider-control-left.png) no-repeat center; }
+.flex-direction-nav .flex-prev { background: rgba(0,0,0,0.5) url(../assets/slider-control-right.png) no-repeat center; }
 .flexslider:hover .flex-next { opacity: 0.8; }
 .flexslider:hover .flex-prev { opacity: 0.8; }
 .flexslider:hover .flex-next:hover, .flexslider:hover .flex-prev:hover {opacity: 1;}

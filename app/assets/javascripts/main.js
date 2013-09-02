@@ -129,7 +129,6 @@ $('#filters a').click(function(e){
 	$(this).parents('ul').find('a').removeClass('selected');
 	$(this).addClass('selected');
 });
-
 /*--------------------------------------------------- */
 /*	That's all folks!
 /*--------------------------------------------------- */

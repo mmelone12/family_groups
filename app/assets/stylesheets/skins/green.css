@@ -46,10 +46,10 @@ ul.tabs-nav li.active a {
 	border-bottom: 1px solid #80b600;
 }
 .home-blog .home-post-type {
-	background: #80b600 url(../../images/home-post-type.png) no-repeat;
+	background: #80b600 url(../../assets/home-post-type.png) no-repeat;
 }
 .post-left .post-meta a.post-type {
-	background: #80b600 url(../../images/post-type01.png) center no-repeat;
+	background: #80b600 url(../../assets/post-type01.png) center no-repeat;
 }
 .our-work h3:hover {
 	border-bottom: 1px solid #80b600;

@@ -69,9 +69,9 @@
 		font-family: 'OpenSansSemibold', serif;
 		font-weight: normal; }
 	h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-weight: inherit; color:#3a3a3a; }
-	h1 { font-size: 28px; line-height: 50px; margin-bottom: 10px;}
+	h1 { font-size: 14px; line-height: 17px; margin-bottom: 25px; margin-left: 17px;}
 	h2 { font-size: 22px; line-height: 40px; margin-bottom: 8px; }
-	h3 { font-size: 16px; line-height: 32px; margin-bottom: 6px; }
+	h3 { font-size: 16px; line-height: 19px; margin-top: 26px; margin-bottom: 18px; }
 	h4 { font-size: 15px; line-height: 30px; margin-bottom: 4px; }
 	h5 { font-size: 13px; line-height: 24px; }
 	h6 { font-size: 11px; line-height: 21px; }

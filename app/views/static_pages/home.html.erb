@@ -3,7 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <!-- CSS
 ================================================== -->
-<!-- Java Script
+<!-- Java Script  
 ================================================== -->
 <!-- Wrapper Start -->
 <div id="wrap">
@@ -13,14 +13,17 @@
 			<div class="one-third column">
 				<div class="logo">
 					<a href="index.html">
-						<%= image_tag("logo.png", :alt => "logo") %>
+						<%= image_tag("fglogo2.jpg", :alt => "logo") %>
 					</a>
 				</div>
+				<h1>
+				Find local events, groups and places, and meet great parents.
+				</h1>
 			</div>
 			<div class="two-thirds column">
 				<nav id="menu" class="navigation">
 					<ul id="nav" class="clearfix">
-						<li><a href="index.html">Home<span>home info</span></a>
+						<li><a href="index.html" class="active">Home<span>home info</span></a>
 							<ul>
 								<li><a href="index02.html">Index 02</a></li>
 								<li><a href="index03.html">Index 03</a></li>
@@ -41,22 +44,21 @@
 								</li>
 							</ul>
 						</li>
-						<li><a href="shortcodes.html">Shortcodes<span>features info</span></a></li>
-						<li><a href="projects.html" class="active">Portfolio<span>folio extra info</span></a>
+						<li><a href="shortcodes.html">How It Works<span>features info</span></a></li>
+						<li><a href="projects.html">Team<span>folio extra info</span></a>
 							<ul>
 								<li><a href="projects02.html">Portfolio 02</a></li>
 								<li><a href="projects03.html">Portfolio 03</a></li>
 								<li><a href="projects-single.html">Portfolio Single</a></li>
 							</ul>
 						</li>
-						<li><a href="blog.html">Blog<span>extra info</span></a>
+						<li><a href="blog.html">Contact<span>extra info</span></a>
 							<ul>
 								<li><a href="blog-full-width.html">Full Width</a></li>
 								<li><a href="blog-variant.html">Small Image</a></li>
 								<li><a href="blog-single.html">Single Page</a></li>
 							</ul>
 						</li>
-						<li><a href="contact.html">Contact<span>get in touch</span></a></li>
 					</ul>
 				</nav>
 			</div>
@@ -66,12 +68,30 @@
 		</div>
 	</header>
 	<div class="container main">
-		<div id="slogan" class="clearfix">
-			<div class="sixteen columns">
-				<div class="slogan">
-					<p>Here you can see <span class="light_gray">our work</span> and<br />chose us for <span class="color">your work!</span></p>
-				</div>
-			</div>
+						<div class="eight columns">
+					<h3 class="shortcodes">Check out your community and meet fellow parents.</h3>
+					<ul class="tabs-nav">
+						<li><a href="#tab1">User Sign Up</a></li>
+						<li><a href="#tab2">Log In</a></li>
+					</ul>
+					<div class="tabs-container">
+						<div id="tab1" class="tab-content">Finding other parents to hang out and schedule playdates with can be hard. Scroll through local family events, places and groups and discover moms and dads with similar interests. <br /> <button class="b-color"; style="margin-bottom: 0">Join your community</button>  </div>
+						<div id="tab2" class="tab-content">2. Lorem ipsum pharetra felis. Aliquam egestas consectetur elementum class aptent taciti sociosqu ad litora torquent perea conubia nostra lorem inceptos orem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+						<div id="tab3" class="tab-content">3. Lorem ipsum pharetra felis. Aliquam egestas consectetur elementum class aptent taciti sociosqu ad litora torquent perea conubia nostra lorem inceptos orem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+					</div>
+				</div> 
+				<div class="eight columns">
+					<div class="flexslider work-slider">
+						<ul class="slides">
+							<li>
+								<img src="/assets/imgs/slider/momsatpark.png" />
+							</li>
+							<li>
+								<img src="/assets/imgs/slider/slidergraphic.jpg" />
+							</li>
+						</ul>
+					</div>
+				</div> 	
 		</div>
 		
 		<div class="container">
@@ -86,11 +106,11 @@
 				<div class="sixteen columns">
 					<div id="filters">
 						<ul class="option-set" data-option-key="filter">
-							<li><a href="#filter" class="selected" data-option-value="*">See All</a></li>
-							<li><a href="#filter" data-option-value=".design">Design</a></li>
-							<li><a href="#filter" data-option-value=".identity">Identity</a></li>
-							<li><a href="#filter" data-option-value=".photography">Photography</a></li>
-							<li><a href="#filter" data-option-value=".illustration">Illustration</a></li>
+							<li><a href="#filter" data-option-value="*">See All</a></li>
+							<li><a href="#filter" class="selected" data-option-value=".design">Events</a></li>
+							<li><a href="#filter" data-option-value=".identity">Groups</a></li>
+							<li><a href="#filter" data-option-value=".photography">Places</a></li>
+							<li><a href="#filter" data-option-value=".illustration">Interests</a></li>
 						</ul>
 					</div>
 				</div>
@@ -102,7 +122,7 @@
 					<div class="four columns portfolio-item design">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
-								<img src="/assets/imgs/work_big/work01.jpg">
+								<img src="/assets/imgs/events/kites.png">
 								<div class="img-overlay-div"></div>
 							</a>
 							<h3><a href="#">Project no.1</a><span>features info</span></h3>
@@ -111,7 +131,7 @@
 					<div class="four columns portfolio-item design">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
-								<%= image_tag "imgs/work_big/work02.jpg" %>
+								<%= image_tag "imgs/events/woodworkresized.png" %>
 								<div class="img-overlay-div"></div>
 							</a>
 							<h3><a href="#">Project no.2</a><span>features info</span></h3>
@@ -120,7 +140,7 @@
 					<div class="four columns portfolio-item identity photography">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
-								<%= image_tag "imgs/work_big/work03.jpg" %>
+								<%= image_tag "imgs/groups/motherwithcutebaby.png" %>
 								<div class="img-overlay-div"></div>
 							</a>
 							<h3><a href="#">Project no.3</a><span>features info</span></h3>
@@ -166,7 +186,7 @@
 					<div class="four columns portfolio-item design identity photography">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
-								<%= image_tag "imgs/work_big/work08.jpg" %>
+								<%= image_tag "imgs/events/carnivalresized.png" %>
 								<div class="img-overlay-div"></div>
 							</a>
 							<h3><a href="#">Project no.8</a><span>features info</span></h3>
@@ -176,7 +196,7 @@
 					<div class="four columns portfolio-item design photography">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
-								<%= image_tag "imgs/work_big/work09.jpg" %>
+								<%= image_tag "imgs/events/yogaresized.png" %>
 								<div class="img-overlay-div"></div>
 							</a>
 							<h3><a href="#">Project no.9</a><span>features info</span></h3>
@@ -203,7 +223,7 @@
 					<div class="four columns portfolio-item design identity">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
-								<%= image_tag "imgs/work_big/work12.jpg" %>
+								<%= image_tag "imgs/events/bouncyhouseresized.png" %>
 								<div class="img-overlay-div"></div>
 							</a>
 							<h3><a href="#">Project no.12</a><span>features info</span></h3>
@@ -333,7 +353,7 @@
 <!-- Wrap End -->
 
 <!-- Start Switcher -->
-	<div class="switcher"></div>
+<!--	<div class="switcher"></div> -->
 <!-- End Switcher -->
 
 </body>
