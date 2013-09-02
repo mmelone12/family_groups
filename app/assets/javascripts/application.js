@@ -10,14 +10,14 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery-1.7.1.min.js
+//= require jquery-1.7.1.min
 //= require jquery_ujs
 //= require turbolinks
-//= require jquery.flexslider-min.js
-//= require jquery.cookie.js
-//= require superfish.js
-//= require isotope.js
-//= require switcher.js
-//= require main.js
-//= require flexslider.js
+//= require jquery.flexslider-min
+//= require jquery.cookie
+//= require superfish
+//= require isotope
+//= require switcher
+//= require main
+//= require flexslider
 /*------------------------------------------------------
