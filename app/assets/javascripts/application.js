@@ -9,6 +9,9 @@
 //
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
+//
+//= require jquery_ujs
+//= require turbolinks
 //= require jquery.flexslider-min.js
 //= require jquery.cookie.js
 //= require superfish.js

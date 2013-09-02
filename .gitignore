@@ -16,7 +16,6 @@
 /tmp
 # Ignore other unneeded files.
 database.yml
-/public/assets/*
 doc/
 *.swp
 *~
