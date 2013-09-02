@@ -10,6 +10,7 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery-1.7.1.min.js
 //= require jquery_ujs
 //= require turbolinks
 //= require jquery.flexslider-min.js
