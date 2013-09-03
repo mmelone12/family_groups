@@ -1071,13 +1071,7 @@ $(document).ready(function(){
 		<div class="clear"></div> \
 		<h3>Color Style</h3> \
 		<div class="switcher-box"> \
-		<a id="blue" class="styleswitch color"></a> \
-		<a id="navy" class="styleswitch color"></a> \
-		<a id="orange" class="styleswitch color"></a> \
 		<a id="green" class="styleswitch color"></a> \
-		<a id="red" class="styleswitch color"></a> \
-		<a id="purple" class="styleswitch color"></a> \
-		<a id="cherry" class="styleswitch color"></a> \
 		</div><!-- End switcher-box --> \
 		<div class="clear"></div>  \
 		<div class="bg hidden">  \

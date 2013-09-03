@@ -2215,10 +2215,4 @@ footer h3 {
 #type.pattern { background: url(../assets/bgs/type.png) top left no-repeat; }
 
 /* Switcher Colors */
-#blue.styleswitch { background-color: #00aec8; }
-#navy.styleswitch { background-color: #495D7F; }
-#orange.styleswitch { background-color: #fa5b0f; }
 #green.styleswitch { background-color: #80b600; }
-#red.styleswitch { background-color: #C62020; }
-#purple.styleswitch { background-color: #6957AF; }
-#cherry.styleswitch { background-color: #911938; }

@@ -756,7 +756,7 @@ span.acc-trigger.active {
 .b-color {
 	line-height: 40px;
 	background: url("../assets/button03.jpg") top left repeat-x;
-	width: 150px;
+	width: 10px;
 	margin-top: 10px;
 	margin-left: 120px;
 	color: white;
@@ -765,7 +765,7 @@ span.acc-trigger.active {
 	font-weight: normal;
 	text-transform: uppercase;
 	font-size: 12px;
-	padding: 0;
+	padding: 8px;
 	border-radius: 2px;
 	border: 1px solid #648e00;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.25);
