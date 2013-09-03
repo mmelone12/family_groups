@@ -19,4 +19,4 @@
 //= require isotope
 //= require switcher
 //= require main
-//= require flexslider   
+//= require flexslider 
