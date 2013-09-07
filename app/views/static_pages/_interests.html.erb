@@ -1,0 +1,28 @@
+   <% Interest.all.each do |interest| %>  
+   <div class ="gardenselect">
+   <%= image_tag plant.icon_image %>
+   <%= check_box_tag "prelationship[pfollower_id][]", plant.id, false, :style => "display: none;" %> 
+   </div>
+   <% end %> 
+
+<% Interest.all.each do |interest| %> 
+<div class="four columns portfolio-item interests">
+	<div class="our-work">
+		<a class="img-overlay" href="#">
+			<%= image_tag "imgs/interests/<%= interest.image_path %>" %>
+			<div class="img-overlay-div"></div>
+		</a>
+		<h3><a href="#">Project no.13</a><span>features info</span></h3>
+	</div>
+</div>
+<% end %>
+
+<div class="four columns portfolio-item interests">
+	<div class="our-work">
+		<a class="img-overlay" href="#">
+			<%= image_tag "imgs/work_big/work13.jpg" %>
+			<div class="img-overlay-div"></div>
+		</a>
+		<h3><a href="#">Project no.13</a><span>features info</span></h3>
+	</div>
+</div>

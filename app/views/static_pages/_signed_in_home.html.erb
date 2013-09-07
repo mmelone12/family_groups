@@ -114,15 +114,6 @@
 							<h3><a href="#">Project no.2</a><span>features info</span></h3>
 						</div>
 					</div>
-					<div class="four columns portfolio-item interests">
-						<div class="our-work">
-							<a class="img-overlay" href="#">
-								<%= image_tag "imgs/groups/motherwithcutebaby.png" %>
-								<div class="img-overlay-div"></div>
-							</a>
-							<h3><a href="#">Project no.3</a><span>features info</span></h3>
-						</div>
-					</div>
 					<div class="four columns portfolio-item activities">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
@@ -188,15 +179,6 @@
 							<h3><a href="#">Project no.10</a><span>features info</span></h3>
 						</div>
 					</div>
-					<div class="four columns portfolio-item interests">
-						<div class="our-work">
-							<a class="img-overlay" href="#">
-								<%= image_tag "imgs/work_big/work11.jpg" %>
-								<div class="img-overlay-div"></div>
-							</a>
-							<h3><a href="#">Project no.11</a><span>features info</span></h3>
-						</div>
-					</div>
 					<div class="four columns portfolio-item groups">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
@@ -206,7 +188,6 @@
 							<h3><a href="#">Project no.12</a><span>features info</span></h3>
 						</div>
 					</div>
-					
 					<div class="four columns portfolio-item places">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
@@ -234,15 +215,17 @@
 							<h3><a href="#">Project no.15</a><span>features info</span></h3>
 						</div>
 					</div>
-					<div class="four columns portfolio-item interests">
-						<div class="our-work">
+					<% Interest.all.each do |interest| %> 
+						<div class="four columns portfolio-item interests">
+							<div class="our-work">
 							<a class="img-overlay" href="#">
-								<%= image_tag "imgs/work_big/work16.jpg" %>
-								<div class="img-overlay-div"></div>
+								<%= image_tag interest.image_path %>
+							<div class="img-overlay-div"></div>
 							</a>
-							<h3><a href="#">Project no.16</a><span>features info</span></h3>
+						<h3><a href="#">Project no.13</a><span>features info</span></h3>
+							</div>
 						</div>
-					</div>
+					<% end %>
 					
 				</div>
 			</div>

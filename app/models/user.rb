@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
       user.city = geo.city
     end
   end  
-  after_validation :geocode
+  after_validation :geocode, :if => :address_changed?
 
     def User.new_remember_token
     SecureRandom.urlsafe_base64
