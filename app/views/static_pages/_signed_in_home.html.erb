@@ -80,13 +80,14 @@
 
 			<div class="container">
 				<div class="sixteen columns">
+					<h3 class="shortcodes">What's going on in <%= @user.city %>.</h3>
 					<div id="filters">
 						<ul class="option-set" data-option-key="filter">
 							<li><a href="#filter" data-option-value="*">See All</a></li>
-							<li><a href="#filter" class="selected" data-option-value=".design">Activities</a></li>
-							<li><a href="#filter" data-option-value=".identity">Groups</a></li>
-							<li><a href="#filter" data-option-value=".photography">Places</a></li>
-							<li><a href="#filter" data-option-value=".illustration">Interests</a></li>
+							<li><a href="#filter" class="selected" data-option-value=".activities">Activities</a></li>
+							<li><a href="#filter" data-option-value=".groups">Groups</a></li>
+							<li><a href="#filter" data-option-value=".places">Places</a></li>
+							<li><a href="#filter" data-option-value=".interests">Interests</a></li>
 						</ul>
 					</div>
 				</div>
@@ -95,7 +96,7 @@
 			<div class="container">
 				<div id="portfolio-wrapper">
 				
-					<div class="four columns portfolio-item design">
+					<div class="four columns portfolio-item activities">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
 								<%= image_tag "imgs/events/kites.png" %>
@@ -104,7 +105,7 @@
 							<h3><a href="#">Project no.1</a><span>features info</span></h3>
 						</div>
 					</div>
-					<div class="four columns portfolio-item design">
+					<div class="four columns portfolio-item activities">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
 								<%= image_tag "imgs/events/woodworkresized.png" %>
@@ -113,7 +114,7 @@
 							<h3><a href="#">Project no.2</a><span>features info</span></h3>
 						</div>
 					</div>
-					<div class="four columns portfolio-item identity photography">
+					<div class="four columns portfolio-item interests">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
 								<%= image_tag "imgs/groups/motherwithcutebaby.png" %>
@@ -122,7 +123,7 @@
 							<h3><a href="#">Project no.3</a><span>features info</span></h3>
 						</div>
 					</div>
-					<div class="four columns portfolio-item photography illustration">
+					<div class="four columns portfolio-item activities">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
 								<%= image_tag "imgs/work_big/work04.jpg" %>
@@ -132,7 +133,7 @@
 						</div>
 					</div>
 					
-					<div class="four columns portfolio-item identity photography">
+					<div class="four columns portfolio-item groups">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
 								<%= image_tag "imgs/work_big/work05.jpg" %>
@@ -141,7 +142,7 @@
 							<h3><a href="#">Project no.5</a><span>features info</span></h3>
 						</div>
 					</div>
-					<div class="four columns portfolio-item identity illustration">
+					<div class="four columns portfolio-item groups">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
 								<%= image_tag "imgs/work_big/work06.jpg" %>
@@ -150,7 +151,7 @@
 							<h3><a href="#">Project no.6</a><span>features info</span></h3>
 						</div>
 					</div>
-					<div class="four columns portfolio-item illustration">
+					<div class="four columns portfolio-item places">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
 								<%= image_tag "imgs/work_big/work07.jpg" %>
@@ -159,7 +160,7 @@
 							<h3><a href="#">Project no.7</a><span>features info</span></h3>
 						</div>
 					</div>
-					<div class="four columns portfolio-item design identity photography">
+					<div class="four columns portfolio-item places">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
 								<%= image_tag "imgs/events/carnivalresized.png" %>
@@ -169,7 +170,7 @@
 						</div>
 					</div>
 					
-					<div class="four columns portfolio-item design photography">
+					<div class="four columns portfolio-item groups">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
 								<%= image_tag "imgs/events/yogaresized.png" %>
@@ -178,7 +179,7 @@
 							<h3><a href="#">Project no.9</a><span>features info</span></h3>
 						</div>
 					</div>
-					<div class="four columns portfolio-item photography illustration">
+					<div class="four columns portfolio-item activities">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
 								<%= image_tag "imgs/work_big/work10.jpg" %>
@@ -187,7 +188,7 @@
 							<h3><a href="#">Project no.10</a><span>features info</span></h3>
 						</div>
 					</div>
-					<div class="four columns portfolio-item design identity photography illustration">
+					<div class="four columns portfolio-item interests">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
 								<%= image_tag "imgs/work_big/work11.jpg" %>
@@ -196,7 +197,7 @@
 							<h3><a href="#">Project no.11</a><span>features info</span></h3>
 						</div>
 					</div>
-					<div class="four columns portfolio-item design identity">
+					<div class="four columns portfolio-item groups">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
 								<%= image_tag "imgs/events/bouncyhouseresized.png" %>
@@ -206,7 +207,7 @@
 						</div>
 					</div>
 					
-					<div class="four columns portfolio-item design photography illustration">
+					<div class="four columns portfolio-item places">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
 								<%= image_tag "imgs/work_big/work13.jpg" %>
@@ -215,7 +216,7 @@
 							<h3><a href="#">Project no.13</a><span>features info</span></h3>
 						</div>
 					</div>
-					<div class="four columns portfolio-item identity illustration">
+					<div class="four columns portfolio-item groups">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
 								<%= image_tag "imgs/work_big/work14.jpg" %>
@@ -224,7 +225,7 @@
 							<h3><a href="#">Project no.14</a><span>features info</span></h3>
 						</div>
 					</div>
-					<div class="four columns portfolio-item design identity">
+					<div class="four columns portfolio-item events">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
 								<%= image_tag "imgs/work_big/work15.jpg" %>
@@ -233,7 +234,7 @@
 							<h3><a href="#">Project no.15</a><span>features info</span></h3>
 						</div>
 					</div>
-					<div class="four columns portfolio-item design identity photography illustration">
+					<div class="four columns portfolio-item interests">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
 								<%= image_tag "imgs/work_big/work16.jpg" %>

@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-	before_save { self.email = email.downcase }
+  before_save { self.email = email.downcase }
 	before_create :create_remember_token
 
 	validates :name, presence: true, length: { maximum: 50 }
@@ -7,8 +7,16 @@ class User < ActiveRecord::Base
 	validates :email, presence: true, 
 			  format: { with: VALID_EMAIL_REGEX },
 		      uniqueness: { case_sensitive: false }
+  validates :address, presence: true
     has_secure_password
     validates :password, length: { minimum: 6 }
+    
+  geocoded_by :address do |user,results|
+    if geo = results.first
+      user.city = geo.city
+    end
+  end  
+  after_validation :geocode
 
     def User.new_remember_token
     SecureRandom.urlsafe_base64
