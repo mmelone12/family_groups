@@ -218,11 +218,14 @@
 					<% Interest.all.each do |interest| %> 
 						<div class="four columns portfolio-item interests">
 							<div class="our-work">
-							<a class="img-overlay" href="#">
+							<a class="img-overlay">
 								<%= image_tag interest.image_path %>
 							<div class="img-overlay-div"></div>
-							</a>
-						<h3><a href="#">Project no.13</a><span>features info</span></h3>
+							</a>								<%= form_for(@user.relationships.build(followed_id: interest.id)) do |f| %>
+  <div><%= f.hidden_field :followed_id %></div>
+  <%= f.submit "Follow", class: "b-color" %>
+<% end %>
+						<h3><a href="#"><%= interest.name %></a><span>features info</span></h3>
 							</div>
 						</div>
 					<% end %>

@@ -10,6 +10,10 @@ class User < ActiveRecord::Base
   validates :address, presence: true
     has_secure_password
     validates :password, length: { minimum: 6 }
+
+  has_many :relationships, :foreign_key => "follower_id",
+                            :dependent => :destroy   
+  has_many :following, :through => :relationships, :source => :followed 
     
   geocoded_by :address do |user,results|
     if geo = results.first
@@ -18,7 +22,15 @@ class User < ActiveRecord::Base
   end  
   after_validation :geocode, :if => :address_changed?
 
-    def User.new_remember_token
+  def following?(followed)
+    relationships.find_by_followed_id(followed)  
+  end  
+  
+  def follow!(followed)
+    relationships.create!(:followed_id => followed.id)
+  end  
+
+  def User.new_remember_token
     SecureRandom.urlsafe_base64
   end
 

@@ -6,6 +6,20 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
   end
 
+  def following
+    @title = "Following"
+    @user = User.find(params[:id])
+    @interests = @interest.following
+    render 'show_follow'
+  end    
+  
+  def followers
+    @title = "Followers"
+    @user = User.find(params[:id])
+    @interests = @interest.followers
+    render 'show_follow'
+  end
+
   def new
   	@user = User.new
   end
@@ -14,7 +28,7 @@ class UsersController < ApplicationController
   	@user = User.new(user_params)
   	  if @user.save
         sign_in @user
-  		  redirect_to @user
+  		  redirect_to(root_url)
   	  else 
   		  render 'new'
       end
