@@ -50,11 +50,13 @@
 						<li><a href="#tab2">Interests</a></li>
 					</ul>
 					<div class="tabs-container">
-						<div id="tab1" class="tab-content">Finding other parents to hang out and schedule playdates with can be hard. Scroll through local family events, places and groups and discover moms and dads with similar interests. <br /> <%= link_to "Join your community", signup_path, id: 'create_user', class: "b-color" %> </div>
-						<div id="tab2" class="tab-content">
+							<div id="tab1" class="tab-content">
+								<h2>Finding other parents to hang out and schedule playdates with can be hard. Scroll through local family events, places and groups and discover moms and dads with similar interests. <br /></h2> <%= link_to "Join your community", signup_path, id: 'create_user', style:"color:white", class: "b-color" %> 
+							</div>
+							<div id="tab2" class="tab-content">
 							<%= link_to "Sign out", signout_path, method: "delete" %>
+							</div>
 						</div>
-					</div>
 				</div> 
 				<div class="eight columns">
 					<div class="flexslider work-slider">
@@ -215,21 +217,7 @@
 							<h3><a href="#">Project no.15</a><span>features info</span></h3>
 						</div>
 					</div>
-					<% Interest.all.each do |interest| %> 
-						<div class="four columns portfolio-item interests">
-							<div class="our-work">
-							<a class="img-overlay">
-								<%= image_tag interest.image_path %>
-							<div class="img-overlay-div"></div>
-							</a>								<%= form_for(@user.relationships.build(followed_id: interest.id)) do |f| %>
-  <div><%= f.hidden_field :followed_id %></div>
-  <%= f.submit "Follow", class: "b-color" %>
-<% end %>
-						<h3><a href="#"><%= interest.name %></a><span>features info</span></h3>
-							</div>
-						</div>
-					<% end %>
-					
+						<%= render partial: "interests" %>			
 				</div>
 			</div>
 		

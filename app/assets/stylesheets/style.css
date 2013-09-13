@@ -33,7 +33,7 @@ a {
 	text-decoration: none;
 }
 a:hover {
-	text-decoration: underline;
+	text-decoration: none;
 }
 hr.line {
 	margin:0;
@@ -86,14 +86,15 @@ a.img-overlay {
 	display: block;
 }
 .img-overlay-div {
-    background: rgba(0, 0, 0, 0.7) url(../assets/overlay-icon-01.png) center no-repeat;
+    background: rgba(0, 0, 0, 0.7);
+    color:white;
     cursor: pointer;
     display: block;
 	opacity: 0;
     height: 100%;
     left: 0;
     position: absolute;
-    top: 0;
+    top: 0px;
     width: 100%;
     z-index: 40;
 }
@@ -735,6 +736,8 @@ span.acc-trigger.active {
 .b-black {
 	line-height: 40px;
 	background: url("../assets/button02.jpg") top left repeat-x;
+	position: absolute;
+	margin-left: 30px;
 	width: 150px;
 	color: rgba(0,0,0,0.6);
 	font-family: 'OpenSansRegular';
@@ -742,7 +745,7 @@ span.acc-trigger.active {
 	font-weight: normal;
 	text-transform: uppercase;
 	font-size: 15px;
-	padding: 0;
+	padding: -20px;
 	border-radius: 2px;
 	border: 1px solid #333333;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.25);
@@ -751,7 +754,7 @@ span.acc-trigger.active {
 	background: url("../assets/button02.jpg") top left repeat-x;
 	color: rgba(0,0,0,0.6);
 	border: 1px solid #333333;
-	box-shadow: none;
+	box-shadow: 0px 2.5px 15px 5px rgba(255, 255, 190, .75);
 }
 
 .b-color {
@@ -760,7 +763,7 @@ span.acc-trigger.active {
 	width: 10px;
 	margin-top: 10px;
 	margin-left: 120px;
-	color: white;
+	color: rgba(0,0,0,0.6);
 	font-family: 'OpenSansRegular';
 	box-shadow: 0 2.5px 1px rgba(0,0,0,0.25);
 	font-weight: normal;
@@ -773,9 +776,9 @@ span.acc-trigger.active {
 }
 .b-color:hover {
 	background: url("../assets/button03.jpg") top left repeat-x;
-	color: rgba(0,0,0,0.6);
+	color: blue;
 	border: 1px solid #648e00;
-	box-shadow: none;
+	box-shadow: 0px 2.5px 15px 5px rgba(255, 255, 190, .75);
 }
 
 table {
@@ -796,8 +799,7 @@ td {
 	padding: 5px;
 	vertical-align: middle;
 	text-align: center;
-	font-size:12px;
-	
+	font-size:12px;	
 }
 
 thead th{

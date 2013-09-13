@@ -1,0 +1,57 @@
+<% @interests.each do |interest| %>
+						<div class="four columns portfolio-item interests">
+							<div class="our-work">
+								<a class="img-overlay">
+								<%= image_tag interest.image_path %>
+									<div class="img-overlay-div">
+									<h4><%= interest.name %></h4>
+									</br>
+									<h5>Hi how you doing?
+									</br>
+									<%= interest.desc %></h5>
+									<div id="follow_form">	
+	<% if current_user.following?(interest) %>
+		<%= form_for(current_user.relationships.find_by(followed_id: interest),
+             html: { method: :delete },
+             remote: true) do |f| %>
+   		<%= f.submit "Not Interested", class: "b-black" %>
+		<% end %>
+	<% else %>
+		<%= form_for(current_user.relationships.build(followed_id: interest.id), remote: true) do |f| %> 
+   		<div><%= f.hidden_field :followed_id %></div>
+   		<%= f.submit "I'm interested", class: "b-black" %>
+   		<% end %>
+	<% end %>
+</div>
+									</div>
+								</a>
+								<h3><a href="#"><%= interest.name %></a><span>features info</span></h3>								
+							</div>
+						</div>
+					<% end %>
+
+
+<% @interests do |interest| unless current_user.following?(interest) %>
+						<div class="four columns portfolio-item interests">
+							<div class="our-work">
+								<a class="img-overlay">
+								<%= image_tag interest.image_path %>
+									<div class="img-overlay-div">
+									<h4><%= interest.name %></h4>
+									</br>
+									<h5>Hi how you doing?
+									</br>
+									<%= interest.desc %></h5>
+									<div id="follow_form">	
+									<%= form_for(current_user.relationships.build(followed_id: interest.id), remote: true) do |f| %> 
+   									<div><%= f.hidden_field :followed_id %></div>
+   									<%= f.submit "I'm interested", class: "b-black" %>
+   										<% end %>
+									</div>
+									</div>
+								</a>
+								<h3><a href="#"><%= interest.name %></a><span>features info</span></h3>								
+							</div>
+						</div>
+					<% end %>
+					<% end %>

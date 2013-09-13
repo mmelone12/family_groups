@@ -22,13 +22,17 @@ class User < ActiveRecord::Base
   end  
   after_validation :geocode, :if => :address_changed?
 
-  def following?(followed)
-    relationships.find_by_followed_id(followed)  
-  end  
-  
-  def follow!(followed)
-    relationships.create!(:followed_id => followed.id)
-  end  
+  def following?(interest)
+    relationships.find_by(followed_id: interest.id)
+  end
+
+  def follow!(interest)
+    relationships.create!(followed_id: interest.id)
+  end
+
+  def unfollow!(interest)
+    relationships.find_by(followed_id: interest.id).destroy!
+  end
 
   def User.new_remember_token
     SecureRandom.urlsafe_base64
