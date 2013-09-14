@@ -217,7 +217,9 @@
 							<h3><a href="#">Project no.15</a><span>features info</span></h3>
 						</div>
 					</div>
-						<%= render partial: "interests" %>			
+						<% @interests.each do |interest| %>
+  <%= render 'interests/follow_form', :interest => interest %> 
+<% end %>	
 				</div>
 			</div>
 		
