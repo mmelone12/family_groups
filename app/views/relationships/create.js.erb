@@ -1,1 +1,2 @@
-$("#follow_form<%="#{@interest.id}" %>").hide();
+$("#follow_form<%="#{@interest.id}" %>").hide( "drop", { direction: "up" }, "slow" );
+$("#tab4").html("<%= escape_javascript(render('interests/followed_interests')) %>")

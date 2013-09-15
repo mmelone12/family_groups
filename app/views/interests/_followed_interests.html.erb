@@ -1,0 +1,5 @@
+<div class="followed_items">
+    <% current_user.following.each do |followed_interest| %>
+    <%= image_tag followed_interest.image_path, size: "40" %>
+    <% end %>
+</div>

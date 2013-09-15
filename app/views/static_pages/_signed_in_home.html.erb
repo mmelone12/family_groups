@@ -44,10 +44,10 @@
 						<div class="eight columns">
 					<h3 class="shortcodes">Check out your community and meet fellow parents.</h3>
 					<ul class="tabs-nav">
-						<li><a href="#tab1">Activities</a></li>
-						<li><a href="#tab2">Groups</a></li>
-						<li><a href="#tab2">Places</a></li>
-						<li><a href="#tab2">Interests</a></li>
+						<li><a href="#tab1">My Activities</a></li>
+						<li><a href="#tab2">My Groups</a></li>
+						<li><a href="#tab3">My Places</a></li>
+						<li><a href="#tab4">My Interests</a></li>
 					</ul>
 					<div class="tabs-container">
 							<div id="tab1" class="tab-content">
@@ -55,6 +55,12 @@
 							</div>
 							<div id="tab2" class="tab-content">
 							<%= link_to "Sign out", signout_path, method: "delete" %>
+							</div>
+							<div id="tab3" class="tab-content">
+							<%= link_to "Sign out", signout_path, method: "delete" %>
+							</div>
+							<div id="tab4" class="tab-content">
+							<%= render 'interests/followed_interests' %>
 							</div>
 						</div>
 				</div> 
@@ -217,9 +223,9 @@
 							<h3><a href="#">Project no.15</a><span>features info</span></h3>
 						</div>
 					</div>
-						<% @interests.each do |interest| %>
-  <%= render 'interests/follow_form', :interest => interest %> 
-<% end %>	
+					<% @interests.each do |interest| %>
+  						<%= render 'interests/follow_form', :interest => interest %> 
+					<% end %>	
 				</div>
 			</div>
 		
