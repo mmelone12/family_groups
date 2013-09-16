@@ -1,0 +1,25 @@
+<div id="content">
+  <h1>Group Sign Up</h1>
+
+    <div class="register_form">
+      <%= form_for(@group) do |f| %>
+
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+
+        <%= f.label :link %>
+        <%= f.text_field :link %>
+
+        <%= f.label :city %>
+        <%= f.text_field :city %>
+
+        <%= f.label :desc %>
+        <%= f.text_field :desc %>
+
+        <%= f.label :image_path %>
+        <%= f.text_field :image_path %>
+
+        <%= f.submit "Create Group", class: "b-black" %>
+      <% end %>
+  </div>
+</div>

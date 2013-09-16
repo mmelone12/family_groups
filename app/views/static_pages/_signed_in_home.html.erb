@@ -54,7 +54,9 @@
 								<h2>Finding other parents to hang out and schedule playdates with can be hard. Scroll through local family events, places and groups and discover moms and dads with similar interests. <br /></h2> <%= link_to "Join your community", signup_path, id: 'create_user', style:"color:white", class: "b-color" %> 
 							</div>
 							<div id="tab2" class="tab-content">
-							<%= link_to "Sign out", signout_path, method: "delete" %>
+							<% @groups.each do |group| %>
+							<%= render :partial => 'groups/group', :locals => { :group => group } %>
+							<% end %>
 							</div>
 							<div id="tab3" class="tab-content">
 							<%= link_to "Sign out", signout_path, method: "delete" %>
@@ -131,25 +133,7 @@
 							<h3><a href="#">Project no.4</a><span>features info</span></h3>
 						</div>
 					</div>
-					
-					<div class="four columns portfolio-item groups">
-						<div class="our-work">
-							<a class="img-overlay" href="#">
-								<%= image_tag "imgs/work_big/work05.jpg" %>
-								<div class="img-overlay-div"></div>
-							</a>
-							<h3><a href="#">Project no.5</a><span>features info</span></h3>
-						</div>
-					</div>
-					<div class="four columns portfolio-item groups">
-						<div class="our-work">
-							<a class="img-overlay" href="#">
-								<%= image_tag "imgs/work_big/work06.jpg" %>
-								<div class="img-overlay-div"></div>
-							</a>
-							<h3><a href="#">Project no.6</a><span>features info</span></h3>
-						</div>
-					</div>
+
 					<div class="four columns portfolio-item places">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
@@ -168,16 +152,6 @@
 							<h3><a href="#">Project no.8</a><span>features info</span></h3>
 						</div>
 					</div>
-					
-					<div class="four columns portfolio-item groups">
-						<div class="our-work">
-							<a class="img-overlay" href="#">
-								<%= image_tag "imgs/events/yogaresized.png" %>
-								<div class="img-overlay-div"></div>
-							</a>
-							<h3><a href="#">Project no.9</a><span>features info</span></h3>
-						</div>
-					</div>
 					<div class="four columns portfolio-item activities">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
@@ -185,15 +159,6 @@
 								<div class="img-overlay-div"></div>
 							</a>
 							<h3><a href="#">Project no.10</a><span>features info</span></h3>
-						</div>
-					</div>
-					<div class="four columns portfolio-item groups">
-						<div class="our-work">
-							<a class="img-overlay" href="#">
-								<%= image_tag "imgs/events/bouncyhouseresized.png" %>
-								<div class="img-overlay-div"></div>
-							</a>
-							<h3><a href="#">Project no.12</a><span>features info</span></h3>
 						</div>
 					</div>
 					<div class="four columns portfolio-item places">
@@ -205,16 +170,7 @@
 							<h3><a href="#">Project no.13</a><span>features info</span></h3>
 						</div>
 					</div>
-					<div class="four columns portfolio-item groups">
-						<div class="our-work">
-							<a class="img-overlay" href="#">
-								<%= image_tag "imgs/work_big/work14.jpg" %>
-								<div class="img-overlay-div"></div>
-							</a>
-							<h3><a href="#">Project no.14</a><span>features info</span></h3>
-						</div>
-					</div>
-					<div class="four columns portfolio-item events">
+					<div class="four columns portfolio-item activitiess">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
 								<%= image_tag "imgs/work_big/work15.jpg" %>
@@ -223,6 +179,9 @@
 							<h3><a href="#">Project no.15</a><span>features info</span></h3>
 						</div>
 					</div>
+					<% @groups.each do |group| %>
+						<%= render :partial => 'groups/group', :locals => { :group => group } %>
+					<% end %>
 					<% @interests.each do |interest| %>
   						<%= render 'interests/follow_form', :interest => interest %> 
 					<% end %>	
