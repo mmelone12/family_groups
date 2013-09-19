@@ -35,3 +35,9 @@
   end  
 
       @groups = RMeetup::Client.fetch(:groups, :city => @city, :topic => "parents") 
+
+      <%= if group.photo_url.blank?; image_tag "imgs/work_big/work15.jpg"; end %>
+
+              <%= if group.photo_url.blank?; image_tag "rotate/<%= random_image %>"; end %>
+        <img src="/assets/rotate/<%= random_image %>">
+        <%= image_tag group.photo_url %>
