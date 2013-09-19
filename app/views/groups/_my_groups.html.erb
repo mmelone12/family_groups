@@ -1,0 +1,5 @@
+<div class="followed_items">
+    <% current_user.groups.each do |group| %>
+    <%= if group.image_path.blank?; image_tag "/assets/rotate/#{random_image}", size: "40"; else image_tag group.image_path, size: "40"; end %>
+    <% end %>
+</div>

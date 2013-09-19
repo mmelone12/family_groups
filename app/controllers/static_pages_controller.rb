@@ -7,11 +7,11 @@ class StaticPagesController < ApplicationController
     if signed_in?
 	    @groups = RMeetup::Client.fetch(:groups, :lat => @user.latitude, :lon => @user.longitude, :topic => "parents")
       @firstgroups = @groups.first(20)
-      @group = Group.new
+      @group = Group.create
     else
       @groups = RMeetup::Client.fetch(:groups, :city => @city, :topic => "parents")
       @firstgroups = @groups.first(20)
-      @group = Group.new 
+      @group = Group.create
     end
   end
 

@@ -54,9 +54,7 @@
 								<h2>Finding other parents to hang out and schedule playdates with can be hard. Scroll through local family events, places and groups and discover moms and dads with similar interests. <br /></h2> <%= link_to "Join your community", signup_path, id: 'create_user', style:"color:white", class: "b-color" %> 
 							</div>
 							<div id="tab2" class="tab-content">
-							<% @groups.each do |group| %>
-							<%= render :partial => 'groups/group', :locals => { :group => group } %>
-							<% end %>
+							<%= render 'groups/my_groups' %>
 							</div>
 							<div id="tab3" class="tab-content">
 							Nothing here... yet

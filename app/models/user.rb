@@ -13,7 +13,9 @@ class User < ActiveRecord::Base
 
   has_many :relationships, :foreign_key => "follower_id",
                             :dependent => :destroy   
-  has_many :following, :through => :relationships, :source => :followed 
+  has_many :following, :through => :relationships, :source => :followed
+
+  has_many :groups, dependent: :destroy 
     
   geocoded_by :address do |user,results|
     if geo = results.first
