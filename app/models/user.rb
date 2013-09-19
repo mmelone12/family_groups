@@ -18,8 +18,10 @@ class User < ActiveRecord::Base
   geocoded_by :address do |user,results|
     if geo = results.first
       user.city = geo.city
+      user.latitude = geo.latitude.to_f
+      user.longitude = geo.longitude.to_f
     end
-  end  
+  end
   after_validation :geocode, :if => :address_changed?
 
   def following?(interest)

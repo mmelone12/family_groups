@@ -1,0 +1,37 @@
+       <%= form_for Group.new( name: group.id, link: group.link, image_path: group.photo_url, desc: group.description.html_safe.mb_chars.limit(119), city: group.id ) do |f| %>
+        <%= f.submit "Create Group", class: "b-black" %>
+      	<% end %>
+
+      	        <%= button_to "Create Group",
+        	{ controller: "groups", 
+        		action: "create", 
+        		name: group.id, 
+        		link: group.link, 
+        		image_path: group.photo_url, 
+        		desc: group.description.html_safe.mb_chars.limit(119).to_s, 
+        		city: group.id }, 
+        		:method => :post %>
+
+        		       <%= form_for Group.create do |f| %>
+       <%= f.hidden_field :name, value: group.id %>
+        <%= f.submit "Create Group", class: "b-black" %>
+      	<% end %>
+
+      	       <%= form_for Group.new( name: group.id, link: group.link, image_path: group.photo_url, desc: group.description.html_safe.mb_chars.limit(119), city: group.id ) do |f| %>
+        <%= f.submit "Create Group", class: "b-black" %>
+      	<% end %>
+
+      	        <%= form_for(@group) do |f| %>
+       <%= f.hidden_field :name, value: group.id %>
+        <%= f.submit "Create Group", class: "b-black" %>
+      	<% end %>
+
+      	  geocoded_by :address do |user,results|
+    :latitude => :latitude
+    :longitude => :longitude
+    if geo = results.first
+      user.city = geo.city
+    end
+  end  
+
+      @groups = RMeetup::Client.fetch(:groups, :city => @city, :topic => "parents") 

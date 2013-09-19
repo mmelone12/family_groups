@@ -1,5 +1,4 @@
 FamilyGroups::Application.routes.draw do
-  get "groups/new"
   resources :users do
     member do
       get :following, :followers

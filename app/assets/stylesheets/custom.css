@@ -57,3 +57,12 @@ input {
   background: black;
   color: black;
 }
+
+.followed_items ul li {
+  size: 20px;
+}
+
+.min-height {
+  min-height: 210px;
+  max-height: 210px;
+}

@@ -2,16 +2,28 @@
 <div class="four columns portfolio-item groups">
     <div class="our-work">
         <a class="img-overlay">
+        	<div class = "min-height">
+        <%= if group.photo_url.blank?; image_tag "imgs/work_big/work15.jpg"; end %>
         <%= image_tag group.photo_url %>
             <div class="img-overlay-div">
-            <h4><%= group.id %></h4>
+            <h4><%= group.name.html_safe.mb_chars.limit(20).to_s %></h4>
             </br>
-            <h5>Placeholder
+            <h5><%= [@user.latitude, @user.longitude].join(', ') %>
             </br>
-            <%= group.description.html_safe %></h5>
+            <%= if group.description.html_safe.length > 120; group.description.html_safe.mb_chars.limit(119).to_s; else group.description.html_safe; end %>
+        </h5>
+       <%= form_for(@group) do |f| %>
+       <%= f.hidden_field :name, value: group.name.html_safe.mb_chars.limit(20).to_s %>
+       <%= f.hidden_field :desc, value: group.description.html_safe.mb_chars.limit(119).to_s %>
+       <%= f.hidden_field :image_path, value: group.photo_url %>
+       <%= f.hidden_field :link, value: group.link %>
+       <%= f.hidden_field :city, value: group.city.html_safe.mb_chars.limit(50).to_s %>
+       <%= f.submit "Create Group", class: "b-black" %>
+      	<% end %>
             </div>
         </a>
-        <h3><a href="#"><%= group.id %></a><span>features info</span></h3>
+    </div>
+        <h3><a href="#"><%= group.name.html_safe.mb_chars.limit(20).to_s %></a><span>features info</span></h3>
     </div>
    </div>
 </div>				

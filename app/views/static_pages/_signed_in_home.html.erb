@@ -179,7 +179,7 @@
 							<h3><a href="#">Project no.15</a><span>features info</span></h3>
 						</div>
 					</div>
-					<% @groups.each do |group| %>
+					<% @firstgroups.each do |group| %>
 						<%= render :partial => 'groups/group', :locals => { :group => group } %>
 					<% end %>
 					<% @interests.each do |interest| %>
