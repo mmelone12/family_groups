@@ -64,5 +64,16 @@ input {
 
 .min-height {
   min-height: 210px;
-  max-height: 210px;
+}
+
+.learn_more {
+  font-weight: bolder; 
+  color: #0000FF; 
+  font: 'OpenSansBold';
+  font-size: 13px; 
+  display: inline;
+}
+
+.smaller_size {
+  font-size: 11px;
 }

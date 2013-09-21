@@ -41,3 +41,15 @@
               <%= if group.photo_url.blank?; image_tag "rotate/<%= random_image %>"; end %>
         <img src="/assets/rotate/<%= random_image %>">
         <%= image_tag group.photo_url %>
+
+          def create
+    @group = Group.new(group_params)
+      if @group.save
+        respond_to do |format|
+          format.html { redirect_to(root_url) }
+          format.js 
+        end
+      else
+        render 'new'
+      end
+  end

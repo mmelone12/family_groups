@@ -10,11 +10,11 @@ class GroupsController < ApplicationController
 
   def create
   	@group = Group.new(group_params)
-  	  if @group.save
-  	  	redirect_to(root_url)
-  	  else
-  	  	render 'new'
-  	  end
+    @group.save
+  	respond_to do |format|
+      format.html { redirect_to(root_url) }
+      format.js 
+    end
   end
 
   def edit

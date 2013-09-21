@@ -737,6 +737,7 @@ span.acc-trigger.active {
 	line-height: 40px;
 	background: url("../assets/button02.jpg") top left repeat-x;
 	position: absolute;
+	margin-top: -7px;
 	margin-left: 30px;
 	width: 150px;
 	color: rgba(0,0,0,0.6);
@@ -775,6 +776,29 @@ span.acc-trigger.active {
 	text-shadow: 0 1px rgba(255, 255, 255, 0.25);
 }
 .b-color:hover {
+	background: url("../assets/button03.jpg") top left repeat-x;
+	color: blue;
+	border: 1px solid #648e00;
+	box-shadow: 0px 2.5px 15px 5px rgba(255, 255, 190, .75);
+}
+
+.b-new {
+	line-height: 40px;
+	background: url("../assets/button03.jpg") top left repeat-x;
+	width: 10px;
+	margin-left: 50px;
+	color: rgba(0,0,0,0.6);
+	font-family: 'OpenSansRegular';
+	box-shadow: 0 2.5px 1px rgba(0,0,0,0.25);
+	font-weight: normal;
+	text-transform: uppercase;
+	font-size: 12px;
+	padding: 8px;
+	border-radius: 2px;
+	border: 1px solid #648e00;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.25);
+}
+.b-new:hover {
 	background: url("../assets/button03.jpg") top left repeat-x;
 	color: blue;
 	border: 1px solid #648e00;
@@ -967,6 +991,7 @@ h3.front-page { margin-top: -11px; }
 .our-work img {
 	width: 100%;
 	display: block;
+	max-height: 210px;
 }
 .our-work h3 {
 	font-family: 'OpenSansRegular';

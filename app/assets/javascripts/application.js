@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require users
+//= require groups
 //= require turbolinks
 //= require jquery.flexslider-min
 //= require jquery.cookie

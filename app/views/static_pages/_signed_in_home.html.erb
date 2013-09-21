@@ -46,8 +46,8 @@
 					<ul class="tabs-nav">
 						<li><a href="#tab1">My Activities</a></li>
 						<li><a href="#tab2">My Groups</a></li>
-						<li><a href="#tab3">My Places</a></li>
-						<li><a href="#tab4">My Interests</a></li>
+						<li><a href="#tab3">My Interests</a></li>
+						<li><a href="#tab4">My Places</a></li>
 					</ul>
 					<div class="tabs-container">
 							<div id="tab1" class="tab-content">
@@ -57,10 +57,13 @@
 							<%= render 'groups/my_groups' %>
 							</div>
 							<div id="tab3" class="tab-content">
-							Nothing here... yet
+							<%= render 'interests/followed_interests' %>
 							</div>
 							<div id="tab4" class="tab-content">
-							<%= render 'interests/followed_interests' %>
+							Nothing here yet 
+							<br />
+							</div>
+						<div id="tab2" class="tab-content">
 							</div>
 						</div>
 				</div> 
@@ -88,14 +91,14 @@
 
 			<div class="container">
 				<div class="sixteen columns">
-					<h3 class="shortcodes">What's going on in <%= @user.city %>.</h3>
+					<h4> See what's happening for families and parents in <%= @user.city %> this week.</h4>
 					<div id="filters">
 						<ul class="option-set" data-option-key="filter">
 							<li><a href="#filter" data-option-value="*">See All</a></li>
 							<li><a href="#filter" class="selected" data-option-value=".activities">Activities</a></li>
 							<li><a href="#filter" data-option-value=".groups">Groups</a></li>
-							<li><a href="#filter" data-option-value=".places">Places</a></li>
 							<li><a href="#filter" data-option-value=".interests">Interests</a></li>
+							<li><a href="#filter" data-option-value=".places">Places</a></li>
 						</ul>
 					</div>
 				</div>
@@ -103,7 +106,7 @@
 		
 			<div class="container">
 				<div id="portfolio-wrapper">
-				
+
 					<div class="four columns portfolio-item activities">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
@@ -168,17 +171,26 @@
 							<h3><a href="#">Project no.13</a><span>features info</span></h3>
 						</div>
 					</div>
-					<div class="four columns portfolio-item activitiess">
+					<div class="four columns portfolio-item activities">
 						<div class="our-work">
 							<a class="img-overlay" href="#">
 								<%= image_tag "imgs/work_big/work15.jpg" %>
-								<div class="img-overlay-div"></div>
+								<div class="img-overlay-div">hello</div>
 							</a>
 							<h3><a href="#">Project no.15</a><span>features info</span></h3>
 						</div>
 					</div>
+					<div class="four columns portfolio-item groups">
+        				<br />
+        				<br />
+            			<h4>Click here to create your own group</h4>
+            			<br />
+					<%= link_to "Create Group", new_group_path, id: 'create_group', style:"color:white", class: "b-new" %> 
+
+  					</div>
 					<% @firstgroups.each do |group| %>
 						<%= render :partial => 'groups/group', :locals => { :group => group } %>
+						<%= render :partial => 'js/groups.js.erb', :locals => { :group => group } %>
 					<% end %>
 					<% @interests.each do |interest| %>
   						<%= render 'interests/follow_form', :interest => interest %> 

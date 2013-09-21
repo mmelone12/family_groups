@@ -1,0 +1,14 @@
+<%- if @group.name? %>
+	$("#follow_form<%="#{@group.group_id}" %>").hide( "drop", { direction: "up" }, "slow" );
+	$("#tab2").html("<%= escape_javascript(render('groups/my_groups')) %>")
+<% else %>
+	<%- if @group.errors.any? %>
+  	console.log('Error');
+  	$('#dialog-form').html('<%= escape_javascript(render('new')) %>');
+	<%- else %>
+  	console.log('Created');
+  	$('#dialog-form').dialog('close');
+  	$('#dialog-form').remove();
+  	$('table').append('<%= escape_javascript(render(@group)) %>');
+	<%- end %>
+<%- end %>
