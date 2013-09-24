@@ -1,0 +1,45 @@
+<div id="follow_form<%= "#{group.id}" %>">                      
+  <div class="four columns portfolio-item groups">
+    <div class="our-work">
+        <a class="img-overlay">
+        	<div class= "min-height">
+              <%= if group.image_path.blank?; image_tag "/assets/rotate/#{random_image}"; end %>
+              <%= image_tag group.image_path %>
+            <div class="img-overlay-div">
+              <div class="other_groups_showme">
+            <h4>
+            <%= if group.name.length > 50; group.name.limit(50) + "...  "; else group.name; end %>
+            </h4>
+            <h5>
+            <br />
+            <%= if group.desc.length > 130; group.desc.limit(129); else group.desc; end %>...<div class="learn_more"> Learn More</div>
+            </h5>
+              </div>
+       <%= form_for(@group, remote: true) do |f| %>
+       <%= f.hidden_field :name, value: group.name %>
+       <%= f.hidden_field :desc, value: group.desc %>       
+       <% if group.image_path? %>
+       <%= f.hidden_field :image_path, value: group.image_path %>
+       <% else %>
+       <%= f.hidden_field :image_path, value: "/assets/rotate/#{random_image}" %>
+       <% end %>
+       <%= f.hidden_field :link, value: group.link %>
+       <%= f.hidden_field :city, value: group.city %>
+       <%= f.hidden_field :user_id, value: current_user.id %>
+       <%= f.submit "Add to My Groups", class: "b-item" %>
+      	<% end %>
+            </div>
+          </div>
+        </a>
+        <% if group.name.length > 30 %>
+        <h3>  
+          <div class="smaller_size">
+            <%= link_to group.name.limit(50), "#", class: "other_groups_showme" %><span><%= link_to "Click here to learn more", "#", class: "other_groups_showme" %></span>
+          </div>
+        </h3>
+        <% else %>
+        <h3><%= link_to group.name, "#", class: "other_groups_showme" %><span><%= link_to "Click here to learn more", "#", class: "other_groups_showme" %></span></h3>
+        <% end %>
+    </div>
+  </div>
+</div>				

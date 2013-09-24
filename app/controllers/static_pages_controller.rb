@@ -8,6 +8,7 @@ class StaticPagesController < ApplicationController
       current_group_ids = current_user.groups.pluck(:group_id)
       @groups = new_groups.reject { |group| current_group_ids.include?(group.id) }
       @firstgroups = @groups.first(20)
+      @other_groups = Group.where(:user_id != current_user.id)
       @group = Group.create
         if current_user.following.blank?
           @interests = Interest.all

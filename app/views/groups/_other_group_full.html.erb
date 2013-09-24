@@ -1,0 +1,36 @@
+<div class="container main">
+    <div class="two columns">
+      <% if group.image_path %>
+      <%= image_tag "/assets/rotate/#{random_image}", size: "70x70" %>
+      <% else %>
+      <%= image_tag group.image_path, size: "70x70" %>
+      <% end %>      
+      <br />
+      City: <%= group.city %>
+    </div> 
+    <div class="six columns">
+    <h6><%= group.name %></h6>
+    <%= group.desc %>
+    <br />
+    <% if group.link? %>
+    <h3>Check out the website at: 
+      <br />
+        <%= link_to group.link %></h3>
+    <% end %>
+      <div id="disappear_button<%= "#{group.id}" %>">
+       <%= form_for(@group, remote: true) do |f| %>
+         <%= f.hidden_field :name, value: group.name %>
+         <%= f.hidden_field :desc, value: group.desc %>       
+         <% if group.image_path? %>
+             <%= f.hidden_field :image_path, value: group.image_path %>
+         <% else %>
+            <%= f.hidden_field :image_path, value: "/assets/rotate/#{random_image}" %>
+         <% end %>
+         <%= f.hidden_field :link, value: group.link %>
+         <%= f.hidden_field :city, value: group.city %>
+         <%= f.hidden_field :user_id, value: current_user.id %>
+         <%= f.submit "Add to My Groups", class: "b-item" %>
+      <% end %>
+       </div>
+    </div>
+  </div>  

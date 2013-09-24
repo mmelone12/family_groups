@@ -56,3 +56,63 @@
 
 <%= if group.photo_url.blank?; image_tag "/assets/rotate/#{random_image}"; end %>
         <%= image_tag group.photo_url %>
+
+          bottom: -8px;
+  left: 33px;
+
+<div id="follow_form<%= "#{group.id}" %>">                      
+  <div class="four columns portfolio-item groups">
+    <div class="our-work">
+        <a class="img-overlay">
+          <div class= "min-height">
+              <%= if group.photo_url.blank?; image_tag "/assets/rotate/#{random_image}"; end %>
+              <%= image_tag group.photo_url %>
+            <div class="img-overlay-div">
+              <div class="groups_showme">
+            <h4>
+            <%= if group.name.html_safe.length > 50; group.name.html_safe.mb_chars.limit(50).to_s + "...  "; else group.name.html_safe.mb_chars.to_s; end %>
+            </h4>
+            <h5>
+            <br />
+            <%= if group.description.html_safe.length > 130; group.description.html_safe.mb_chars.limit(129).to_s; else group.description.html_safe; end %>...<div class="learn_more"> Learn More</div>
+            </h5>
+              </div>
+       <%= form_for(@group, remote: true) do |f| %>
+       <%= f.hidden_field :name, value: group.name.html_safe.mb_chars.limit(20).to_s %>
+       <%= f.hidden_field :desc, value: group.description.html_safe.mb_chars.limit(119).to_s %>       
+       <% if group.photo_url? %>
+       <%= f.hidden_field :image_path, value: group.photo_url %>
+       <% else %>
+       <%= f.hidden_field :image_path, value: "/assets/rotate/#{random_image}" %>
+       <% end %>
+       <%= f.hidden_field :link, value: group.link %>
+       <%= f.hidden_field :city, value: group.city.html_safe.mb_chars.limit(50).to_s %>
+       <%= f.hidden_field :group_id, value: group.id %>
+       <%= f.hidden_field :user_id, value: current_user.id %>
+       <%= f.submit "Add to My Groups", class: "b-black" %>
+        <% end %>
+            </div>
+        </a>
+    </div>
+        <% if group.name.length > 30 %>
+        <h3>  
+          <div class="smaller_size">
+            <%= link_to group.name.html_safe.mb_chars.limit(50).to_s, "#", class: "groups_showme" %><span><%= link_to "Click here to learn more", "#", class: "groups_showme" %></span>
+          </div>
+        </h3>
+        <% else %>
+        <h3><%= link_to group.name.html_safe.mb_chars.limit(30).to_s, "#", class: "groups_showme" %><span><%= link_to "Click here to learn more", "#", class: "groups_showme" %></span></h3>
+        <% end %>
+    </div>
+  </div>
+</div>        
+
+interest_ids = Interest.find( :all, :select => 'id' ).map( &:id )
+          @interests = Interest.where("id NOT IN (?)", current_user.relationships.pluck(:followed_id)).find( (1..10).map { interest_ids.delete_at( interest_ids.size * rand ) } )  
+
+   @other_groups = Group.where(:user_id != current_user.id)
+
+            <% @other_groups.each do |group| %>
+            <%= render :partial => 'groups/other_group', :locals => { :group => group } %>
+            <%= render :partial => 'js/other_groups.js.erb', :locals => { :group => group } %>
+          <% end %> 

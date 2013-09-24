@@ -193,6 +193,7 @@
 						<%= render :partial => 'groups/group', :locals => { :group => group } %>
 						<%= render :partial => 'js/groups.js.erb', :locals => { :group => group } %>
 					<% end %>
+	
 					<% @interests.each do |interest| %>
   						<%= render 'interests/follow_form', :interest => interest %> 
 					<% end %>	

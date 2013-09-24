@@ -6,6 +6,8 @@ gem 'bcrypt-ruby', '3.0.1'
 gem 'pg', '0.15.1'
 gem 'geocoder'
 gem 'rMeetup'
+gem 'rmagick'
+gem 'carrierwave'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
