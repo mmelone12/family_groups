@@ -805,6 +805,31 @@ span.acc-trigger.active {
 	box-shadow: 0px 2.5px 15px 5px rgba(255, 255, 190, .75);
 }
 
+.b-item {
+	line-height: 40px;
+	background: url("../assets/button02.jpg") top left repeat-x;
+	position: absolute;
+	bottom: -8px;
+	left: 33px;
+	width: 150px;
+	color: rgba(0,0,0,0.6);
+	font-family: 'OpenSansRegular';
+	box-shadow: 0 2.5px 1px rgba(0,0,0,0.25);
+	font-weight: normal;
+	text-transform: uppercase;
+	font-size: 15px;
+	padding: -20px;
+	border-radius: 2px;
+	border: 1px solid #333333;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.25);
+}
+.b-item:hover {
+	background: url("../assets/button02.jpg") top left repeat-x;
+	color: rgba(0,0,0,0.6);
+	border: 1px solid #333333;
+	box-shadow: 0px 2.5px 15px 5px rgba(255, 255, 190, .75);
+}
+
 table {
     margin: 0 0 20px;
     padding: 0 5px;

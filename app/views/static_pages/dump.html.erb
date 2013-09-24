@@ -53,3 +53,6 @@
         render 'new'
       end
   end
+
+<%= if group.photo_url.blank?; image_tag "/assets/rotate/#{random_image}"; end %>
+        <%= image_tag group.photo_url %>

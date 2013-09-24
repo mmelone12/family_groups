@@ -2,7 +2,7 @@
   <div class="four columns portfolio-item groups">
     <div class="our-work">
         <a class="img-overlay">
-        	<div class = "min-height">
+        	<div class= "min-height">
               <%= if group.photo_url.blank?; image_tag "/assets/rotate/#{random_image}"; end %>
               <%= image_tag group.photo_url %>
             <div class="img-overlay-div">
@@ -27,11 +27,11 @@
        <%= f.hidden_field :city, value: group.city.html_safe.mb_chars.limit(50).to_s %>
        <%= f.hidden_field :group_id, value: group.id %>
        <%= f.hidden_field :user_id, value: current_user.id %>
-       <%= f.submit "I'm Interested", class: "b-black" %>
+       <%= f.submit "Add to My Groups", class: "b-item" %>
       	<% end %>
             </div>
+          </div>
         </a>
-    </div>
         <% if group.name.length > 30 %>
         <h3>  
           <div class="smaller_size">

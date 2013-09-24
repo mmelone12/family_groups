@@ -2,25 +2,7 @@
 $('.groups_showme').on('click', function(e) {
   e.preventDefault();
 
-  $('<div id="dialog-form">Loading</div>').dialog({
-        autoOpen: true,
-        width: 520,
-        modal: true,
-        open: function() {
-            $(this).append($("<%= escape_javascript(render(:partial => 'groups/group_full', :locals => {:group => group})) %>"));
-        },
-        close: function() {
-        $('#dialog-form').remove();
-      }
-    });
-    dialog_form.dialog('open');
-    e.preventDefault();
-  });
-
-$('.groups_showmore').on('click', function(e) {
-  e.preventDefault();
-
-  $('<div id="dialog-form">Loading</div>').dialog({
+  $('<div id="dialog-form"></div>').dialog({
         autoOpen: true,
         width: 520,
         modal: true,
