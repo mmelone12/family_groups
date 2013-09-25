@@ -18,19 +18,11 @@
         <%= link_to group.link %></h3>
     <% end %>
       <div id="disappear_button<%= "#{group.id}" %>">
-       <%= form_for(@group, remote: true) do |f| %>
-         <%= f.hidden_field :name, value: group.name %>
-         <%= f.hidden_field :desc, value: group.desc %>       
-         <% if group.image_path? %>
-             <%= f.hidden_field :image_path, value: group.image_path %>
-         <% else %>
-            <%= f.hidden_field :image_path, value: "/assets/rotate/#{random_image}" %>
-         <% end %>
-         <%= f.hidden_field :link, value: group.link %>
-         <%= f.hidden_field :city, value: group.city %>
-         <%= f.hidden_field :user_id, value: current_user.id %>
-         <%= f.submit "Add to My Groups", class: "b-item" %>
-      <% end %>
+          <%= form_for(current_user.group_relationships.build(group_followed_id: 
+                             group.id), remote: true) do |f| %> 
+          <div><%= f.hidden_field :group_followed_id %></div>
+          <%= f.submit "Add to My Groups", class: "b-black" %>
+          <% end %>
        </div>
     </div>
   </div>  

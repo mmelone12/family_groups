@@ -1,9 +1,7 @@
 <%- if @group.name? %>
 	$("#follow_form<%="#{@group.group_id}" %>").hide( "drop", { direction: "up" }, "slow" );
-  $("#follow_form<%="#{@group.id}" %>").hide( "drop", { direction: "up" }, "slow" );
 	$("#tab2").html("<%= escape_javascript(render('groups/my_groups')) %>")
   $("#disappear_button<%="#{@group.group_id}" %>").hide( "drop", { direction: "up" }, "slow" );
-  $("#disappear_button<%="#{@group.id}" %>").hide( "drop", { direction: "up" }, "slow" );
 <% else %>
 	<%- if @group.errors.any? %>
   	console.log('Error');

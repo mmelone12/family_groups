@@ -20,6 +20,20 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
 
+def group_following
+    @title = "Group Following"
+    @group = Group.find(params[:id])
+    @groups = @group.group_following
+    render 'show_group_follow'
+  end    
+  
+  def group_followers
+    @title = "Group Followers"
+    @group = Group.find(params[:id])
+    @groups = @groups.group_followers
+    render 'show_group_follow'
+  end
+
   def new
   	@user = User.new
   end

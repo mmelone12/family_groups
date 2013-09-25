@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
                             :dependent => :destroy   
   has_many :following, :through => :relationships, :source => :followed
 
+  has_many :group_relationships, :foreign_key => "group_follower_id",
+                            :dependent => :destroy   
+  has_many :group_following, :through => :group_relationships, :source => :group_followed
+
   has_many :groups, dependent: :destroy 
     
   geocoded_by :address do |user,results|
@@ -36,6 +40,18 @@ class User < ActiveRecord::Base
 
   def unfollow!(interest)
     relationships.find_by(followed_id: interest.id).destroy!
+  end
+
+  def group_following?(group)
+    group_relationships.find_by(group_followed_id: group.id)
+  end
+
+  def group_follow!(group)
+    group_relationships.create!(group_followed_id: group.id)
+  end
+
+  def group_unfollow!(group)
+    group_relationships.find_by(group_followed_id: group.id).destroy!
   end
 
   def User.new_remember_token
