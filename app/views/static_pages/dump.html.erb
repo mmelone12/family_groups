@@ -116,3 +116,17 @@ interest_ids = Interest.find( :all, :select => 'id' ).map( &:id )
             <%= render :partial => 'groups/other_group', :locals => { :group => group } %>
             <%= render :partial => 'js/other_groups.js.erb', :locals => { :group => group } %>
           <% end %> 
+
+          @other_groups = Group.where(['group_id = ? AND user_id <> ?', nil, current_user.id])
+class StaticPagesController < ApplicationController
+  def home
+    @user = current_user
+    @city = request.location.city
+    if signed_in?
+      new_groups = RMeetup::Client.fetch(:groups, :lat => @user.latitude, :lon => @user.longitude, :topic => "parents")
+      current_group_ids = current_user.groups.pluck(:group_id)
+      @groups = new_groups.reject { |group| current_group_ids.include?(group.id) }
+      @firstgroups = @groups.first(20)
+      @other_groups = Group.where(['group_id IS ? AND user_id <> ? AND city = ?', nil, current_user.id, @user.city])
+      @group = Group.create
+        if current_user.following.blank?
