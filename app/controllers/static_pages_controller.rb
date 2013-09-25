@@ -2,7 +2,6 @@ class StaticPagesController < ApplicationController
   def home
   	@user = current_user
   	@city = request.location.city
-  	RMeetup::Client.api_key = "2e2c342c1e7b93a141362e4427b7"
     if signed_in?
 	    new_groups = RMeetup::Client.fetch(:groups, :lat => @user.latitude, :lon => @user.longitude, :topic => "parents")
       current_group_ids = current_user.groups.pluck(:group_id)
