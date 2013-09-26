@@ -5,7 +5,6 @@ gem 'rails', '4.0.0'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'pg', '0.15.1'
 gem 'geocoder'
-gem 'rMeetup'
 gem 'rmagick'
 gem 'carrierwave'
 
@@ -32,6 +31,7 @@ end
 
 group :production do
   gem 'rails_12factor', '0.0.2'
+  gem 'rMeetup'
 end
 
 # Use ActiveModel has_secure_password
