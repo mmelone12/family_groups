@@ -11,4 +11,5 @@ class Group < ActiveRecord::Base
     	end
   	end
   	after_validation :geocode, :if => :address_changed?
+  	RMeetup::Client.api_key = "2e2c342c1e7b93a141362e4427b7"
 end
