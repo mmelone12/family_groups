@@ -7,12 +7,13 @@ module ApplicationHelper
   		files[rand(files.length)]
 	end
 
-	def random_image1
-  blacklist = [".", ".."]
-  file_names = Dir.glob("app/assets/images/rotate/*")
-  blacklist.each do |blacklsited|
-    file_names.delete(blacklisted)
+  def new_groups
+    RMeetup::Client.api_key = "2e2c342c1e7b93a141362e4427b7"
+    RMeetup::Client.fetch(:groups, :lat => @user.latitude, :lon => @user.longitude, :topic => "parents")
   end
-  "app/assets/images/rotate/{files.shuffle.first}"
-end
+
+  def new_user_groups
+    RMeetup::Client.fetch(:groups, :city => @city, :topic => "parents")
+  end
+
 end
