@@ -3,7 +3,7 @@ class StaticPagesController < ApplicationController
   	@user = current_user
   	@city = request.location.city
     if signed_in?
-	    new_groups = RMeetup::Client.fetch(:groups, :lat => @user.latitude, :lon => @user.longitude, :topic => "parents")
+	    new_groups = @meetup.fetch(:groups, :lat => @user.latitude, :lon => @user.longitude, :topic => "parents")
       current_group_ids = current_user.groups.pluck(:group_id)
       @groups = new_groups.reject { |group| current_group_ids.include?(group.id) }
       @firstgroups = @groups.first(20)
