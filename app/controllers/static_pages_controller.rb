@@ -4,6 +4,7 @@ class StaticPagesController < ApplicationController
   	@user = current_user
   	@city = request.location.city
     if signed_in?
+      new_groups = RMeetup::Client.fetch(:groups, :lat => @user.latitude, :lon => @user.longitude, :topic => "parents")
       current_group_ids = current_user.groups.pluck(:group_id)
       @groups = new_groups.reject { |group| current_group_ids.include?(group.id) }
       @firstgroups = @groups.first(20)
@@ -17,6 +18,7 @@ class StaticPagesController < ApplicationController
           @interests = Interest.find( (1..8).map { interest_ids.delete_at( interest_ids.size * rand ) } )
         end
     else
+      @groups = RMeetup::Client.fetch(:groups, :city => @city, :topic => "parents")
       @firstgroups = new_user_groups.first(20)
       @group = Group.create
       @interests = Interest.all
