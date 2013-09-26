@@ -1,4 +1,5 @@
 class Group < ActiveRecord::Base
+require "rMeetup"	
 	belongs_to :user
 	validates :user_id, presence: true
 	validates :name, presence: true, length: { maximum: 40}
