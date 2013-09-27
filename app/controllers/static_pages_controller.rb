@@ -18,8 +18,6 @@ class StaticPagesController < ApplicationController
           @interests = Interest.find( (1..8).map { interest_ids.delete_at( interest_ids.size * rand ) } )
         end
     else
-      @groups = RMeetup::Client.fetch(:groups, :city => @city, :topic => "parents")
-      @firstgroups = new_user_groups.first(20)
       @group = Group.create
       @interests = Interest.all
     end
