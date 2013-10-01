@@ -1,5 +1,9 @@
 <div class="followed_items">
     <% current_user.group_following.each do |followed_group| %>
-    <%= image_tag followed_group.image_path, size: "40" %>
-    <% end %>
+    	<% if followed_group.image_path.blank? %>
+    		<%= image_tag followed_group.uploader_image, size: "40" %>
+    	<% else %>
+    		<%= image_tag followed_group.image_path, size: "40" %>
+		<% end %>
+	<% end %>
 </div>

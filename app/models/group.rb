@@ -3,7 +3,7 @@ class Group < ActiveRecord::Base
 	validates :user_id, presence: true
 	validates :name, presence: true, length: { maximum: 40}
 	validates :desc, presence: true, length: { maximum: 230}
-	mount_uploader :image_path, ImageUploader
+	mount_uploader :uploader_image, ImageUploader
 
 	geocoded_by :address do |user,results|
     	if geo = results.first

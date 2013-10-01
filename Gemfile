@@ -4,10 +4,11 @@ ruby '2.0.0'
 gem 'rails', '4.0.0'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'pg', '0.15.1'
-gem 'geocoder'
+gem 'geocoder', require: 'geocoder'
 gem 'rmagick'
 gem 'carrierwave'
 gem 'rMeetup', require: 'rmeetup'
+gem 'mechanize'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
@@ -15,7 +16,6 @@ group :development, :test do
 end
 
 group :test do
-  gem 'selenium-webdriver', '2.0.0'
   gem 'capybara', '2.1.0'
 end
 

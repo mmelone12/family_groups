@@ -11,6 +11,7 @@ class GroupsController < ApplicationController
   def create
   	@group = Group.new(group_params)
     @group.save
+    current_user.group_follow!(@group)
   	respond_to do |format|
       format.html { redirect_to(root_url) }
       format.js 
@@ -23,7 +24,7 @@ class GroupsController < ApplicationController
   private
 
   	def group_params
-  		params.require(:group).permit(:name, :link, :image_path, :city, :desc, :group_id, :user_id, :address)
+  		params.require(:group).permit(:name, :link, :image_path, :city, :desc, :group_id, :user_id, :address, :uploader_image)
   	end
 
 end

@@ -23,10 +23,10 @@
         <%= form_for(@group, remote: true) do |f| %>
           <%= f.hidden_field :name, value: group.name.html_safe.mb_chars.limit(20).to_s %>
           <%= f.hidden_field :desc, value: group.description.html_safe.mb_chars.limit(119).to_s %>       
-          <% if group.photo_url? %>
-            <%= f.hidden_field :image_path, value: group.photo_url %>
-          <% else %>
+          <% if group.photo_url.blank? %>
             <%= f.hidden_field :image_path, value: "/assets/rotate/#{random_image}" %>
+          <% else %>
+            <%= f.hidden_field :image_path, value: group.photo_url %>
           <% end %>
           <%= f.hidden_field :link, value: group.link %>
           <%= f.hidden_field :city, value: group.city.html_safe.mb_chars.limit(50).to_s %>
