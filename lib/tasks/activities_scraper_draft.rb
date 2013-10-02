@@ -1,4 +1,4 @@
-desc "Fetch activities"
+desc "Fetch prices"
 task :fetch_prices => :environment do
 	require 'mechanize'
 
@@ -48,3 +48,50 @@ end
       search_form.field_with(:text => '0x3ffb8761881c') = "Family Events"
       search_form.field_with(:text => '0x3ffb87618498') = "Los Angeles, CA"
       page = agent.submit(search_form)
+
+
+      desc "Fetch activities1"
+      task :fetch_activities1 => :environment do
+        require 'mechanize'
+
+        User.all.each do |user|
+          city_name = user.city
+          city_format = city_name.downcase.split.join('-')
+          state_name = user.state.downcase
+          agent = Mechanize.new
+          agent.get("http://www.scout.me/family-and-kids-events--near--#{city_format}-#{state_name}")
+          agent.page.search(".title").each do |item|
+            item.click
+            agent.page.search(".fn").text.strip = title
+            agent.page.search(".venue").text.strip = where
+            agent.page.search(".value-title").text.strip = start_date
+            agent.page.search(".time").text.strip = start_time
+            agent.page.search(".facet_description").text.strip = desc
+            agent.page.search(".address").text.strip = address
+            agent.page.search(".facet_phone").text.strip = phone
+            agent.page.search("#descriptions-widget span") = link
+            agent.page.search(".url span") = website
+            Activity.create!(:title => title, :where => where, :start_date => start_date,
+              :start_time => start_time, :desc => desc, :address => address, :phone => phone,
+              :link = link, :website => website)
+          end
+        end
+      end
+
+      desc "Fetch activities"
+      task :fetch_activities => :environment do
+        require 'nokogiri'
+        require 'open-uri'
+
+            User.all.each do |user|
+          city_name = user.city
+          city_format = city_name.downcase.split.join('-')
+          state_name = user.state.downcase
+          url = "http://www.scout.me/family-and-kids-events--near--#{city_format}-#{state_name}"
+          doc = Nokogiri::HTML(open(url))
+          doc.css('.title').each do |item|
+                        activity_name = item.text.strip
+                        Activity.create!(:title => activity_name)
+          end
+        end
+      end
