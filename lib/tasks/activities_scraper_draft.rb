@@ -78,8 +78,8 @@ end
         end
       end
 
-      desc "Fetch activities"
-      task :fetch_activities => :environment do
+      desc "Fetch activities1"
+      task :fetch_activities1 => :environment do
         require 'nokogiri'
         require 'open-uri'
 
@@ -95,3 +95,45 @@ end
           end
         end
       end
+
+       User.all.each do |user|
+          city_name = user.city
+          city_format = city_name.downcase.split.join('-')
+          state_name = user.state.downcase
+          agent = Mechanize.new
+          page = agent.get("http://www.scout.me/family-and-kids-events--near--#{city_format}-#{state_name}")
+          agent.page.links_with(:class => "url summary").each do |item|
+            item.click
+            agent.page.search(".fn").text.strip = title
+            agent.page.search(".venue").text.strip = where
+            agent.page.search(".value-title").text.strip = start_date
+            agent.page.search(".time").text.strip = start_time
+            agent.page.search(".facet_description").text.strip = desc
+            agent.page.search(".address").text.strip = address
+            agent.page.search(".facet_phone").text.strip = phone
+            agent.page.search(".facet_url").text.strip = link
+            agent.page.search(".url span").text.strip = website
+            Activity.create!(:title => title, :where => where, :start_date => start_date,
+              :start_time => start_time, :desc => desc, :address => address, :phone => phone,
+              :link => link, :website => website)
+            puts title, where, start_date, start_time, desc, address, phone, link, website
+          end
+        end
+      end
+
+                agent.page.search(".content").each do |group|
+            image_path = group.search("#entries img").text.strip
+          end
+
+          new_image = page.search(".content").first.search("img")
+
+          my_link.first.to_s[/<a[^>]+href="([^"]+)"[^>]*>/]
+          <a [^>]+*>
+          good for getting second character: http[^>]+"([^"]+)">
+          http[^>]+*>
+          same here
+          http[^>]*1\w
+          http[^>]+7\w gets all of first link
+          http[^"]+\w
+          http[^"]+\g
+
