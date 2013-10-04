@@ -1,6 +1,8 @@
 desc "Fetch activities"
 task :fetch_activities => :environment do
   require 'mechanize'
+  require 'uri'
+  require 'net/http'
 
       User.all.uniq_by(&:city).each do |user|
             city_name = user.city
@@ -23,7 +25,12 @@ task :fetch_activities => :environment do
                   if state_address.present?
                   address = street_address + ", " + locality + ", " + state_address
                   else
-                  address = street_address + ", " + locality
+                        if locality.present?
+                              address = street_address + ", " + locality
+                        else
+                              address = street_address
+                        end
+
                   end
                   phone = agent.page.search(".facet_phone").text.strip
                   link = agent.page.search(".facet_url").text.strip
@@ -35,12 +42,30 @@ task :fetch_activities => :environment do
                   website_link = agent.page.link_with(:class => "facet_url url").uri.to_s
                   end
                   if title.present? && start_date.present?
+
+                  url = URI.parse(URI.encode(image_path))
+
+                  Net::HTTP.start(url.host, url.port) do |http|
+                        response = http.head(url.path)
+                        case response
+                        when Net::HTTPSuccess, Net::HTTPRedirection
+                              case response.content_type
+                              when "image/png", "image/gif", "image/jpeg"
+                                    image_confirmed = group.search("img").to_s[/(http[^"]+\w)/]
+                              else
+                                    image_confirmed = nil
+                              end
+                        else
+                              image_confirmed = nil
+                        end
+                        
                   Activity.where(:title => title, :where => where, :start_date => start_date,
                   :start_time => start_time, :desc => desc, :address => address, :phone => phone,
                   :link => link, :website => website, :article_link => article_link, :website_link => 
-                  website_link, :image_path => image_path).first_or_create
+                  website_link, :image_path => image_confirmed).first_or_create
                   puts title, where, start_date, start_time, desc, address, phone, link, website
                   end
+               end   
             end
       end
 end

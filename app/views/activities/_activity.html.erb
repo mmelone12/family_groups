@@ -3,7 +3,11 @@
     <div class="our-work">
         <a class="img-overlay">
         	<div class= "min-height">
+            <% if activity.image_path.File.exists? %>
               <%= image_tag activity.image_path %>
+              <% else %>
+                <%= image_tag "/assets/rotate/#{random_image}" %>
+            <% end %>
             <div class="img-overlay-div">
              <div class="activities_showme"> 
             <h4>
@@ -25,11 +29,11 @@
         <% if activity.title.length > 30 %>
         <h3>  
           <div class="smaller_size">
-            <%= link_to activity.title.truncate(50), "#", class: "activities_showme" %><span><%= link_to "Click here to learn more", "#", class: "activities_showme" %></span>
+            <%= link_to activity.title.truncate(50), "#", class: "activities_showme" %><span><%= link_to activity.start_date.to_s, "#", class: "activities_showme" %></span>
           </div>
         </h3>
         <% else %>
-        <h3><%= link_to activity.title.truncate(30), "#", class: "activities_showme" %><span><%= link_to "Click here to learn more", "#", class: "activities_showme" %></span></h3>
+        <h3><%= link_to activity.title.truncate(30), "#", class: "activities_showme" %><span><%= link_to activity.start_date.to_s, "#", class: "activities_showme" %></span></h3>
         <% end %>
     </div>
   </div>
