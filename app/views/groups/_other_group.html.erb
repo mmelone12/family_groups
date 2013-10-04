@@ -3,8 +3,8 @@
     <div class="our-work">
         <a class="img-overlay">
         	<div class= "min-height">
-              <%= if group.image_path.blank?; image_tag "/assets/rotate/#{random_image}"; end %>
-              <%= image_tag group.image_path %>
+              <%= if group.uploader_image.blank?; image_tag "/assets/rotate/#{random_image}"; end %>
+              <%= image_tag group.uploader_image %>
             <div class="img-overlay-div">
               <div class="other_groups_showme">
             <h4>

@@ -1,9 +1,9 @@
 <div class="container main">
     <div class="two columns">
-      <% if group.image_path %>
+      <% if group.uploader_image.blank? %>
       <%= image_tag "/assets/rotate/#{random_image}", size: "70x70" %>
       <% else %>
-      <%= image_tag group.image_path, size: "70x70" %>
+      <%= image_tag group.uploader_image, size: "70x70" %>
       <% end %>      
       <br />
       City: <%= group.city %>

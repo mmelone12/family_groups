@@ -1,0 +1,28 @@
+<div class="container main">
+    <div class="two columns">
+      <% if activity.uploader_image.blank? %>
+        <%= image_tag "/assets/rotate/#{random_image}", size: "70x70" %>
+      <% else %>
+        <%= image_tag activity.uploader_image, size: "70x70" %>
+      <% end %>      
+      <br />
+      City: <%= activity.city %>
+    </div> 
+    <div class="six columns">
+    <h6><%= activity.title %></h6>
+    <%= activity.desc %>
+    <br />
+    <% if activity.link? %>
+    <h3>Check out the website at: 
+      <br />
+        <%= link_to activity.article_link %></h3>
+    <% end %>
+      <div id="disappear_button<%= "#{activity.id}" %>">
+          <%= form_for(current_user.activity_relationships.build(activity_followed_id: 
+                             activity.id), remote: true) do |f| %> 
+          <div><%= f.hidden_field :activity_followed_id %></div>
+          <%= f.submit "Add to My Activities", class: "b-black" %>
+          <% end %>
+       </div>
+    </div>
+  </div>  

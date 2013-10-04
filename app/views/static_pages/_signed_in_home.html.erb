@@ -52,7 +52,7 @@
 					</ul>
 					<div class="tabs-container">
 							<div id="tab1" class="tab-content">
-								<h2>Activities will go here</h2>
+							<%= render 'activities/followed_activities' %>
 							</div>
 							<div id="tab2" class="tab-content">
 							<%= render 'groups/followed_groups' %>
@@ -61,7 +61,7 @@
 							<%= render 'interests/followed_interests' %>
 							</div>
 							<div id="tab4" class="tab-content">
-							<%= @activity_title %> 
+							<h2>Nothing here yet</h2>
 							<br />
 							</div>
 						<div id="tab2" class="tab-content">
@@ -107,80 +107,6 @@
 		
 			<div class="container">
 				<div id="portfolio-wrapper">
-
-					<div class="four columns portfolio-item activities">
-						<div class="our-work">
-							<a class="img-overlay" href="#">
-								<%= image_tag "imgs/events/kites.png" %>
-								<div class="img-overlay-div"></div>
-							</a>
-							<h3><a href="#">Project no.1</a><span>features info</span></h3>
-						</div>
-					</div>
-					<div class="four columns portfolio-item activities">
-						<div class="our-work">
-							<a class="img-overlay" href="#">
-								<%= image_tag "imgs/events/woodworkresized.png" %>
-								<div class="img-overlay-div"></div>
-							</a>
-							<h3><a href="#">Project no.2</a><span>features info</span></h3>
-						</div>
-					</div>
-					<div class="four columns portfolio-item activities">
-						<div class="our-work">
-							<a class="img-overlay" href="#">
-								<%= image_tag "imgs/work_big/work04.jpg" %>
-								<div class="img-overlay-div"></div>
-							</a>
-							<h3><a href="#">Project no.4</a><span>features info</span></h3>
-						</div>
-					</div>
-
-					<div class="four columns portfolio-item places">
-						<div class="our-work">
-							<a class="img-overlay" href="#">
-								<%= image_tag "imgs/work_big/work07.jpg" %>
-								<div class="img-overlay-div"></div>
-							</a>
-							<h3><a href="#">Project no.7</a><span>features info</span></h3>
-						</div>
-					</div>
-					<div class="four columns portfolio-item places">
-						<div class="our-work">
-							<a class="img-overlay" href="#">
-								<%= image_tag "imgs/events/carnivalresized.png" %>
-								<div class="img-overlay-div"></div>
-							</a>
-							<h3><a href="#">Project no.8</a><span>features info</span></h3>
-						</div>
-					</div>
-					<div class="four columns portfolio-item activities">
-						<div class="our-work">
-							<a class="img-overlay" href="#">
-								<%= image_tag "imgs/work_big/work10.jpg" %>
-								<div class="img-overlay-div"></div>
-							</a>
-							<h3><a href="#">Project no.10</a><span>features info</span></h3>
-						</div>
-					</div>
-					<div class="four columns portfolio-item places">
-						<div class="our-work">
-							<a class="img-overlay" href="#">
-								<%= image_tag "imgs/work_big/work13.jpg" %>
-								<div class="img-overlay-div"></div>
-							</a>
-							<h3><a href="#">Project no.13</a><span>features info</span></h3>
-						</div>
-					</div>
-					<div class="four columns portfolio-item activities">
-						<div class="our-work">
-							<a class="img-overlay" href="#">
-								<%= image_tag "imgs/work_big/work15.jpg" %>
-								<div class="img-overlay-div">hello</div>
-							</a>
-							<h3><a href="#">Project no.15</a><span>features info</span></h3>
-						</div>
-					</div>
 					<div class="four columns portfolio-item groups">
         				<br />
         				<br />
@@ -189,6 +115,14 @@
 					<%= link_to "Create Group", new_group_path, id: 'create_group', style:"color:white", class: "b-new" %> 
 
   					</div>
+  					<% @activities.each do |activity| %>
+						<%= render :partial => 'activities/activity', :locals => { :activity => activity } %>
+						<%= render :partial => 'js/activities.js.erb', :locals => { :activity => activity } %>
+					<% end %>
+					<% @other_activities.each do |activity| %>
+						<%= render :partial => 'activities/other_activity', :locals => { :activity => activity } %>
+						<%= render :partial => 'js/other_activities.js.erb', :locals => { :activity => activity } %>
+					<% end %>
 					<% @firstgroups.each do |group| %>
 						<%= render :partial => 'groups/group', :locals => { :group => group } %>
 						<%= render :partial => 'js/groups.js.erb', :locals => { :group => group } %>

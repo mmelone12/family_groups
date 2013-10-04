@@ -1,0 +1,19 @@
+<script>
+$('.activities_showme').on('click', function(e) {
+  e.preventDefault();
+
+  $('<div id="dialog-form"></div>').dialog({
+        autoOpen: true,
+        width: 520,
+        modal: true,
+        open: function() {
+            $(this).append($("<%= escape_javascript(render(:partial => 'activities/activity_full', :locals => {:activity => activity})) %>"));
+        },
+        close: function() {
+        $('#dialog-form').remove();
+      }
+    });
+    dialog_form.dialog('open');
+    e.preventDefault();
+  });
+</script>

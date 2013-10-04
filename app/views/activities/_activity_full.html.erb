@@ -1,0 +1,24 @@
+<div class="container main">
+    <div class="two columns">
+      <%= image_tag activity.image_path, size: "70x70" %>    
+      Number of followers: 
+      <br />
+      City: <%= activity.city %>
+      Date: <%= activity.start_date %>
+    </div> 
+    <div class="six columns">
+    <h6><%= activity.title %></h6>
+    <%= activity.desc %>
+    <br />
+    <h3>Check out the website at: 
+      <br />
+        <%= link_to activity.article_link %></h3>
+          <div id="disappear_button<%= "#{activity.id}" %>">
+          <%= form_for(current_user.activity_relationships.build(activity_followed_id: 
+                             activity.id), remote: true) do |f| %> 
+                <div><%= f.hidden_field :activity_followed_id %></div>
+                <%= f.submit "Add to My Activities", class: "b-item" %>
+            <% end %>
+       </div>
+    </div>
+  </div>  

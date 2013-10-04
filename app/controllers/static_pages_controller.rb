@@ -5,14 +5,14 @@ class StaticPagesController < ApplicationController
   	@user = current_user
   	@city = request.location.city
     if signed_in?
-
-
       new_groups = RMeetup::Client.fetch(:groups, :lat => @user.latitude, :lon => @user.longitude, :topic => "parents")
       current_group_ids = current_user.groups.pluck(:group_id)
       @groups = new_groups.reject { |group| current_group_ids.include?(group.id) }
       @firstgroups = @groups.first(20)
       @other_groups = Group.where(['group_id IS ? AND user_id <> ? AND city = ?', nil, current_user.id, @user.city])
       @group = Group.create
+      @activities = Activity.all
+      @other_activities = Activity.where(['user_id <> ? AND city = ?', current_user.id, @user.city])
         if current_user.following.blank?
           @interests = Interest.all
         else

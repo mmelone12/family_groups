@@ -1,0 +1,26 @@
+<div id="content">
+  <h1>Post a new Activity</h1>
+
+    <div class="register_form">
+      <%= form_for @activity, :html => {:multipart => true} do |f| %>
+
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+
+        <%= f.label :address %>
+        <%= f.text_field :address %>
+
+        <%= f.label :desc %>
+        <%= f.text_field :desc %>
+
+        <%= f.label :start_date %>
+        <%= f.text_field :start_date %>
+
+        <%= f.file_field :uploader_image %>
+
+        <%= f.hidden_field :user_id, value: current_user.id %>
+
+        <%= f.submit "Create Activity", class: "b-black" %>
+      <% end %>
+  </div>
+</div>
