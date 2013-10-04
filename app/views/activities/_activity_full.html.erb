@@ -17,7 +17,7 @@
           <%= form_for(current_user.activity_relationships.build(activity_followed_id: 
                              activity.id), remote: true) do |f| %> 
                 <div><%= f.hidden_field :activity_followed_id %></div>
-                <%= f.submit "Add to My Activities", class: "b-item" %>
+                <%= f.submit "Add to My Activities", class: "b-black" %>
             <% end %>
        </div>
     </div>

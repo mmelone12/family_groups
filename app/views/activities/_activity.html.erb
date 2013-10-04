@@ -2,11 +2,11 @@
   <div class="four columns portfolio-item activities">
     <div class="our-work">
         <a class="img-overlay">
-        	<div class= "min-height">
-            <% if activity.image_path.File.exists? %>
+        	<div class= "min-height-activities">
+            <% if activity.image_path.present? %>
               <%= image_tag activity.image_path %>
-              <% else %>
-                <%= image_tag "/assets/rotate/#{random_image}" %>
+            <% else %>
+              <%= image_tag activity.uploader_image %>
             <% end %>
             <div class="img-overlay-div">
              <div class="activities_showme"> 

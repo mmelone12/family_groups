@@ -53,10 +53,10 @@ task :fetch_activities => :environment do
                               when "image/png", "image/gif", "image/jpeg"
                                     image_confirmed = group.search("img").to_s[/(http[^"]+\w)/]
                               else
-                                    image_confirmed = nil
+                                    image_confirmed = "imgs/events/carnivalresized.png"
                               end
                         else
-                              image_confirmed = nil
+                              image_confirmed = "imgs/events/carnivalresized.png"
                         end
                         
                   Activity.where(:title => title, :where => where, :start_date => start_date,
