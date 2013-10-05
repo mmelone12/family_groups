@@ -61,8 +61,7 @@
 							<%= render 'interests/followed_interests' %>
 							</div>
 							<div id="tab4" class="tab-content">
-							<h2>Nothing here yet</h2>
-							<br />
+							<%= render 'places/followed_places' %>
 							</div>
 						<div id="tab2" class="tab-content">
 							</div>
@@ -121,6 +120,21 @@
             			<br />
 					<%= link_to "Create Activity", new_activity_path, id: 'create_activity', style:"color:white", class: "b-new" %> 
   					</div>
+  					<div class="four columns portfolio-item places">
+        				<br />
+        				<br />
+            			<h4>Click here to create your own Place</h4>
+            			<br />
+					<%= link_to "Create Place", new_place_path, id: 'create_place', style:"color:white", class: "b-new" %> 
+  					</div>
+  					<% @places.each do |place| %>
+						<%= render :partial => 'places/place', :locals => { :place => place } %>
+						<%= render :partial => 'js/places.js.erb', :locals => { :place => place } %>
+					<% end %>
+					<% @other_places.each do |place| %>
+						<%= render :partial => 'places/other_place', :locals => { :place => place } %>
+						<%= render :partial => 'js/other_places.js.erb', :locals => { :place => place } %>
+					<% end %>
   					<% @activities.each do |activity| %>
 						<%= render :partial => 'activities/activity', :locals => { :activity => activity } %>
 						<%= render :partial => 'js/activities.js.erb', :locals => { :activity => activity } %>
@@ -139,7 +153,17 @@
 					<% end %>		
 					<% @interests.each do |interest| %>
   						<%= render 'interests/follow_form', :interest => interest %> 
-					<% end %>	
+					<% end %>
+					<div class="four columns portfolio-item groups">
+        				<br />
+        				<br />
+            			<div id="back_button">
+							<ul>
+				  				<li><%= link_to "See All Groups", groups_path, id: "back_button" %></li>
+			    			</ul>
+						</div>
+            			<br /> 
+  					</div>	
 				</div>
 			</div>
 		

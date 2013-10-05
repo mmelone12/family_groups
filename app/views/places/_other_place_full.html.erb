@@ -1,0 +1,28 @@
+<div class="container main">
+    <div class="two columns">
+      <% if place.uploader_image.blank? %>
+        <%= image_tag "/assets/rotate/#{random_image}", size: "70x70" %>
+      <% else %>
+        <%= image_tag place.uploader_image, size: "70x70" %>
+      <% end %>      
+      <br />
+      City: <%= place.city %>
+    </div> 
+    <div class="six columns">
+    <h6><%= place.name %></h6>
+    <%= place.desc %>
+    <br />
+    <% if place.link? %>
+    <h3>Check out the website at: 
+      <br />
+        <%= link_to place.link %></h3>
+    <% end %>
+      <div id="disappear_button<%= "#{place.id}" %>">
+          <%= form_for(current_user.place_relationships.build(place_followed_id: 
+                             place.id), remote: true) do |f| %> 
+          <div><%= f.hidden_field :place_followed_id %></div>
+          <%= f.submit "Add to My Places", class: "b-black" %>
+          <% end %>
+       </div>
+    </div>
+  </div>  

@@ -1,0 +1,36 @@
+<div id="follow_form<%= "#{place.id}" %>">                      
+  <div class="four columns portfolio-item places">
+    <div class="our-work">
+        <a class="img-overlay">
+        	<div class= "min-height-activities">
+            <%= image_tag place.image_path %>
+            <div class="img-overlay-div">
+             <div class="places_showme"> 
+            <h4>
+            <%= if place.name.length > 50; place.name.truncate(50) + "...  "; else place.name; end %>
+            </h4>
+            <h5>
+            <br />
+            <%= if place.desc.length > 130; place.desc.truncate(129); else place.desc; end %>...<div class="learn_more"> Learn More</div>
+            </h5>
+              </div>
+            <%= form_for(current_user.place_relationships.build(place_followed_id: 
+                             place.id), remote: true) do |f| %> 
+                <div><%= f.hidden_field :place_followed_id %></div>
+                <%= f.submit "Add to My Places", class: "b-item" %>
+            <% end %>
+            </div>
+          </div>
+        </a>
+        <% if place.name.length > 30 %>
+        <h3>  
+          <div class="smaller_size">
+            <%= link_to place.name.truncate(50), "#", class: "places_showme" %><span><%= link_to place.city, "#", class: "places_showme" %></span>
+          </div>
+        </h3>
+        <% else %>
+        <h3><%= link_to place.name.truncate(30), "#", class: "places_showme" %><span><%= link_to place.city, "#", class: "places_showme" %></span></h3>
+        <% end %>
+    </div>
+  </div>
+</div>				

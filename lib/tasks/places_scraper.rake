@@ -13,6 +13,10 @@ task :fetch_places => :environment do
             agent.page.search(".content").each do |place|
                   image_path = place.search("img").to_s[/(http[^"]+\w)/]
                   place_link = place.search("a").first.to_s[/(http[^"]+\w)/]
+                  url = URI.parse(place_link)
+                  req = Net::HTTP.new(url.host, url.port)
+                  res = req.request_head(url.path)
+                  if res.code == "200"
                   page = agent.get("#{place_link}")
                   name = agent.page.search(".facet-title").text.strip
                   desc = agent.page.search(".facet_description").text.strip.truncate(200)
@@ -55,6 +59,7 @@ task :fetch_places => :environment do
                   Place.where(:name => name, :desc => desc, :address => address, :phone => phone,
                   :link => link, :website => website, :image_path => image_confirmed).first_or_create
                   puts name, desc, address, phone, link, website
+                  end
                   end
                end   
             end
@@ -63,6 +68,10 @@ task :fetch_places => :environment do
             agent.page.search(".content").each do |place|
                   image_path = place.search("img").to_s[/(http[^"]+\w)/]
                   place_link = place.search("a").first.to_s[/(http[^"]+\w)/]
+                  url = URI.parse(place_link)
+                  req = Net::HTTP.new(url.host, url.port)
+                  res = req.request_head(url.path)
+                  if res.code == "200"
                   page = agent.get("#{place_link}")
                   name = agent.page.search(".facet-title").text.strip
                   desc = agent.page.search(".facet_description").text.strip.truncate(200)
@@ -105,6 +114,7 @@ task :fetch_places => :environment do
                   Place.where(:name => name, :desc => desc, :address => address, :phone => phone,
                   :link => link, :website => website, :image_path => image_confirmed).first_or_create
                   puts name, desc, address, phone, link, website
+                  end
                   end
                end   
             end
@@ -113,6 +123,10 @@ task :fetch_places => :environment do
             agent.page.search(".content").each do |place|
                   image_path = place.search("img").to_s[/(http[^"]+\w)/]
                   place_link = place.search("a").first.to_s[/(http[^"]+\w)/]
+                  url = URI.parse(place_link)
+                  req = Net::HTTP.new(url.host, url.port)
+                  res = req.request_head(url.path)
+                  if res.code == "200"
                   page = agent.get("#{place_link}")
                   name = agent.page.search(".facet-title").text.strip
                   desc = agent.page.search(".facet_description").text.strip.truncate(200)
@@ -155,6 +169,7 @@ task :fetch_places => :environment do
                   Place.where(:name => name, :desc => desc, :address => address, :phone => phone,
                   :link => link, :website => website, :image_path => image_confirmed).first_or_create
                   puts name, desc, address, phone, link, website
+                  end
                   end
                end   
             end

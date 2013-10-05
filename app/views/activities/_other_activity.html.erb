@@ -3,15 +3,11 @@
     <div class="our-work">
         <a class="img-overlay">
         	<div class= "min-height">
-            <% if followed_activity.image_path.blank? %>
-              <% if followed_activity.uploader_image.blank? %>
+              <% if activity.uploader_image.blank? %>
                 <%= image_tag "/assets/rotate/#{random_image}" %>
               <% else %>
-                <%= image_tag followed_activity.uploader_image, size: "40" %>
+                <%= image_tag activity.uploader_image %>
               <% end %>
-            <% else %>
-              <%= image_tag followed_activity.image_path, size: "40" %>
-            <% end %>
             <div class="img-overlay-div">
               <div class="other_activities_showme">
             <h4>

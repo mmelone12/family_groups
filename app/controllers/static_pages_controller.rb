@@ -13,6 +13,8 @@ class StaticPagesController < ApplicationController
       @group = Group.create
       @activities = Activity.all
       @other_activities = Activity.where(['user_id <> ? AND city = ?', current_user.id, @user.city])
+      @places = Place.all
+      @other_places = Place.where(['user_id <> ? AND city = ?', current_user.id, @user.city])
         if current_user.following.blank?
           @interests = Interest.all
         else

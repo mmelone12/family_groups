@@ -81,3 +81,27 @@ input {
 .min-height-activities {
   min-height: 170px;
 }
+
+#back_button ul {
+  overflow: hidden;
+  margin: 25px 0 10px;
+}
+#back_button ul li {
+  float: left;
+  margin-left: 60px;
+}
+#back_button ul li a {
+  font-size: 16px;
+  text-transform: uppercase;
+  background: #f8f8f8;
+  color: #aeaeae;
+  padding: 8px 16px;
+  text-decoration: none;
+  margin-right: 10px;
+  display: block;
+  transition: all 0.2s;
+}
+#back_button ul li a:hover, #back_button ul li a.selected {
+  background: #80b600;
+  color: white;
+}

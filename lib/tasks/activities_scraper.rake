@@ -13,6 +13,10 @@ task :fetch_activities => :environment do
             agent.page.search(".content").each do |group|
                   image_path = group.search("img").to_s[/(http[^"]+\w)/]
                   group_link = group.search("a").first.to_s[/(http[^"]+\w)/]
+                  url = URI.parse(group_link)
+                  req = Net::HTTP.new(url.host, url.port)
+                  res = req.request_head(url.path)
+                  if res.code == "200"
                   page = agent.get("#{group_link}")
                   title = agent.page.search(".facet-title").text.strip
                   where = agent.page.search(".venue").text.strip
@@ -65,7 +69,8 @@ task :fetch_activities => :environment do
                   website_link, :image_path => image_confirmed).first_or_create
                   puts title, where, start_date, start_time, desc, address, phone, link, website
                   end
-               end   
-            end
+                end
+             end   
+         end
       end
 end

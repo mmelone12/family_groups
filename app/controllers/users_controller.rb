@@ -34,6 +34,20 @@ def group_following
     render 'show_group_follow'
   end
 
+  def activity_following
+    @title = "Activity Following"
+    @activity = Activity.find(params[:id])
+    @activities = @activity.activity_following
+    render 'show_activity_follow'
+  end    
+  
+  def activity_followers
+    @title = "Activity Followers"
+    @activity = Activity.find(params[:id])
+    @groups = @activities.activity_followers
+    render 'show_activity_follow'
+  end
+
   def new
   	@user = User.new
   end

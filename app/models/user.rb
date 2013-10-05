@@ -26,6 +26,12 @@ class User < ActiveRecord::Base
   has_many :activity_following, :through => :activity_relationships, :source => :activity_followed
 
   has_many :activities, dependent: :destroy 
+
+  has_many :place_relationships, :foreign_key => "place_follower_id",
+                            :dependent => :destroy   
+  has_many :place_following, :through => :place_relationships, :source => :place_followed
+
+  has_many :places, dependent: :destroy 
     
   geocoded_by :address do |user,results|
     if geo = results.first
@@ -71,6 +77,18 @@ class User < ActiveRecord::Base
 
   def activity_unfollow!(activity)
     activity_relationships.find_by(activity_followed_id: activity.id).destroy!
+  end
+
+  def place_following?(place)
+    place_relationships.find_by(place_followed_id: place.id)
+  end
+
+  def place_follow!(place)
+    place_relationships.create!(place_followed_id: place.id)
+  end
+
+  def place_unfollow!(place)
+    place_relationships.find_by(place_followed_id: place.id).destroy!
   end
 
   def User.new_remember_token

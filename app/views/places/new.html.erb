@@ -1,0 +1,23 @@
+<div id="content">
+  <h1>List a New Place</h1>
+
+    <div class="register_form">
+      <%= form_for @place, :html => {:multipart => true} do |f| %>
+
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+
+        <%= f.label :address %>
+        <%= f.text_field :address %>
+
+        <%= f.label :desc %>
+        <%= f.text_field :desc %>
+
+        <%= f.file_field :uploader_image %>
+
+        <%= f.hidden_field :user_id, value: current_user.id %>
+
+        <%= f.submit "Create Place", class: "b-black" %>
+      <% end %>
+  </div>
+</div>

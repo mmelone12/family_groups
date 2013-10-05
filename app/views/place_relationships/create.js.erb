@@ -1,0 +1,3 @@
+$("#follow_form<%="#{@place.id}" %>").hide( "drop", { direction: "up" }, "slow" );
+$("#tab4").html("<%= escape_javascript(render('places/followed_places')) %>");
+$("#disappear_button<%="#{@place.id}" %>").hide( "drop", { direction: "up" }, "slow" );

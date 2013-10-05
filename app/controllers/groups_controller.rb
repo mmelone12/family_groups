@@ -1,7 +1,16 @@
 class GroupsController < ApplicationController
   
   def show
-  	@group = Group.find(params[:id])
+  end
+
+  def index
+    RMeetup::Client.api_key = "2e2c342c1e7b93a141362e4427b7"
+    @user = current_user
+    new_groups = RMeetup::Client.fetch(:groups, :lat => @user.latitude, :lon => @user.longitude, :topic => "parents")
+    current_group_ids = current_user.groups.pluck(:group_id)
+    @groups = new_groups.reject { |group| current_group_ids.include?(group.id) }
+    @other_groups = Group.where(['group_id IS ? AND user_id <> ? AND city = ?', nil, current_user.id, @user.city])
+    @group = Group.create
   end
 
   def new
