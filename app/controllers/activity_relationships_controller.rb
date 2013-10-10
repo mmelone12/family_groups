@@ -10,7 +10,7 @@ class ActivityRelationshipsController < ApplicationController
  end
 
    def destroy
-    @activity = Activity_Relationship.find(params[:id]).activity_followed
+    @activity = ActivityRelationship.find(params[:id]).activity_followed
     current_user.activity_unfollow!(@activity)
     respond_to do |format|
       format.html { redirect_to(root_url) }

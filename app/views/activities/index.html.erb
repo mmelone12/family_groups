@@ -1,0 +1,132 @@
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<div id="wrap">
+	<header>
+		<div class="container">
+			<div class="one-third column">
+				<div class="logo">
+					<a href="index.html">
+						<%= image_tag("fglogo1.png", :alt => "logo") %>
+					</a>
+				</div>
+				<h1>
+				Find local events, groups and places, and meet great parents.
+				</h1>
+			</div>
+<div class="two-thirds column">
+				<nav id="menu" class="navigation">
+					<ul id="nav" class="clearfix">
+						<li><a href="index.html">Home<span>home info</span></a>
+							<ul>
+								<li><a href="index02.html">Index 02</a></li>
+								<li><a href="index03.html">Index 03</a></li>
+								<li><a href="index04.html">Index 04</a></li>
+								<li><a href="faq.html">F.A.Q.</a></li>
+								<li><a href="team.html">Our Team</a></li>
+								<li><a href="services.html">Services</a></li>
+								<li><a href="prices.html">Prices</a></li>
+								<li><a href="sidebar-left.html">Sidebar Left</a></li>
+								<li><a href="sidebar-right.html">Sidebar Right</a></li>
+								<li><a href="#">And This</a>
+									<ul>
+										<li><a href="#">Goes Down</a></li>
+										<li><a href="#">A Really</a></li>
+										<li><a href="#">Really Long</a></li>
+										<li><a href="#">Way!</a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li><a href="shortcodes.html">Settings<span>features info</span></a></li>
+						<li><a href="projects.html">Team<span>folio extra info</span></a>
+							<ul>
+								<li><a href="projects02.html">Portfolio 02</a></li>
+								<li><a href="projects03.html">Portfolio 03</a></li>
+								<li><a href="projects-single.html">Portfolio Single</a></li>
+							</ul>
+						</li>
+						<li><%= link_to "Sign Out", signout_path, method: "delete" %>
+						</li>
+					</ul>
+				</nav>
+			</div>
+			<div class="sixteen columns">
+				<hr class="line" />
+			</div>
+		</div>
+	</header>
+
+	<div class="container main">
+					<div class="eight columns">
+					<h3 class="shortcodes">Check out your community and meet fellow parents.</h3>
+					<ul class="tabs-nav">
+						<li><a href="#tab1">My Activities</a></li>
+						<li><a href="#tab2">My Groups</a></li>
+						<li><a href="#tab3">My Interests</a></li>
+						<li><a href="#tab4">My Places</a></li>
+					</ul>
+					<div class="tabs-container">
+							<div id="tab1" class="tab-content">
+							<%= render 'activities/followed_activities' %>
+							</div>
+							<div id="tab2" class="tab-content">
+							<%= render 'groups/followed_groups' %>
+							</div>
+							<div id="tab3" class="tab-content">
+							<%= render 'interests/followed_interests' %>
+							</div>
+							<div id="tab4" class="tab-content">
+							<%= render 'places/followed_places' %>
+							</div>
+						<div id="tab2" class="tab-content">
+							</div>
+						</div>
+				</div> 
+				<div class="eight columns">
+					<div class="flexslider work-slider">
+						<ul class="slides">
+							<li>
+								<%= image_tag "imgs/slider/momsatpark.png" %>
+							</li>
+							<li>
+								<%= image_tag "imgs/slider/slidergraphic.jpg" %>
+							</li>
+						</ul>
+					</div>
+				</div> 	
+		</div>
+
+		<div class="container">
+			<div class="sixteen columns">
+				<hr class="line slogan" />
+			</div>
+		</div>
+		
+		<div id="page-content" class="full-width container projects">
+			<div id="back_button" data-no-turbolink >
+				<ul>
+				  <li><%= link_to "Go Back To See All Items", root_path, id: "back_button" %></li>
+			    </ul>
+			</div>
+			<div class="container">
+				<div class="sixteen columns">
+					<h4> Activities and Events around <%= @user.city %></h4>
+				<div class="container">
+					<div id="portfolio-wrapper">
+  					<% @activities.each do |activity| %>
+						<%= render :partial => 'activities/activity', :locals => { :activity => activity } %>
+						<%= render :partial => 'js/activities.js.erb', :locals => { :activity => activity } %>
+					<% end %>
+					<% @other_activities.each do |activity| %>
+						<%= render :partial => 'activities/other_activity', :locals => { :activity => activity } %>
+						<%= render :partial => 'js/other_activities.js.erb', :locals => { :activity => activity } %>
+					<% end %>
+					</div>
+				</div>	
+			</div>
+		</div>
+	</div>
+</div>
+		</div>
+	</footer>
+<%= debug(params) if Rails.env.development? %>
+</div>

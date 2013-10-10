@@ -1,11 +1,5 @@
 module SessionsHelper
 
-  def add_cache_header
-    response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
-    response.headers["Pragma"] = "no-cache"
-    response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
-  end
-
 	def sign_in(user)
     	remember_token = User.new_remember_token
     	cookies.permanent[:remember_token] = remember_token

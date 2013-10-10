@@ -1,7 +1,13 @@
 class PlacesController < ApplicationController
 
-def show
+  def show
   	@place = Place.find(params[:id])
+  end
+
+  def index
+    @user = current_user
+    @places = Place.all
+    @other_places = Place.where(['user_id <> ? AND city = ?', current_user.id, @user.city])
   end
 
   def new

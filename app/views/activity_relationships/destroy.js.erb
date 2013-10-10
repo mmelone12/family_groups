@@ -1,1 +1,3 @@
-$("#follow_form").html("<%= escape_javascript(render('static_pages/follow_form')) %>")
+$("#follow_form<%="#{@activity.id}" %>").hide( "drop", { direction: "up" }, "slow" );
+$("#tab1").html("<%= escape_javascript(render('activities/tab1')) %>");
+$("#disappear_button<%="#{@activity.id}" %>").hide( "drop", { direction: "up" }, "slow" );

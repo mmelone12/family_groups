@@ -313,3 +313,6 @@ task :fetch_activities => :environment do
             end
       end
 end
+
+      @activities = Activity.near(current_user.address)
+      @other_activities = Activity.where(['user_id <> ? AND city = ?', current_user.id, @user.city])

@@ -1,0 +1,20 @@
+<div class="container main">
+    <div class="two columns">
+      <%= image_tag interest.image_path, size: "70x70" %>    
+      Number of followers: 
+      <br />
+
+    </div> 
+    <div class="six columns">
+    <h6><%= interest.name %></h6>
+    <%= interest.desc %>
+    <br />
+          <div id="disappear_button<%= "#{interest.id}" %>">
+          <%= form_for(current_user.relationships.build(followed_id: 
+                             interest.id), remote: true) do |f| %> 
+                <div><%= f.hidden_field :followed_id %></div>
+                <%= f.submit "Add to My Interests", class: "b-black" %>
+            <% end %>
+       </div>
+    </div>
+</div> 

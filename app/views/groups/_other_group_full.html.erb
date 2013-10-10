@@ -9,7 +9,7 @@
       City: <%= group.city %>
     </div> 
     <div class="six columns">
-    <h6><%= group.name %></h6>
+    <h6><%= group.name.html_safe.mb_chars.limit(50).to_s %></h6>
     <%= group.desc %>
     <br />
     <% if group.link? %>

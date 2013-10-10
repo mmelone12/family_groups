@@ -1,0 +1,25 @@
+<div class="container main">
+    <div class="two columns">
+      <% if activity.image_path.blank? %>
+        <%= image_tag activity.uploader_image, size: "70x70" %>
+      <% else %>
+        <%= image_tag activity.image_path, size: "70x70" %>
+      <% end %>      
+      <br />
+      City: <%= activity.city %>
+    </div> 
+    <div class="six columns">
+    <h6><%= activity.title.html_safe.mb_chars.limit(100).to_s %></h6>
+    <%= activity.desc %>
+    <br />
+    <% if activity.link? %>
+    <h3>Check out the website at: 
+      <br />
+        <%= link_to activity.link %></h3>
+    <% end %>
+    <%= form_for(current_user.activity_relationships.find_by(activity_followed_id: 
+                             activity.id), html: { method: :delete }, remote: true) do |f| %> 
+      <%= f.submit "Unfollow", class: "b-item" %>
+    <% end %>
+    </div>
+  </div>  

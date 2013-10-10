@@ -1,0 +1,11 @@
+                <% if current_user.place_following.blank? %>
+                  "Start adding some places"
+                <% else %>
+                  <% current_user.place_following.each do |place| %>
+                    <%= render :partial => 'places/followed_places', :locals => { :place => place} %>
+                    <%= render :partial => 'js/followed_places.js.erb', :locals => { :place => place } %>
+                  <% end %>
+                  <div id= "see-all" data-no-turbolink>
+                    <%= link_to "See All My Activities", place_following_user_path(@user) %>
+                  </div>
+                <% end %>			

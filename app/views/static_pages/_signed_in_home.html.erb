@@ -52,18 +52,16 @@
 					</ul>
 					<div class="tabs-container">
 							<div id="tab1" class="tab-content">
-							<%= render 'activities/followed_activities' %>
+								<%= render 'activities/tab1' %> 
 							</div>
 							<div id="tab2" class="tab-content">
-							<%= render 'groups/followed_groups' %>
+								<%= render 'activities/tab2' %>
 							</div>
 							<div id="tab3" class="tab-content">
-							<%= render 'interests/followed_interests' %>
+								<%= render 'interests/tab3' %>
 							</div>
 							<div id="tab4" class="tab-content">
-							<%= render 'places/followed_places' %>
-							</div>
-						<div id="tab2" class="tab-content">
+								<%= render 'places/tab4' %>
 							</div>
 						</div>
 				</div> 
@@ -154,16 +152,42 @@
 					<% @interests.each do |interest| %>
   						<%= render 'interests/follow_form', :interest => interest %> 
 					<% end %>
+					<div class="four columns portfolio-item activities">
+        				<br />
+        				<br />
+        				<div id="back_button" data-no-turbolink>
+							<ul>
+				  				<li><%= link_to "See All Activities", activities_path, id: "back_button" %></li>
+			    			</ul>
+						</div>
+					</div>
 					<div class="four columns portfolio-item groups">
         				<br />
-        				<br />
-            			<div id="back_button">
+        				<br />            			
+            			<div id="back_button" data-no-turbolink>
 							<ul>
 				  				<li><%= link_to "See All Groups", groups_path, id: "back_button" %></li>
 			    			</ul>
 						</div>
-            			<br /> 
-  					</div>	
+					</div>
+					<div class="four columns portfolio-item interests">
+        				<br />
+        				<br />    					
+						   <div id="back_button" data-no-turbolink>
+							<ul>
+				  				<li><%= link_to "See All Interests", interests_path, id: "back_button" %></li>
+			    			</ul>
+						</div>
+					</div>
+					<div class="four columns portfolio-item places">
+        				<br />
+        				<br />    					
+						   <div id="back_button" data-no-turbolink>
+							<ul>
+				  				<li><%= link_to "See All Places", places_path, id: "back_button" %></li>
+			    			</ul>
+						</div>
+					</div>
 				</div>
 			</div>
 		

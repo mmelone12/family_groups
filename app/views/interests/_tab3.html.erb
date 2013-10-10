@@ -1,0 +1,11 @@
+                <% if current_user.following.blank? %>
+                  "Start adding some Interests"
+                <% else %>
+                  <% current_user.following.each do |interest| %>
+                    <%= render :partial => 'interests/followed_interests', :locals => { :interest => interest } %>
+                    <%= render :partial => 'js/followed_interests.js.erb', :locals => { :interest => interest } %>
+                  <% end %>
+                  <div id= "see-all" data-no-turbolink>
+                    <%= link_to "See All My Interests", following_user_path(@user) %>
+                  </div>
+                <% end %>

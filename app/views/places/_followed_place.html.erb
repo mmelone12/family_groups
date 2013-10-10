@@ -1,0 +1,25 @@
+<div class="container main">
+    <div class="two columns">
+      <% if place.image_path.blank? %>
+        <%= image_tag place.uploader_image, size: "70x70" %>
+      <% else %>
+        <%= image_tag place.image_path, size: "70x70" %>
+      <% end %>      
+      <br />
+      City: <%= place.city %>
+    </div> 
+    <div class="six columns">
+    <h6><%= place.name.html_safe.mb_chars.limit(100).to_s %></h6>
+    <%= place.desc %>
+    <br />
+    <% if place.link? %>
+    <h3>Check out the website at: 
+      <br />
+        <%= link_to place.link %></h3>
+    <% end %>
+    <%= form_for(current_user.place_relationships.find_by(place_followed_id: 
+                             place.id), html: { method: :delete }, remote: true) do |f| %> 
+      <%= f.submit "Unfollow", class: "b-item" %>
+    <% end %>
+    </div>
+  </div>  

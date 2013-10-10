@@ -1,0 +1,36 @@
+<div id="follow_form<%= "#{group.id}" %>">                      
+  <div class="four columns portfolio-item groups">
+    <div class="our-work">
+        <a class="img-overlay">
+        	<div class= "min-height">
+              <%= if group.uploader_image.blank?; image_tag group.image_path; end %>
+              <%= image_tag group.uploader_image %>
+            <div class="img-overlay-div">
+              <div class="followed_items_page">
+            <h4>
+            <%= if group.name.length > 50; group.name.limit(50) + "...  "; else group.name; end %>
+            </h4>
+            <h5>
+            <br />
+            <%= if group.desc.length > 130; group.desc.limit(129); else group.desc; end %>...<div class="learn_more"> Learn More</div>
+            </h5>
+              </div>
+            <%= form_for(current_user.group_relationships.find_by(group_followed_id: 
+                             group.id), html: { method: :delete }, remote: true) do |f| %> 
+                <%= f.submit "Unfollow", class: "b-item" %>
+            <% end %>
+            </div>
+          </div>
+        </a>
+        <% if group.name.length > 30 %>
+        <h3>  
+          <div class="smaller_size">
+            <%= link_to group.name.limit(50), "#", class: "followed_items_page" %><span><%= link_to "Click here to learn more", "#", class: "followed_items_page" %></span>
+          </div>
+        </h3>
+        <% else %>
+        <h3><%= link_to group.name, "#", class: "followed_items_page" %><span><%= link_to "Click here to learn more", "#", class: "followed_items_page" %></span></h3>
+        <% end %>
+    </div>
+  </div>
+</div>				

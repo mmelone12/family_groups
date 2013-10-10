@@ -1,6 +1,6 @@
 <%- if @group.name? %>
 	$("#follow_form<%="#{@group.group_id}" %>").hide( "drop", { direction: "up" }, "slow" );
-	$("#tab2").html("<%= escape_javascript(render('groups/followed_groups')) %>")
+	$("#tab2").html("<%= escape_javascript(render('groups/tab2')) %>")
   $("#disappear_button<%="#{@group.group_id}" %>").hide( "drop", { direction: "up" }, "slow" );
 <% else %>
 	<%- if @group.errors.any? %>

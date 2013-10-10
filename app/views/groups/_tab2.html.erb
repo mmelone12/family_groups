@@ -1,0 +1,11 @@
+                <% if current_user.group_following.blank? %>
+                  "Start adding some groups"
+                <% else %>
+                  <% current_user.group_following.each do |group| %>
+                    <%= render :partial => 'groups/followed_groups', :locals => { :group => group } %>
+                    <%= render :partial => 'js/followed_groups.js.erb', :locals => { :group => group } %>
+                  <% end %>
+                  <div id= "see-all" data-no-turbolink>
+                    <%= link_to "See All My Groups", group_following_user_path(@user) %>
+                  </div>
+                <% end %>

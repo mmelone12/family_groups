@@ -12,19 +12,20 @@ class StaticPagesController < ApplicationController
       @other_groups = Group.where(['group_id IS ? AND user_id <> ? AND city = ?', nil, current_user.id, @user.city])
       @group = Group.create
       @activities = Activity.all
-      @other_activities = Activity.where(['user_id <> ? AND city = ?', current_user.id, @user.city])
+      @other_activities = Activity.where(['user_id <> ? AND city = ?', current_user.id, @user.city]).first(20)
       @places = Place.all
-      @other_places = Place.where(['user_id <> ? AND city = ?', current_user.id, @user.city])
-        if current_user.following.blank?
+      @other_places = Place.where(['user_id <> ? AND city = ?', current_user.id, @user.city]).first(20)
+      if current_user.following.blank?
           @interests = Interest.all
-        else
+      else
           @newinterests = Interest.where("id NOT IN (?)", current_user.relationships.pluck(:followed_id))
           interest_ids = @newinterests.find( :all, :select => 'id' ).map( &:id )
           @interests = Interest.find( (1..8).map { interest_ids.delete_at( interest_ids.size * rand ) } )
-        end
+      end
     else
       @group = Group.create
       @interests = Interest.all
+      @places = Place.where('city IS ?', @city)
     end
   end
 
