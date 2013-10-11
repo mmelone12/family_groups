@@ -10,7 +10,7 @@ class PlaceRelationshipsController < ApplicationController
  end
 
    def destroy
-    @place = Place_Relationship.find(params[:id]).place_followed
+    @place = PlaceRelationship.find(params[:id]).place_followed
     current_user.place_unfollow!(@place)
     respond_to do |format|
       format.html { redirect_to(root_url) }

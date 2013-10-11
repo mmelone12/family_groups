@@ -191,3 +191,7 @@ transition:opacity 0.25s;
 #see-all {
   text-align: right;
 }
+
+#inline {
+  display:inline;
+}

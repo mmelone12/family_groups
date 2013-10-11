@@ -17,9 +17,10 @@
       <br />
         <%= link_to place.link %></h3>
     <% end %>
+    <div id="disappear_button<%= "#{place.id}" %>">
     <%= form_for(current_user.place_relationships.find_by(place_followed_id: 
                              place.id), html: { method: :delete }, remote: true) do |f| %> 
-      <%= f.submit "Unfollow", class: "b-item" %>
-    <% end %>
+      <%= f.submit "Unfollow", class: "b-black" %>
+    <% end %></div>
     </div>
   </div>  

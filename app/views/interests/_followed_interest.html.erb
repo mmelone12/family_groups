@@ -8,9 +8,10 @@
     <h6><%= interest.name %></h6>
     <%= interest.desc %>
     <br />
+    <div id="disappear_button<%= "#{interest.id}" %>">
     <%= form_for(current_user.relationships.find_by(followed_id: 
                              interest.id), html: { method: :delete }, remote: true) do |f| %> 
-        <%= f.submit "Unfollow", class: "b-item" %>
-    <% end %>
+        <%= f.submit "Unfollow", class: "b-black" %>
+    <% end %></div>
     </div>
 </div>  

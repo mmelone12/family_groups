@@ -2,7 +2,9 @@
                   "Start adding some Interests"
                 <% else %>
                   <% current_user.following.each do |interest| %>
+
                     <%= render :partial => 'interests/followed_interests', :locals => { :interest => interest } %>
+
                     <%= render :partial => 'js/followed_interests.js.erb', :locals => { :interest => interest } %>
                   <% end %>
                   <div id= "see-all" data-no-turbolink>

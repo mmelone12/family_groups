@@ -17,9 +17,10 @@
       <br />
         <%= link_to group.link %></h3>
     <% end %>
+    <div id="disappear_button<%= "#{group.id}" %>">
         <%= form_for(current_user.group_relationships.find_by(group_followed_id: 
                              group.id), html: { method: :delete }, remote: true) do |f| %> 
-          <%= f.submit "Unfollow", class: "b-item" %>
-        <% end %>
+          <%= f.submit "Unfollow", class: "b-black" %>
+        <% end %></div>
     </div>
   </div>  
