@@ -24,7 +24,7 @@
 
 /* #Reset & Basics (Inspired by E. Meyers)
 ================================================== */
-	html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+	html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, h7, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
 		margin: 0;
 		padding: 0;
 		border: 0;
@@ -74,14 +74,16 @@
 	h3 { font-size: 12px; line-height: 19px; margin-top: 12px; margin-bottom: 18px; }
 	.subheader { color: #777; }
 
-	h4 a, h5 a, h6 a { font-weight: bolder; color: #FAF5F7; 
+	h4 a, h5 a, h6 a, h8 a { font-weight: bolder; color: #FAF5F7; 
 		font-family: 'OpenSansBold', "Georgia", "Times New Roman", serif;
 		font-weight: normal; }
-	h4 { font-size: 17px; line-height: 22px; margin-bottom: 0px; text-align: center; padding: 8px; margin-top: 2px; }
+	h4 { font-size: 17px; line-height: 22px; margin-bottom: 2px; text-align: center; padding: 8px; margin-top: -4px; }
 	h5 { font-size: 13px; line-height: 17px; text-align: center; padding: 3px; margin-top: -25px; margin-bottom: 8px; }
 	h6 { font-size: 18px; line-height: 21px; margin-bottom: 8px; font-weight: bold; text-align: center; }
+	h7 { font-family: "OpenSansBold"; font-size: 12px; line-height: 21px; margin-bottom: -12px; font-weight: bold; text-align: center; }
+	h8 { font-size: 17px; line-height: 22px; margin-bottom: 30px; text-align: center; padding: 8px; margin-top: -4px; }
 
-	p { margin: 0 0 20px 0; }
+	p { margin: 0 0 0px 0; }
 	p img { margin: 0; }
 	p.lead { font-size: 21px; line-height: 27px; color: #777;  }
 

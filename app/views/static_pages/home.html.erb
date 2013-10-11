@@ -1,28 +1,11 @@
 <!-- Mobile Specific
 ================================================== -->
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<div id="wrap">
-	<header>
-		<div class="container">
-			<div class="one-third column">
-				<div class="logo">
-					<a href="index.html">
-						<%= image_tag("fglogo1.png", :alt => "logo") %>
-					</a>
-				</div>
-				<h1>
-				Find local events, groups and places, and meet great parents.
-				</h1>
-			</div>
 			<% if signed_in? %>
 				<%= render 'signed_in_home' %>
 			<% else %>
 				<%= render 'signed_out_home' %>
 			<% end %>
-		</div>
-	</footer>
-<%= debug(params) if Rails.env.development? %>
-</div>
+
 <!-- Wrap End -->
 
 <!-- Start Switcher -->

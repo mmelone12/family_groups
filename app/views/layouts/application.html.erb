@@ -6,9 +6,23 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<div id="wrap">
+		<header>
+		<div class="container">
+			<div class="one-third column">
+				<div class="logo" data-no-turbolink>
+						<%= link_to image_tag("fglogo1.png", :alt => "logo"), root_url %>
+				</div>
+				<h1>
+				Find local events. Meet great parents.
+				</h1>
+			</div>
 </head>
 <body>
-
 <%= yield %>
+</footer>
+<%= debug(params) if Rails.env.development? %>
+</div>
 </body>
 </html>

@@ -1,0 +1,36 @@
+<div id="follow_form<%= "#{place.id}" %>">                      
+  <div class="four columns portfolio-item places">
+    <div class="our-work">
+        <a class="img-overlay">
+        	<div class= "min-height">
+              <%= if place.uploader_image.blank?; image_tag place.image_path; end %>
+              <%= image_tag place.uploader_image %>
+            <div class="img-overlay-div">
+              <div class="followed_items_page">
+            <h4>
+            <%= if place.name.length > 50; place.name.truncate(50) + "...  "; else place.name; end %>
+            </h4>
+            <h5>
+            <br />
+            <%= if place.desc.length > 130; place.desc.truncate(129); else place.desc; end %>...<div class="learn_more"> Learn More</div>
+            </h5>
+              </div>
+            <%= form_for(current_user.place_relationships.find_by(place_followed_id: 
+                             place.id), html: { method: :delete }, remote: true) do |f| %> 
+                <%= f.submit "Unfollow", class: "b-item" %>
+            <% end %>
+            </div>
+          </div>
+        </a>
+        <% if place.name.length > 30 %>
+        <h3>  
+          <div class="smaller_size">
+            <%= link_to place.name.truncate(50), "#", class: "followed_items_page" %><span><%= link_to "Click here to learn more", "#", class: "followed_items_page" %></span>
+          </div>
+        </h3>
+        <% else %>
+        <h3><%= link_to place.name, "#", class: "followed_items_page" %><span><%= link_to "Click here to learn more", "#", class: "followed_items_page" %></span></h3>
+        <% end %>
+    </div>
+  </div>
+</div>				

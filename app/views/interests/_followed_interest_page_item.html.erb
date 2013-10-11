@@ -1,0 +1,23 @@
+<div id="follow_form<%= "#{interest.id}" %>">                      
+<div class="four columns portfolio-item interests">
+    <div class="our-work">
+        <a class="img-overlay">
+        <%= image_tag interest.image_path %>
+            <div class="img-overlay-div">
+                <div class="interests_showme"> 
+            <h4><%= interest.name %></h4>
+            </br>
+            <h5>Placeholder
+            </br>
+            <%= interest.desc.truncate(60) %></h5>
+                </div>
+            <%= form_for(current_user.relationships.find_by(followed_id: 
+                             interest.id), html: { method: :delete }, remote: true) do |f| %> 
+                <%= f.submit "Unfollow", class: "b-item" %>
+            <% end %>
+            </div>
+        </a>
+        <h3>><%= link_to interest.name, "#", class: interests_showme %></a><span>features info</span></h3>
+    </div>
+   </div>
+</div>

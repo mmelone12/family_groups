@@ -4,6 +4,12 @@ class ActivitiesController < ApplicationController
   	@activity = Activity.find(params[:id])
   end
 
+  def index
+    @user = current_user
+    @activities = Activity.all
+    @other_activities = Activity.where(['user_id <> ? AND city = ?', current_user.id, @user.city])
+  end
+
   def new
   	@activity = Activity.new
   end
@@ -11,7 +17,6 @@ class ActivitiesController < ApplicationController
   def create
   	@activity = Activity.new(activity_params)
     @activity.save
-    current_user.activity_follow!(@activity)
   	respond_to do |format|
       format.html { redirect_to(root_url) }
       format.js 

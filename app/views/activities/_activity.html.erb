@@ -7,11 +7,11 @@
             <div class="img-overlay-div">
              <div class="activities_showme"> 
             <h4>
-            <%= if activity.title.length > 50; activity.title.truncate(50) + "...  "; else activity.title; end %>
+            <%= if activity.title.length > 35; activity.title.truncate(35) + "...  "; else activity.title; end %>
             </h4>
             <h5>
             <br />
-            <%= if activity.desc.length > 130; activity.desc.truncate(129); else activity.desc; end %>...<div class="learn_more"> Learn More</div>
+            <%= if activity.desc.length > 90; activity.desc.truncate(90); else activity.desc; end %>...<div class="learn_more"> Learn More</div>
             </h5>
               </div>
             <%= form_for(current_user.activity_relationships.build(activity_followed_id: 

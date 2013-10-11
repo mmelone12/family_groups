@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :signed_in_user, only: [:edit, :update]
+  before_action :signed_in_user, only: [:edit, :update, :group_following]
   before_action :correct_user,   only: [:edit, :update]
 
   def show
@@ -7,25 +7,25 @@ class UsersController < ApplicationController
   end
 
   def following
-    @title = "Following"
-    @interest = Interest.find(params[:id])
-    @interests = @interest.following
-    render 'show_follow'
+    @user = current_user
+    @title = "Interest Following"
+    @interests = @user.following
+    render 'interest_following'
   end    
   
   def followers
-    @title = "Followers"
+    @title = "Interest Followers"
     @interest = Interest.find(params[:id])
     @interests = @interest.followers
     render 'show_follow'
   end
 
 def group_following
+    @user =  current_user
     @title = "Group Following"
-    @group = Group.find(params[:id])
-    @groups = @group.group_following
-    render 'show_group_follow'
-  end    
+    @groups = @user.group_following
+    render 'group_following'
+end    
   
   def group_followers
     @title = "Group Followers"
@@ -35,17 +35,29 @@ def group_following
   end
 
   def activity_following
+    @user = current_user
     @title = "Activity Following"
-    @activity = Activity.find(params[:id])
-    @activities = @activity.activity_following
-    render 'show_activity_follow'
+    @activities = @user.activity_following
+    render 'activity_following'
   end    
   
   def activity_followers
     @title = "Activity Followers"
-    @activity = Activity.find(params[:id])
-    @groups = @activities.activity_followers
+    @activities = @user.activity_followers
     render 'show_activity_follow'
+  end
+
+  def place_following
+    @user = current_user
+    @title = "Place Following"
+    @places = @user.place_following
+    render 'place_following'
+  end    
+  
+  def place_followers
+    @title = "Place Followers"
+    @places = @user.place_followers
+    render 'show_place_follow'
   end
 
   def new

@@ -1,0 +1,26 @@
+<div class="container main">
+    <div class="two columns">
+      <% if group.image_path.blank? %>
+        <%= image_tag group.uploader_image, size: "70x70" %>
+      <% else %>
+        <%= image_tag group.image_path, size: "70x70" %>
+      <% end %>      
+      <br />
+      City: <%= group.city %>
+    </div> 
+    <div class="six columns">
+    <h6><%= group.name.html_safe.mb_chars.limit(100).to_s %></h6>
+    <%= group.desc %>
+    <br />
+    <% if group.link? %>
+    <h3>Check out the website at: 
+      <br />
+        <%= link_to group.link %></h3>
+    <% end %>
+    <div id="disappear_button<%= "#{group.id}" %>">
+        <%= form_for(current_user.group_relationships.find_by(group_followed_id: 
+                             group.id), html: { method: :delete }, remote: true) do |f| %> 
+          <%= f.submit "Unfollow", class: "b-black" %>
+        <% end %></div>
+    </div>
+  </div>  

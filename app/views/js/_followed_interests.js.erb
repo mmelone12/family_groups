@@ -1,0 +1,19 @@
+<script>
+$('.followed_items').on('click', function(e) {
+  e.preventDefault();
+
+  $('<div id="dialog-form"></div>').dialog({
+        autoOpen: true,
+        width: 520,
+        modal: true,
+        open: function() {
+            $(this).append($("<%= escape_javascript(render(:partial => 'interests/followed_interest', :locals => {:interest => interest})) %>"));
+        },
+        close: function() {
+        $('#dialog-form').remove();
+      }
+    });
+    dialog_form.dialog('open');
+    e.preventDefault();
+  });
+</script>

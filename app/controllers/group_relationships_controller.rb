@@ -10,7 +10,7 @@ class GroupRelationshipsController < ApplicationController
   end
 
    def destroy
-    @group = Group_Relationship.find(params[:id]).group_followed
+    @group = GroupRelationship.find(params[:id]).group_followed
     current_user.group_unfollow!(@group)
     respond_to do |format|
       format.html { redirect_to(root_url) }

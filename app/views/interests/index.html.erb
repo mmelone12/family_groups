@@ -1,0 +1,45 @@
+<%= render 'layouts/menu_and_tabs' %> 
+				<div class="eight columns">
+					<div class="flexslider work-slider">
+						<ul class="slides">
+							<li>
+								<%= image_tag "imgs/slider/momsatpark.png" %>
+							</li>
+							<li>
+								<%= image_tag "imgs/slider/slidergraphic.jpg" %>
+							</li>
+						</ul>
+					</div>
+				</div> 	
+		</div>
+
+		<div class="container">
+			<div class="sixteen columns">
+				<hr class="line slogan" />
+			</div>
+		</div>
+		
+		<div id="page-content" class="full-width container projects">
+			<div id="back_button" data-no-turbolink >
+				<ul>
+				  <li><%= link_to "Go Back To See All Items", root_path, id: "back_button" %></li>
+			    </ul>
+			</div>
+			<div class="container">
+				<div class="sixteen columns">
+					<h4> Follow Interests so we can match you better</h4>
+				<div class="container">
+					<div id="portfolio-wrapper">
+					<% @interests.each do |interest| %>
+  						<%= render 'interests/interest', :interest => interest %> 
+					<% end %>
+					</div>
+				</div>	
+			</div>
+		</div>
+	</div>
+</div>
+		</div>
+	</footer>
+<%= debug(params) if Rails.env.development? %>
+</div>
