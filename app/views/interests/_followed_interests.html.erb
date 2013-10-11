@@ -1,8 +1,6 @@
-    <% current_user.following.each do |followed_interest| %>
-    	<div class = "img-wrap1">
-    		<%= image_tag followed_interest.image_path, size: "50" class: "followed_items" %>
+     <div class = "img-wrap1">
+    		<%= image_tag interest.image_path, size: "50", class: "followed_items" %>
     	<div class="img-overlay1">
    			<p><%= interest.name.truncate(25) %></p>
    		</div>
 	</div>
-    <% end %>

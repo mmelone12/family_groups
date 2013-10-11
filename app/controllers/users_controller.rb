@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   end    
   
   def followers
-    @title = "Followers"
+    @title = "Interest Followers"
     @interest = Interest.find(params[:id])
     @interests = @interest.followers
     render 'show_follow'
@@ -43,9 +43,21 @@ end
   
   def activity_followers
     @title = "Activity Followers"
-    @activity = Activity.find(params[:id])
-    @groups = @activities.activity_followers
+    @activities = @user.activity_followers
     render 'show_activity_follow'
+  end
+
+  def place_following
+    @user = current_user
+    @title = "Place Following"
+    @places = @user.place_following
+    render 'place_following'
+  end    
+  
+  def place_followers
+    @title = "Place Followers"
+    @places = @user.place_followers
+    render 'show_place_follow'
   end
 
   def new

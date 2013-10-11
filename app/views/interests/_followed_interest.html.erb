@@ -1,13 +1,12 @@
 <div class="container main">
     <div class="two columns">
-        <%= image_tag interest.image_path, size: "70x70" %>
-      <% end %>      
+        <%= image_tag interest.image_path, size: "70x70" %>     
       <br />
 
     </div> 
     <div class="six columns">
     <h6><%= interest.name %></h6>
-    <%= interest..desc %>
+    <%= interest.desc %>
     <br />
     <%= form_for(current_user.relationships.find_by(followed_id: 
                              interest.id), html: { method: :delete }, remote: true) do |f| %> 
