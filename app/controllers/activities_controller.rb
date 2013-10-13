@@ -6,7 +6,7 @@ class ActivitiesController < ApplicationController
 
   def index
     @user = current_user
-    @activities = Activity.all
+    @activities = Activity.near(@user)
     @other_activities = Activity.where(['user_id <> ? AND city = ?', current_user.id, @user.city])
   end
 

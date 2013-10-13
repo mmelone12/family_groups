@@ -316,3 +316,24 @@ end
 
       @activities = Activity.near(current_user.address)
       @other_activities = Activity.where(['user_id <> ? AND city = ?', current_user.id, @user.city])
+
+
+      <script>
+$('.followed_items').on('click', function(e) {
+  e.preventDefault();
+
+  $('<div id="dialog-form"></div>').dialog({
+        autoOpen: true,
+        width: 520,
+        modal: true,
+        open: function() {
+            $(this).append($("<%= escape_javascript(render(:partial => 'groups/followed_group', :locals => {:group => group})) %>"));
+        },
+        close: function() {
+        $('#dialog-form').remove();
+      }
+    });
+    dialog_form.dialog('open');
+    e.preventDefault();
+  });
+</script>

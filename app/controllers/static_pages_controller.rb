@@ -11,9 +11,9 @@ class StaticPagesController < ApplicationController
       @firstgroups = @groups.first(20)
       @other_groups = Group.where(['group_id IS ? AND user_id <> ? AND city = ?', nil, current_user.id, @user.city])
       @group = Group.create
-      @activities = Activity.all
+      @activities = Activity.near(@user).first(15)
       @other_activities = Activity.where(['user_id <> ? AND city = ?', current_user.id, @user.city]).first(20)
-      @places = Place.all
+      @places = Place.near(@user).first(15)
       @other_places = Place.where(['user_id <> ? AND city = ?', current_user.id, @user.city]).first(20)
       if current_user.following.blank?
           @interests = Interest.all

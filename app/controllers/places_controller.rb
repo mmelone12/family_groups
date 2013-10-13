@@ -6,7 +6,7 @@ class PlacesController < ApplicationController
 
   def index
     @user = current_user
-    @places = Place.all
+    @places = Place.near(@user)
     @other_places = Place.where(['user_id <> ? AND city = ?', current_user.id, @user.city])
   end
 

@@ -67,6 +67,16 @@
 						<%= render :partial => 'places/other_place', :locals => { :place => place } %>
 						<%= render :partial => 'js/other_places.js.erb', :locals => { :place => place } %>
 					<% end %>
+					<% if @activities.blank? && @other_activities.blank? %>
+					<div class="four columns portfolio-item activities">
+        				<br />
+        				<br />
+							<ul>
+				  				<li>We don't have activities for <% @user.city %> today, but please check again in a few days!</li>
+			    			</ul>
+						</div>
+					</div>
+					<% else %>
   					<% @activities.each do |activity| %>
 						<%= render :partial => 'activities/activity', :locals => { :activity => activity } %>
 						<%= render :partial => 'js/activities.js.erb', :locals => { :activity => activity } %>
@@ -74,6 +84,7 @@
 					<% @other_activities.each do |activity| %>
 						<%= render :partial => 'activities/other_activity', :locals => { :activity => activity } %>
 						<%= render :partial => 'js/other_activities.js.erb', :locals => { :activity => activity } %>
+					<% end %>
 					<% end %>
 					<% @firstgroups.each do |group| %>
 						<%= render :partial => 'groups/group', :locals => { :group => group } %>
