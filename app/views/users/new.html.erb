@@ -14,6 +14,10 @@
         <%= f.label :address %>
         <%= f.text_field :address %>
 
+        <%= f.label "Are you a Mom or Dad?" %>
+        <b>Mom</b><%= f.radio_button(:gender, "Mom") %><br/>
+        <b>Dad</b><%= f.radio_button(:gender, "Dad") %> 
+
         <%= f.label :password %>
         <%= f.password_field :password %>
 

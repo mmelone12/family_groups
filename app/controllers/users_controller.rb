@@ -89,7 +89,7 @@ end
   private
 
   	def user_params
-  		params.require(:user).permit(:name, :email, :address, :latitude, :longitude, :city, :state, :password, :password_confirmation)
+  		params.require(:user).permit(:name, :email, :address, :latitude, :longitude, :city, :state, :password, :password_confirmation, :gender)
   	end
 
     # Before filters

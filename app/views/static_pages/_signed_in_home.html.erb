@@ -1,16 +1,14 @@
 <%= render 'layouts/menu_and_tabs' %>
-				<div class="eight columns">
-					<div class="flexslider work-slider">
-						<ul class="slides">
-							<li>
-								<%= image_tag "imgs/slider/momsatpark.png" %>
-							</li>
-							<li>
-								<%= image_tag "imgs/slider/slidergraphic.jpg" %>
-							</li>
-						</ul>
-					</div>
-				</div> 	
+				<div class="two columns">
+					<h3 class="shortcodes">There's another mom nearby just like you!</h3>
+				</div>
+				<div class ="six columns">
+					<h6>More info about this user</h6>
+    				You want to send a message, maybe?
+   					 <br />
+    				<h3>Check out the website at: 
+				</div>
+			</div> 	
 		</div>
 		
 		<div class="container">
@@ -74,7 +72,6 @@
 							<ul>
 				  				<li>We don't have activities for <% @user.city %> today, but please check again in a few days!</li>
 			    			</ul>
-						</div>
 					</div>
 					<% else %>
   					<% @activities.each do |activity| %>
