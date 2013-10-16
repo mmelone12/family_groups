@@ -29,7 +29,7 @@ class ActivitiesController < ApplicationController
   private
 
   	def activity_params
-  		params.require(:activity).permit(:title, :image_path, :address, :city, :start_date, :uploader_image,
+  		params.require(:activity).permit(:title, :image_path, :address, :city, :uploader_image,
   			:end_date, :start_time, :end_time, :where, :desc, :link, :email, :article_link, :website, :website_link)
   	end
 end

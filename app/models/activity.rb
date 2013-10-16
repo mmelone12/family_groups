@@ -1,5 +1,6 @@
 class Activity < ActiveRecord::Base
 	belongs_to :user
+  validates :title, uniqueness: { case_sensitive: false }
 	
 	mount_uploader :uploader_image, ImageUploader
 	geocoded_by :address do |activity,results|

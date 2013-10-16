@@ -235,3 +235,4 @@ end
              end   
          end
        end
+       title = activity.search("h2").to_s[/([^">]+?)\</].to_s[/[^"]+\w/]
