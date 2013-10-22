@@ -14,7 +14,9 @@
         <%= f.label :address, "Zip Code" %>
         <%= f.text_field :address %>
 
-
+        <%= f.label "Are you a Mom or Dad?" %>
+        <b>Mom</b><%= f.radio_button(:gender, "Mom") %><br/>
+        <b>Dad</b><%= f.radio_button(:gender, "Dad") %> 
 
         <%= f.label "What best describes you as a parent?" %>
         <b>Single Parent</b><%= f.check_box(:single_parent) %><br/>
