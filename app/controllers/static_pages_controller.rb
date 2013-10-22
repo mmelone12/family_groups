@@ -22,11 +22,11 @@ class StaticPagesController < ApplicationController
         current_user.children_under_5, current_user.children_5_10, current_user.tweens, current_user.teens,
         current_user.non_parent])
       if other_user.empty? && User.near(@user).present?
-                @matched_user = Rails.cache.fetch(@user.cache_key + '/daily_match', expires_in: 1.day){
-  User.near(@user).order("RANDOM()").first}
+        @matched_user = Rails.cache.fetch(@user.cache_key + '/daily_match', expires_in: 1.day){
+        User.near(@user).order("RANDOM()").first}
       else
         @matched_user = Rails.cache.fetch(@user.cache_key + '/daily_match', expires_in: 1.day){
- other_user.order("RANDOM()").first}
+        other_user.order("RANDOM()").first}
       end
        # current_user.new_parent).near(@user).order("RANDOM()").first
       #if other_user_alpha.present?

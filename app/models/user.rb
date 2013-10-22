@@ -110,63 +110,85 @@ class User < ActiveRecord::Base
   def kid_stats
     if self.single_parent.blank? && self.new_parent.blank? && self.non_parent.blank?
       if self.children_under_5.present?
-        "has children under five."
+        ("has children <strong>under five</strong>.").html_safe
       end
       if self.special_needs.present?
-        "is a parent of special needs children."
+        ("is a parent of <strong>special needs</strong> children.").html_safe
       end
       if self.children_5_10.present?
-        "has children five to ten years in age."
+        ("has children <strong>five to ten</strong> years in age.").html_safe
       end
       if self.teens.present?
-        "is a parent of teenagers."
+        ("is a parent of <strong>teenagers</strong>.").html_safe
       end
       if self.tweens.present?
-        "is a parent of tweens."
+        ("is a parent of <strong>tweens</strong>.").html_safe
       end
     end
     if self.gender = "Mom"
       if self.single_parent.present? || self.new_parent.present? || self.non_parent.present?
         if self.children_under_5.present?
-          "She has children under five."
+          ("She has children <strong>under five</strong>.").html_safe
         end
         if self.special_needs.present?
-          "She is a parent of special needs children."
+          ("She is a parent of <strong>special needs</strong> children.").html_safe
         end
         if self.children_5_10.present?
-          "She has children five to ten years in age."
+          ("She has children <strong>five to ten</strong> years in age.").html_safe
         end
         if self.teens.present?
-          "She is a parent of teenagers."
+          ("She is a parent of <strong>teenagers</strong>.").html_safe
         end
         if self.tweens.present?
-          "She is a parent of tweens."
+          ("She is a parent of <strong>tweens</strong>.").html_safe
         end
       end
     end
      if self.gender = "Dad"
       if self.single_parent.present? || self.new_parent.present? || self.non_parent.present?
         if self.children_under_5.present?
-          "He has children under five."
+          ("He has children <strong>under five</strong>.").html_safe
         end
         if self.special_needs.present?
-          "He is a parent of special needs children."
+          ("He is a parent of <strong>special needs</strong> children.").html_safe
         end
         if self.children_5_10.present?
-          "He has children five to ten years in age."
+          ("He has children <strong>five to ten</strong> years in age.").html_safe
         end
         if self.teens.present?
-          "He is a parent of teenagers."
+          ("He is a parent of <strong>teenagers</strong>.").html_safe
         end
         if self.tweens.present?
-          "He is a parent of tweens."
+          ("He is a parent of <strong>tweens</strong>.").html_safe
         end
       end
     end
   end
 
-  def other_interests
-    following.order("RANDOM()").first.name
+  def parent_interests
+    if self.gender = "Mom" && self.following.count > 2
+      first_interest = following.order("RANDOM()").first.name
+      second_interest = following.where('name <> ?', first_interest).first.name
+      ("Her interests include <strong>#{first_interest}</strong> and <strong>#{second_interest}</strong>.").html_safe
+    end
+    if self.gender = "Dad" && self.following.count > 2
+      first_interest = following.order("RANDOM()").first.name
+      second_interest = following.where.not(name: first_interest).first.name
+      ("His interests include <strong>#{first_interest}</strong> and <strong>#{second_interest}</strong>.").html_safe
+    end
+  end
+
+    def parent_activities
+    if self.gender = "Mom" && self.activity_following.count > 2
+      first_activity = activity_following.order("RANDOM()").first.title
+      second_activity = activity_following.where('title <> ?', first_activity).first.title.truncate(33)
+      ("Some of her activities include '#{first_activity.truncate(33)}'</strong> and <strong>'#{second_activity}'.").html_safe
+    end
+    if self.gender = "Dad" && self.activity_following.count > 2
+      first_activity = activity_following.order("RANDOM()").first.title
+      second_activity = activity_following.where.not(title: first_activity).first.title.truncate(33)
+      ("Some of his activities include '#{first_activity.truncate(33)}' and '#{second_activity}'.").html_safe
+    end
   end
 
   def User.new_remember_token
