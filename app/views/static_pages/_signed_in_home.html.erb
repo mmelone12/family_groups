@@ -1,15 +1,5 @@
 <%= render 'layouts/menu_and_tabs' %>
-				<div class="two columns">
-					<h3 class="shortcodes">There's another mom nearby just like you!</h3>
-				</div>
-				<div class ="six columns">
-					<h6>More info about this user</h6>
-    				You want to send a message, maybe?
-   					 <br />
-    				<h3>Check out the website at: 
-				</div>
-			</div> 	
-		</div>
+<%= render 'layouts/parent_match' %>
 		
 		<div class="container">
 			<div class="sixteen columns">
@@ -21,7 +11,7 @@
 
 			<div class="container">
 				<div class="sixteen columns">
-					<h4> See what's happening for families and parents in <%= @user.city %> this week.</h4>
+					<h4> See what's happening in <%= @user.city %> this week.</h4>
 					<div id="filters">
 						<ul class="option-set" data-option-key="filter">
 							<li><a href="#filter" data-option-value="*">See All</a></li>
@@ -65,7 +55,7 @@
 						<%= render :partial => 'places/other_place', :locals => { :place => place } %>
 						<%= render :partial => 'js/other_places.js.erb', :locals => { :place => place } %>
 					<% end %>
-					<% if @activities.blank? && @other_activities.blank? && @recurring_activities.blank? %>
+					<% if @activities.blank? && @recurring_activities.blank? %>
 					<div class="four columns portfolio-item activities">
         				<br />
         				<br />
@@ -77,10 +67,6 @@
   					<% @activities.each do |activity| %>
 						<%= render :partial => 'activities/activity', :locals => { :activity => activity } %>
 						<%= render :partial => 'js/activities.js.erb', :locals => { :activity => activity } %>
-					<% end %>
-					<% @other_activities.each do |activity| %>
-						<%= render :partial => 'activities/other_activity', :locals => { :activity => activity } %>
-						<%= render :partial => 'js/other_activities.js.erb', :locals => { :activity => activity } %>
 					<% end %>
 					<% @recurring_activities.each do |activity| %>
 						<%= render :partial => 'activities/activity', :locals => { :activity => activity } %>

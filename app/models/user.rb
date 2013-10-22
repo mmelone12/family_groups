@@ -33,6 +33,8 @@ class User < ActiveRecord::Base
   has_many :place_following, :through => :place_relationships, :source => :place_followed
 
   has_many :places, dependent: :destroy 
+
+  mount_uploader :uploader_image, ImageUploader
     
   geocoded_by :address do |user,results|
     if geo = results.first
@@ -90,6 +92,81 @@ class User < ActiveRecord::Base
 
   def place_unfollow!(place)
     place_relationships.find_by(place_followed_id: place.id).destroy!
+  end
+
+  def profile_stats
+    if self.single_parent == "1"
+      answer = "is a single parent"
+    end
+    if self.new_parent == "1"
+      answer = "is a new parent"
+    end
+    if self.non_parent == "1"
+      answer = "is a non-parent"
+    end
+    answer
+  end
+
+  def kid_stats
+    if self.single_parent.blank? && self.new_parent.blank? && self.non_parent.blank?
+      if self.children_under_5.present?
+        "has children under five."
+      end
+      if self.special_needs.present?
+        "is a parent of special needs children."
+      end
+      if self.children_5_10.present?
+        "has children five to ten years in age."
+      end
+      if self.teens.present?
+        "is a parent of teenagers."
+      end
+      if self.tweens.present?
+        "is a parent of tweens."
+      end
+    end
+    if self.gender = "Mom"
+      if self.single_parent.present? || self.new_parent.present? || self.non_parent.present?
+        if self.children_under_5.present?
+          "She has children under five."
+        end
+        if self.special_needs.present?
+          "She is a parent of special needs children."
+        end
+        if self.children_5_10.present?
+          "She has children five to ten years in age."
+        end
+        if self.teens.present?
+          "She is a parent of teenagers."
+        end
+        if self.tweens.present?
+          "She is a parent of tweens."
+        end
+      end
+    end
+     if self.gender = "Dad"
+      if self.single_parent.present? || self.new_parent.present? || self.non_parent.present?
+        if self.children_under_5.present?
+          "He has children under five."
+        end
+        if self.special_needs.present?
+          "He is a parent of special needs children."
+        end
+        if self.children_5_10.present?
+          "He has children five to ten years in age."
+        end
+        if self.teens.present?
+          "He is a parent of teenagers."
+        end
+        if self.tweens.present?
+          "He is a parent of tweens."
+        end
+      end
+    end
+  end
+
+  def other_interests
+    following.order("RANDOM()").first.name
   end
 
   def User.new_remember_token

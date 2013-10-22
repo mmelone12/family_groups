@@ -5,6 +5,7 @@ FamilyGroups::Application.routes.draw do
       get :group_following, :group_followers
       get :activity_following, :activity_followers
       get :place_following, :place_followers
+      get :avatar
     end
   end
 

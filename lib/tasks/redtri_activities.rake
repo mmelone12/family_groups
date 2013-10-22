@@ -16,6 +16,7 @@ task :fetch_redtri => :environment do
                 ages = activity.search("span")[7].text.strip
                 formatted_ages = "This event is open to" + " " + ages.downcase
                 address = activity.search("span")[3].text.strip
+                user_id = "1"
                 total_date = activity.search("span")[1].text.strip
                 if total_date.include? "every" or total_date.include? "Every"
                   recurring = "yes"
@@ -25,7 +26,7 @@ task :fetch_redtri => :environment do
                   start_date = Date.parse(total_date)
                 end
                 link = "from redtri.com"
-                desc = "Address" + " " + formatted_cost + " " + formatted_ages + "."
+                desc = "Where:" + " " + address + ". " + formatted_cost + " " + formatted_ages + "."
                 if title.include? "pumpkin" or title.include? "Pumpkin" or title.include? "pumpkins" or title.include? "Pumpkins"
                   image_path = "imgs/events/carnivalresized.png"
                 else 
@@ -33,7 +34,8 @@ task :fetch_redtri => :environment do
                 end
                 if title.present?                       
                   Activity.where(:title => title, :start_date => start_date, :when => total_date, :desc => desc, :address => address,
-                  :link => link, :article_link => article_link, :recurring => recurring, :image_path => image_path).create
+                  :link => link, :article_link => article_link, :recurring => recurring, :image_path => image_path,
+                  :user_id => user_id).create
                   puts title, total_date, desc, address, link
                 end
             end   

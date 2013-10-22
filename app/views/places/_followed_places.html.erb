@@ -1,5 +1,5 @@
 <% if place.image_path.blank? %>
-    <%= image_tag place.uploader_image size: "50", class: "followed_items", id: "disappear_follow#{place.id}" %>
+    <%= image_tag place.uploader_image, size: "50", class: "followed_items", id: "disappear_follow#{place.id}" %>
 <% else %>
 	<div class="img-wrap1">
     <%= image_tag place.image_path, size: "50", class: "followed_items", id: "disappear_follow#{place.id}" %>

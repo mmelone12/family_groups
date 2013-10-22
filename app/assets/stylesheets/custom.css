@@ -8,15 +8,13 @@
 
 input, textarea, select, .uneditable-input {
     border: 1px solid #bbb;
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
+
+    padding: 2px;
+    margin-bottom: 8px;
     @include box_sizing;
 }
 
-input {
-  height: auto !important;
-}
+
 
 #error_explanation {
   color: #f00;
@@ -194,4 +192,121 @@ transition:opacity 0.25s;
 
 #inline {
   display:inline;
+}
+
+.b-side {
+  line-height: 40px;
+  background: url("../assets/button02.jpg") top left repeat-x;
+  position: absolute;
+  display: inline;
+  margin-top: 20px;
+  margin-left: 5px;
+  width: 90px;
+  height: 30px;
+  color: rgba(0,0,0,0.6);
+  font-family: 'OpenSansRegular';
+  box-shadow: 0 2.5px 1px rgba(0,0,0,0.25);
+  font-weight: normal;
+  font-size: 7px;
+  padding: 0px;
+  border-radius: 2px;
+  border: 1px solid #333333;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.25);
+}
+.b-side:hover {
+  background: url("../assets/button02.jpg") top left repeat-x;
+  color: rgba(0,0,0,0.6);
+  border: 1px solid #333333;
+  box-shadow: 0px 2.5px 15px 5px rgba(255, 255, 190, .75);
+}
+
+.description {
+  height: 30px;
+  width: 210px;
+  display: inline;
+  margin-bottom: 12px;
+}
+
+.profile_photo {
+  margin-left: 25px;
+  margin-top: -9px;
+}
+
+.change_photo {
+  margin-left: 20px;
+  margin-bottom: -30px;
+}
+
+h3.profile_match {
+    font-family: 'OpenSansRegular';
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-top: 12px;
+    text-align: center;
+}
+
+h3.profile_description {
+    font-family: 'OpenSansRegular';
+    font-size: 14px;
+    margin-top: 14px;
+    margin-bottom: -15px;
+}
+
+h3.matched_user {
+    font-family: 'OpenSansRegular';
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-top: 20px;
+    margin-bottom: 4px;
+    text-align: center;
+}
+
+.b-matched_user {
+  line-height: 40px;
+  background: url("../assets/button02.jpg") top left repeat-x;
+  position: absolute;
+  margin-top: -13px;
+  margin-left: 30px;
+  margin-bottom: -10px;
+  width: 108px;
+  height: 30px;
+  color: rgba(0,0,0,0.6);
+  font-family: 'OpenSansRegular';
+  box-shadow: 0 2.5px 1px rgba(0,0,0,0.25);
+  font-weight: normal;
+  font-size: 7px;
+  padding: 0px;
+  border-radius: 2px;
+  border: 1px solid #333333;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.25);
+}
+.b-matched_user:hover {
+  background: url("../assets/button02.jpg") top left repeat-x;
+  color: rgba(0,0,0,0.6);
+  border: 1px solid #333333;
+  box-shadow: 0px 2.5px 15px 5px rgba(255, 255, 190, .75);
+}
+
+.send_message {
+  height: 130px;
+  width: 175px;
+  margin-top: 25px;
+}
+
+p.wrap {
+  display: inline;
+}
+
+.matched_user_image {
+  display: inline;
+  float: left;
+  padding: 9px;
+  margin-left: 14px;
+}
+
+.other_parents {
+  margin-left: 35px;
+  font-style: bold;
+  bottom: 10px;
+  position: absolute;
 }

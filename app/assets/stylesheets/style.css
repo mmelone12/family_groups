@@ -181,7 +181,7 @@ a.img-overlay {
 
 /* main content styles */
 .main {
-	padding-bottom:20px;
+	padding-bottom:13px;
 }
 .slogan {
 	font-family: 'OpenSansLight';
@@ -898,7 +898,7 @@ thead th{
 }
 #filters ul {
 	overflow: hidden;
-	margin: 25px 0 40px;
+	margin: 15px 0 20px;
 }
 #filters ul li {
 	float: left;

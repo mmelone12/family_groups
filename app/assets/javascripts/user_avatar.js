@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $('#create_activity').click(function(e) {
+  $('#create_avatar').click(function(e) {
     var url = $(this).attr('href');
     var dialog_form = $('<div id="dialog-form">Loading form...</div>').dialog({
       autoOpen: false,

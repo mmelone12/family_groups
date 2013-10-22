@@ -11,12 +11,22 @@
         <%= f.label :email %>
         <%= f.text_field :email %>
 
-        <%= f.label :address %>
+        <%= f.label :address, "Zip Code" %>
         <%= f.text_field :address %>
 
         <%= f.label "Are you a Mom or Dad?" %>
         <b>Mom</b><%= f.radio_button(:gender, "Mom") %><br/>
         <b>Dad</b><%= f.radio_button(:gender, "Dad") %> 
+
+        <%= f.label "What best describes you as a parent?" %>
+        <b>Single Parent</b><%= f.check_box(:single_parent) %><br/>
+        <b>New Parent</b><%= f.check_box(:new_parent) %><br/>
+        <b>I'm not a parent</b><%= f.check_box(:non_parent) %><br/>
+        <b>Parent of children under 5 years old</b><%= f.check_box(:children_under_5) %><br/>
+        <b>Parent of children 5 - 10 years old</b><%= f.check_box(:children_5_10) %><br/>
+        <b>Parent of tweens</b><%= f.check_box(:tweens) %><br/>
+        <b>Parent of teenagers</b><%= f.check_box(:teens) %><br/>
+        <b>Special Needs</b><%= f.check_box(:special_needs) %><br/>
 
         <%= f.label :password %>
         <%= f.password_field :password %>

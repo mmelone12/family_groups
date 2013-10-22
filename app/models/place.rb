@@ -1,5 +1,5 @@
 class Place < ActiveRecord::Base
-
+	belongs_to :user
 	mount_uploader :uploader_image, ImageUploader
 	geocoded_by :address do |place,results|
       if geo = results.first

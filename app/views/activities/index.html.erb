@@ -34,9 +34,9 @@
 						<%= render :partial => 'activities/activity', :locals => { :activity => activity } %>
 						<%= render :partial => 'js/activities.js.erb', :locals => { :activity => activity } %>
 					<% end %>
-					<% @other_activities.each do |activity| %>
-						<%= render :partial => 'activities/other_activity', :locals => { :activity => activity } %>
-						<%= render :partial => 'js/other_activities.js.erb', :locals => { :activity => activity } %>
+					<% @recurring_activities.each do |activity| %>
+						<%= render :partial => 'activities/activity', :locals => { :activity => activity } %>
+						<%= render :partial => 'js/activities.js.erb', :locals => { :activity => activity } %>
 					<% end %>
 					</div>
 				</div>	

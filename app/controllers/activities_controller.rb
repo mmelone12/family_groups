@@ -6,8 +6,8 @@ class ActivitiesController < ApplicationController
 
   def index
     @user = current_user
-    @activities = Activity.near(@user).find(:all, :order => "start_date")
-    @other_activities = Activity.where(['user_id <> ? AND city = ?', current_user.id, @user.city])
+    @activities = Activity.where(['start_date <> ? AND user_id <> ?', nil, current_user.id]).near(@user).find(:all, :order => "start_date")
+    @recurring_activities = Activity.where(['recurring = ?', "yes"])
   end
 
   def new
@@ -29,7 +29,7 @@ class ActivitiesController < ApplicationController
   private
 
   	def activity_params
-  		params.require(:activity).permit(:title, :image_path, :address, :city, :uploader_image,
+  		params.require(:activity).permit(:user_id, :title, :image_path, :address, :city, :uploader_image,
   			:end_date, :start_time, :end_time, :where, :desc, :link, :email, :article_link, :website, :website_link)
   	end
 end

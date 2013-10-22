@@ -337,3 +337,55 @@ $('.followed_items').on('click', function(e) {
     e.preventDefault();
   });
 </script>
+
+@other_activities = Activity.where(['user_id <> ? AND city = ?', current_user.id, @user.city]).first(10)
+
+          <% @other_activities.each do |activity| %>
+            <%= render :partial => 'activities/other_activity', :locals => { :activity => activity } %>
+            <%= render :partial => 'js/other_activities.js.erb', :locals => { :activity => activity } %>
+          <% end %>
+
+      other_user = User.near(@user).order("RANDOM()").first
+      current_user_interest_ids = current_user.following.pluck(:id)
+      matched_interests = other_user.following.pluck(:id)
+      #matched_user = other_user.where(following.pluck(:id).include?(current_user_interest_ids))
+      @other_user1 = other_user
+
+      <div id="container">
+  <div id="first container">
+    <div class="two columns">
+      <h3 class="profile_match">Your Profile</h3>
+      <% if current_user.uploader_image.blank? %>
+        <%= image_tag "/assets/rotate/#{random_image}", size: "60", class: 'profile_photo' %>
+      <% else %>
+        <%= image_tag current_user.uploader_image, size: "60", class: 'profile_photo' %>
+      <% end %>
+      <p><%= link_to "Change Photo", avatar_user_path(@user), id: 'create_avatar', class: 'change_photo' %></p>
+    </div>
+    <div class ="six columns"><h3 class="profile_description">
+        <%= form_for(@user) do |f| %>
+          <%= f.label :desc, "Add a description to your profile" %>
+                <%= f.text_area :desc, value: "Tell us a little bit about yourself, and we can better connect you to other parents.", class: "description" %>
+            <%= f.submit "Add to Profile", class: "b-side" %></h3>
+      <% end %>
+    </div>
+    <div class="eight columns">
+      <hr class="line" />
+    </div>
+  </div>
+    <div class="four columns">
+      <h3 class="matched_user">Your Daily Matched Parent</h3>
+      <p><%= image_tag "/assets/rotate/#{random_image}", size: "40", class: "matched_user_image" %>
+        <%= @matched_user.name %> is a great parent in <%= @matched_user.city %>. She loves <%= @matched_user.other_interests %>. <%= link_to "See full profile here.", avatar_user_path(@matched_user) %></p>
+      <br/>
+      <p><%= link_to "SEE OTHER PARENTS NEARBY", avatar_user_path(@user), id: 'create_avatar', class: 'other_parents' %></p>
+    </div>
+    <div class ="four columns">
+        <%= form_for(@user) do |f| %>
+                <%= f.text_area :desc, value: "Ask a question to #{@matched_user.name} or simply introduce yourself!", class: "send_message"  %>
+            <%= f.submit "Send a Message", class: "b-matched_user" %>
+      <% end %>
+    </div>
+  </div>  
+</div>
+</div>
