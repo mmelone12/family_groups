@@ -9,6 +9,7 @@ gem 'rmagick'
 gem 'carrierwave'
 gem 'rMeetup', require: 'rmeetup'
 gem 'mechanize'
+gem 'will_paginate', '3.0.5'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'

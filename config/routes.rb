@@ -18,6 +18,7 @@ FamilyGroups::Application.routes.draw do
   resources :places
   resources :place_relationships, only: [:create, :destroy]
   resources :interests
+  resources :sent, :messages, :mailbox
 
   root 'static_pages#home'
   match '/signup', to: 'users#new', via: 'get'
