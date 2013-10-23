@@ -1,5 +1,8 @@
                 <% if current_user.place_following.blank? %>
-                  "Start adding some places"
+                <p class="center">Add Local Places to Your Dashboard</p>
+                <br/>
+                  <span><%= image_tag "imgs/interests/cookingb_w.png", size: "50" %>
+                  <%= image_tag "imgs/interests/homebirthb_w.png", size: "50" %></span>
                 <% else %>
                   <% current_user.place_following.each do |place| %>
                     <%= render :partial => 'places/followed_places', :locals => { :place => place} %>

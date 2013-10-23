@@ -166,15 +166,17 @@ class User < ActiveRecord::Base
   end
 
   def parent_interests
-    if self.gender = "Mom" && self.following.count > 2
+    if gender = "Mom" && self.following.count >= 3
       first_interest = following.order("RANDOM()").first.name
-      second_interest = following.where('name <> ?', first_interest).first.name
-      ("Her interests include <strong>#{first_interest}</strong> and <strong>#{second_interest}</strong>.").html_safe
+      second_interest = following.where('name <> ?', first_interest).order("RANDOM()").first.name
+      third_interest = following.where('name <> ? AND name <>?', first_interest, second_interest).first.name
+      ("Her interests include <strong>#{first_interest}</strong>, <strong>#{second_interest}</strong> and <strong>#{third_interest}</strong>.").html_safe
     end
-    if self.gender = "Dad" && self.following.count > 2
+    if gender = "Dad" && self.following.count >= 3
       first_interest = following.order("RANDOM()").first.name
-      second_interest = following.where.not(name: first_interest).first.name
-      ("His interests include <strong>#{first_interest}</strong> and <strong>#{second_interest}</strong>.").html_safe
+      second_interest = following.where.not(name: first_interest).order("RANDOM()").first.name
+      third_interest = following.where('name <> ? AND name <>?', first_interest, second_interest).first.name
+      ("His interests include <strong>#{first_interest}</strong>, <strong>#{second_interest}</strong> and <strong>#{third_interest}</strong>.").html_safe
     end
   end
 

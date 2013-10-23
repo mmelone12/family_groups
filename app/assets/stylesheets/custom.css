@@ -301,12 +301,22 @@ p.wrap {
   display: inline;
   float: left;
   padding: 9px;
-  margin-left: 14px;
+  margin-left: 12px;
 }
 
 .other_parents {
-  margin-left: 35px;
-  font-style: bold;
+  margin-left: 27px;
   bottom: 10px;
   position: absolute;
+  font-weight: bold;
+}
+
+p.center {
+  text-align: center;
+  margin-top: 4px;
+  margin-bottom: -4px;
+}
+
+p.match {
+  margin-left: 24px;
 }
