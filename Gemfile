@@ -10,6 +10,7 @@ gem 'carrierwave'
 gem 'rMeetup', require: 'rmeetup'
 gem 'mechanize'
 gem 'will_paginate', '3.0.5'
+gem 'acts_as_tree'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'

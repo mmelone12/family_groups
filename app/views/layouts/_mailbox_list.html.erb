@@ -3,7 +3,7 @@
   
   <p><strong>Mailboxes</strong></p>
   <ul>
-    <li><%= link_to "Inbox", mailbox_index_path %></li>
+    <li><%= link_to "Inbox", mailbox_index_path(@folder) %></li>
     <li><%= link_to "Sent", :controller => "sent", :action => "index" %></li>
   </ul>
 </div>

@@ -24,6 +24,6 @@ class SentController < ApplicationController
   end
 
   def message_params
-  	params.require(:message).permit(:subject, :body)
+  	params.require(:message).permit(:subject, :body, :to => [])
   end
 end

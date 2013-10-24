@@ -1,5 +1,4 @@
 class Folder < ActiveRecord::Base
-  include ActsAsTree
 
   acts_as_tree
   belongs_to :user

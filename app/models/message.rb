@@ -5,7 +5,7 @@ class Message < ActiveRecord::Base
 
   before_create :prepare_copies
   attr_accessor  :to # array of people to send to
-  
+
   def prepare_copies
     return if to.blank?
     
