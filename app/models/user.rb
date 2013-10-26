@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
   before_save { self.email = email.downcase }
-	before_create :create_remember_token
+	before_create :create_remember_token, :build_inbox
 
 	validates :name, presence: true, length: { maximum: 50 }
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -196,8 +196,6 @@ class User < ActiveRecord::Base
       ("Some of his activities include '#{first_activity.truncate(33)}' and '#{second_activity}'.").html_safe
     end
   end
-
-  before_create :build_inbox
 
   def inbox
     Folder.find_by_name("Inbox")

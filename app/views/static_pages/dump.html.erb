@@ -645,3 +645,7 @@ Hi! It seems like we have some common interests. How are you handling being a pa
   </div>  
 </div>
 </div>
+
+@folder = Folder.where('user_id IS ?', current_user.id)
+
+<%= f.hidden_field('messageto[]', :value => @matched_user.id) %>
