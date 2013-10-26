@@ -1,14 +1,13 @@
-<script>
-$('a.inbox').on('click', function(e) {
+$(document).ready(function() {
+$('.go_message').on('click', function(e) {
   e.preventDefault();
 
   $('<div id="dialog-form"></div>').dialog({
         autoOpen: true,
-        width: 680,
+        width: 520,
         modal: true,
         open: function() {
-            $(this).append($("<%= escape_javascript(render template: "mailbox/index") %>"));
-        },
+           return $(this).load(url + ' #content');
         close: function() {
         $('#dialog-form').remove();
       }
@@ -16,4 +15,4 @@ $('a.inbox').on('click', function(e) {
     dialog_form.dialog('open');
     e.preventDefault();
   });
-</script>
+});

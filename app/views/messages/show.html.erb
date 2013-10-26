@@ -1,12 +1,22 @@
-<div class='container'>
-	<div class='five columns'>
-		<%= render 'layouts/menu_and_tabs' %>
-		<h2><%=h @message.subject %></h2>
-
-		<p><strong>From:</strong> <%=h @message.author.name %></p>
-		<p><strong>To:</strong> <%=h @message.recipients.map(&:name).to_sentence %></p>
+<div id="content">
+<div class="container">
+	<div class="seven columns">
+		<p><strong>Subject:</strong></p><h2><%= @message.subject %></h2>
+		<%= image_tag @message.author.image_path %>
+		<p><strong>From:</strong> <%= @message.author.name %></p>
+		<p><strong>To:</strong> <%= @message.recipients.map(&:name).to_sentence %></p>
 		<p><strong>Received:</strong> <%= @message.created_at.to_s(:long) %></p>
+		<br/>
+		<%= @message.body %>
 
-		<pre><%=h @message.body %></pre>
-	</div>
+		<%= form_for :message, :url => {:controller => "sent", :action => "create"} do |f| %>
+		<%= f.hidden_field("to][", :value => @message.author.id) %>
+			<br/>
+			<p><strong>Send a Reply</strong></p>
+			<p><strong>Subject:</strong> <%= f.text_field :subject, value: "Re: #{@message.subject}" %></p>
+			<p><strong>Body:</strong><br /> <%= f.text_area :body, class: 'send_message3' %></p>
+    		<p><%= submit_tag "Send", class: 'button_center' %></p>
+		<% end %>
+    </div>
+</div>
 </div>

@@ -11,7 +11,12 @@ class Message < ActiveRecord::Base
     
     to.each do |recipient|
       recipient = User.find(recipient)
-      message_copies.build(:recipient_id => recipient.id, :folder_id => recipient.inbox.id)
+      message_copies.build(:recipient_id => recipient.id)
     end
+  end
+
+  def reading_message
+    self.read_at ||= Time.now
+    save
   end
 end

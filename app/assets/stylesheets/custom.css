@@ -39,6 +39,11 @@ input, textarea, select, .uneditable-input {
   padding: 20px;
 }
 
+#dialog-form1 {
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+
 .ui-widget {
   background: white;
 }
@@ -379,6 +384,12 @@ h3.inbox {
 .send_message2 {
   height: 130px;
   width: 400px;
+  margin-top: 5px;
+}
+
+.send_message3 {
+  height: 130px;
+  width: 300px;
   margin-top: 5px;
 }
 

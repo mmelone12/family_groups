@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131025044221) do
+ActiveRecord::Schema.define(version: 20131026175826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,14 +56,6 @@ ActiveRecord::Schema.define(version: 20131025044221) do
     t.datetime "updated_at"
   end
 
-  create_table "folders", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "parent_id"
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "group_relationships", force: true do |t|
     t.integer  "group_follower_id"
     t.integer  "group_followed_id"
@@ -100,6 +92,7 @@ ActiveRecord::Schema.define(version: 20131025044221) do
     t.integer  "folder_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.time     "read_at"
   end
 
   create_table "messages", force: true do |t|
@@ -108,6 +101,7 @@ ActiveRecord::Schema.define(version: 20131025044221) do
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.time     "read_at"
   end
 
   create_table "place_relationships", force: true do |t|

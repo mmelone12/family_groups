@@ -1,13 +1,13 @@
 <script>
-$('a.inbox').on('click', function(e) {
+$('td').on('click', function(e) {
   e.preventDefault();
 
   $('<div id="dialog-form"></div>').dialog({
         autoOpen: true,
-        width: 680,
+        width: 520,
         modal: true,
         open: function() {
-            $(this).append($("<%= escape_javascript(render template: "mailbox/index") %>"));
+            $(this).append($("<%= escape_javascript(render(@message)) %>"));
         },
         close: function() {
         $('#dialog-form').remove();

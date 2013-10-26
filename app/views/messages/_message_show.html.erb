@@ -1,40 +1,18 @@
 <div class="container">
 	<div class="five columns">
-		<p><strong>Subject:</strong></p><h2><%= message.subject %></h2>
-		<%= image_tag message.author.image_path %>
-		<p><strong>From:</strong> <%= message.author.name %></p>
-		<p><strong>To:</strong> <%= message.recipients.map(&:name).to_sentence %></p>
-		<p><strong>Received:</strong> <%= message.created_at.to_s(:long) %></p>
+		<p><strong>Subject:</strong></p><h2><%= @message.subject %></h2>
+		<%= image_tag @message.author.image_path %>
+		<p><strong>From:</strong> <%= @message.author.name %></p>
+		<p><strong>To:</strong> <%= @message.recipients.map(&:name).to_sentence %></p>
+		<p><strong>Received:</strong> <%= @message.created_at.to_s(:long) %></p>
 		<br/>
-		<%= message.body %>
-		<p><%= link_to "Reply", reply_message_path(@message) %></p>
+		<%= @message.body %>
 
 		<%= form_for :message, :url => {:controller => "sent", :action => "create"} do |f| %>
-		<%= f.hidden_field("message[to][]", :value => message.author.id) %>
-			<p>Subject: <%= f.text_field :subject, value: "Re: #{message.subject}" %></p>
+		<%= f.hidden_field("to][", :value => @message.author.id) %>
+			<p>Subject: <%= f.text_field :subject, value: "Re: #{@message.subject}" %></p>
 			<p>Body:<br /> <%= f.text_area :body, class: 'send_message2' %></p>
     		<p><%= submit_tag "Send", class: 'button_center' %></p>
 		<% end %>
-
-			<%= form_for :message, :url => {:controller => "sent", :action => "create"} do |f| %>
-			<%= f.hidden_field("message[to][]", :value => @matched_user.id) %>
-			<%= f.hidden_field(:subject, :value => "Hi! From a fellow parent in #{@matched_user.city}") %>
-  			<%= f.text_area :body, class: "send_message"  %>
-            <%= submit_tag "Send Message", class: "b-matched_user" %>
-        <% end %>
-
-		<%= form_for :message, :url => {:controller => "sent", :action => "create"} do |f| %>
-
-  <p>
-    To:<br />
-    <select name="message[to][]">
-      <%= options_from_collection_for_select(User.find(:all), :id, :name, @message.to) %>
-    </select>
-  </p>
-
-  <p>Subject: <%= f.text_field :subject, value: "Re: #{message.subject}" %></p>
-  <p>Body:<br /> <%= f.text_area :body, class: 'send_message2' %></p>
-  <p><%= submit_tag "Send", class: 'button_center' %></p>
-<% end %>
     </div>
 </div>

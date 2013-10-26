@@ -649,3 +649,45 @@ Hi! It seems like we have some common interests. How are you handling being a pa
 @folder = Folder.where('user_id IS ?', current_user.id)
 
 <%= f.hidden_field('messageto[]', :value => @matched_user.id) %>
+<li><a class="inbox">Inbox</a></li>
+
+$(document).ready(function() {
+  $('#go_inbox').click(function(e) {
+    e.preventDefault();
+    
+    var url = $(this).attr('href');
+    var dialog_form = $('<div id="dialog-form">Loading form...</div>').dialog({
+      autoOpen: true,
+      width: 520,
+      modal: true,
+      open: function() {
+        return $(this).load(url + ' #content');
+      },
+    });
+    dialog_form.dialog('open');
+    e.preventDefault();
+  });
+});
+<li><%= link_to "Inbox", mailbox_index_path, id: 'go_inbox' %></li>
+<li><%= link_to "Inbox", mailbox_index_path, id: 'go_inbox' %></li>
+
+      <td><%= link_to message.author.name, message_path(message) %></td>
+      <td><%= link_to message.subject.truncate(60), message_path(message), class: 'go_message' %></td>
+      <td><%= link_to distance_of_time_in_words(message.created_at, Time.now), message_path(message), class: 'go_message' %> ago</td>
+      <td><%= link_to message.body.truncate(100), message_path(message), class: 'go_message' %></td> 
+
+      $('<div id="dialog-form"></div>').dialog({
+        autoOpen: true,
+        width: 520,
+        modal: true,
+        open: function() {
+           return $(this).load(url + ' #content');
+        close: function() {
+        $('#dialog-form').remove();
+      }
+    });
+    dialog_form.dialog('open');
+    e.preventDefault();
+  });
+});
+("<%= escape_javascript(render(:partial => 'messages/message_show', :locals => {:message => message})) %>"));

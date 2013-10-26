@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
   before_save { self.email = email.downcase }
-	before_create :create_remember_token, :build_inbox
+	before_create :create_remember_token
 
 	validates :name, presence: true, length: { maximum: 50 }
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -48,7 +48,6 @@ class User < ActiveRecord::Base
 
   has_many :sent_messages, :class_name => "Message", :foreign_key => "author_id"
   has_many :received_messages, :class_name => "MessageCopy", :foreign_key => "recipient_id"
-  has_many :folders
 
   def following?(interest)
     relationships.find_by(followed_id: interest.id)
@@ -195,14 +194,6 @@ class User < ActiveRecord::Base
       second_activity = activity_following.where.not(title: first_activity).first.title.truncate(33)
       ("Some of his activities include '#{first_activity.truncate(33)}' and '#{second_activity}'.").html_safe
     end
-  end
-
-  def inbox
-    Folder.find_by_name("Inbox")
-  end
-
-  def build_inbox
-    Folder.create(:name => "Inbox")
   end
 
   def User.new_remember_token
