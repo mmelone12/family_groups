@@ -836,6 +836,7 @@ table {
     text-align: left;
 	border-collapse: collapse;
     border-spacing: 0;
+    width: 620px;
 }
 
 tr:nth-child(even) { background: #f4f4f4 }

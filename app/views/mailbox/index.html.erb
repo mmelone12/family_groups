@@ -17,7 +17,9 @@
   </tr>
   <% @messages.each do |message| %>
     <tr>
-      <td><%= link_to message.author.name, message_path(message), remote: true %></td>
+      <td><%= image_tag message.author.image_path %><br/>
+        <%= link_to message.author.name, message_path(message), remote: true %>
+         </td>
       <td><%= link_to message.subject.truncate(60), message_path(message), remote: true%></td>
       <td><%= link_to distance_of_time_in_words(message.created_at, Time.now), message_path(message), remote: true %> ago</td>
       <td><%= link_to message.body.truncate(100), message_path(message), remote: true %></td> 
