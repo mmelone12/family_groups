@@ -1,5 +1,5 @@
 <div class="container">
-	<div class="five columns">
+	<div class="ten columns">
 		<p><strong>Subject:</strong></p><h2><%= @message.subject %></h2>
 		<%= image_tag @message.author.image_path %>
 		<p><strong>From:</strong> <%= @message.author.name %></p>
@@ -7,11 +7,14 @@
 		<p><strong>Received:</strong> <%= @message.created_at.to_s(:long) %></p>
 		<br/>
 		<%= @message.body %>
-
+		<br/>
+		<br/>
+		<p><strong>Send a Reply</strong></p>
+		<br/>
 		<%= form_for :message, :url => {:controller => "sent", :action => "create"} do |f| %>
 		<%= f.hidden_field("to][", :value => @message.author.id) %>
-			<p>Subject: <%= f.text_field :subject, value: "Re: #{@message.subject}" %></p>
-			<p>Body:<br /> <%= f.text_area :body, class: 'send_message2' %></p>
+			<p><strong>Subject: </strong><%= f.text_field :subject, value: "Re: #{@message.subject}" %></p>
+			<p><strong>Body:</strong><br /> <%= f.text_area :body, class: 'send_message2' %></p>
     		<p><%= submit_tag "Send", class: 'button_center' %></p>
 		<% end %>
     </div>

@@ -18,5 +18,7 @@ class Message < ActiveRecord::Base
   def reading_message
     self.read_at ||= Time.now
     save
+    MessageCopy.where('id IS ?', id).read_at ||= Time.now
+    save
   end
 end

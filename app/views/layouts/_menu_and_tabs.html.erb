@@ -23,7 +23,7 @@
 							</ul>
 						</li>
 						<li><a href="shortcodes.html">Settings<span>Edit Profile</span></a></li>
-						<li><a class="inbox">Inbox</a></li>
+						<li><a class="inbox">Inbox<span><strong><%= @user.new_messages %></strong> new messages</span></a></li>
 						<li><%= link_to "Sign Out", signout_path, method: "delete" %>
 						</li>
 					</ul>

@@ -196,6 +196,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def new_messages
+    received_messages.where('read_at IS ?', nil).count
+  end
+
   def User.new_remember_token
     SecureRandom.urlsafe_base64
   end

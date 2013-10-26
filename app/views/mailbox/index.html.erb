@@ -1,3 +1,6 @@
+<div id="top_space">
+</div>
+<hr class="line slogan" />
 <div id="content">
 <%= render :partial => 'js/compose.js.erb' %>
 <div class='b-compose', style='color:white; text-align:center'>
@@ -15,9 +18,9 @@
   <% @messages.each do |message| %>
     <tr>
       <td><%= link_to message.author.name, message_path(message), remote: true %></td>
-      <td><%= link_to message.subject.truncate(60), message_path(message)%></td>
-      <td><%= link_to distance_of_time_in_words(message.created_at, Time.now), message_path(message) %> ago</td>
-      <td><%= link_to message.body.truncate(100), message_path(message) %></td> 
+      <td><%= link_to message.subject.truncate(60), message_path(message), remote: true%></td>
+      <td><%= link_to distance_of_time_in_words(message.created_at, Time.now), message_path(message), remote: true %> ago</td>
+      <td><%= link_to message.body.truncate(100), message_path(message), remote: true %></td> 
     </tr>
   <% end %>
   </table>
@@ -46,4 +49,5 @@
     <%= will_paginate @messages %>
   </div>
 </div>
+<hr class="line slogan" />
 </div>

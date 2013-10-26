@@ -691,3 +691,20 @@ $(document).ready(function() {
   });
 });
 ("<%= escape_javascript(render(:partial => 'messages/message_show', :locals => {:message => message})) %>"));
+ $('<div id="dialog-form"></div>').dialog({
+        autoOpen: true,
+        width: 680,
+        modal: true,
+        open: function() {
+            $(this).append($("<%= escape_javascript(render(@message)) %>"));
+        },
+        close: function() {
+        $('#dialog-form').remove();
+      }
+    });
+    dialog_form.dialog('open');
+    e.preventDefault();
+  });
+});
+
+ActiveRecord::Base.connection.execute("SELECT SETVAL('message_id_seq', 1)")

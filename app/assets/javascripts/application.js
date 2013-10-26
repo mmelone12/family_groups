@@ -13,8 +13,6 @@
 //= require jquery-1.7.1.min
 //= require jquery_ujs
 //= require jquery-ui
-//= require mailbox
-//= require messages
 //= require users
 //= require groups
 //= require activities
