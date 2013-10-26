@@ -1,0 +1,6 @@
+    <% Avatar.all.each do |avatar| %>  
+        <div class='avatar_select'>
+            <%= image_tag avatar.image_path %>
+            <%= f.radio_button :image_path, avatar.image_path %>
+        </div>
+    <% end %>  

@@ -1,4 +1,3 @@
-$(document).ready(function() {
   $('#create_avatar').click(function(e) {
     var url = $(this).attr('href');
     var dialog_form = $('<div id="dialog-form">Loading form...</div>').dialog({
@@ -15,4 +14,3 @@ $(document).ready(function() {
     dialog_form.dialog('open');
     e.preventDefault();
   });
-});

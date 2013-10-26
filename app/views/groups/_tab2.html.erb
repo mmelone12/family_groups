@@ -1,5 +1,7 @@
                 <% if current_user.group_following.blank? %>
-                  "Start adding some groups"
+                  <p class="center">Add Local Groups to Your Dashboard</p>
+                  <br/>
+                  <%= render 'layouts/placeholder' %>
                 <% else %>
                   <% current_user.group_following.each do |group| %>
                     <%= render :partial => 'groups/followed_groups', :locals => { :group => group } %>

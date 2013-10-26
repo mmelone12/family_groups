@@ -23,13 +23,7 @@
 							</ul>
 						</li>
 						<li><a href="shortcodes.html">Settings<span>Edit Profile</span></a></li>
-						<li><a href="projects.html">Messages<span>Inbox</span></a>
-							<ul>
-								<li><a href="projects02.html">Portfolio 02</a></li>
-								<li><a href="projects03.html">Portfolio 03</a></li>
-								<li><a href="projects-single.html">Portfolio Single</a></li>
-							</ul>
-						</li>
+						<li><a class="inbox">Inbox</a></li>
 						<li><%= link_to "Sign Out", signout_path, method: "delete" %>
 						</li>
 					</ul>
@@ -65,3 +59,4 @@
 							</div>
 						</div>
 				</div> 
+				<%= render 'js/mailbox.js.erb' %>

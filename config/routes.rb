@@ -18,12 +18,14 @@ FamilyGroups::Application.routes.draw do
   resources :places
   resources :place_relationships, only: [:create, :destroy]
   resources :interests
-  resources :sent, :messages, :mailbox
+  resources :sent, :mailbox
+  resources :messages
 
   root 'static_pages#home'
   match '/signup', to: 'users#new', via: 'get'
   match '/signin', to: 'sessions#new', via: 'get'
   match '/signout', to: 'sessions#destroy', via: 'delete'
+
 
   match '/team', to: 'static_pages#team', via: 'get'
   match '/help', to: 'static_pages#help', via: 'get'

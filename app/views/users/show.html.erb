@@ -3,3 +3,10 @@
 	<%= gravatar_for @user %>
 	<%= @user.name %>
 </h1>
+<div class="register_form">
+        <% Avatar.all.each do |avatar| %>  
+            <div class ="avatar_select">
+                <%= image_tag avatar.image_path %>
+            </div>
+        <% end %>  
+</div>

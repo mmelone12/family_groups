@@ -1,5 +1,7 @@
                 <% if current_user.activity_following.blank? %>
-                  "Start adding some activities"
+                  <p class="center">Add Local Activities to Your Dashboard</p>
+                  <br/>
+                  <%= render 'layouts/placeholder' %>
                 <% else %>
                   <% current_user.activity_following.each do |activity| %>
                     <%= render :partial => 'activities/followed_activities', :locals => { :activity => activity} %>

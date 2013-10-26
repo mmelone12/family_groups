@@ -1,0 +1,11 @@
+<div class="container">
+	<div class="five columns">
+		<p><strong>Subject:</strong></p><h2><%= message.subject %></h2>
+		<%= image_tag message.author.image_path %>
+		<p><strong>From:</strong> <%= message.author.name %></p>
+		<p><strong>To:</strong> <%= message.recipients.map(&:name).to_sentence %></p>
+		<p><strong>Received:</strong> <%= message.created_at.to_s(:long) %></p>
+		<br/>
+		<%= message.body %>
+	</div>
+</div>

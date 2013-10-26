@@ -96,7 +96,7 @@ end
   	def user_params
   		params.require(:user).permit(:name, :email, :address, :latitude, :longitude, :city, :state, 
         :password, :password_confirmation, :gender, :single_parent, :special_needs, :new_parent, :children_under_5,
-        :children_5_10, :tweens, :teens, :non_parent, :uploader_image)
+        :children_5_10, :tweens, :teens, :non_parent, :uploader_image, :image_path)
   	end
 
     # Before filters

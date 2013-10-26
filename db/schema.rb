@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131023211819) do
+ActiveRecord::Schema.define(version: 20131025044221) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,12 @@ ActiveRecord::Schema.define(version: 20131023211819) do
   create_table "activity_relationships", force: true do |t|
     t.integer  "activity_follower_id"
     t.integer  "activity_followed_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "avatars", force: true do |t|
+    t.string   "image_path"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -162,6 +168,7 @@ ActiveRecord::Schema.define(version: 20131023211819) do
     t.string   "non_parent"
     t.string   "uploader_image"
     t.string   "desc"
+    t.string   "image_path"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

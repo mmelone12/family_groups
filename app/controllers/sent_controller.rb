@@ -9,6 +9,8 @@ class SentController < ApplicationController
   end
 
   def new
+    @folder = current_user.inbox
+    @messages = @folder.messages.paginate :per_page => 10, :page => params[:page], :include => :message, :order => "messages.created_at DESC"
     @message = current_user.sent_messages.build
   end
   

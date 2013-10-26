@@ -7,12 +7,14 @@
 			<p><%= link_to "See more parent profiles nearby", avatar_user_path(@user), id: 'create_avatar', class: 'other_parents' %></p>
 		</div>
 		<div class ="four columns">
-    		<%= form_for(@user) do |f| %>
-                <%= f.text_area :desc, value: "*Ask a question to #{@matched_user.name} or simply introduce yourself!*
+			<%= form_for :message, :url => {:controller => "sent", :action => "create"} do |f| %>
+			<%= f.hidden_field(:to, :value => @matched_user.id) %>
+			<%= f.hidden_field(:subject, :value => "Hi! From a fellow parent in #{@matched_user.city}") %>
+  			<%= f.text_area :body, value: "*Ask a question to #{@matched_user.name} or simply introduce yourself!*
 
 Hi! It seems like we have some common interests. How are you handling being a parent in #{@matched_user.city}?" , class: "send_message"  %>
             <%= f.submit "Send Message", class: "b-matched_user" %>
-      <% end %>
+			<% end %>
 		</div>
 	</div> 	
 </div>

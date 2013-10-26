@@ -1,3 +1,9 @@
+$(function(){
+  $('.avatar_select').click(function(){
+    $(this).hide( "drop", { direction: "up" }, "slow" );
+    });
+});  
+
 $(document).ready(function() {
   $('#create_user').click(function(e) {
     var url = $(this).attr('href');
