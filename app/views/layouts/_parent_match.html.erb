@@ -8,12 +8,12 @@
 		</div>
 		<div class ="four columns">
 			<%= form_for :message, :url => {:controller => "sent", :action => "create"} do |f| %>
-			<%= f.hidden_field(:to, :value => @matched_user.id) %>
+			<%= f.hidden_field("message[to][]", :value => @matched_user.id) %>
 			<%= f.hidden_field(:subject, :value => "Hi! From a fellow parent in #{@matched_user.city}") %>
   			<%= f.text_area :body, value: "*Ask a question to #{@matched_user.name} or simply introduce yourself!*
 
 Hi! It seems like we have some common interests. How are you handling being a parent in #{@matched_user.city}?" , class: "send_message"  %>
-            <%= f.submit "Send Message", class: "b-matched_user" %>
+            <%= submit_tag "Send Message", class: "b-matched_user" %>
 			<% end %>
 		</div>
 	</div> 	
