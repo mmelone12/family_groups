@@ -708,3 +708,10 @@ $(document).ready(function() {
 });
 
 ActiveRecord::Base.connection.execute("SELECT SETVAL('message_id_seq', 1)")
+
+  <p>
+    To:<br />
+    <select name="message[to][]">
+      <%= options_from_collection_for_select(User.find(:all), :id, :name, @message.to) %>
+    </select>
+  </p>

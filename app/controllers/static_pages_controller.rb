@@ -5,6 +5,7 @@ class StaticPagesController < ApplicationController
   	@user = current_user
   	@city = request.location.city
     if signed_in?
+      @message = current_user.sent_messages.build
       @messages = current_user.received_messages.paginate :per_page => 10, :page => params[:page], :include => :message, :order => "messages.created_at DESC"
       @sent_messages = current_user.sent_messages.paginate :per_page => 10, :page => params[:page], :order => "created_at DESC"
       new_groups = RMeetup::Client.fetch(:groups, :lat => @user.latitude, :lon => @user.longitude, :topic => "parents")
@@ -26,9 +27,11 @@ class StaticPagesController < ApplicationController
       if other_user.empty? && User.near(@user).present?
         @matched_user = Rails.cache.fetch(@user.cache_key + '/daily_match', expires_in: 1.day){
         User.near(@user).order("RANDOM()").first}
+        @matched_users = User.near(@user).order("RANDOM()")
       else
         @matched_user = Rails.cache.fetch(@user.cache_key + '/daily_match', expires_in: 1.day){
         other_user.order("RANDOM()").first}
+        @matched_users = other_user.order("RANDOM()")
       end
        # current_user.new_parent).near(@user).order("RANDOM()").first
       #if other_user_alpha.present?

@@ -74,21 +74,31 @@ end
       end
   end
 
+  def index
+    other_user = User.near(@user).where.not(id: current_user.id).where(['gender = ? AND single_parent = ? OR new_parent = ? OR special_needs = ?
+        OR children_under_5 = ? OR children_5_10 = ? OR tweens = ? OR teens = ? OR non_parent = ?',
+        current_user.gender, current_user.single_parent, current_user.new_parent, current_user.special_needs,
+        current_user.children_under_5, current_user.children_5_10, current_user.tweens, current_user.teens,
+        current_user.non_parent])
+    if other_user.empty? && User.near(@user).present?
+        @matched_users = Rails.cache.fetch(@user.cache_key + '/daily_match', expires_in: 1.day){
+        User.near(@user).order("RANDOM()").first(5)}
+    else
+        @matched_users = Rails.cache.fetch(@user.cache_key + '/daily_match', expires_in: 1.day){
+        other_user.order("RANDOM()").first(5)}
+    end
+  end
+
   def edit
   end
 
   def update
     if @user.update_attributes(user_params)
       sign_in @user
-      redirect_to @user
+      redirect_to(root_url)
     else
       render 'edit'
     end
-  end
-
-  def avatar
-    @user = current_user
-    render 'avatar'
   end
 
   private

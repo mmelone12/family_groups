@@ -1,0 +1,19 @@
+<script>
+$('a.settings').on('click', function(e) {
+  e.preventDefault();
+
+  $('<div id="dialog-form"></div>').dialog({
+        autoOpen: true,
+        width: 500,
+        modal: true,
+        open: function() {
+            $(this).append($("<%= escape_javascript(render template: "users/edit") %>"));
+        },
+        close: function() {
+        $('#dialog-form').remove();
+      }
+    });
+    dialog_form.dialog('open');
+    e.preventDefault();
+  });
+</script>

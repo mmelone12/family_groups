@@ -1,16 +1,11 @@
-<div id="content">
-  <%= image_tag 'fglogo1.png', size: '180x50', class: 'low_margin' %>
-  <h1>Create Your Account and Start Finding New Activities</h1>
+<%= @user.name %> , <%= @user.email %>
+<h1>Update your profile</h1>
 
-    <div class="register_form">
-      <%= form_for(@user) do |f| %>
-        <%= render 'shared/error_messages' %>
+    <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages' %>
 
-        <%= f.label "First Name" %>
+        <%= f.label :name %>
         <%= f.text_field :name %>
-
-        <%= f.label :last_name %>
-        <%= f.text_field :last_name %>
 
         <%= f.label :email %>
         <%= f.text_field :email %>
@@ -19,9 +14,9 @@
         <%= f.text_field :address %>
 
         <%= f.label "Are you a Mom or Dad?" %>
-        <%= f.radio_button(:gender, "Male") %><b>Male</b>
-        <%= f.radio_button(:gender, "Female") %><b>Female</b> 
-        <br/>
+        <%= f.radio_button(:gender, "Mom") %><b>Mom</b><br/>
+        <%= f.radio_button(:gender, "Dad") %><b>Dad</b> 
+
         <%= f.label "What best describes you as a parent?" %>
         <div class="container">
             <div class="three columns">
@@ -37,20 +32,17 @@
                 <%= f.check_box(:special_needs) %><b>Special Needs</b><br/>
             </div>
         </div>
-        <br/>
         <%= f.label :avatar, "Pick a Profile Avatar" %>
         <% Avatar.all.each do |avatar| %>  
             <%= image_tag avatar.image_path, class: 'avatar_select' %>
             <%= f.radio_button :image_path, avatar.image_path, class: 'avatar_button' %>
         <% end %>  
-        <br/>
+
         <%= f.label :password %>
         <%= f.password_field :password %>
 
         <%= f.label :password_confirmation, "Confirmation" %>
         <%= f.password_field :password_confirmation %>
 
-        <%= f.submit "Create my account", class: "b-black" %>
-      <% end %>
-  </div>
-</div>
+      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+    <% end %>

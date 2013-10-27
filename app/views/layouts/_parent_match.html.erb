@@ -2,9 +2,16 @@
 			<h3 class="matched_user">Today's Matched Parent</h3>
 			<%= image_tag "avatars/female_avatar2.png", class: "matched_user_image" %>
 				<p class ="match"><%= @matched_user.name %> <%= @matched_user.profile_stats %> in <%= @matched_user.city %>. <%= @matched_user.kid_stats %> <%= @matched_user.parent_interests %> <%= @matched_user.parent_activities %><br/>
-				<strong><center><%= link_to "See full profile here.", avatar_user_path(@matched_user) %></center></strong></p>
+				<strong><center><%= link_to "See full profile here.", user_path(@matched_user), class: 'user_showme' %></center></strong></p>
 			<br/>
-			<p><%= link_to "See more parent profiles nearby", avatar_user_path(@user), id: 'create_avatar', class: 'other_parents' %></p>
+			<% if @user.premium? %>
+			<p><%= link_to "See more parent profiles nearby", users_path, id: 'other_users' %></p>
+			<% else %>
+			<p><%= link_to "See more parent profiles nearby", users_path, id: 'other_users' %></p>
+			<br/>
+			<div id="premium"><p>See more parent profiles nearby</p></div>
+			<% end %>
+
 		</div>
 		<div class ="four columns">
 			<%= form_for :message, :url => {:controller => "sent", :action => "create"} do |f| %>
@@ -15,7 +22,10 @@
 Hi! It seems like we have some common interests. How are you handling being a parent in #{@matched_user.city}?" , class: "send_message"  %>
             <%= submit_tag "Send Message", class: "b-matched_user" %>
 			<% end %>
+			<%= render partial: 'js/profile.js.erb' %>
+			<%= render partial: 'js/premium.js.erb' %>
+			<%= render partial: 'js/other_users.js.erb' %>
 		</div>
-	</div> 	
-</div>
+	 </div> 	
+   </div>
 </div>

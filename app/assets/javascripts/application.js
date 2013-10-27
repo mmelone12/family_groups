@@ -18,7 +18,6 @@
 //= require activities
 //= require interests
 //= require places
-//= require user_avatar
 //= require turbolinks
 //= require jquery.flexslider-min
 //= require jquery.cookie

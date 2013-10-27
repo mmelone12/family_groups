@@ -1,0 +1,10 @@
+<h3>To see more profiles and contact other parents, become a subscriber today</h3>
+<div class="four columns">
+      <h3 class="matched_user">Premium Users - More Parent Matches Near You</h3>
+      <% @matched_users.each do |match| %>
+      <%= image_tag "avatars/female_avatar2.png", class: "matched_user_image" %>
+        <p class ="match"><%= match.name %> <%= match.profile_stats %> in <%= match.city %>. <%= match.kid_stats %> <%= match.parent_interests %> <%= match.parent_activities %><br/>
+        <strong><center>See full profile here</center></strong></p>
+      <% end %>
+    </div>
+</div>

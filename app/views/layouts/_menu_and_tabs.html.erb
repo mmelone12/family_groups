@@ -1,28 +1,8 @@
 <div class="two-thirds column">
 				<nav id="menu" class="navigation">
 					<ul id="nav" class="clearfix">
-						<li><a href="index.html">Home<span>Dashboard</span></a>
-							<ul>
-								<li><a href="index02.html">Index 02</a></li>
-								<li><a href="index03.html">Index 03</a></li>
-								<li><a href="index04.html">Index 04</a></li>
-								<li><a href="faq.html">F.A.Q.</a></li>
-								<li><a href="team.html">Our Team</a></li>
-								<li><a href="services.html">Services</a></li>
-								<li><a href="prices.html">Prices</a></li>
-								<li><a href="sidebar-left.html">Sidebar Left</a></li>
-								<li><a href="sidebar-right.html">Sidebar Right</a></li>
-								<li><a href="#">And This</a>
-									<ul>
-										<li><a href="#">Goes Down</a></li>
-										<li><a href="#">A Really</a></li>
-										<li><a href="#">Really Long</a></li>
-										<li><a href="#">Way!</a></li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-						<li><a href="shortcodes.html">Settings<span>Edit Profile</span></a></li>
+						<li><a href="index.html">Home<span>Dashboard</span></a></li>
+						<li><a class="settings">Settings<span><%= @user.name %>'s Profile</span></a</li>
 						<li><a class="inbox">Inbox<span><strong><%= @user.new_messages %></strong> new messages</span></a></li>
 						<li><%= link_to "Sign Out", signout_path, method: "delete" %>
 						</li>
@@ -59,4 +39,5 @@
 							</div>
 						</div>
 				</div>
+				<%= render partial: 'js/settings.js.erb' %>
 				<%= render partial: 'js/mailbox.js.erb' %>

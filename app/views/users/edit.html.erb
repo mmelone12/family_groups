@@ -1,23 +1,53 @@
-<%= @user.name %> , <%= @user.email %>
-<h1>Update your profile</h1>
+  <%= image_tag 'fglogo1.png', size: '180x50', class: 'low_margin' %>
+  <h1>Update Your Account Information</h1>
 
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages' %>
 
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+        <%= f.label "First Name" %>
+        <%= f.text_field :name %>
 
-      <%= f.label :email %>
-      <%= f.text_field :email %>
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name %>
 
-      <%= f.label :password %>
-      <%= f.password_field :password %>
+        <%= f.label :email %>
+        <%= f.text_field :email %>
 
-      <%= f.label :password_confirmation, "Confirm Password" %>
-      <%= f.password_field :password_confirmation %>
+        <%= f.label :address, "Zip Code" %>
+        <%= f.text_field :address %>
 
-      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+        <%= f.label "Are you a Mom or Dad?" %>
+        <%= f.radio_button(:gender, "Male") %><b>Male</b>
+        <%= f.radio_button(:gender, "Female") %><b>Female</b> 
+        <br/>
+        <br/>
+        <%= f.label "What best describes you as a parent?" %>
+        <div class="container">
+            <div class="three columns">
+                <%= f.check_box(:single_parent) %><b>Single Parent</b><br/>
+                <%= f.check_box(:new_parent) %><b>New Parent</b><br/>
+                <%= f.check_box(:non_parent) %><b>I'm not a parent</b><br/>
+                <%= f.check_box(:children_under_5) %><b>Have children under age 5</b><br/>
+            </div>
+            <div class="three columns">
+                <%= f.check_box(:children_5_10) %><b>Have children ages 5 - 10</b><br/>
+                <%= f.check_box(:tweens) %><b>Parent of tweens</b><br/>
+                <%= f.check_box(:teens) %><b>Parent of teenagers</b><br/>
+                <%= f.check_box(:special_needs) %><b>Special Needs</b><br/>
+            </div>
+        </div>
+        <br/>
+        <%= f.label :avatar, "Pick a Profile Avatar" %>
+        <% Avatar.all.each do |avatar| %>  
+            <%= image_tag avatar.image_path, class: 'avatar_select' %>
+            <%= f.radio_button :image_path, avatar.image_path, class: 'avatar_button' %>
+        <% end %>  
+
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+
+        <%= f.label :password_confirmation, "Confirmation" %>
+        <%= f.password_field :password_confirmation %>
+
+      <%= f.submit "Save changes", class: "button_center2" %>
     <% end %>
-
-    <%= gravatar_for @user %>
-    <a href="http://gravatar.com/emails">change</a>

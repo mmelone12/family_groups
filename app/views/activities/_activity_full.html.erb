@@ -14,7 +14,7 @@
       <br />
         <%= link_to activity.article_link %></h3>
           <div id="disappear_button<%= "#{activity.id}" %>">
-          <%= form_for(current_user.activity_relationships.build(activity_followed_id: 
+            <%= form_for(current_user.activity_relationships.build(activity_followed_id: 
                              activity.id), remote: true) do |f| %> 
                 <div><%= f.hidden_field :activity_followed_id %></div>
                 <%= f.submit "Add to My Activities", class: "b-black" %>

@@ -1,0 +1,19 @@
+<div class="four columns">
+      <h3 class="matched_user">Premium Users - More Parent Matches Near You</h3>
+      <% @matched_users.each do |match| %>
+      <%= image_tag "avatars/female_avatar2.png", class: "matched_user_image" %>
+        <p class ="match"><%= match.name %> <%= match.profile_stats %> in <%= match.city %>. <%= match.kid_stats %> <%= match.parent_interests %> <%= match.parent_activities %><br/>
+        <strong><center><%= link_to "See full profile here.", user_path(match), class: 'user_showme' %></center></strong></p>
+      <br/>
+    </div>
+    <div class ="four columns">
+      <%= form_for :message, :url => {:controller => "sent", :action => "create"} do |f| %>
+        <%= f.hidden_field("to][", :value => match.id) %>
+      <%= f.hidden_field(:subject, :value => "Hi! From a fellow parent in #{match.city}") %>
+        <%= f.text_area :body, value: "*Ask a question to #{match.name} or simply introduce yourself!*
+
+Hi! It seems like we have some common interests. How are you handling being a parent in #{match.city}?" , class: "send_message"  %>
+            <%= submit_tag "Send Message", class: "b-matched_user" %>
+      <% end %>
+  <% end %>
+</div>

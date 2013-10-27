@@ -309,10 +309,10 @@ p.wrap {
   margin-left: 12px;
 }
 
-.other_parents {
+#other_users {
   margin-left: 27px;
   bottom: 10px;
-  position: absolute;
+  position: relative;
   font-weight: bold;
 }
 
@@ -413,3 +413,20 @@ h3.compose {
   margin-top: 5px;
 }
 
+.button_center2 {
+  width: 100px;
+  margin-left: 180px;
+  margin-top: -15px;
+  margin-bottom: -90px;
+}
+
+.move_right {
+  margin-left: 14px;
+}
+
+#premium {
+  margin-left: 27px;
+  bottom: 10px;
+  position: absolute;
+  font-weight: bold;
+} 
