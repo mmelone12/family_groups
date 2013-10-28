@@ -20,7 +20,7 @@ FamilyGroups::Application.routes.draw do
   resources :interests
   resources :sent, :mailbox
   resources :messages
-  resources :friendships
+  resources :friendships1  
 
   root 'static_pages#home'
   match '/signup', to: 'users#new', via: 'get'
