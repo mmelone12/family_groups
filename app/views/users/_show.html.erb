@@ -27,10 +27,10 @@
     	<span><%= image_tag place.image_path, size: '30' %>
     <% end %>
     <br/> 
-      <% if current_user.friends1.include?(@matched_user.id) %>
+      <% if current_user.friends.include?(@matched_user.id) %>
         <h3>Are you friends with this person?</h3>
         <br />
-        <%= form_for(current_user.friendships1.build(:friend1_id =>
+        <%= form_for(current_user.friendships.build(:friend_id =>
                      @matched_user.id)) do |f| %> 
              <div><%= hidden_field_tag :friend1_id, @matched_user.id %></div>
           <%= f.submit "Friend", class: "b-black" %>

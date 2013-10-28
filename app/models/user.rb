@@ -34,10 +34,10 @@ class User < ActiveRecord::Base
 
   has_many :places, dependent: :destroy
 
-  has_many :friendships1
-  has_many :friends1, :through => :friendships1    
-  has_many :inverse_friendships1, :class_name => "Friendship1", :foreign_key => "friend1_id"
-  has_many :inverse_friends1, :through => :inverse_friendships1, :source => :user
+  has_many :friendships
+  has_many :friends, :through => :friendships    
+  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
+  has_many :inverse_friends, :through => :inverse_friendships, :source => :user
 
   mount_uploader :uploader_image, ImageUploader
     
