@@ -27,4 +27,28 @@ CSV.foreach(path_to_file, { :skip_blanks => true }) do |row|
   :image_path => row[1],
   :desc => row[2]
 n=n+1
-end   
+end
+
+file_name = "users.csv"
+path_to_file = directory + file_name
+puts 'Loading User Records'
+# Pre-load all User records
+n=0
+CSV.foreach(path_to_file, { :skip_blanks => true }) do |row|
+  User.create! :name => row[0],
+  :last_name => row[1],
+  :address => row[2], 
+  :email => row[3],
+  :gender => row[4],
+  :new_parent => row[5],
+  :single_parent => row[6],
+  :children_under_5 => row[7], 
+  :children_5_10 => row[8],
+  :tweens => row[9],
+  :teens => row[10],
+  :special_needs => row[11],
+  :image_path => row[12], 
+  :new_parent => row[13],
+  :premium => row[14]
+n=n+1
+end      

@@ -7,7 +7,6 @@
 			<% if @user.premium? %>
 			<p><%= link_to "See more parent profiles nearby", users_path, id: 'other_users' %></p>
 			<% else %>
-			<p><%= link_to "See more parent profiles nearby", users_path, id: 'other_users' %></p>
 			<br/>
 			<div id="premium"><p>See more parent profiles nearby</p></div>
 			<% end %>

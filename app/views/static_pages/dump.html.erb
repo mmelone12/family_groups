@@ -715,3 +715,5 @@ ActiveRecord::Base.connection.execute("SELECT SETVAL('message_id_seq', 1)")
       <%= options_from_collection_for_select(User.find(:all), :id, :name, @message.to) %>
     </select>
   </p>
+
+                    image_path = place.search("img").to_s[/(http[^"]+\w)/]

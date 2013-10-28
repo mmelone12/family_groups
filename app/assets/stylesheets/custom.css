@@ -312,7 +312,7 @@ p.wrap {
 #other_users {
   margin-left: 27px;
   bottom: 10px;
-  position: relative;
+  position: absolute;
   font-weight: bold;
 }
 
