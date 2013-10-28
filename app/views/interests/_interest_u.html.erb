@@ -1,0 +1,24 @@
+<div class="four columns portfolio-item interests">
+    <div class="our-work">
+        <a class="img-overlay">
+            <div class= "min-height-activities">
+                <%= image_tag interest.image_path %>
+            <div class="img-overlay-div">
+                <div class="sign_showme"> 
+                    <h4><%= interest.name %></h4>
+                    </br>
+                    <h5>Description:
+                    </br>
+                    <%= interest.desc.truncate(125) %></h5>
+                </div>
+                <div class='sign_showme'>
+                  <div id="b-item", style="color:white">
+                  Follow
+                  </div>
+                </div>
+            </div>
+           </div>
+        </a>
+        <h3><%= link_to interest.name, "#", class: "sign_showme" %></a><span>features info</span></h3>
+   </div>
+</div>

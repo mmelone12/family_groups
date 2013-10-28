@@ -717,3 +717,346 @@ ActiveRecord::Base.connection.execute("SELECT SETVAL('message_id_seq', 1)")
   </p>
 
                     image_path = place.search("img").to_s[/(http[^"]+\w)/]
+
+<div class="two-thirds column">
+        <nav id="menu" class="navigation">
+          <ul id="nav" class="clearfix">
+            <li><a href="index.html" class="active">Home<span>home info</span></a>
+              <ul>
+                <li><a href="index02.html">Index 02</a></li>
+                <li><a href="index03.html">Index 03</a></li>
+                <li><a href="index04.html">Index 04</a></li>
+                <li><a href="faq.html">F.A.Q.</a></li>
+                <li><a href="team.html">Our Team</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="prices.html">Prices</a></li>
+                <li><a href="sidebar-left.html">Sidebar Left</a></li>
+                <li><a href="sidebar-right.html">Sidebar Right</a></li>
+                <li><a href="#">And This</a>
+                  <ul>
+                    <li><a href="#">Goes Down</a></li>
+                    <li><a href="#">A Really</a></li>
+                    <li><a href="#">Really Long</a></li>
+                    <li><a href="#">Way!</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="shortcodes.html">How It Works<span>features info</span></a></li>
+            <li><a href="projects.html">Team<span>folio extra info</span></a>
+              <ul>
+                <li><a href="projects02.html">Portfolio 02</a></li>
+                <li><a href="projects03.html">Portfolio 03</a></li>
+                <li><a href="projects-single.html">Portfolio Single</a></li>
+              </ul>
+            </li>
+            <li><a href="blog.html">Contact<span>extra info</span></a>
+              <ul>
+                <li><a href="blog-full-width.html">Full Width</a></li>
+                <li><a href="blog-variant.html">Small Image</a></li>
+                <li><a href="blog-single.html">Single Page</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="sixteen columns">
+        <hr class="line" />
+      </div>
+    </div>
+  </header>
+  <div class="container main">
+            <div class="eight columns">
+          <h3 class="shortcodes">Check out your community and meet fellow parents.</h3>
+          <ul class="tabs-nav">
+            <li><a href="#tab1">User Sign Up</a></li>
+            <li><a href="#tab2">Log In</a></li>
+          </ul>
+          <div class="tabs-container">
+            <div id="tab1" class="tab-content">Finding other parents to hang out and schedule playdates with can be hard. Scroll through local family events, places and groups and discover moms and dads with similar interests. <br /> <%= link_to "Join your community", signup_path, id: 'create_user', class: "b-new", style: "color:white" %> </div>
+            <div id="tab2" class="tab-content">
+              <%= form_for(:session, url: sessions_path) do |f| %>
+
+                  <%= f.label :email %>
+                    <%= f.text_field :email %>
+
+                  <%= f.label :password %>
+                    <%= f.password_field :password %>
+
+                    <%= f.submit "Sign in", style: 'color:white', class: "b-color" %>
+                <% end %>
+            </div>
+          </div>
+        </div> 
+        <div class="eight columns">
+          <div class="flexslider work-slider">
+            <ul class="slides">
+              <li>
+                <%= image_tag "imgs/slider/momsatpark.png" %>
+              </li>
+              <li>
+                <%= image_tag "imgs/slider/slidergraphic.jpg" %>
+              </li>
+            </ul>
+          </div>
+        </div>  
+    </div>
+    
+    <div class="container">
+      <div class="sixteen columns">
+        <hr class="line slogan" />
+      </div>
+    </div>
+    
+    <div id="page-content" class="full-width container projects">
+
+      <div class="container">
+        <div class="sixteen columns">
+          <h3 class="shortcodes">What's going on in <%= @city %>.</h3>
+          <div id="filters">
+            <ul class="option-set" data-option-key="filter">
+              <li><a href="#filter" data-option-value="*">See All</a></li>
+              <li><a href="#filter" class="selected" data-option-value=".activities">Activities</a></li>
+              <li><a href="#filter" data-option-value=".groups">Groups</a></li>
+              <li><a href="#filter" data-option-value=".places">Places</a></li>
+              <li><a href="#filter" data-option-value=".interests">Interests</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    
+      <div class="container">
+        <div id="portfolio-wrapper">
+        
+          <div class="four columns portfolio-item activities">
+            <div class="our-work">
+              <a class="img-overlay" href="#">
+                <%= image_tag "imgs/events/kites.png" %>
+                <div class="img-overlay-div"></div>
+              </a>
+              <h3><a href="#">Project no.1</a><span>features info</span></h3>
+            </div>
+          </div>
+          <div class="four columns portfolio-item activities">
+            <div class="our-work">
+              <a class="img-overlay" href="#">
+                <%= image_tag "imgs/events/woodworkresized.png" %>
+                <div class="img-overlay-div"></div>
+              </a>
+              <h3><a href="#">Project no.2</a><span>features info</span></h3>
+            </div>
+          </div>
+          <div class="four columns portfolio-item interests">
+            <div class="our-work">
+              <a class="img-overlay" href="#">
+                <%= image_tag "imgs/groups/motherwithcutebaby.png" %>
+                <div class="img-overlay-div"></div>
+              </a>
+              <h3><a href="#">Project no.3</a><span>features info</span></h3>
+            </div>
+          </div>
+          <div class="four columns portfolio-item activities">
+            <div class="our-work">
+              <a class="img-overlay" href="#">
+                <%= image_tag "imgs/work_big/work04.jpg" %>
+                <div class="img-overlay-div"></div>
+              </a>
+              <h3><a href="#">Project no.4</a><span>features info</span></h3>
+            </div>
+          </div>
+          
+          <div class="four columns portfolio-item groups">
+            <div class="our-work">
+              <a class="img-overlay" href="#">
+                <%= image_tag "imgs/work_big/work05.jpg" %>
+                <div class="img-overlay-div"></div>
+              </a>
+              <h3><a href="#">Project no.5</a><span>features info</span></h3>
+            </div>
+          </div>
+          <div class="four columns portfolio-item groups">
+            <div class="our-work">
+              <a class="img-overlay" href="#">
+                <%= image_tag "imgs/work_big/work06.jpg" %>
+                <div class="img-overlay-div"></div>
+              </a>
+              <h3><a href="#">Project no.6</a><span>features info</span></h3>
+            </div>
+          </div>
+          <div class="four columns portfolio-item places">
+            <div class="our-work">
+              <a class="img-overlay" href="#">
+                <%= image_tag "imgs/work_big/work07.jpg" %>
+                <div class="img-overlay-div"></div>
+              </a>
+              <h3><a href="#">Project no.7</a><span>features info</span></h3>
+            </div>
+          </div>
+          <div class="four columns portfolio-item places">
+            <div class="our-work">
+              <a class="img-overlay" href="#">
+                <%= image_tag "imgs/events/carnivalresized.png" %>
+                <div class="img-overlay-div"></div>
+              </a>
+              <h3><a href="#">Project no.8</a><span>features info</span></h3>
+            </div>
+          </div>
+          
+          <div class="four columns portfolio-item groups">
+            <div class="our-work">
+              <a class="img-overlay" href="#">
+                <%= image_tag "imgs/events/yogaresized.png" %>
+                <div class="img-overlay-div"></div>
+              </a>
+              <h3><a href="#">Project no.9</a><span>features info</span></h3>
+            </div>
+          </div>
+          <div class="four columns portfolio-item activities">
+            <div class="our-work">
+              <a class="img-overlay" href="#">
+                <%= image_tag "imgs/work_big/work10.jpg" %>
+                <div class="img-overlay-div"></div>
+              </a>
+              <h3><a href="#">Project no.10</a><span>features info</span></h3>
+            </div>
+          </div>
+          <div class="four columns portfolio-item interests">
+            <div class="our-work">
+              <a class="img-overlay" href="#">
+                <%= image_tag "imgs/work_big/work11.jpg" %>
+                <div class="img-overlay-div"></div>
+              </a>
+              <h3><a href="#">Project no.11</a><span>features info</span></h3>
+            </div>
+          </div>
+          <div class="four columns portfolio-item groups">
+            <div class="our-work">
+              <a class="img-overlay" href="#">
+                <%= image_tag "imgs/events/bouncyhouseresized.png" %>
+                <div class="img-overlay-div"></div>
+              </a>
+              <h3><a href="#">Project no.12</a><span>features info</span></h3>
+            </div>
+          </div>
+          
+          <div class="four columns portfolio-item places">
+            <div class="our-work">
+              <a class="img-overlay" href="#">
+                <%= image_tag "imgs/work_big/work13.jpg" %>
+                <div class="img-overlay-div"></div>
+              </a>
+              <h3><a href="#">Project no.13</a><span>features info</span></h3>
+            </div>
+          </div>
+          <div class="four columns portfolio-item groups">
+            <div class="our-work">
+              <a class="img-overlay" href="#">
+                <%= image_tag "imgs/work_big/work14.jpg" %>
+                <div class="img-overlay-div"></div>
+              </a>
+              <h3><a href="#">Project no.14</a><span>features info</span></h3>
+            </div>
+          </div>
+          <div class="four columns portfolio-item events">
+            <div class="our-work">
+              <a class="img-overlay" href="#">
+                <%= image_tag "imgs/work_big/work15.jpg" %>
+                <div class="img-overlay-div"></div>
+              </a>
+              <h3><a href="#">Project no.15</a><span>features info</span></h3>
+            </div>
+          </div>
+          <div class="four columns portfolio-item interests">
+            <div class="our-work">
+              <a class="img-overlay" href="#">
+                <%= image_tag "imgs/work_big/work16.jpg" %>
+                <div class="img-overlay-div"></div>
+              </a>
+              <h3><a href="#">Project no.16</a><span>features info</span></h3>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    
+    </div>
+      
+  </div>
+  <footer>
+    <div class="container">
+      <div class="four columns">
+        <div class="company">
+          <%= image_tag "footer_logo.png" %>
+          <p>Alice drew her foot as far down the chimney as she could and waited till she heard a little animal scratching and scrambling about in the chimney close above her; then she gave one sharp kick and waited to see what would happen next.</p>
+        </div>
+      </div>
+      <div class="four columns">
+        <h3>Contact information</h3>
+        <p>6334 Central Luminous Boulevard,<br />
+        Los Angeles Coast, CA 903211<br /><br />
+        Phone: 021-345-124<br />
+        Fax: 542-456-765<br /><br />
+        E-mail: <a href="#">support@black&amp;orange.com</a></p>
+      </div>
+      <div class="four columns">
+        <h3>Recent tweets</h3>
+        <p>If you happen to be in Europe in Oct, join "Test The Web Forward" conf in Paris with editors of Web standards - <a href="#">http://testthewebforward.org/paris-2012.html</a><br />
+        <span class="tweet_time">12 hours ago</span><br />
+        A useful case-study: How to Make Your Own App Promo Cards - <a href="#">http://bit.ly/PV5cjh</a><br />
+        <span class="tweet_time">13 hours ago</span></p>
+      </div>
+      <div class="four columns">
+        <div class="flickr clearfix">
+          <h3>From Flickr</h3>
+          <a href="#"><%= image_tag "imgs/flickr/flickr01.jpg" %></a>
+          <a href="#"><%= image_tag "imgs/flickr/flickr02.jpg" %></a>
+          <a href="#"><%= image_tag "imgs/flickr/flickr03.jpg" %></a>
+          <a href="#"><%= image_tag "imgs/flickr/flickr04.jpg" %></a>
+          <a href="#"><%= image_tag "imgs/flickr/flickr05.jpg" %></a>
+          <a href="#"><%= image_tag "imgs/flickr/flickr06.jpg" %></a>
+          <a href="#"><%= image_tag "imgs/flickr/flickr01.jpg" %></a>
+          <a href="#"><%= image_tag "imgs/flickr/flickr06.jpg" %></a>
+          <a href="#"><%= image_tag "imgs/flickr/flickr07.jpg" %></a>
+          <a href="#"><%= image_tag "imgs/flickr/flickr08.jpg" %></a>
+          <a href="#"><%= image_tag "imgs/flickr/flickr02.jpg" %></a>
+          <a href="#"><%= image_tag "imgs/flickr/flickr03.jpg" %></a>
+        </div>
+      </div>
+      <div class="sixteen columns">
+        <hr class="line footer" />
+      </div>
+      <div class="eight columns">
+        <div class="copyright">
+          &copy; Copyright 2013
+          <a href="index.html">Black&amp;Green</a>.
+          All Rights Reserved. Theme by 
+          <a target="_blank" href="http://themeforest.net/user/The_Silverman">silviu andrei</a>.
+        </div>
+      </div>
+      <div class="eight columns">
+        <div class="social">
+          <a href="#">
+            <%= image_tag "social/dribbble.png" %>
+          </a>
+          <a href="#">
+            <%= image_tag "social/twitter.png" %>
+          </a>
+          <a href="#">
+            <%= image_tag "social/vimeo.png" %>
+          </a>
+          <a href="#">
+            <%= image_tag "social/facebook.png" %>
+          </a>
+          <a href="#">
+            <%= image_tag "social/youtube.png" %>
+          </a>
+          <a href="#">
+            <%= image_tag "social/digg.png" %>
+          </a>
+        </div>
+      </div>
+
+          <% @other_places.each do |place| %>
+            <%= render :partial => 'places/other_place', :locals => { :place => place } %>
+            <%= render :partial => 'js/other_places.js.erb', :locals => { :place => place } %>
+          <% end %>

@@ -2,9 +2,9 @@ class StaticPagesController < ApplicationController
 
   def home
     RMeetup::Client.api_key = "2e2c342c1e7b93a141362e4427b7"
-  	@user = current_user
   	@city = request.location.city
     if signed_in?
+      @user = current_user
       @message = current_user.sent_messages.build
       @messages = current_user.received_messages.paginate :per_page => 10, :page => params[:page], :include => :message, :order => "messages.created_at DESC"
       @sent_messages = current_user.sent_messages.paginate :per_page => 10, :page => params[:page], :order => "created_at DESC"
@@ -44,14 +44,18 @@ class StaticPagesController < ApplicationController
       if current_user.following.blank?
           @interests = Interest.all
       else
-          @newinterests = Interest.where("id NOT IN (?)", current_user.relationships.pluck(:followed_id))
-          interest_ids = @newinterests.find( :all, :select => 'id' ).map( &:id )
-          @interests = Interest.find( (1..8).map { interest_ids.delete_at( interest_ids.size * rand ) } )
+          newinterests = Interest.where("id NOT IN (?)", current_user.relationships.pluck(:followed_id))
+          interest_ids = newinterests.find( :all, :select => 'id' ).map( &:id )
+          @interests = Interest.find( (1..35).map { interest_ids.delete_at( interest_ids.size * rand ) } )
       end
     else
-      @group = Group.create
-      @interests = Interest.all
-      @places = Place.where('city IS ?', @city)
+      @user = request.ip
+      @groups = RMeetup::Client.fetch(:groups, :lat => request.location.latitude, :lon => request.location.longitude, :topic => "parents").first(12)
+      @interests = Interest.order("RANDOM()").first(15)
+      @places = Place.near(@city).first(15)
+      activities = Activity.where('start_date IS NOT NULL')
+      @activities = activities.near(@city).all( :order => "start_date", :limit => 15)
+      @recurring_activities = Activity.where(['recurring = ?', "yes"]).first(5)
     end
   end
 

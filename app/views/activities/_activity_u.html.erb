@@ -1,0 +1,44 @@
+<div class="four columns portfolio-item activities">
+    <div class="our-work">
+        <a class="img-overlay">
+        	<div class= "min-height-activities">
+            <%= image_tag activity.image_path %>
+            <div class="img-overlay-div">
+             <div class="sign_showme"> 
+            <h4>
+            <%= if activity.title.length > 35; activity.title.truncate(35) + "...  "; else activity.title; end %>
+            </h4>
+            <h5>
+            <br />
+            <%= if activity.desc.length > 130; activity.desc.truncate(130); else activity.desc; end %>...<div class="learn_more"> Learn More</div>
+            </h5>
+              </div>
+                <div class='sign_showme'>
+                  <div id="b-item", style="color:white">
+                  Follow
+                  </div>
+                </div>
+            </div>
+          </div>
+        </a>
+        <% if activity.title.length > 30 %>
+        <h3>  
+          <div class="smaller_size">
+            <%= link_to activity.title.truncate(30), "#", class: "sign_showme" %><span>
+            <% if activity.start_date.blank? %> 
+              <%= link_to activity.when.truncate(40), "#", class: "sign_showme" %>
+            <% else %>
+              <%= link_to activity.start_date.to_formatted_s(:rfc822), "#", class: "sign_showme" %>
+            <% end %></span>
+          </div>
+        </h3>
+        <% else %>
+          <h3> <%= link_to activity.title, "#", class: "sign_showme" %><span>
+              <% if activity.start_date.blank? %> 
+                <%= link_to activity.when.truncate(40), "#", class: "sign_showme" %>
+              <% else %>
+                <%= link_to activity.start_date.to_formatted_s(:rfc822), "#", class: "sign_showme" %>
+              <% end %></span></h3>
+        <% end %>
+    </div>
+  </div>			

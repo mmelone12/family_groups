@@ -2,40 +2,11 @@
 				<nav id="menu" class="navigation">
 					<ul id="nav" class="clearfix">
 						<li><a href="index.html" class="active">Home<span>home info</span></a>
-							<ul>
-								<li><a href="index02.html">Index 02</a></li>
-								<li><a href="index03.html">Index 03</a></li>
-								<li><a href="index04.html">Index 04</a></li>
-								<li><a href="faq.html">F.A.Q.</a></li>
-								<li><a href="team.html">Our Team</a></li>
-								<li><a href="services.html">Services</a></li>
-								<li><a href="prices.html">Prices</a></li>
-								<li><a href="sidebar-left.html">Sidebar Left</a></li>
-								<li><a href="sidebar-right.html">Sidebar Right</a></li>
-								<li><a href="#">And This</a>
-									<ul>
-										<li><a href="#">Goes Down</a></li>
-										<li><a href="#">A Really</a></li>
-										<li><a href="#">Really Long</a></li>
-										<li><a href="#">Way!</a></li>
-									</ul>
-								</li>
-							</ul>
 						</li>
 						<li><a href="shortcodes.html">How It Works<span>features info</span></a></li>
 						<li><a href="projects.html">Team<span>folio extra info</span></a>
-							<ul>
-								<li><a href="projects02.html">Portfolio 02</a></li>
-								<li><a href="projects03.html">Portfolio 03</a></li>
-								<li><a href="projects-single.html">Portfolio Single</a></li>
-							</ul>
 						</li>
 						<li><a href="blog.html">Contact<span>extra info</span></a>
-							<ul>
-								<li><a href="blog-full-width.html">Full Width</a></li>
-								<li><a href="blog-variant.html">Small Image</a></li>
-								<li><a href="blog-single.html">Single Page</a></li>
-							</ul>
 						</li>
 					</ul>
 				</nav>
@@ -63,7 +34,7 @@
 						      <%= f.label :password %>
       						  <%= f.password_field :password %>
 
-      						  <%= f.submit "Sign in", style: 'color:white', class: "b-color" %>
+      						  <%= f.submit "Sign in", class: "b-sign" %>
     					  <% end %>
 						</div>
 					</div>
@@ -107,160 +78,35 @@
 		
 			<div class="container">
 				<div id="portfolio-wrapper">
-				
+				<% @places.each do |place| %>
+					<%= render :partial => 'places/place_u', :locals => { :place => place } %>
+				<% end %>
+				<% if @activities.blank? && @recurring_activities.blank? %>
 					<div class="four columns portfolio-item activities">
-						<div class="our-work">
-							<a class="img-overlay" href="#">
-								<%= image_tag "imgs/events/kites.png" %>
-								<div class="img-overlay-div"></div>
-							</a>
-							<h3><a href="#">Project no.1</a><span>features info</span></h3>
-						</div>
+        				<br />
+        				<br />
+							<ul>
+				  				<li>We don't have activities for <% @user.city %> today, but please check again in a few days!</li>
+			    			</ul>
 					</div>
-					<div class="four columns portfolio-item activities">
-						<div class="our-work">
-							<a class="img-overlay" href="#">
-								<%= image_tag "imgs/events/woodworkresized.png" %>
-								<div class="img-overlay-div"></div>
-							</a>
-							<h3><a href="#">Project no.2</a><span>features info</span></h3>
-						</div>
-					</div>
-					<div class="four columns portfolio-item interests">
-						<div class="our-work">
-							<a class="img-overlay" href="#">
-								<%= image_tag "imgs/groups/motherwithcutebaby.png" %>
-								<div class="img-overlay-div"></div>
-							</a>
-							<h3><a href="#">Project no.3</a><span>features info</span></h3>
-						</div>
-					</div>
-					<div class="four columns portfolio-item activities">
-						<div class="our-work">
-							<a class="img-overlay" href="#">
-								<%= image_tag "imgs/work_big/work04.jpg" %>
-								<div class="img-overlay-div"></div>
-							</a>
-							<h3><a href="#">Project no.4</a><span>features info</span></h3>
-						</div>
-					</div>
-					
-					<div class="four columns portfolio-item groups">
-						<div class="our-work">
-							<a class="img-overlay" href="#">
-								<%= image_tag "imgs/work_big/work05.jpg" %>
-								<div class="img-overlay-div"></div>
-							</a>
-							<h3><a href="#">Project no.5</a><span>features info</span></h3>
-						</div>
-					</div>
-					<div class="four columns portfolio-item groups">
-						<div class="our-work">
-							<a class="img-overlay" href="#">
-								<%= image_tag "imgs/work_big/work06.jpg" %>
-								<div class="img-overlay-div"></div>
-							</a>
-							<h3><a href="#">Project no.6</a><span>features info</span></h3>
-						</div>
-					</div>
-					<div class="four columns portfolio-item places">
-						<div class="our-work">
-							<a class="img-overlay" href="#">
-								<%= image_tag "imgs/work_big/work07.jpg" %>
-								<div class="img-overlay-div"></div>
-							</a>
-							<h3><a href="#">Project no.7</a><span>features info</span></h3>
-						</div>
-					</div>
-					<div class="four columns portfolio-item places">
-						<div class="our-work">
-							<a class="img-overlay" href="#">
-								<%= image_tag "imgs/events/carnivalresized.png" %>
-								<div class="img-overlay-div"></div>
-							</a>
-							<h3><a href="#">Project no.8</a><span>features info</span></h3>
-						</div>
-					</div>
-					
-					<div class="four columns portfolio-item groups">
-						<div class="our-work">
-							<a class="img-overlay" href="#">
-								<%= image_tag "imgs/events/yogaresized.png" %>
-								<div class="img-overlay-div"></div>
-							</a>
-							<h3><a href="#">Project no.9</a><span>features info</span></h3>
-						</div>
-					</div>
-					<div class="four columns portfolio-item activities">
-						<div class="our-work">
-							<a class="img-overlay" href="#">
-								<%= image_tag "imgs/work_big/work10.jpg" %>
-								<div class="img-overlay-div"></div>
-							</a>
-							<h3><a href="#">Project no.10</a><span>features info</span></h3>
-						</div>
-					</div>
-					<div class="four columns portfolio-item interests">
-						<div class="our-work">
-							<a class="img-overlay" href="#">
-								<%= image_tag "imgs/work_big/work11.jpg" %>
-								<div class="img-overlay-div"></div>
-							</a>
-							<h3><a href="#">Project no.11</a><span>features info</span></h3>
-						</div>
-					</div>
-					<div class="four columns portfolio-item groups">
-						<div class="our-work">
-							<a class="img-overlay" href="#">
-								<%= image_tag "imgs/events/bouncyhouseresized.png" %>
-								<div class="img-overlay-div"></div>
-							</a>
-							<h3><a href="#">Project no.12</a><span>features info</span></h3>
-						</div>
-					</div>
-					
-					<div class="four columns portfolio-item places">
-						<div class="our-work">
-							<a class="img-overlay" href="#">
-								<%= image_tag "imgs/work_big/work13.jpg" %>
-								<div class="img-overlay-div"></div>
-							</a>
-							<h3><a href="#">Project no.13</a><span>features info</span></h3>
-						</div>
-					</div>
-					<div class="four columns portfolio-item groups">
-						<div class="our-work">
-							<a class="img-overlay" href="#">
-								<%= image_tag "imgs/work_big/work14.jpg" %>
-								<div class="img-overlay-div"></div>
-							</a>
-							<h3><a href="#">Project no.14</a><span>features info</span></h3>
-						</div>
-					</div>
-					<div class="four columns portfolio-item events">
-						<div class="our-work">
-							<a class="img-overlay" href="#">
-								<%= image_tag "imgs/work_big/work15.jpg" %>
-								<div class="img-overlay-div"></div>
-							</a>
-							<h3><a href="#">Project no.15</a><span>features info</span></h3>
-						</div>
-					</div>
-					<div class="four columns portfolio-item interests">
-						<div class="our-work">
-							<a class="img-overlay" href="#">
-								<%= image_tag "imgs/work_big/work16.jpg" %>
-								<div class="img-overlay-div"></div>
-							</a>
-							<h3><a href="#">Project no.16</a><span>features info</span></h3>
-						</div>
-					</div>
-					
+					<% else %>
+  					<% @activities.each do |activity| %>
+						<%= render :partial => 'activities/activity_u', :locals => { :activity => activity } %>
+					<% end %>
+					<% @recurring_activities.each do |activity| %>
+						<%= render :partial => 'activities/activity_u', :locals => { :activity => activity } %>
+					<% end %>
+				<% end %>
+				<% @groups.each do |group| %>
+					<%= render :partial => 'groups/group_u', :locals => { :group => group } %>
+				<% end %>	
+				<% @interests.each do |interest| %>
+  					<%= render :partial => 'interests/interest_u', :locals => {:interest => interest} %> 
+				<% end %>	
+									<%= render :partial => 'js/sign_up.js.erb' %>				
 				</div>
 			</div>
-		
 		</div>
-			
 	</div>
 	<footer>
 		<div class="container">
