@@ -35,11 +35,11 @@
         <% if group.name.length > 30 %>
         <h3>  
           <div class="smaller_size">
-            <%= link_to group.name.html_safe.mb_chars.limit(50).to_s, "#", class: "groups_showme" %><span><%= link_to "Click here to learn more", "#", class: "groups_showme" %></span>
+            <%= link_to group.name.html_safe.mb_chars.limit(50).to_s, "#", class: "groups_showme" %><span><%= link_to group.city.html_safe.mb_chars.limit(50).to_s, "#", class: "groups_showme" %></span>
           </div>
         </h3>
         <% else %>
-        <h3><%= link_to group.name.html_safe.mb_chars.limit(30).to_s, "#", class: "groups_showme" %><span><%= link_to "Click here to learn more", "#", class: "groups_showme" %></span></h3>
+        <h3><%= link_to group.name.html_safe.mb_chars.limit(30).to_s, "#", class: "groups_showme" %><span><%= link_to group.city.html_safe.mb_chars.limit(50).to_s, "#", class: "groups_showme" %></span></h3>
         <% end %>
     </div>
   </div>

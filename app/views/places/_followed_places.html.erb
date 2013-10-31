@@ -4,7 +4,7 @@
 	<div class="img-wrap1">
     <%= image_tag place.image_path, size: "50", class: "followed_items", id: "disappear_follow#{place.id}" %>
     	<div class="img-overlay1">
-    		<p><%= place.name.truncate(25) %></p>
+    		<p><div class="followed_items1"><%= place.name.truncate(25) %></div></p>
     	</div>
     </div>
 <% end %>

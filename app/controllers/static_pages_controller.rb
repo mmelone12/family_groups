@@ -27,11 +27,9 @@ class StaticPagesController < ApplicationController
       if other_user.empty? && User.near(@user).present?
         @matched_user = Rails.cache.fetch(@user.cache_key + '/daily_match', expires_in: 1.day){
         User.near(@user).order("RANDOM()").first}
-        @matched_users = User.near(@user).order("RANDOM()")
       else
         @matched_user = Rails.cache.fetch(@user.cache_key + '/daily_match', expires_in: 1.day){
         other_user.order("RANDOM()").first}
-        @matched_users = other_user.order("RANDOM()")
       end
        # current_user.new_parent).near(@user).order("RANDOM()").first
       #if other_user_alpha.present?
@@ -49,7 +47,6 @@ class StaticPagesController < ApplicationController
           @interests = Interest.find( (1..35).map { interest_ids.delete_at( interest_ids.size * rand ) } )
       end
     else
-      @user = request.ip
       @groups = RMeetup::Client.fetch(:groups, :lat => request.location.latitude, :lon => request.location.longitude, :topic => "parents").first(12)
       @interests = Interest.order("RANDOM()").first(15)
       @places = Place.near(@city).first(15)
@@ -59,9 +56,12 @@ class StaticPagesController < ApplicationController
     end
   end
 
+  def howitworks
+  end
+
   def team
   end
 
-  def help
+  def contact
   end
 end

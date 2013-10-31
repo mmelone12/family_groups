@@ -2,8 +2,9 @@
 				<nav id="menu" class="navigation">
 					<ul id="nav" class="clearfix">
 						<li><a href="index.html">Home<span>Dashboard</span></a></li>
-						<li><a class="settings">Settings<span><%= @user.name %>'s Profile</span></a</li>
-						<li><a class="inbox">Inbox<span><strong><%= @user.new_messages %></strong> new messages</span></a></li>
+						<li><%= link_to edit_user_path(@user), id: 'edit_user' do %>Settings
+							<span><%= @user.name %>'s Profile<% end %></span></li>
+						<li><a class="inbox">Mailbox<span><strong><%= @user.new_messages %></strong> new messages</span></a></li>
 						<li><%= link_to "Sign Out", signout_path, method: "delete" %>
 						</li>
 					</ul>

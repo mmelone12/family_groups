@@ -1,12 +1,43 @@
-<%= @user.name %> , <%= @user.email %>
-<h1>
-	<%= gravatar_for @user %>
-	<%= @user.name %>
-</h1>
-<div class="register_form">
-        <% Avatar.all.each do |avatar| %>  
-            <div class ="avatar_select">
-                <%= image_tag avatar.image_path %>
-            </div>
-        <% end %>  
+<div id="content">
+  <div class="container main">
+    <div class="two columns">
+      <%= image_tag @user.image_path %><br/>   
+      City: <%= @user.city %>
+    </div> 
+    <div class="six columns">
+    <h6><%= @user.name %></h6>
+    <%= @user.name %> <%= @user.profile_stats %> in <%= @user.city %>. <%= @user.kid_stats %> <%= @user.parent_interests %> <%= @user.parent_activities %>
+    <br />
+    <br />
+    <p>Some of <%= @user.name %>'s Interests:</p>
+    <% @user.following.each do |interest| %>
+    	<span><%= image_tag interest.image_path, size: '30' %>
+    <% end %>
+    <br/>
+     <p>Some of <%= @user.name %>'s Activities:</p>
+    <% @user.activity_following.each do |activity| %>
+    	<span><%= image_tag activity.image_path, size: '30' %>
+    <% end %>
+    <br/> 
+        <p>Some of<%= @user.name %>'s Groups:</p>
+    <% @user.group_following.each do |group| %>
+    	<span><%= image_tag group.image_path, size: '30' %>
+    <% end %>
+    <br/>
+     <p>Some of<%= @user.name %>'s Places:</p>
+    <% @user.place_following.each do |activity| %>
+    	<span><%= image_tag place.image_path, size: '30' %>
+    <% end %>
+    <br/> 
+      <% if current_user.friends.exclude?(@user) %>
+        <h3>Are you friends with this person?</h3>
+        <br />
+        <%= form_for(current_user.friendships.build(:friend_id =>
+                     @user)) do |f| %> 
+             <div><%= hidden_field_tag :friend_id, @user.id %></div>
+          <%= f.submit "Friend", class: "b-black" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div> 
 </div>

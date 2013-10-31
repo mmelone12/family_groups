@@ -50,7 +50,7 @@ CSV.foreach(path_to_file, { :skip_blanks => true }) do |row|
   :teens => row[12],
   :special_needs => row[13],
   :image_path => row[14], 
-  :new_parent => row[15],
+  :non_parent => row[15],
   :premium => row[16]
 n=n+1
 end      

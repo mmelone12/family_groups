@@ -103,74 +103,67 @@ class User < ActiveRecord::Base
   end
 
   def profile_stats
-    if self.single_parent == "1"
+    if single_parent == "1"
       answer = "is a single parent"
     end
-    if self.new_parent == "1"
+    if new_parent == "1"
       answer = "is a new parent"
     end
-    if self.non_parent == "1"
+    if non_parent == "1"
       answer = "is a non-parent"
     end
     answer
+    if single_parent == "0" && new_parent == "0" && non_parent == nil
+      if gender == "Male"
+        first = ("is a dad living").html_safe
+    end
+      if gender == "Female"
+        first = ("is a mom living").html_safe
+      end
+    end
+    first
   end
 
   def kid_stats
-    if self.single_parent.blank? && self.new_parent.blank? && self.non_parent.blank?
-      if self.children_under_5.present?
-        ("has children <strong>under five</strong>.").html_safe
-      end
-      if self.special_needs.present?
-        ("is a parent of <strong>special needs</strong> children.").html_safe
-      end
-      if self.children_5_10.present?
-        ("has children <strong>five to ten</strong> years in age.").html_safe
-      end
-      if self.teens.present?
-        ("is a parent of <strong>teenagers</strong>.").html_safe
-      end
-      if self.tweens.present?
-        ("is a parent of <strong>tweens</strong>.").html_safe
-      end
-    end
-    if self.gender = "Mom"
+    if self.gender == "Female"
       if self.single_parent.present? || self.new_parent.present? || self.non_parent.present?
         if self.children_under_5.present?
-          ("She has children <strong>under five</strong>.").html_safe
+          answer = ("She has children <strong>under five</strong>.").html_safe
         end
         if self.special_needs.present?
-          ("She is a parent of <strong>special needs</strong> children.").html_safe
+          answer = ("She is a parent of <strong>special needs</strong> children.").html_safe
         end
         if self.children_5_10.present?
-          ("She has children <strong>five to ten</strong> years in age.").html_safe
+          answer = ("She has children <strong>five to ten</strong> years in age.").html_safe
         end
         if self.teens.present?
-          ("She is a parent of <strong>teenagers</strong>.").html_safe
+          answer = ("She is a parent of <strong>teenagers</strong>.").html_safe
         end
-        if self.tweens.present?
-          ("She is a parent of <strong>tweens</strong>.").html_safe
+        if self.tweens == "1"
+          answer = ("She is a parent of <strong>tweens</strong>.").html_safe
         end
       end
     end
-     if self.gender = "Dad"
+     if self.gender == "Male"
       if self.single_parent.present? || self.new_parent.present? || self.non_parent.present?
         if self.children_under_5.present?
-          ("He has children <strong>under five</strong>.").html_safe
+          answer = ("He has children <strong>under five</strong>.").html_safe
         end
         if self.special_needs.present?
-          ("He is a parent of <strong>special needs</strong> children.").html_safe
+          answer = ("He is a parent of <strong>special needs</strong> children.").html_safe
         end
         if self.children_5_10.present?
-          ("He has children <strong>five to ten</strong> years in age.").html_safe
+          answer = ("He has children <strong>five to ten</strong> years in age.").html_safe
         end
         if self.teens.present?
-          ("He is a parent of <strong>teenagers</strong>.").html_safe
+          answer = ("He is a parent of <strong>teenagers</strong>.").html_safe
         end
         if self.tweens.present?
-          ("He is a parent of <strong>tweens</strong>.").html_safe
+          answer = ("He is a parent of <strong>tweens</strong>.").html_safe
         end
       end
     end
+    answer
   end
 
   def parent_interests

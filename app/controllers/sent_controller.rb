@@ -16,10 +16,12 @@ class SentController < ApplicationController
   def create
     @message = current_user.sent_messages.build(message_params)  
     if @message.save
-      flash[:notice] = "Message sent."
-      redirect_to(root_url)
+      respond_to do |format|
+        format.js 
+        format.html { redirect_to(root_url) }
+      end
     else
-      render :action => "new"
+      redirect_to(root_url)
     end
   end
 

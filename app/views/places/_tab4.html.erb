@@ -1,7 +1,7 @@
                 <% if current_user.place_following.blank? %>
-                <p class="center">Add Local Places to Your Dashboard</p>
                 <br/>
-                <%= render 'layouts/placeholder' %>
+                <p class="center">Places you add to your profile will go here</p>
+                <br/>
                 <% else %>
                   <% current_user.place_following.each do |place| %>
                     <%= render :partial => 'places/followed_places', :locals => { :place => place} %>

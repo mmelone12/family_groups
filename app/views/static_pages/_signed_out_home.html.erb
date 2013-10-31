@@ -1,13 +1,12 @@
 <div class="two-thirds column">
 				<nav id="menu" class="navigation">
 					<ul id="nav" class="clearfix">
-						<li><a href="index.html" class="active">Home<span>home info</span></a>
+						<li><a href="index.html" class="active">Home<span>Dashboard</span></a>
 						</li>
-						<li><a href="shortcodes.html">How It Works<span>features info</span></a></li>
-						<li><a href="projects.html">Team<span>folio extra info</span></a>
-						</li>
-						<li><a href="blog.html">Contact<span>extra info</span></a>
-						</li>
+						<li><%= link_to howitworks_path, class: 'static_page' do %>How It Works
+							<span>Take a Look<% end %></span></li>
+						<li><%= link_to contact_path, class: 'static_page' do %>Contact
+							<span>Talk to Us<% end %></span></li>
 					</ul>
 				</nav>
 			</div>
@@ -17,7 +16,7 @@
 		</div>
 	</header>
 	<div class="container main">
-						<div class="eight columns">
+			<div class="eight columns">
 					<h3 class="shortcodes">Check out your community and meet fellow parents.</h3>
 					<ul class="tabs-nav">
 						<li><a href="#tab1">User Sign Up</a></li>

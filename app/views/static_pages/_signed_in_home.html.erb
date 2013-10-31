@@ -31,21 +31,21 @@
         				<br />
             			<h4>Click here to create your own Group</h4>
             			<br />
-					<%= link_to "Create Group", new_group_path, id: 'create_group', style:"color:white", class: "b-new" %> 
+					<%= link_to "Create Group", new_group_path, id: 'create_group', style:"color:white", class: "b-new3" %> 
   					</div>
   					<div class="four columns portfolio-item activities">
         				<br />
         				<br />
             			<h4>Click here to create your own Activity</h4>
             			<br />
-					<%= link_to "Create Activity", new_activity_path, id: 'create_activity', style:"color:white", class: "b-new" %> 
+					<%= link_to "Create Activity", new_activity_path, id: 'create_activity', style:"color:white", class: "b-new3" %> 
   					</div>
   					<div class="four columns portfolio-item places">
         				<br />
         				<br />
             			<h4>Click here to create your own Place</h4>
             			<br />
-					<%= link_to "Create Place", new_place_path, id: 'create_place', style:"color:white", class: "b-new" %> 
+					<%= link_to "Create Place", new_place_path, id: 'create_place', style:"color:white", class: "b-new3" %> 
   					</div>
   					<% @places.each do |place| %>
 						<%= render :partial => 'places/place', :locals => { :place => place } %>

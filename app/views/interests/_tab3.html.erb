@@ -1,7 +1,7 @@
                 <% if current_user.following.blank? %>
-                  <p class="center">Add Interests to Your Dashboard</p>
                   <br/>
-                  <%= render 'layouts/placeholder' %>
+                  <p class="center">Interests you add to your profile will go here</p>
+                  <br/>
                 <% else %>
                   <% current_user.following.each do |interest| %>
 

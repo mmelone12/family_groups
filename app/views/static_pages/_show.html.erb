@@ -5,7 +5,7 @@
     </div> 
     <div class="six columns">
     <h6><%= matched_user.name %></h6>
-    <%= matched_user.name %> <%= matched_user.profile_stats %> in <%= @matched_user.city %>. <%= @matched_user.kid_stats %> <%= @matched_user.parent_interests %> <%= @matched_user.parent_activities %>
+    <%= matched_user.name %> <%= @matched_user.anything %> <%= matched_user.profile_stats %> in <%= matched_user.city %>. <%= @matched_user.kid_stats %> <%= @matched_user.parent_interests %> <%= @matched_user.parent_activities %>
     <br />
     <p>Some of <%= @matched_user.name %>'s Interests:</p>
     <% @matched_user.following.each do |interest| %>

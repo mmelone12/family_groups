@@ -1,19 +1,20 @@
 		<div class="four columns">
 			<h3 class="matched_user">Today's Matched Parent</h3>
-			<%= image_tag "avatars/female_avatar2.png", class: "matched_user_image" %>
+			<%= image_tag @matched_user.image_path, class: "matched_user_image" %>
 				<p class ="match"><%= @matched_user.name %> <%= @matched_user.profile_stats %> in <%= @matched_user.city %>. <%= @matched_user.kid_stats %> <%= @matched_user.parent_interests %> <%= @matched_user.parent_activities %><br/>
-				<strong><center><%= link_to "See full profile here.", user_path(@matched_user), class: 'user_showme' %></center></strong></p>
+				<p><strong><center><%= link_to "See full profile", user_path(@matched_user), id: 'create_user' %></strong></center></p>
 			<br/>
 			<% if @user.premium? %>
-			<p><%= link_to "See more parent profiles nearby", users_path, id: 'other_users' %></p>
+			<p><%= link_to "See more parent profiles nearby", matches_user_path(@user), id: 'user_matches' %></p>
 			<% else %>
 			<br/>
-			<div id="premium"><p>See more parent profiles nearby</p></div>
+			<div id="premium"><p>See more parent profiles nearby<p></div>
 			<% end %>
 
 		</div>
-		<div class ="four columns">
-			<%= form_for :message, :url => {:controller => "sent", :action => "create"} do |f| %>
+		<div id="message_area">
+		  <div class ="four columns">
+			<%= form_for :message, :url => {:controller => "sent", :action => "create"}, remote: true do |f| %>
     		<%= f.hidden_field("to][", :value => @matched_user.id) %>
 			<%= f.hidden_field(:subject, :value => "Hi! From a fellow parent in #{@matched_user.city}") %>
   			<%= f.text_area :body, value: "*Ask a question to #{@matched_user.name} or simply introduce yourself!*
@@ -21,10 +22,9 @@
 Hi! It seems like we have some common interests. How are you handling being a parent in #{@matched_user.city}?" , class: "send_message"  %>
             <%= submit_tag "Send Message", class: "b-matched_user" %>
 			<% end %>
-			<%= render partial: 'js/profile.js.erb' %>
-			<%= render partial: 'js/premium.js.erb' %>
-			<%= render partial: 'js/other_users.js.erb' %>
 		</div>
+	   </div>
 	 </div> 	
+	 <%= render partial: 'js/premium.js.erb' %>
    </div>
 </div>

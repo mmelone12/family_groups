@@ -1,0 +1,51 @@
+<div id="content">
+  <div class="container main">
+    <div class="eight columns">
+       <h3 class="matched_user">Premium Users - More Parent Matches Near You</h3>
+      <% @matched_users.each do |match| %>
+    <h6><%= match.name %></h6>
+          <%= image_tag match.image_path %>  
+    <%= match.name %> <%= match.profile_stats %> in <%= match.city %>. <%= match.kid_stats %> <%= match.parent_interests %> <%= match.parent_activities %>
+    <br />
+    <br />
+    <p>Some of <%= match.name %>'s Interests:</p>
+    <% match.following.each do |interest| %>
+      <span><%= image_tag match.image_path, size: '30' %>
+    <% end %>
+    <br/>
+     <p>Some of <%= match.name %>'s Activities:</p>
+    <% match.activity_following.each do |activity| %>
+      <span><%= image_tag activity.image_path, size: '30' %>
+    <% end %>
+    <br/> 
+        <p>Some of <%= match.name %>'s Groups:</p>
+    <% match.group_following.each do |group| %>
+      <span><%= image_tag group.image_path, size: '30' %>
+    <% end %>
+    <br/>
+     <p>Some of <%= match.name %>'s Places:</p>
+    <% match.place_following.each do |activity| %>
+      <span><%= image_tag place.image_path, size: '30' %>
+    <% end %>
+    <br/> 
+    <%= form_for :message, :url => {:controller => "sent", :action => "create"} do |f| %>
+        <%= f.hidden_field("to][", :value => match.id) %>
+        <%= f.hidden_field(:subject, :value => "Hi! From a fellow parent in #{match.city}") %>
+        <%= f.text_area :body, value: "*Ask a question to #{match.name} or simply introduce yourself!*
+
+Hi! It seems like we have some common interests. How are you handling being a parent in #{match.city}?" , class: "send_message5"  %>
+            <%= submit_tag "Send Message", class: "b-matched_user" %>
+      <% end %>
+      <br/>
+      <% if current_user.friends.exclude?(match) %>
+        <h3>Are you friends with this person?</h3>
+        <%= form_for(current_user.friendships.build(:friend_id =>
+                     match)) do |f| %> 
+             <div><%= hidden_field_tag :friend_id, match.id %></div>
+        <%= f.submit "Friend", class: "b-black" %>
+        <% end %>
+      <% end %>
+    <% end %>
+    </div>
+  </div> 
+</div>

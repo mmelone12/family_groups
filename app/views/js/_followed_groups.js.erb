@@ -16,4 +16,21 @@ $('.followed_items').on('click', function(e) {
     dialog_form.dialog('open');
     e.preventDefault();
   });
+$('.followed_items1').on('click', function(e) {
+  e.preventDefault();
+
+  $('<div id="dialog-form"></div>').dialog({
+        autoOpen: true,
+        width: 520,
+        modal: true,
+        open: function() {
+            $(this).append($("<%= escape_javascript(render(:partial => 'groups/followed_group', :locals => {:group => group})) %>"));
+        },
+        close: function() {
+        $('#dialog-form').remove();
+      }
+    });
+    dialog_form.dialog('open');
+    e.preventDefault();
+  });
 </script>
