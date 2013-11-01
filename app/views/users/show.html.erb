@@ -19,13 +19,13 @@
     	<span><%= image_tag activity.image_path, size: '30' %>
     <% end %>
     <br/> 
-        <p>Some of<%= @user.name %>'s Groups:</p>
+        <p>Some of <%= @user.name %>'s Groups:</p>
     <% @user.group_following.each do |group| %>
     	<span><%= image_tag group.image_path, size: '30' %>
     <% end %>
     <br/>
-     <p>Some of<%= @user.name %>'s Places:</p>
-    <% @user.place_following.each do |activity| %>
+     <p>Some of <%= @user.name %>'s Places:</p>
+    <% @user.place_following.each do |place| %>
     	<span><%= image_tag place.image_path, size: '30' %>
     <% end %>
     <br/> 

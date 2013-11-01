@@ -83,6 +83,7 @@ end
   	  if @user.save
         sign_in @user
   		  redirect_to(root_url)
+        UserMailer.registration_confirmation(@user).deliver
   	  else 
   		  render 'new'
       end
