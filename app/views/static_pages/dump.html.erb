@@ -1060,3 +1060,7 @@ ActiveRecord::Base.connection.execute("SELECT SETVAL('message_id_seq', 1)")
             <%= render :partial => 'places/other_place', :locals => { :place => place } %>
             <%= render :partial => 'js/other_places.js.erb', :locals => { :place => place } %>
           <% end %>
+
+
+                activities = Activity.where('start_date IS NOT NULL AND user_id <> ?', current_user.id)
+      @activities = activities.near(@user).all( :order => "start_date", :limit => 15)

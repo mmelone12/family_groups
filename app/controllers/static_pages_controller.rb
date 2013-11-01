@@ -14,8 +14,8 @@ class StaticPagesController < ApplicationController
       @firstgroups = @groups.first(20)
       @other_groups = Group.where(['group_id IS ? AND user_id <> ? AND city = ?', nil, current_user.id, @user.city])
       @group = Group.create
-      activities = Activity.where('start_date IS NOT NULL AND user_id <> ?', current_user.id)
-      @activities = activities.near(@user).all( :order => "start_date", :limit => 15)
+      new_activities = Activity.where('start_date >= ? AND user_id <> ?', 1.days.ago(Time.now).to_date, current_user.id )
+      @activities = new_activities.near(@user).all( :order => "start_date", :limit => 18)
       @recurring_activities = Activity.where(['recurring = ?', "yes"]).first(5)
       @places = Place.near(@user).first(15)
       @other_places = Place.where(['user_id <> ? AND city = ?', current_user.id, @user.city]).first(10)
@@ -52,6 +52,8 @@ class StaticPagesController < ApplicationController
       @places = Place.near(@city).first(15)
       activities = Activity.where('start_date IS NOT NULL')
       @activities = activities.near(@city).all( :order => "start_date", :limit => 15)
+      new_activities = Activity.where('start_date >= ?', 1.days.ago(Time.now).to_date)
+      @activities = new_activities.near(@city).all( :order => "start_date", :limit => 18)
       @recurring_activities = Activity.where(['recurring = ?', "yes"]).first(5)
     end
   end
