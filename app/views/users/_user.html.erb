@@ -1,0 +1,23 @@
+<div class="container main">
+    <div class="five columns">
+      <div class="right">
+      <%= image_tag user.image_path %><br/>   
+      City: <%= user.city %>
+      </div>
+    </div> 
+    <div class="seven columns">
+    <h6><%= user.name %></h6>
+    <%= user.name %> <%= user.profile_stats %> in <%= user.city %>. <%= user.kid_stats %> <%= user.parent_interests %> <%= user.parent_activities %>
+      <% if current_user.friends.exclude?(user.id) %>
+        <h3>Are you friends with this person?</h3>
+        <%= form_for(current_user.friendships.build(:friend_id =>
+                     user)) do |f| %> 
+             <div><%= hidden_field_tag :friend_id, user.id %></div>
+          <%= f.submit "Friend", class: "b-black" %>
+        <% end %>
+      <% end %>
+      <br/>
+      <br/>
+      <br/>
+    </div>
+</div> 

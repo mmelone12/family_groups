@@ -21,6 +21,7 @@ FamilyGroups::Application.routes.draw do
   resources :sent, :mailbox
   resources :messages
   resources :friendships  
+  resources :invites, only: [:create]
 
   root 'static_pages#home'
   match '/signup', to: 'users#new', via: 'get'

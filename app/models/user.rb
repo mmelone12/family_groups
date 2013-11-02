@@ -54,6 +54,14 @@ class User < ActiveRecord::Base
   has_many :sent_messages, :class_name => "Message", :foreign_key => "author_id"
   has_many :received_messages, :class_name => "MessageCopy", :foreign_key => "recipient_id"
 
+  def self.search(search)
+    if search
+      find(:all, :conditions => ['last_name LIKE ?', "%#{search}%"])
+    else
+      find(:all)
+    end
+  end
+
   def following?(interest)
     relationships.find_by(followed_id: interest.id)
   end

@@ -3,7 +3,7 @@
                   <p class="center">Activities you add to your profile will go here</p>
                 <br/>
                 <% else %>
-                  <% current_user.activity_following.each do |activity| %>
+                  <% current_user.activity_following.first(21).each do |activity| %>
                     <%= render :partial => 'activities/followed_activities', :locals => { :activity => activity} %>
                     <%= render :partial => 'js/followed_activities.js.erb', :locals => { :activity => activity } %>
                   <% end %>

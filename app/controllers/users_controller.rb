@@ -24,6 +24,9 @@ class UsersController < ApplicationController
     @user = current_user
     @title = "Interest Following"
     @interests = @user.following
+    @message = current_user.sent_messages.build
+    @messages = current_user.received_messages.paginate :per_page => 10, :page => params[:page], :include => :message, :order => "messages.created_at DESC"
+    @sent_messages = current_user.sent_messages.paginate :per_page => 10, :page => params[:page], :order => "created_at DESC"
     render 'interest_following'
   end    
   
@@ -38,6 +41,9 @@ def group_following
     @user =  current_user
     @title = "Group Following"
     @groups = @user.group_following
+    @message = current_user.sent_messages.build
+    @messages = current_user.received_messages.paginate :per_page => 10, :page => params[:page], :include => :message, :order => "messages.created_at DESC"
+    @sent_messages = current_user.sent_messages.paginate :per_page => 10, :page => params[:page], :order => "created_at DESC"
     render 'group_following'
 end    
   
@@ -52,6 +58,9 @@ end
     @user = current_user
     @title = "Activity Following"
     @activities = @user.activity_following
+    @message = current_user.sent_messages.build
+    @messages = current_user.received_messages.paginate :per_page => 10, :page => params[:page], :include => :message, :order => "messages.created_at DESC"
+    @sent_messages = current_user.sent_messages.paginate :per_page => 10, :page => params[:page], :order => "created_at DESC"
     render 'activity_following'
   end    
   
@@ -65,6 +74,9 @@ end
     @user = current_user
     @title = "Place Following"
     @places = @user.place_following
+    @message = current_user.sent_messages.build
+    @messages = current_user.received_messages.paginate :per_page => 10, :page => params[:page], :include => :message, :order => "messages.created_at DESC"
+    @sent_messages = current_user.sent_messages.paginate :per_page => 10, :page => params[:page], :order => "created_at DESC"
     render 'place_following'
   end    
   
@@ -90,18 +102,11 @@ end
   end
 
   def index
-    other_user = User.near(@user).where.not(id: current_user.id).where(['gender = ? AND single_parent = ? OR new_parent = ? OR special_needs = ?
-        OR children_under_5 = ? OR children_5_10 = ? OR tweens = ? OR teens = ? OR non_parent = ?',
-        current_user.gender, current_user.single_parent, current_user.new_parent, current_user.special_needs,
-        current_user.children_under_5, current_user.children_5_10, current_user.tweens, current_user.teens,
-        current_user.non_parent])
-    if other_user.empty? && User.near(@user).present?
-        @matched_users = Rails.cache.fetch(@user.cache_key + '/daily_match', expires_in: 1.day){
-        User.near(@user).order("RANDOM()").first(5)}
-    else
-        @matched_users = Rails.cache.fetch(@user.cache_key + '/daily_match', expires_in: 1.day){
-        other_user.order("RANDOM()").first(5)}
-    end
+    @user = current_user
+    @users = User.search(params[:search])
+    @message = current_user.sent_messages.build
+    @messages = current_user.received_messages.paginate :per_page => 10, :page => params[:page], :include => :message, :order => "messages.created_at DESC"
+    @sent_messages = current_user.sent_messages.paginate :per_page => 10, :page => params[:page], :order => "created_at DESC"
   end
 
   def edit

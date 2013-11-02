@@ -4,7 +4,7 @@ $('a.inbox').on('click', function(e) {
 
   $('<div id="dialog-form"></div>').dialog({
         autoOpen: true,
-        width: 680,
+        width: 920,
         modal: true,
         open: function() {
             $(this).append($("<%= escape_javascript(render template: "mailbox/index") %>"));

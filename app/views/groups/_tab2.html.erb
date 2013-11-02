@@ -3,7 +3,7 @@
                   <p class="center">Groups you add to your profile will go here</p>
                 <br/>
                 <% else %>
-                  <% current_user.group_following.each do |group| %>
+                  <% current_user.group_following.first(21).each do |group| %>
                     <%= render :partial => 'groups/followed_groups', :locals => { :group => group } %>
                     <%= render :partial => 'js/followed_groups.js.erb', :locals => { :group => group } %>
                   <% end %>

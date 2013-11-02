@@ -579,3 +579,17 @@ p.adjusted {
   position: absolute;
   font-weight: bold;
 }
+
+.right {
+  margin-left: 200px;
+}
+
+#search_form {
+  width: 120px;
+  margin-bottom: 2px;
+}
+
+#invite_form {
+  width: 120px;
+  margin-bottom: 2px;
+}

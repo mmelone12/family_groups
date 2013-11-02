@@ -1,11 +1,32 @@
+<div class="container">
+  <div class="three columns">
+    <%= render :partial => 'js/compose.js.erb' %>
+    <div class='b-compose', style='color:white; text-align:center'>
+      Compose
+    </div>
+    <br/>
+    <br/>
+    <br/>
+    <%= form_tag users_path, :method => 'get' do %>
+    <p>
+      <%= text_field_tag :search, params[:search], value: "Type last name here", id: 'search_form' %>
+      <%= submit_tag "Search for Users", :last_name => nil %>
+    </p>
+    <% end %>
+    <br/>
+    <%= form_for(@invite, remote: true) do |f| %>
+      <%= f.label "Invite a friend to join" %>
+      <%= f.text_field :email, value: "Email address", id: 'invite_form' %>
+      <%= f.submit "Invite" %>
+    <% end %>
+    <div id="invite_sent">
+    </div>
+  </div>
+  <div class="nine columns">
 <div id="top_space">
 </div>
 <hr class="line slogan" />
 <div id="content">
-<%= render :partial => 'js/compose.js.erb' %>
-<div class='b-compose', style='color:white; text-align:center'>
-  Compose
-</div>
 <h3 class="inbox">YOUR INBOX</h3>
 
 <table border="1">
@@ -51,5 +72,7 @@
     <%= will_paginate @messages %>
   </div>
 </div>
+</div>
 <hr class="line slogan" />
+</div>
 </div>

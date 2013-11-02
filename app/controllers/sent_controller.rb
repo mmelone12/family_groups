@@ -14,7 +14,10 @@ class SentController < ApplicationController
   end
   
   def create
-    @message = current_user.sent_messages.build(message_params)  
+    @message = current_user.sent_messages.build(message_params) 
+    recipient = @message.to.first.to_i
+    @recipient = User.find(recipient)
+    UserMailer.you_got_mail(@recipient).deliver 
     if @message.save
       respond_to do |format|
         format.js 

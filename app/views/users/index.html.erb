@@ -1,0 +1,10 @@
+<%= render 'layouts/menu_and_tabs' %>
+
+    <div class="container">
+      <div class="sixteen columns">
+        <hr class="line slogan" />
+      </div>
+    </div>
+<% @users.each do |user| %>
+  <%= render partial: 'users/user', locals: {:user => user} %>
+<% end %>

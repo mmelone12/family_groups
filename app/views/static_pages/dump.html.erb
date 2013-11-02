@@ -1064,3 +1064,63 @@ ActiveRecord::Base.connection.execute("SELECT SETVAL('message_id_seq', 1)")
 
                 activities = Activity.where('start_date IS NOT NULL AND user_id <> ?', current_user.id)
       @activities = activities.near(@user).all( :order => "start_date", :limit => 15)
+
+      <div id="follow_form<%= "#{activity.id}" %>">                      
+  <div class="four columns portfolio-item activities">
+    <div class="our-work">
+        <a class="img-overlay">
+          <div class= "min-height-activities">
+            <%= image_tag activity.image_path %>
+            <div class="img-overlay-div">
+             <div class="activities_showme"> 
+            <h4>
+            <%= if activity.title.length > 35; activity.title.truncate(35) + "...  "; else activity.title; end %>
+            </h4>
+            <h5>
+            <br />
+            <%= if activity.desc.length > 130; activity.desc.truncate(130); else activity.desc; end %>...<div class="learn_more"> Learn More</div>
+            </h5>
+              </div>
+            <%= form_for(current_user.activity_relationships.build(activity_followed_id: 
+                             activity.id), remote: true) do |f| %> 
+                <div><%= f.hidden_field :activity_followed_id %></div>
+                <%= f.submit "Add to My Activities", class: "b-item" %>
+            <% end %>
+            </div>
+          </div>
+        </a>
+        <% if activity.title.length > 30 %>
+        <h3>  
+          <div class="smaller_size">
+            <%= link_to activity.title.truncate(30), "#", class: "activities_showme" %><span>
+            <% if activity.start_date.blank? %> 
+              <%= link_to activity.when.truncate(40), "#", class: "activities_showme" %>
+            <% else %>
+              <%= link_to activity.start_date.to_formatted_s(:rfc822), "#", class: "activities_showme" %>
+            <% end %></span>
+          </div>
+        </h3>
+        <% else %>
+          <h3> <%= link_to activity.title, "#", class: "activities_showme" %><span>
+              <% if activity.start_date.blank? %> 
+                <%= link_to activity.when.truncate(40), "#", class: "activities_showme" %>
+              <% else %>
+                <%= link_to activity.start_date.to_formatted_s(:rfc822), "#", class: "activities_showme" %>
+              <% end %></span></h3>
+        <% end %>
+    </div>
+  </div>
+</div>        
+
+    other_user = User.near(@user).where.not(id: current_user.id).where(['gender = ? AND single_parent = ? OR new_parent = ? OR special_needs = ?
+        OR children_under_5 = ? OR children_5_10 = ? OR tweens = ? OR teens = ? OR non_parent = ?',
+        current_user.gender, current_user.single_parent, current_user.new_parent, current_user.special_needs,
+        current_user.children_under_5, current_user.children_5_10, current_user.tweens, current_user.teens,
+        current_user.non_parent])
+    if other_user.empty? && User.near(@user).present?
+        @matched_users = Rails.cache.fetch(@user.cache_key + '/daily_match', expires_in: 1.day){
+        User.near(@user).order("RANDOM()").first(5)}
+    else
+        @matched_users = Rails.cache.fetch(@user.cache_key + '/daily_match', expires_in: 1.day){
+        other_user.order("RANDOM()").first(5)}
+    end

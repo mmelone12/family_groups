@@ -3,7 +3,7 @@
                 <p class="center">Places you add to your profile will go here</p>
                 <br/>
                 <% else %>
-                  <% current_user.place_following.each do |place| %>
+                  <% current_user.place_following.first(21).each do |place| %>
                     <%= render :partial => 'places/followed_places', :locals => { :place => place} %>
                     <%= render :partial => 'js/followed_places.js.erb', :locals => { :place => place } %>
                   <% end %>

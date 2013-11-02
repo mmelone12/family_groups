@@ -26,23 +26,21 @@
 		
 			<div class="container">
 				<div id="portfolio-wrapper">
+					<%= render partial: 'js/premium.js.erb' %>
   					<% if @user.show_group == "empty" %>
 						<%= render partial: 'groups/group_new' %>
 					<% else %>
 						<%= render partial: 'groups/premium' %>
-						<%= render partial: 'js/premium.js.erb' %>
 					<% end %>
   					<% if @user.show_activity == "empty" %>
 						<%= render partial: 'activities/activity_new' %>
 					<% else %>
 						<%= render partial: 'activities/premium' %>
-						<%= render partial: 'js/premium.js.erb' %>
 					<% end %>
 					<% if @user.show_place == "empty" %>
 						<%= render partial: 'places/place_new' %>
 					<% else %>
 						<%= render partial: 'places/premium' %>
-						<%= render partial: 'js/premium.js.erb' %>
 					<% end %>
   					<% @places.each do |place| %>
 						<%= render :partial => 'places/place', :locals => { :place => place } %>
@@ -59,11 +57,9 @@
 					<% else %>
   					<% @activities.each do |activity| %>
 						<%= render :partial => 'activities/activity', :locals => { :activity => activity } %>
-						<%= render :partial => 'js/activities.js.erb', :locals => { :activity => activity } %>
 					<% end %>
 					<% @recurring_activities.each do |activity| %>
 						<%= render :partial => 'activities/activity', :locals => { :activity => activity } %>
-						<%= render :partial => 'js/activities.js.erb', :locals => { :activity => activity } %>
 					<% end %>
 					<% end %>
 					<% @firstgroups.each do |group| %>

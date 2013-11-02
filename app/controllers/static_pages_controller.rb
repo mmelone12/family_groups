@@ -8,17 +8,21 @@ class StaticPagesController < ApplicationController
       @message = current_user.sent_messages.build
       @messages = current_user.received_messages.paginate :per_page => 10, :page => params[:page], :include => :message, :order => "messages.created_at DESC"
       @sent_messages = current_user.sent_messages.paginate :per_page => 10, :page => params[:page], :order => "created_at DESC"
+      @invite = Invite.new
       new_groups = RMeetup::Client.fetch(:groups, :lat => @user.latitude, :lon => @user.longitude, :topic => "parents")
       current_group_ids = current_user.groups.pluck(:group_id)
       @groups = new_groups.reject { |group| current_group_ids.include?(group.id) }
+      @group = Group.create
       @firstgroups = @groups.first(20)
       @other_groups = Group.where(['group_id IS ? AND user_id <> ? AND city = ?', nil, current_user.id, @user.city])
-      @group = Group.create
+      current_activity_ids = current_user.activity_following.pluck(:activity_followed_id)
       new_activities = Activity.where('start_date >= ? AND user_id <> ?', 1.days.ago(Time.now).to_date, current_user.id )
-      @activities = new_activities.near(@user).all( :order => "start_date", :limit => 18)
-      @recurring_activities = Activity.where(['recurring = ?', "yes"]).first(5)
-      @places = Place.near(@user).first(15)
-      @other_places = Place.where(['user_id <> ? AND city = ?', current_user.id, @user.city]).first(10)
+      nearby_activities = new_activities.near(@user).all( :order => "start_date", :limit => 18)
+      @activities = nearby_activities.reject { |activity| current_activity_ids.include?(activity.id) }
+      recurring_activities = Activity.where(['recurring = ?', "yes"]).first(5)
+      @recurring_activities = recurring_activities.reject { |activity| current_activity_ids.include?(activity.id) }
+      current_place_ids = current_user.place_following.pluck(:place_followed_id)
+      @places = Place.near(@user).first(15).reject { |place| current_place_ids.include?(place.id) }
       other_user = User.near(@user).where.not(id: current_user.id).where(['gender = ? AND single_parent = ? OR new_parent = ? OR special_needs = ?
         OR children_under_5 = ? OR children_5_10 = ? OR tweens = ? OR teens = ? OR non_parent = ?',
         current_user.gender, current_user.single_parent, current_user.new_parent, current_user.special_needs,
