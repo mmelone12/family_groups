@@ -66,4 +66,7 @@ class StaticPagesController < ApplicationController
 
   def contact
   end
+
+  def premium
+  end
 end

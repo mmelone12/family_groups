@@ -21,6 +21,7 @@ class ActivitiesController < ApplicationController
   def create
   	@activity = Activity.new(activity_params)
     @activity.save
+    current_user.activity_follow!(@activity)
   	respond_to do |format|
       format.html { redirect_to(root_url) }
       format.js 
@@ -34,6 +35,6 @@ class ActivitiesController < ApplicationController
 
   	def activity_params
   		params.require(:activity).permit(:user_id, :title, :image_path, :address, :city, :uploader_image,
-  			:end_date, :start_time, :end_time, :where, :desc, :link, :email, :article_link, :website, :website_link)
+  			:end_date, :start_date, :start_time, :end_time, :where, :desc, :link, :email, :article_link, :website, :website_link)
   	end
 end

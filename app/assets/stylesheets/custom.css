@@ -169,13 +169,13 @@ box-shadow: 0px 2.5px 15px 5px rgba(255, 255, 190, .75);
 .img-overlay1{
 background-color:#000;
 bottom:25px;
-left: 20%;
-padding: 5px 7px;
+left: -10%;
+padding: 3px 5px;
 color:#fff;
 opacity:0;
 filter: alpha(opacity = 50);
 position:absolute;
-width:140px;
+width:125px;
 z-index:98;
 border-radius: 5px;
 border-width: 6px 6px 0 6px;
@@ -185,6 +185,7 @@ padding:0 6px;
 }
 .img-wrap1:hover .img-overlay1{
 opacity:0.75;
+left: -30px;
 filter: alpha(opacity = 75);
 transition:opacity 0.25s;
 -moz-transition:opacity 0.25s;
@@ -426,13 +427,6 @@ h3.compose {
   margin-left: 14px;
 }
 
-#premium {
-  margin-left: 27px;
-  bottom: 10px;
-  position: absolute;
-  font-weight: bold;
-} 
-
 .b-sign {
   line-height: 20px;
   background: url("../assets/button03.jpg") top left repeat-x;
@@ -554,4 +548,34 @@ a.settings {
   color: blue;
   border: 1px solid #648e00;
   box-shadow: 0px 2.5px 15px 5px rgba(255, 255, 190, .75);
+}
+
+.premium {
+  line-height: 40px;
+  background: url("../assets/button03.jpg") top left repeat-x;
+  width: 70px;
+  margin-left: 50px;
+  color: rgba(0,0,0,0.6);
+  font-family: 'OpenSansRegular';
+  box-shadow: 0 2.5px 1px rgba(0,0,0,0.25);
+  font-weight: normal;
+  text-transform: uppercase;
+  font-size: 12px;
+  padding-left: 5px;
+  border-radius: 2px;
+  border: 1px solid #648e00;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.25);
+}
+.premium:hover {
+  background: url("../assets/button03.jpg") top left repeat-x;
+  color: blue;
+  border: 1px solid #648e00;
+  box-shadow: 0px 2.5px 15px 5px rgba(255, 255, 190, .75);
+}
+
+p.adjusted {
+  margin-left: 27px;
+  bottom: 10px;
+  position: absolute;
+  font-weight: bold;
 }

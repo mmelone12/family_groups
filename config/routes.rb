@@ -29,6 +29,7 @@ FamilyGroups::Application.routes.draw do
   match '/team', to: 'static_pages#team', via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
   match '/howitworks', to: 'static_pages#howitworks', via: 'get'
+  match '/premium', to: 'static_pages#premium', via: 'get'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

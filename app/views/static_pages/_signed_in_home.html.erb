@@ -26,27 +26,24 @@
 		
 			<div class="container">
 				<div id="portfolio-wrapper">
-					<div class="four columns portfolio-item groups">
-        				<br />
-        				<br />
-            			<h4>Click here to create your own Group</h4>
-            			<br />
-					<%= link_to "Create Group", new_group_path, id: 'create_group', style:"color:white", class: "b-new3" %> 
-  					</div>
-  					<div class="four columns portfolio-item activities">
-        				<br />
-        				<br />
-            			<h4>Click here to create your own Activity</h4>
-            			<br />
-					<%= link_to "Create Activity", new_activity_path, id: 'create_activity', style:"color:white", class: "b-new3" %> 
-  					</div>
-  					<div class="four columns portfolio-item places">
-        				<br />
-        				<br />
-            			<h4>Click here to create your own Place</h4>
-            			<br />
-					<%= link_to "Create Place", new_place_path, id: 'create_place', style:"color:white", class: "b-new3" %> 
-  					</div>
+  					<% if @user.show_group == "empty" %>
+						<%= render partial: 'groups/group_new' %>
+					<% else %>
+						<%= render partial: 'groups/premium' %>
+						<%= render partial: 'js/premium.js.erb' %>
+					<% end %>
+  					<% if @user.show_activity == "empty" %>
+						<%= render partial: 'activities/activity_new' %>
+					<% else %>
+						<%= render partial: 'activities/premium' %>
+						<%= render partial: 'js/premium.js.erb' %>
+					<% end %>
+					<% if @user.show_place == "empty" %>
+						<%= render partial: 'places/place_new' %>
+					<% else %>
+						<%= render partial: 'places/premium' %>
+						<%= render partial: 'js/premium.js.erb' %>
+					<% end %>
   					<% @places.each do |place| %>
 						<%= render :partial => 'places/place', :locals => { :place => place } %>
 						<%= render :partial => 'js/places.js.erb', :locals => { :place => place } %>
@@ -82,14 +79,14 @@
   						<%= render :partial => 'js/interests.js.erb', :locals => { :interest => interest } %>
 					<% end %>
 					<div class="four columns portfolio-item activities">
-        				<br />
-        				<br />
-        				<div id="back_button" data-no-turbolink>
-							<ul>
-				  				<li><%= link_to "See All Activities", activities_path, id: "back_button" %></li>
-			    			</ul>
-						</div>
-					</div>
+                		<br />
+                		<br />
+                		<div id="back_button" data-no-turbolink>
+              			<ul>
+                  			<li><%= link_to "See All Activities", activities_path, id: "back_button" %></li>
+                		</ul>
+            			</div>
+          			</div>
 					<div class="four columns portfolio-item groups">
         				<br />
         				<br />            			

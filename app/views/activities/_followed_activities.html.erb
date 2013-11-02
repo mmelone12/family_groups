@@ -1,5 +1,10 @@
 <% if activity.image_path.blank? %>
+	<div class = "img-wrap1">
     <%= image_tag activity.uploader_image, size: "50", class: "followed_items", id: "disappear_follow#{activity.id}" %>
+    	<div class="img-overlay1">
+   			<p><div class="followed_items1"><%= activity.title.truncate(25) %></div></p>
+   		</div>
+	</div>
 <% else %>
    <div class = "img-wrap1">
    		<%= image_tag activity.image_path, size: "50", class: "followed_items", id: "disappear_follow#{activity.id}" %>

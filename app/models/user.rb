@@ -102,6 +102,24 @@ class User < ActiveRecord::Base
     place_relationships.find_by(place_followed_id: place.id).destroy!
   end
 
+  def show_activity
+    if activities.where('created_at >= ?', Date.current).blank?
+      "empty"
+    end
+  end
+
+  def show_group
+    if groups.where('created_at >= ?', Date.current).blank?
+      "empty"
+    end
+  end
+
+    def show_place
+    if places.where('created_at >= ?', Date.current).blank?
+      "empty"
+    end
+  end
+
   def profile_stats
     if single_parent == "1"
       answer = "is a single parent"
