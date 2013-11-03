@@ -24,6 +24,7 @@ class UsersController < ApplicationController
     @user = current_user
     @title = "Interest Following"
     @interests = @user.following
+    @invite = Invite.new
     @message = current_user.sent_messages.build
     @messages = current_user.received_messages.paginate :per_page => 10, :page => params[:page], :include => :message, :order => "messages.created_at DESC"
     @sent_messages = current_user.sent_messages.paginate :per_page => 10, :page => params[:page], :order => "created_at DESC"
@@ -41,6 +42,7 @@ def group_following
     @user =  current_user
     @title = "Group Following"
     @groups = @user.group_following
+    @invite = Invite.new
     @message = current_user.sent_messages.build
     @messages = current_user.received_messages.paginate :per_page => 10, :page => params[:page], :include => :message, :order => "messages.created_at DESC"
     @sent_messages = current_user.sent_messages.paginate :per_page => 10, :page => params[:page], :order => "created_at DESC"
@@ -58,6 +60,7 @@ end
     @user = current_user
     @title = "Activity Following"
     @activities = @user.activity_following
+    @invite = Invite.new
     @message = current_user.sent_messages.build
     @messages = current_user.received_messages.paginate :per_page => 10, :page => params[:page], :include => :message, :order => "messages.created_at DESC"
     @sent_messages = current_user.sent_messages.paginate :per_page => 10, :page => params[:page], :order => "created_at DESC"
@@ -74,6 +77,7 @@ end
     @user = current_user
     @title = "Place Following"
     @places = @user.place_following
+    @invite = Invite.new
     @message = current_user.sent_messages.build
     @messages = current_user.received_messages.paginate :per_page => 10, :page => params[:page], :include => :message, :order => "messages.created_at DESC"
     @sent_messages = current_user.sent_messages.paginate :per_page => 10, :page => params[:page], :order => "created_at DESC"
@@ -102,6 +106,7 @@ end
   end
 
   def index
+    @invite = Invite.new
     @user = current_user
     @users = User.search(params[:search])
     @message = current_user.sent_messages.build

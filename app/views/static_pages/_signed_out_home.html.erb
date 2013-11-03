@@ -63,29 +63,51 @@
 			<div class="container">
 				<div class="sixteen columns">
 					<h3 class="shortcodes">What's going on in <%= @city %>.</h3>
+					<% if @activities.blank? && @recurring_activities.blank? %>
+					<div id="filters">
+						<ul class="option-set" data-option-key="filter">
+							<li><a href="#filter" data-option-value="*">See All</a></li>
+							<li><a href="#filter" data-option-value=".activities">Activities</a></li>
+							<li><a href="#filter" data-option-value=".groups">Groups</a></li>
+							<li><a href="#filter" class="selected" data-option-value=".interests">Interests</a></li>
+							<li><a href="#filter" data-option-value=".places">Places</a></li>
+						</ul>
+					</div>
+					<% else %>
 					<div id="filters">
 						<ul class="option-set" data-option-key="filter">
 							<li><a href="#filter" data-option-value="*">See All</a></li>
 							<li><a href="#filter" class="selected" data-option-value=".activities">Activities</a></li>
 							<li><a href="#filter" data-option-value=".groups">Groups</a></li>
-							<li><a href="#filter" data-option-value=".places">Places</a></li>
 							<li><a href="#filter" data-option-value=".interests">Interests</a></li>
+							<li><a href="#filter" data-option-value=".places">Places</a></li>
 						</ul>
 					</div>
+					<% end %>
 				</div>
 			</div>
 		
 			<div class="container">
 				<div id="portfolio-wrapper">
+				<% if @places.blank? %>
+					<div class="four columns portfolio-item places">
+        				<br />
+        				<br />
+							<ul>
+				  				<li>We don't have places for <% @city %> today, but please check again in a few days!</li>
+			    			</ul>
+					</div>
+				<% else %>
 				<% @places.each do |place| %>
 					<%= render :partial => 'places/place_u', :locals => { :place => place } %>
+				<% end %>
 				<% end %>
 				<% if @activities.blank? && @recurring_activities.blank? %>
 					<div class="four columns portfolio-item activities">
         				<br />
         				<br />
 							<ul>
-				  				<li>We don't have activities for <% @user.city %> today, but please check again in a few days!</li>
+				  				<li>We don't have activities for <% @city %> today, but please check again in a few days!</li>
 			    			</ul>
 					</div>
 					<% else %>
@@ -96,87 +118,61 @@
 						<%= render :partial => 'activities/activity_u', :locals => { :activity => activity } %>
 					<% end %>
 				<% end %>
+				<% if @groups.blank? %>
+					<div class="four columns portfolio-item groups">
+        				<br />
+        				<br />
+							<ul>
+				  				<li>We don't have groups for <% @city %> today, but please check again in a few days!</li>
+			    			</ul>
+					</div>
+				<% else %>
 				<% @groups.each do |group| %>
 					<%= render :partial => 'groups/group_u', :locals => { :group => group } %>
 				<% end %>	
+				<% end %>
 				<% @interests.each do |interest| %>
   					<%= render :partial => 'interests/interest_u', :locals => {:interest => interest} %> 
 				<% end %>	
-									<%= render :partial => 'js/sign_up.js.erb' %>				
+				<%= render :partial => 'js/sign_up.js.erb' %>
+					<div class="four columns portfolio-item activities">
+                		<br />
+                		<br />
+                		<div id="back_button">
+              			<ul>
+                  			<li><%= link_to "See All Activities", signupalready_path, class: "static_page" %></li>
+                		</ul>
+            			</div>
+          			</div>
+          			<div class="four columns portfolio-item groups">
+                		<br />
+                		<br />
+                		<div id="back_button">
+              			<ul>
+                  			<li><%= link_to "See All Groups", signupalready_path, class: "static_page" %></li>
+                		</ul>
+            			</div>
+          			</div>
+          			<div class="four columns portfolio-item interests">
+                		<br />
+                		<br />
+                		<div id="back_button">
+              			<ul>
+                  			<li><%= link_to "See All Interests", signupalready_path, class: "static_page" %></li>
+                		</ul>
+            			</div>
+          			</div>
+          			<div class="four columns portfolio-item places">
+                		<br />
+                		<br />
+                		<div id="back_button">
+              			<ul>
+                  			<li><%= link_to "See All Places", signupalready_path, class: "static_page" %></li>
+                		</ul>
+            			</div>
+          			</div>				
 				</div>
 			</div>
 		</div>
 	</div>
-	<footer>
-		<div class="container">
-			<div class="four columns">
-				<div class="company">
-					<%= image_tag "footer_logo.png" %>
-					<p>Alice drew her foot as far down the chimney as she could and waited till she heard a little animal scratching and scrambling about in the chimney close above her; then she gave one sharp kick and waited to see what would happen next.</p>
-				</div>
-			</div>
-			<div class="four columns">
-				<h3>Contact information</h3>
-				<p>6334 Central Luminous Boulevard,<br />
-				Los Angeles Coast, CA 903211<br /><br />
-				Phone: 021-345-124<br />
-				Fax: 542-456-765<br /><br />
-				E-mail: <a href="#">support@black&amp;orange.com</a></p>
-			</div>
-			<div class="four columns">
-				<h3>Recent tweets</h3>
-				<p>If you happen to be in Europe in Oct, join "Test The Web Forward" conf in Paris with editors of Web standards - <a href="#">http://testthewebforward.org/paris-2012.html</a><br />
-				<span class="tweet_time">12 hours ago</span><br />
-				A useful case-study: How to Make Your Own App Promo Cards - <a href="#">http://bit.ly/PV5cjh</a><br />
-				<span class="tweet_time">13 hours ago</span></p>
-			</div>
-			<div class="four columns">
-				<div class="flickr clearfix">
-					<h3>From Flickr</h3>
-					<a href="#"><%= image_tag "imgs/flickr/flickr01.jpg" %></a>
-					<a href="#"><%= image_tag "imgs/flickr/flickr02.jpg" %></a>
-					<a href="#"><%= image_tag "imgs/flickr/flickr03.jpg" %></a>
-					<a href="#"><%= image_tag "imgs/flickr/flickr04.jpg" %></a>
-					<a href="#"><%= image_tag "imgs/flickr/flickr05.jpg" %></a>
-					<a href="#"><%= image_tag "imgs/flickr/flickr06.jpg" %></a>
-					<a href="#"><%= image_tag "imgs/flickr/flickr01.jpg" %></a>
-					<a href="#"><%= image_tag "imgs/flickr/flickr06.jpg" %></a>
-					<a href="#"><%= image_tag "imgs/flickr/flickr07.jpg" %></a>
-					<a href="#"><%= image_tag "imgs/flickr/flickr08.jpg" %></a>
-					<a href="#"><%= image_tag "imgs/flickr/flickr02.jpg" %></a>
-					<a href="#"><%= image_tag "imgs/flickr/flickr03.jpg" %></a>
-				</div>
-			</div>
-			<div class="sixteen columns">
-				<hr class="line footer" />
-			</div>
-			<div class="eight columns">
-				<div class="copyright">
-					&copy; Copyright 2013
-					<a href="index.html">Black&amp;Green</a>.
-					All Rights Reserved. Theme by 
-					<a target="_blank" href="http://themeforest.net/user/The_Silverman">silviu andrei</a>.
-				</div>
-			</div>
-			<div class="eight columns">
-				<div class="social">
-					<a href="#">
-						<%= image_tag "social/dribbble.png" %>
-					</a>
-					<a href="#">
-						<%= image_tag "social/twitter.png" %>
-					</a>
-					<a href="#">
-						<%= image_tag "social/vimeo.png" %>
-					</a>
-					<a href="#">
-						<%= image_tag "social/facebook.png" %>
-					</a>
-					<a href="#">
-						<%= image_tag "social/youtube.png" %>
-					</a>
-					<a href="#">
-						<%= image_tag "social/digg.png" %>
-					</a>
-				</div>
-			</div>
+	<%= render 'layouts/footer' %>

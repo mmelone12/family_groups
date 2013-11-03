@@ -1124,3 +1124,5 @@ ActiveRecord::Base.connection.execute("SELECT SETVAL('message_id_seq', 1)")
         @matched_users = Rails.cache.fetch(@user.cache_key + '/daily_match', expires_in: 1.day){
         other_user.order("RANDOM()").first(5)}
     end
+
+<%= link_to "Join your community", signup_path, id: 'create_user', class: "b-new1", style: "color:white" %>

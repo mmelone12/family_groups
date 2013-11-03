@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default :from => "matt.m.melone@gmail.com"
+  default :from => "contact@familygroups.com"
   
   def registration_confirmation(user)
     @user = user
@@ -15,7 +15,17 @@ class UserMailer < ActionMailer::Base
 
   def invite(recipient)
     @recipient = recipient
+    @user = User.find(recipient.user_id)
     attachments["family_groups.png"] = File.read("#{Rails.root}/app/assets/images/fglogo1.png")
     mail(:to => "#{recipient.email} <#{recipient.email}>", :subject => "You've been invited by a friend to join Family Groups")
+  end
+
+  def friended(friendship)
+    @friendship = friendship
+    friend = User.find(friendship.friend_id)
+    @friend = User.find(friendship.friend_id)
+    @user = User.find(friendship.user_id)
+    attachments["family_groups.png"] = File.read("#{Rails.root}/app/assets/images/fglogo1.png")
+    mail(:to => "#{friend.name} <#{friend.email}>", :subject => "You've just been friended by someone on Family Groups")
   end
 end

@@ -1,3 +1,4 @@
+<% if @matched_user.present? %>		
 		<div class="four columns">
 			<h3 class="matched_user">Today's Matched Parent</h3>
 			<%= image_tag @matched_user.image_path, class: "matched_user_image" %>
@@ -27,4 +28,5 @@ Hi! It seems like we have some common interests. How are you handling being a pa
 	 </div> 	
 	 <%= render partial: 'js/premium.js.erb' %>
    </div>
+<% end %>   
 </div>

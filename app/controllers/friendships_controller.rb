@@ -1,12 +1,14 @@
 class FriendshipsController < ApplicationController
 	def create
+      @user = current_user
   		@friendship = current_user.friendships.build(:friend_id => params[:friend_id])
-  		if @friendship.save
-    		flash[:notice] = "Added friend."
-    		redirect_to root_url
-  		else
-    		flash[:error] = "Unable to add friend."
-    		redirect_to root_url
+      @friendship.save
+      Message.create!({author_id: current_user.id, body: "I just friended you.", subject: "You've just been friended",
+      to: User.find(@friendship.friend) })
+      UserMailer.friended(@friendship).deliver
+      respond_to do |format|
+          format.html { redirect_to(root_url) }
+          format.js 
   		end
 	end
 

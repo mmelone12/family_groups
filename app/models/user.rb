@@ -53,6 +53,7 @@ class User < ActiveRecord::Base
 
   has_many :sent_messages, :class_name => "Message", :foreign_key => "author_id"
   has_many :received_messages, :class_name => "MessageCopy", :foreign_key => "recipient_id"
+  has_many :invites
 
   def self.search(search)
     if search

@@ -8,6 +8,6 @@
                     <%= render :partial => 'js/followed_groups.js.erb', :locals => { :group => group } %>
                   <% end %>
                   <div id= "see-all" data-no-turbolink>
-                    <%= link_to "See All My Groups", group_following_user_path(@user) %>
+                    <%= link_to "See All My Groups", group_following_user_path(@user), class: "clickable" %>
                   </div>
                 <% end %>

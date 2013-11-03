@@ -10,6 +10,6 @@
                     <%= render :partial => 'js/followed_interests.js.erb', :locals => { :interest => interest } %>
                   <% end %>
                   <div id= "see-all" data-no-turbolink>
-                    <%= link_to "See All My Interests", following_user_path(@user) %>
+                    <%= link_to "See All My Interests", following_user_path(@user), class: "clickable" %>
                   </div>
                 <% end %>

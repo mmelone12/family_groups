@@ -11,6 +11,10 @@ class GroupsController < ApplicationController
     @groups = new_groups.reject { |group| current_group_ids.include?(group.id) }
     @other_groups = Group.where(['group_id IS ? AND user_id <> ? AND city = ?', nil, current_user.id, @user.city])
     @group = Group.create
+    @invite = Invite.new
+    @message = current_user.sent_messages.build
+    @messages = current_user.received_messages.paginate :per_page => 10, :page => params[:page], :include => :message, :order => "messages.created_at DESC"
+    @sent_messages = current_user.sent_messages.paginate :per_page => 10, :page => params[:page], :order => "created_at DESC"
   end
 
   def new

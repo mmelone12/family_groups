@@ -1,36 +1,38 @@
 <div id="follow_form<%= "#{activity.id}" %>">                      
   <div class="four columns portfolio-item activities">
     <div class="our-work">
-        <%= link_to activity_path(activity), class: "img-overlay" do %>
+        <a class="img-overlay">
+          <div class= "min-height-activities">
             <%= image_tag activity.image_path %>
             <div class="img-overlay-div">
+             <div class="activities_showme"> 
             <h4>
             <%= if activity.title.length > 35; activity.title.truncate(35) + "...  "; else activity.title; end %>
             </h4>
             <h5>
             <br />
-              <%= if activity.desc.length > 130; activity.desc.truncate(130); else activity.desc; end %>...<div class="learn_more"> Learn More</div>
+            <%= if activity.desc.length > 130; activity.desc.truncate(130); else activity.desc; end %>...<div class="learn_more"> Learn More</div>
             </h5>
-             <%= form_for(current_user.activity_relationships.build(activity_followed_id: 
+              </div>
+            <%= form_for(current_user.activity_relationships.build(activity_followed_id: 
                              activity.id), remote: true) do |f| %> 
                 <div><%= f.hidden_field :activity_followed_id %></div>
-              <%= f.submit "Add to My Activities", class: "b-item" %>
-              <% end %>
-            </div>
-          <% end %>
-        <% if activity.title.length > 30 %>
-          <div class="smaller_size">
-            <%= link_to activity_path(activity), class: "img-overlay" do %> 
-            <h3>
-              <%= activity.title.truncate(30) %><span>
-              <% if activity.start_date.blank? %> 
-                <%= activity.when.truncate(40) %>
-              <% else %>
-                <%= activity.start_date.to_formatted_s(:rfc822) %>
-              <% end %></span>
-            </h3>
+                <%= f.submit "Add to My Activities", class: "b-item" %>
             <% end %>
-        </div>
+            </div>
+          </div>
+        </a>
+        <% if activity.title.length > 30 %>
+        <h3>  
+          <div class="smaller_size">
+            <%= link_to activity.title.truncate(30), "#", class: "activities_showme" %><span>
+            <% if activity.start_date.blank? %> 
+              <%= link_to activity.when.truncate(40), "#", class: "activities_showme" %>
+            <% else %>
+              <%= link_to activity.start_date.to_formatted_s(:rfc822), "#", class: "activities_showme" %>
+            <% end %></span>
+          </div>
+        </h3>
         <% else %>
           <h3> <%= link_to activity.title, "#", class: "activities_showme" %><span>
               <% if activity.start_date.blank? %> 
@@ -41,4 +43,4 @@
         <% end %>
     </div>
   </div>
-</div>				
+</div>    

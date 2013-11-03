@@ -9,18 +9,28 @@
     <br/>
     <%= form_tag users_path, :method => 'get' do %>
     <p>
-      <%= text_field_tag :search, params[:search], value: "Type last name here", id: 'search_form' %>
+      <%= text_field_tag :search, params[:search], value: "e.g. Smith", id: 'search_form' %>
       <%= submit_tag "Search for Users", :last_name => nil %>
     </p>
     <% end %>
-    <br/>
     <%= form_for(@invite, remote: true) do |f| %>
-      <%= f.label "Invite a friend to join" %>
+      <%= f.label "Invite a friend to join!" %>
       <%= f.text_field :email, value: "Email address", id: 'invite_form' %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
       <%= f.submit "Invite" %>
     <% end %>
     <div id="invite_sent">
     </div>
+    <h3 class="following">Friends I Follow</h3>
+    <% @user.friendships.each do |friend| %>
+      <div class="friend"><%= friend.friend.name %> <%= friend.friend.last_name %></div>
+      <%= render partial: 'js/friends.js.erb', locals: {:friend => friend.friend} %>
+    <% end %>
+        <h3 class="follower">Friends Following Me</h3>
+    <% @user.inverse_friends.each do |friend| %>
+      <div class="friend"><%= friend.friend.name %> <%= friend.friend.last_name %></div>
+      <%= render partial: 'js/friends.js.erb', locals: {:friend => friend.friend} %>
+    <% end %>
   </div>
   <div class="nine columns">
 <div id="top_space">

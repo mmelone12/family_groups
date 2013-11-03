@@ -29,15 +29,17 @@
     	<span><%= image_tag place.image_path, size: '30' %>
     <% end %>
     <br/> 
+    <div id="disappear_button">
       <% if current_user.friends.exclude?(@user) %>
         <h3>Are you friends with this person?</h3>
         <br />
         <%= form_for(current_user.friendships.build(:friend_id =>
-                     @user)) do |f| %> 
+                     @user), remote: true) do |f| %> 
              <div><%= hidden_field_tag :friend_id, @user.id %></div>
           <%= f.submit "Friend", class: "b-black" %>
         <% end %>
       <% end %>
+     </div>
     </div>
   </div> 
 </div>

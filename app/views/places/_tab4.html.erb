@@ -8,6 +8,6 @@
                     <%= render :partial => 'js/followed_places.js.erb', :locals => { :place => place } %>
                   <% end %>
                   <div id= "see-all" data-no-turbolink>
-                    <%= link_to "See All My Places", place_following_user_path(@user) %>
+                    <%= link_to "See All My Places", place_following_user_path(@user), class: "clickable" %>
                   </div>
                 <% end %>			

@@ -9,6 +9,7 @@ class ActivitiesController < ApplicationController
     new_activities = Activity.where('start_date >= ? AND user_id <> ?', 1.days.ago(Time.now).to_date, current_user.id )
     @activities = new_activities.near(@user).all( :order => "start_date", :limit => 30)
     @recurring_activities = Activity.where(['recurring = ?', "yes"])
+    @invite = Invite.new
     @message = current_user.sent_messages.build
     @messages = current_user.received_messages.paginate :per_page => 10, :page => params[:page], :include => :message, :order => "messages.created_at DESC"
     @sent_messages = current_user.sent_messages.paginate :per_page => 10, :page => params[:page], :order => "created_at DESC"

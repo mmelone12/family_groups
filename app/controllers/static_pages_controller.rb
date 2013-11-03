@@ -73,4 +73,7 @@ class StaticPagesController < ApplicationController
 
   def premium
   end
+
+  def signupalready
+  end
 end

@@ -1,67 +1,44 @@
-<div class="two-thirds column">
-				<nav id="menu" class="navigation">
-					<ul id="nav" class="clearfix">
-						<li><a href="index.html">Home<span>home info</span></a>
-							<ul>
-								<li><a href="index02.html">Index 02</a></li>
-								<li><a href="index03.html">Index 03</a></li>
-								<li><a href="index04.html">Index 04</a></li>
-								<li><a href="faq.html">F.A.Q.</a></li>
-								<li><a href="team.html">Our Team</a></li>
-								<li><a href="services.html">Services</a></li>
-								<li><a href="prices.html">Prices</a></li>
-								<li><a href="sidebar-left.html">Sidebar Left</a></li>
-								<li><a href="sidebar-right.html">Sidebar Right</a></li>
-								<li><a href="#">And This</a>
-									<ul>
-										<li><a href="#">Goes Down</a></li>
-										<li><a href="#">A Really</a></li>
-										<li><a href="#">Really Long</a></li>
-										<li><a href="#">Way!</a></li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-						<li><a href="shortcodes.html">Settings<span>features info</span></a></li>
-						<li><a href="projects.html">Team<span>folio extra info</span></a>
-							<ul>
-								<li><a href="projects02.html">Portfolio 02</a></li>
-								<li><a href="projects03.html">Portfolio 03</a></li>
-								<li><a href="projects-single.html">Portfolio Single</a></li>
-							</ul>
-						</li>
-						<li><%= link_to "Sign Out", signout_path, method: "delete" %>
-						</li>
-					</ul>
-				</nav>
+<footer>
+		<div class="container">
+			<div class="eight columns">
+				<div class="company">
+					<p>Family Groups was founded to help connect parents to other parents in their communities. Families have lived in close, tight-knit, groups since the start of history, and we understand modern parents often struggle to raise children in isolation away from extended family and other parents. We hope this service helps our users build "villages" that make raising children a little easier and fun.</p>
+				</div>
+			</div>
+			<div class="eight columns">
+				<h3>Contact information</h3>
+				<p>Comments? Ideas? Submissions? <br />
+				E-mail: <a href="#">contact@familygroups.org</a></p>
 			</div>
 			<div class="sixteen columns">
-				<hr class="line" />
+				<hr class="line footer" />
 			</div>
-		</div>
-	</header>
-
-	<div class="container main">
-					<div class="eight columns">
-					<h3 class="shortcodes">Check out your community and meet fellow parents.</h3>
-					<ul class="tabs-nav">
-						<li><a href="#tab1">My Activities</a></li>
-						<li><a href="#tab2">My Groups</a></li>
-						<li><a href="#tab3">My Interests</a></li>
-						<li><a href="#tab4">My Places</a></li>
-					</ul>
-					<div class="tabs-container">
-							<div id="tab1" class="tab-content">
-								<%= render 'activities/tab1' %> 
-							</div>
-							<div id="tab2" class="tab-content">
-								<%= render 'groups/tab2' %>
-							</div>
-							<div id="tab3" class="tab-content">
-								<%= render 'interests/tab3' %>
-							</div>
-							<div id="tab4" class="tab-content">
-								<%= render 'places/tab4' %>
-							</div>
-						</div>
-				</div> 
+			<div class="eight columns">
+				<div class="copyright">
+					&copy; Copyright 2013
+					<%= link_to "FamilyGroups.org", root_url %>
+					All Rights Reserved.
+				</div>
+			</div>
+			<div class="eight columns">
+				<div class="social">
+					<a href="#">
+						<%= image_tag "social/dribbble.png" %>
+					</a>
+					<a href="#">
+						<%= image_tag "social/twitter.png" %>
+					</a>
+					<a href="#">
+						<%= image_tag "social/vimeo.png" %>
+					</a>
+					<a href="#">
+						<%= image_tag "social/facebook.png" %>
+					</a>
+					<a href="#">
+						<%= image_tag "social/youtube.png" %>
+					</a>
+					<a href="#">
+						<%= image_tag "social/digg.png" %>
+					</a>
+				</div>
+			</div>

@@ -593,3 +593,49 @@ p.adjusted {
   width: 120px;
   margin-bottom: 2px;
 }
+
+#invite_sent {
+  margin-top: -60px;
+  margin-right: 150px;
+}
+
+h3.following {
+  margin-top: 55px;
+  margin-bottom: 5px;
+}
+
+h3.follower {
+  margin-top: 15px;
+}
+
+.friend {
+  cursor:pointer;
+}
+
+.clickable {
+  cursor:pointer;
+}
+
+#back_button1 ul {
+  overflow: hidden;
+  margin: 5px 0 10px;
+}
+#back_button1 ul li {
+  float: left;
+  margin-left: 60px;
+}
+#back_button1 ul li a {
+  font-size: 16px;
+  text-transform: uppercase;
+  background: #f8f8f8;
+  color: #aeaeae;
+  padding: 8px 16px;
+  text-decoration: none;
+  margin-right: 10px;
+  display: block;
+  transition: all 0.2s;
+}
+#back_button1 ul li a:hover, #back_button ul li a.selected {
+  background: #80b600;
+  color: white;
+}

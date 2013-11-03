@@ -1,40 +1,31 @@
 <div class="container main">
     <div class="two columns">
-      <%= image_tag matched_user.image_path %><br/>   
-      City: <%= matched_user.city %>
+      <%= image_tag friend.image_path %><br/>   
+      City: <%= friend.city %>
     </div> 
     <div class="six columns">
-    <h6><%= matched_user.name %></h6>
-    <%= matched_user.name %> <%= matched_user.profile_stats %> in <%= @matched_user.city %>. <%= @matched_user.kid_stats %> <%= @matched_user.parent_interests %> <%= @matched_user.parent_activities %>
+    <h6><%= friend.name %></h6>
+    <%= friend.name %> <%= friend.profile_stats %> in <%= friend.city %>. <%= friend.kid_stats %> <%= friend.parent_interests %> <%= friend.parent_activities %>
     <br />
-    <p>Some of <%= @matched_user.name %>'s Interests:</p>
-    <% @matched_user.following.each do |interest| %>
-    	<span><%= image_tag interest.image_path, size: '30' %>
+    <br />
+    <p>Some of <%= friend.name %>'s Interests:</p>
+    <% friend.following.each do |interest| %>
+      <span><%= image_tag interest.image_path, size: '30' %>
     <% end %>
     <br/>
-     <p>Some of <%= @matched_user.name %>'s Activities:</p>
-    <% @matched_user.activity_following.each do |activity| %>
-    	<span><%= image_tag activity.image_path, size: '30' %>
+     <p>Some of <%= friend.name %>'s Activities:</p>
+    <% friend.activity_following.each do |activity| %>
+      <span><%= image_tag activity.image_path, size: '30' %>
     <% end %>
     <br/> 
-        <p>Some of<%= @matched_user.name %>'s Groups:</p>
-    <% @matched_user.group_following.each do |group| %>
-    	<span><%= image_tag group.image_path, size: '30' %>
+        <p>Some of <%= friend.name %>'s Groups:</p>
+    <% friend.group_following.each do |group| %>
+      <span><%= image_tag group.image_path, size: '30' %>
     <% end %>
     <br/>
-     <p>Some of<%= @matched_user.name %>'s Places:</p>
-    <% @matched_user.place_following.each do |activity| %>
-    	<span><%= image_tag place.image_path, size: '30' %>
+     <p>Some of <%= friend.name %>'s Places:</p>
+    <% friend.place_following.each do |place| %>
+      <span><%= image_tag place.image_path, size: '30' %>
     <% end %>
-    <br/> 
-      <% if current_user.friends.exclude?(@matched_user.id) %>
-        <h3>Are you friends with this person?</h3>
-        <br />
-        <%= form_for(current_user.friendships.build(:friend_id =>
-                     @matched_user)) do |f| %> 
-             <div><%= hidden_field_tag :friend_id, @matched_user.id %></div>
-          <%= f.submit "Friend", class: "b-black" %>
-        <% end %>
-      <% end %>
     </div>
-</div> 
+  </div> 
