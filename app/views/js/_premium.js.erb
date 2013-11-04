@@ -1,19 +1,20 @@
 <script>
-$('.premium').on('click', function(e) {
-  e.preventDefault();
-
-  $('<div id="dialog-form"></div>').dialog({
-        autoOpen: true,
-        width: 520,
-        modal: true,
-        open: function() {
-            $(this).append($("<%= escape_javascript(render(:partial => 'layouts/premium')) %>"));
-        },
-        close: function() {
+$(document).ready(function() {
+  $('#reoriented').click(function(e) {
+    var url = $(this).attr('href');
+    var dialog_form = $('<div id="dialog-form">Loading form...</div>').dialog({
+      autoOpen: false,
+      width: 520,
+      modal: true,
+      open: function() {
+        return $(this).load(url + ' #content');
+      },
+      close: function() {
         $('#dialog-form').remove();
       }
     });
     dialog_form.dialog('open');
     e.preventDefault();
   });
+});
 </script>

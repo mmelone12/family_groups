@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131103032541) do
+ActiveRecord::Schema.define(version: 20131103225531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -142,6 +142,13 @@ ActiveRecord::Schema.define(version: 20131103032541) do
     t.float    "longitude"
   end
 
+  create_table "plans", force: true do |t|
+    t.string   "name"
+    t.decimal  "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "relationships", force: true do |t|
     t.integer  "follower_id"
     t.integer  "followed_id"
@@ -152,6 +159,15 @@ ActiveRecord::Schema.define(version: 20131103032541) do
   add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id", using: :btree
   add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true, using: :btree
   add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
+
+  create_table "subscriptions", force: true do |t|
+    t.integer  "plan_id"
+    t.integer  "user_id"
+    t.string   "stripe_customer_token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "email"
+  end
 
   create_table "users", force: true do |t|
     t.string   "name"

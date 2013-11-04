@@ -9,7 +9,7 @@
 			<p><%= link_to "See more parent profiles nearby", matches_user_path(@user), id: 'user_matches' %></p>
 			<% else %>
 			<br/>
-			<p class="adjusted"><%= link_to "See more parent profiles nearby", premium_path, class: 'static_page' %></p> 
+			<p class="adjusted" data-no-turbolink><%= link_to "See more parent profiles nearby", new_subscription_path %></p> 
 			<% end %>
 
 		</div>
@@ -26,7 +26,6 @@ Hi! It seems like we have some common interests. How are you handling being a pa
 		</div>
 	   </div>
 	 </div> 	
-	 <%= render partial: 'js/premium.js.erb' %>
    </div>
 <% end %>   
 </div>

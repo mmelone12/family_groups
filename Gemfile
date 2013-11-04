@@ -11,6 +11,7 @@ gem 'rMeetup', require: 'rmeetup'
 gem 'mechanize'
 gem 'will_paginate', '3.0.5'
 gem 'acts_as_tree'
+gem 'stripe'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'

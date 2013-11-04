@@ -13,6 +13,7 @@
 //= require jquery-1.7.1.min
 //= require jquery_ujs
 //= require jquery-ui
+//= require subscriptions
 //= require users
 //= require groups
 //= require activities
