@@ -19,7 +19,6 @@
 //= require activities
 //= require interests
 //= require places
-//= require turbolinks
 //= require jquery.flexslider-min
 //= require jquery.cookie
 //= require superfish

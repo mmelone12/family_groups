@@ -6,9 +6,11 @@ class ActivitiesController < ApplicationController
 
   def index
     @user = current_user
+    current_activity_ids = current_user.activity_following.pluck(:activity_followed_id)
     new_activities = Activity.where('start_date >= ? AND user_id <> ?', 1.days.ago(Time.now).to_date, current_user.id )
-    @activities = new_activities.near(@user).all( :order => "start_date", :limit => 30)
-    recurring_activities = Activity.where(['recurring = ?', "yes"]).near(@user).first(5)
+    nearby_activities = new_activities.near(@user).all( :order => "start_date", :limit => 30)
+    @activities = nearby_activities.reject { |activity| current_activity_ids.include?(activity.id) }
+    recurring_activities = Activity.where(['recurring = ?', "yes"]).near(@user).first(20)
     @recurring_activities = recurring_activities.reject { |activity| current_activity_ids.include?(activity.id) }
     @invite = Invite.new
     @message = current_user.sent_messages.build

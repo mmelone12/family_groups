@@ -5,11 +5,11 @@
 				<p class ="match"><%= @matched_user.name %> <%= @matched_user.profile_stats %> in <%= @matched_user.city %>. <%= @matched_user.kid_stats %> <%= @matched_user.parent_interests %> <%= @matched_user.parent_activities %><br/>
 				<p><strong><center><%= link_to "See full profile", user_path(@matched_user), id: 'create_user' %></strong></center></p>
 			<br/>
-			<% if @user.premium? %>
+			<% if @user.subscriber.present? %>
 			<p><%= link_to "See more parent profiles nearby", matches_user_path(@user), id: 'user_matches' %></p>
 			<% else %>
 			<br/>
-			<p class="adjusted" data-no-turbolink><%= link_to "See more parent profiles nearby", new_subscription_path %></p> 
+			<p class="adjusted" data-no-turbolink><%= link_to "See more parent profiles nearby", new_subscription_path(:plan_id => 1) %></p> 
 			<% end %>
 
 		</div>

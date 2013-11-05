@@ -112,21 +112,61 @@ class User < ActiveRecord::Base
   end
 
   def show_activity
-    if activities.where('created_at >= ?', Date.current).blank?
-      "empty"
+    if self.subscriber == "Subscriber" && activities.where('created_at >=?', Date.current).count < 3
+        truth = "empty"
     end
+    if self.subscriber.blank? && activities.where('created_at >= ?', Date.current).blank?
+        truth = "empty"
+    end
+    if self.subscriber == "PLUS" && activities.where('created_at >= ?', Date.current).count < 5
+        truth = "empty"
+    end
+    truth
   end
 
   def show_group
-    if groups.where('created_at >= ?', Date.current).blank?
-      "empty"
+    if self.subscriber == "Subscriber" && groups.where('created_at >=?', Date.current).count < 3
+        truth = "empty"
     end
+    if self.subscriber.blank? && groups.where('created_at >= ?', Date.current).blank?
+        truth = "empty"
+    end
+    if self.subscriber == "PLUS" && groups.where('created_at >= ?', Date.current).count < 5
+        truth = "empty"
+    end
+    truth
   end
 
     def show_place
-    if places.where('created_at >= ?', Date.current).blank?
-      "empty"
+    if self.subscriber == "Subscriber" && places.where('created_at >=?', Date.current).count < 3
+        truth = "empty"
     end
+    if self.subscriber.blank? && places.where('created_at >= ?', Date.current).blank?
+        truth = "empty"
+    end
+    if self.subscriber == "PLUS" && places.where('created_at >= ?', Date.current).count < 5
+        truth = "empty"
+    end
+    truth
+  end
+
+  def full_up
+    if self.subscriber == "Subscriber" && activities.where('created_at >=?', Date.current).count > 2 || groups.where('created_at >=?', Date.current).count > 2 || places.where('created_at >=?', Date.current).count > 2
+        truth = "filled"
+    end
+    if self.subscriber == "PLUS" && activities.where('created_at >=?', Date.current).count > 4 || groups.where('created_at >=?', Date.current).count > 4 || places.where('created_at >=?', Date.current).count > 4
+        truth = "filled"
+    end
+    truth
+  end
+
+  def interest_image
+    if following.image_path.blank?
+      answer = "<%= image_tag interest.uploader_image, size:'30' %>"
+    else
+      answer = "<%= image_tag interest.image_path, size:'30' %>"
+    end
+    answer
   end
 
   def profile_stats

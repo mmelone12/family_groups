@@ -8,7 +8,7 @@ class GroupsController < ApplicationController
     @user = current_user
     new_groups = RMeetup::Client.fetch(:groups, :lat => @user.latitude, :lon => @user.longitude, :topic => "parents")
     current_group_ids = current_user.groups.pluck(:group_id)
-    @groups = new_groups.reject { |group| current_group_ids.include?(group.id) }
+    @groups = new_groups.reject { |group| current_group_ids.include?(group.id) }.first(40)
     @other_groups = Group.where(['group_id IS ? AND user_id <> ? AND city = ?', nil, current_user.id, @user.city])
     @group = Group.create
     @invite = Invite.new

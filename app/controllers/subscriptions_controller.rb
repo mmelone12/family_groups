@@ -1,6 +1,6 @@
 class SubscriptionsController < ApplicationController
   def new
-    plan = Plan.find(1)
+    plan = Plan.find(params[:plan_id])
     @subscription = plan.subscriptions.build
     @user = current_user
     @places = Place.near(@user)
@@ -12,8 +12,15 @@ class SubscriptionsController < ApplicationController
   end
 
   def create
+  	@user = current_user
     @subscription = Subscription.new(subscription_params)
-    if @subscription.save_with_payment
+    if @subscription.save_with_payment 
+    	if @subscription.plan_id == 1
+      		@user.update_attributes(:subscriber => "Subscriber")
+      	end
+      	if @subscription.plan_id == 2
+      		@user.update_attributes(:subscriber => "PLUS")
+      	end
       redirect_to root_url, :notice => "Thank you for subscribing!"
     else
       redirect_to new_subscription_path

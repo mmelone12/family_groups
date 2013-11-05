@@ -22,14 +22,14 @@
     <div id="invite_sent">
     </div>
     <h3 class="following">Friends I Follow</h3>
-    <% @user.friendships.each do |friend| %>
-      <div class="friend"><%= friend.friend.name %> <%= friend.friend.last_name %></div>
-      <%= render partial: 'js/friends.js.erb', locals: {:friend => friend.friend} %>
+    <% @user.friends.each do |friend| %>
+      <div class="friend"><%= friend.name %> <%= friend.last_name %></div>
+      <%= render partial: 'js/friends.js.erb', locals: {:friend => friend} %>
     <% end %>
         <h3 class="follower">Friends Following Me</h3>
     <% @user.inverse_friends.each do |friend| %>
-      <div class="friend"><%= friend.friend.name %> <%= friend.friend.last_name %></div>
-      <%= render partial: 'js/friends.js.erb', locals: {:friend => friend.friend} %>
+      <div class="friend"><%= friend.name %> <%= friend.last_name %></div>
+      <%= render partial: 'js/friends.js.erb', locals: {:friend => friend} %>
     <% end %>
   </div>
   <div class="nine columns">

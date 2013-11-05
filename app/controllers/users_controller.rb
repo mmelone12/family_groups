@@ -14,9 +14,19 @@ class UsersController < ApplicationController
         current_user.children_under_5, current_user.children_5_10, current_user.tweens, current_user.teens,
         current_user.non_parent])
     if other_user.empty? && User.near(@user).present?
-      @matched_users = User.near(@user).order("RANDOM()").first(5)
+      if current_user.subscriber == "Subscriber"
+        @matched_users = User.near(@user).order("RANDOM()").first(5)
+      end
+      if current_user.subscriber == "PLUS"
+        @matched_users = User.near(@user).order("RANDOM()").first(15)
+      end
     else
-      @matched_users = other_user.order("RANDOM()").first(5)
+      if current_user.subscriber == "Subscriber"
+        @matched_users = other_user.order("RANDOM()").first(5)
+      end
+      if current_user.subscriber == "PLUS"
+        @matched_users = other_user.order("RANDOM()").first(15)
+      end
     end
   end
 
@@ -131,7 +141,7 @@ end
   	def user_params
   		params.require(:user).permit(:name, :email, :address, :latitude, :longitude, :city, :state, 
         :password, :password_confirmation, :gender, :single_parent, :special_needs, :new_parent, :children_under_5,
-        :children_5_10, :tweens, :teens, :non_parent, :uploader_image, :image_path)
+        :children_5_10, :tweens, :teens, :non_parent, :uploader_image, :image_path, :subscriber)
   	end
 
     # Before filters

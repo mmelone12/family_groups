@@ -1,5 +1,47 @@
-<%= render 'layouts/menu_and_tabs' %>
+<div class="two-thirds column">
+        <nav id="menu" class="navigation">
+          <ul id="nav" class="clearfix">
+            <li data-no-turbolink><%= link_to root_url do %>Home
+              <span>Dashboard<% end %></span></li>
+            <li><%= link_to edit_user_path(@user), id: 'edit_user' do %>Settings
+              <span><%= @user.name %>'s Profile<% end %></span></li>
+            <li><a class="inbox">Mailbox<span><strong><%= @user.new_messages %></strong> new messages</span></a></li>
+            <li><%= link_to "Sign Out", signout_path, method: "delete" %>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="sixteen columns">
+        <hr class="line" />
+      </div>
+    </div>
+  </header>
 
+<% if @user.full_up == "filled" %>
+    <div class="container main">
+    <h3 class="shortcodes">Sorry, you've used up all your new activities, groups or places for today. You'll be able to create more tomorrow!</h3>
+      <div class="eight columns">
+          <%= image_tag 'premium_logo.jpg', class: 'premium_logo' %>
+      </div>
+<div class="eight columns">
+  <%= image_tag 'premium_ad_resized1.jpg', class: 'premium_ad' %>
+</div>
+    <div class="container">
+      <div class="sixteen columns">
+        <hr class="line slogan" />
+      </div>
+    </div>
+
+<% else %>
+
+  <div class="container main">
+    <h3 class="shortcodes">Find more things to do and connect to more parents with an annual subscription.</h3>
+      <div class="eight columns">
+          <%= image_tag 'premium_logo.jpg', class: 'premium_logo' %>
+      </div>
+<div class="eight columns">
+  <%= image_tag 'premium_ad_resized1.jpg', class: 'premium_ad' %>
+</div>
     <div class="container">
       <div class="sixteen columns">
         <hr class="line slogan" />
@@ -7,10 +49,18 @@
     </div>
     
     <div class="container">
-        <div class="sixteen columns" style="margin-left:300px">
-<h1>Signing up for "<%= @subscription.plan.name %>"</h1>
-<p>Includes <strong>a year's worth of content</strong> for only <strong><%= number_to_currency @subscription.plan.price %></strong></p>
-
+        <div class="five columns" style="margin-left:70px">
+          <br/>
+          <% if @subscription.plan.name == "Annual Subscription" %>
+            <h1 class="stronger">Sign up for an <%= @subscription.plan.name %> today!</h1>
+          <% else %>
+            <h1 class="stronger">Sign up for <%= @subscription.plan.name %> today!</h1>
+          <% end %>
+<p>Includes <strong>a year of content</strong> for only <strong> <%= number_to_currency @subscription.plan.price %>.</strong>Get access to create more activities, groups and places, and meet more parents in your neighborhood.<br/>
+  <% if @subscription.plan.name == "Annual Subscription" %>
+    <%= link_to "(Prefer to go PLUS? Check out our premium account.)", new_subscription_path(:plan_id => 2), id: "linky" %>
+  <% end %></p> 
+<br/>
 <%= form_for @subscription do |f| %>
   <% if @subscription.errors.any? %>
     <div class="error_messages">
@@ -22,12 +72,10 @@
       </ul>
     </div>
   <% end %>
-
   <%= f.hidden_field :plan_id %>
   <%= f.hidden_field :stripe_card_token %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.hidden_field :email, value: current_user.email %>
-
   <% if @subscription.stripe_card_token.present? %>
     Credit card has been provided.
   <% else %>
@@ -49,11 +97,49 @@
     <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
   </div>
   <div class="actions">
-    <%= f.submit "Subscribe" %>
+    <%= f.submit "Subscribe", style: "margin-left:45px" %>
   </div>
 <% end %>
-
 </div>
+
+  <div class="ten columns">
+          <ul class="price-box items">
+            <li>See more user profiles</li>
+            <li>Email discovered users</li>
+            <li>Create New Items</li>
+            <li>All Activities</li>
+            <li>All Places</li>
+            <li>All Groups</li>
+            <li>Access new features</li>
+          </ul>
+          <ul class="price-box featured">
+            <li>Annual Subscriber Package</li>
+            <li><h3><sup>$</sup>14.99<span>per year</span></h3></li>
+            <li>up to 5 daily</li>
+            <li>up to 5 daily</li>
+            <li>up to 9 daily</li>
+            <li>Yes</li>
+            <li>Yes</li>
+            <li>Yes</li>
+            <li>Yes</li>
+          </ul>
+          <ul class="price-box featured">
+            <li>Subscriber Package PLUS</li>
+            <li><h3><sup>$</sup>29.99<span>per year</span></h3></li>
+            <li>up to 15 daily</li>
+            <li>up to 15 daily</li>
+            <li>up to 15 daily</li>
+            <li>Yes</li>
+            <li>Yes</li>
+            <li>Yes</li>
+            <li>Yes</li>
+          </ul>
+        </div>
+      </div>                         
+  </div>
+  <% end %>
+        <%= render partial: 'js/mailbox.js.erb' %>  
+
 </div>
 </div>
 </div>

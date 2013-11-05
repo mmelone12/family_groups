@@ -639,3 +639,22 @@ h3.follower {
   background: #80b600;
   color: white;
 }
+
+.premium_logo {
+  margin-left: 30px;
+  margin-top: -10px;
+}
+
+.premium_ad {
+  margin-left: 60px;
+  margin-top: -10px;
+}
+
+#linky {
+  color: blue;
+}
+
+h1.stronger {
+  margin: 3px -60px 20px -20px;
+  font-size: 17px;
+}

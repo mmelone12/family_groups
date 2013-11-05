@@ -112,7 +112,11 @@
                 		<br />
                 		<div id="back_button" data-no-turbolink>
               			<ul>
+              				<% if @user.subscriber.present? %>
                   			<li><%= link_to "See All Activities", activities_path, id: "back_button" %></li>
+                  			<% else %>
+                  			<li><%= link_to "See All Activities", new_subscription_path(:plan_id => 1) %></li>
+                  			<% end %>
                 		</ul>
             			</div>
           			</div>
@@ -121,7 +125,11 @@
         				<br />            			
             			<div id="back_button" data-no-turbolink>
 							<ul>
-				  				<li><%= link_to "See All Groups", groups_path, id: "back_button" %></li>
+								<% if @user.subscriber.present? %>
+                  					<li><%= link_to "See All Groups", groups_path, id: "back_button" %></li>
+                  				<% else %>
+                  					<li><%= link_to "See All Groups", new_subscription_path(:plan_id => 1) %></li>
+	                  			<% end %>
 			    			</ul>
 						</div>
 					</div>
@@ -139,7 +147,11 @@
         				<br />    					
 						   <div id="back_button" data-no-turbolink>
 							<ul>
-				  				<li><%= link_to "See All Places", places_path, id: "back_button" %></li>
+								<% if @user.subscriber.present? %>
+                  					<li><%= link_to "See All Places", places_path, id: "back_button" %></li>
+                  				<% else %>
+                  					<li><%= link_to "See All Places", new_subscription_path(:plan_id => 1) %></li>
+	                  			<% end %>								
 			    			</ul>
 						</div>
 					</div>

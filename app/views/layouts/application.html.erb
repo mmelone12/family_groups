@@ -3,8 +3,8 @@
 <head>
   <title>Family Groups</title>
   <%= favicon_link_tag 'favicon.ico' %>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "https://js.stripe.com/v1/", "application", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => false %>
+  <%= javascript_include_tag "https://js.stripe.com/v1/", "application", "data-turbolinks-track" => false %>
   <%= csrf_meta_tags %>
   <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">

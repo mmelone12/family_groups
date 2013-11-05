@@ -13,6 +13,8 @@ avatars = Avatar.create!([{ image_path: 'avatars/female_avatar1.png'}, {image_pa
 	{image_path: 'avatars/male_avatar4.png'}, {image_path: 'avatars/male_avatar5.png'}, {image_path: 'avatars/male_avatar6.png'},
 	{image_path: 'avatars/male_avatar7.png'}, {image_path: 'avatars/male_avatar8.png'}])
 
+plans = Plan.create!([{ name: "Annual Subscription", price: 14.99}, { name: "Subscriber PLUS", price: 29.99 }])
+
 require 'csv' 
 
 directory = "db/init_data/"

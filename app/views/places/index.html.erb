@@ -21,10 +21,6 @@
 						<%= render :partial => 'places/place', :locals => { :place => place } %>
 						<%= render :partial => 'js/places.js.erb', :locals => { :place => place } %>
 					<% end %>
-					<% @other_places.each do |place| %>
-						<%= render :partial => 'places/other_place', :locals => { :place => place } %>
-						<%= render :partial => 'js/other_places.js.erb', :locals => { :place => place } %>
-					<% end %>
 					</div>
 				</div>	
 			</div>

@@ -12,19 +12,19 @@ gem 'mechanize'
 gem 'will_paginate', '3.0.5'
 gem 'acts_as_tree'
 gem 'stripe'
+gem 'puma'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
-  gem 'puma'
 end
 
 group :test do
   gem 'capybara', '2.1.0'
 end
 
-gem 'sass-rails', '4.0.0'
+gem 'sass-rails'
 gem 'uglifier'
-gem 'coffee-rails', '4.0.0'
+gem 'coffee-rails'
 gem 'jquery-rails', '2.2.1'
 gem 'turbolinks', '1.1.1'
 gem 'jbuilder', '1.0.2'

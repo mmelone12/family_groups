@@ -10,7 +10,9 @@
     <br />
     <p>Some of <%= friend.name %>'s Interests:</p>
     <% friend.following.each do |interest| %>
-      <span><%= image_tag interest.image_path, size: '30' %>
+      <span><% if interest.image_path.present? %><%= image_tag interest.image_path, size: '30' %>
+            <% else interest.uploader_image %>
+            <% end %>
     <% end %>
     <br/>
      <p>Some of <%= friend.name %>'s Activities:</p>
