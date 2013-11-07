@@ -9,25 +9,26 @@
     <br />
     <br />
     <p>Some of <%= friend.name %>'s Interests:</p>
-    <% friend.following.each do |interest| %>
-      <span><% if interest.image_path.present? %><%= image_tag interest.image_path, size: '30' %>
-            <% else interest.uploader_image %>
-            <% end %>
+    <% friend.following.first(10).each do |interest| %>
+      <span><%= image_tag interest.image_path, size: '30' %>
     <% end %>
     <br/>
      <p>Some of <%= friend.name %>'s Activities:</p>
-    <% friend.activity_following.each do |activity| %>
-      <span><%= image_tag activity.image_path, size: '30' %>
+    <% friend.activity_following.first(10).each do |activity| %>
+      <span><% if activity.image_path.present? %><%= image_tag activity.image_path, size: '30' %>
+            <% else %><%= image_tag activity.uploader_image, size: '30' %><% end %>
     <% end %>
     <br/> 
         <p>Some of <%= friend.name %>'s Groups:</p>
-    <% friend.group_following.each do |group| %>
-      <span><%= image_tag group.image_path, size: '30' %>
+    <% friend.group_following.first(10).each do |group| %>
+      <span><% if group.image_path.present? %><%= image_tag group.image_path, size: '30' %>
+            <% else %> <%= image_tag group.uploader_image, size: '30' %><% end %>
     <% end %>
     <br/>
      <p>Some of <%= friend.name %>'s Places:</p>
-    <% friend.place_following.each do |place| %>
-      <span><%= image_tag place.image_path, size: '30' %>
+    <% friend.place_following.first(10).each do |place| %>
+      <span><% if place.image_path.present? %><%= image_tag place.image_path, size: '30' %>
+            <% else %><%= iamge_tag place.uploader_image, size: '30' %><% end %>
     <% end %>
     </div>
   </div> 

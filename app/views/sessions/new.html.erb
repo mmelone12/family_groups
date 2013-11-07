@@ -1,3 +1,36 @@
+<div class="two-thirds column">
+                <nav id="menu" class="navigation">
+                    <ul id="nav" class="clearfix">
+                        <li><a href="index.html" class="active">Home<span>Dashboard</span></a>
+                        </li>
+                        <li><%= link_to howitworks_path, class: 'static_page' do %>How It Works
+                            <span>Take a Look<% end %></span></li>
+                        <li><%= link_to contact_path, class: 'static_page' do %>Contact
+                            <span>Talk to Us<% end %></span></li>
+                    </ul>
+                </nav>
+            </div>
+      <div class="sixteen columns">
+        <hr class="line" />
+      </div>
+    </div>
+  </header>
+
+    <div class="container">
+      <div class="sixteen columns">
+        <hr class="line slogan" />
+      </div>
+    </div>
+
+  <div class="container main">
+            <div class="right">
+
+   <div id="error_explanation">
+    <div class="alert alert-error">
+      Either the username or password you entered is incorrect.
+    </div>
+  </div>
+
 <h1>Sign In</h1>
 
     <%= form_for(:session, url: sessions_path) do |f| %>
@@ -8,7 +41,11 @@
       <%= f.label :password %>
       <%= f.password_field :password %>
 
-      <%= f.submit "Sign in", style: 'color:white', class: "b-color" %>
+      <%= f.submit "Sign in", style: 'color:white', class: "b-sign" %>
     <% end %>
 
     <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+
+</div>
+</div>
+</div>

@@ -23,9 +23,9 @@ class StaticPagesController < ApplicationController
       @recurring_activities = recurring_activities.reject { |activity| current_activity_ids.include?(activity.id) }
       current_place_ids = current_user.place_following.pluck(:place_followed_id)
       @places = Place.near(@user).first(15).reject { |place| current_place_ids.include?(place.id) }
-      other_user = User.near(@user).where.not(id: current_user.id).where(['gender = ? AND single_parent = ? OR new_parent = ? OR special_needs = ?
+      other_user = User.near(@user).where.not(id: current_user.id).where(['gender = ?', current_user.gender ]).where(['single_parent = ? OR new_parent = ? OR special_needs = ?
         OR children_under_5 = ? OR children_5_10 = ? OR tweens = ? OR teens = ? OR non_parent = ?',
-        current_user.gender, current_user.single_parent, current_user.new_parent, current_user.special_needs,
+        current_user.single_parent, current_user.new_parent, current_user.special_needs,
         current_user.children_under_5, current_user.children_5_10, current_user.tweens, current_user.teens,
         current_user.non_parent])
       if other_user.empty? && User.near(@user).present?

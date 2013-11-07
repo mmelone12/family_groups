@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :signed_in_user, only: [:edit, :update, :group_following]
+  before_action :signed_in_user, only: [:edit, :update, :following, :activity_following, :matches, :followers,
+    :group_following, :group_followers, :activity_followers, :place_following, :place_followers]
   before_action :correct_user,   only: [:edit, :update]
 
   def show
@@ -141,7 +142,7 @@ end
   	def user_params
   		params.require(:user).permit(:name, :email, :address, :latitude, :longitude, :city, :state, 
         :password, :password_confirmation, :gender, :single_parent, :special_needs, :new_parent, :children_under_5,
-        :children_5_10, :tweens, :teens, :non_parent, :uploader_image, :image_path, :subscriber)
+        :children_5_10, :tweens, :teens, :non_parent, :uploader_image, :image_path, :subscriber, :last_name)
   	end
 
     # Before filters

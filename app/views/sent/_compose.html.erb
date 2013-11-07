@@ -5,7 +5,7 @@
   <p>Send Messages to Users who have Friended You
     To:<br />
     <select name="message[to][]">
-      <%= options_from_collection_for_select(@user.inverse_friends.find(:all) && @user.friends, :id, :name, @message.to) %>
+      <%= options_from_collection_for_select(@user.inverse_friends, :id, :name, @message.to) %>
     </select>
   </p>
 

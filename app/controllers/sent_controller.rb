@@ -6,6 +6,10 @@ class SentController < ApplicationController
 
   def show
     @message = current_user.sent_messages.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new

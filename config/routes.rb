@@ -11,19 +11,20 @@ FamilyGroups::Application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy]
   resources :relationships, only: [:create, :destroy]
-  resources :groups
+  resources :groups, only: [:new, :create, :index]
   resources :group_relationships, only: [:create, :destroy]
-  resources :activities
+  resources :activities, only: [:new, :show, :create, :destroy, :index]
   resources :activity_relationships, only: [:create, :destroy]
-  resources :places
+  resources :places, only: [:new, :create, :destroy, :index]
   resources :place_relationships, only: [:create, :destroy]
-  resources :interests
-  resources :sent, :mailbox
-  resources :messages
-  resources :friendships  
+  resources :interests, only: [:index]
+  resources :sent, only: [:new, :show, :create, :destroy]
+  resources :mailbox, only: [:index]
+  resources :messages, only: [:show]
+  resources :friendships, only: [:create, :destroy]
   resources :invites, only: [:create]
-  resources :plans
-  resources :subscriptions
+  resources :plans, only: [:index]
+  resources :subscriptions, only: [:new, :create]
 
   root 'static_pages#home'
   match '/signup', to: 'users#new', via: 'get'
@@ -34,6 +35,7 @@ FamilyGroups::Application.routes.draw do
   match '/howitworks', to: 'static_pages#howitworks', via: 'get'
   match '/premium', to: 'static_pages#premium', via: 'get'
   match '/signupalready', to: 'static_pages#signupalready', via: 'get'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

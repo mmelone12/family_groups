@@ -7,6 +7,8 @@
 			</div>
 		</div>
 		
+		<% if @user.subscriber.present? %>
+
 		<div id="page-content" class="full-width container projects">
 			<div id="back_button" data-no-turbolink >
 				<ul>
@@ -30,6 +32,7 @@
 				</div>	
 			</div>
 		</div>
+		<% end %>
 	</div>
 </div>
 <%= render 'layouts/footer' %>

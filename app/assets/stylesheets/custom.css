@@ -418,8 +418,8 @@ h3.compose {
 
 .button_center2 {
   width: 100px;
-  margin-left: 180px;
-  margin-top: -15px;
+  margin-left: 170px;
+  margin-top: 5px;
   margin-bottom: -90px;
 }
 
@@ -525,6 +525,7 @@ a.settings {
   height: 130px;
   width: 300px;
   margin-top: 5px;
+  margin-left: 30px;
 }
 
 .b-new3 {
@@ -582,6 +583,7 @@ p.adjusted {
 
 .right {
   margin-left: 200px;
+  margin-right:150px;
 }
 
 #search_form {
@@ -605,7 +607,7 @@ h3.following {
 }
 
 h3.follower {
-  margin-top: 15px;
+  margin-top: 5px;
 }
 
 .friend {
@@ -657,4 +659,56 @@ h3.follower {
 h1.stronger {
   margin: 3px -60px 20px -20px;
   font-size: 17px;
+}
+
+h6.matched {
+  margin-top: 20px;
+}
+
+.b-matched_user2 {
+  line-height: 40px;
+  background: url("../assets/button02.jpg") top left repeat-x;
+  position: absolute;
+  margin-top: -13px;
+  margin-left: 120px;
+  margin-bottom: -10px;
+  width: 108px;
+  height: 30px;
+  color: rgba(0,0,0,0.6);
+  font-family: 'OpenSansRegular';
+  box-shadow: 0 2.5px 1px rgba(0,0,0,0.25);
+  font-weight: normal;
+  font-size: 7px;
+  padding: 0px;
+  border-radius: 2px;
+  border: 1px solid #333333;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.25);
+}
+.b-matched_user2:hover {
+  background: url("../assets/button02.jpg") top left repeat-x;
+  color: rgba(0,0,0,0.6);
+  border: 1px solid #333333;
+  box-shadow: 0px 2.5px 15px 5px rgba(255, 255, 190, .75);
+}
+
+h3.left {
+  margin-left:95px;
+  margin-top: 0px;
+}
+
+.blank {
+  display:none;
+}
+
+.small_label {
+  font-size: 10px;
+  color: green;
+}
+
+.top_margin {
+  padding: 120px;
+}
+
+.centered_button {
+  margin-left: 250px;
 }

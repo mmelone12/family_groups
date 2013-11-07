@@ -50,6 +50,10 @@
         <%= f.label :password_confirmation, "Confirmation" %>
         <%= f.password_field :password_confirmation %>
 
+        <% if @user.subscriber.present? %>
+            <p>Like to cancel your account? Email us at contact@familygroups.org with your user information and we'll email you a confirmation.</p>
+        <% end %>
+
       <%= f.submit "Save changes", class: "button_center2" %>
     <% end %>
 </div>

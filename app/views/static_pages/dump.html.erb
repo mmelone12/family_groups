@@ -1126,3 +1126,15 @@ ActiveRecord::Base.connection.execute("SELECT SETVAL('message_id_seq', 1)")
     end
 
 <%= link_to "Join your community", signup_path, id: 'create_user', class: "b-new1", style: "color:white" %>
+
+<% @sent_messages.each do |message| %>
+        <tr>
+          <td><%=h message.recipients.map(&:name).to_sentence %></td>
+          <td><%= link_to h(message.subject.truncate(60)), sent_path(message) %></td>
+          <td><%= distance_of_time_in_words(message.created_at, Time.now) %> ago</td>
+          <td><%= link_to h(message.body.truncate(100)), sent_path(message) %></td> 
+        </tr>
+      <% end %>
+    </table>
+
+    @users = User.search(params[:search])

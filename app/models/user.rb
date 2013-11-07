@@ -4,6 +4,10 @@ class User < ActiveRecord::Base
 	before_create :create_remember_token
 
 	validates :name, presence: true, length: { maximum: 50 }
+  validates :last_name, presence: true, length: { maximum: 50 }
+  validates :address, presence: true
+  validates :image_path, presence: true
+  validates :gender, presence: true
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 	validates :email, presence: true, 
 			  format: { with: VALID_EMAIL_REGEX },
@@ -57,9 +61,9 @@ class User < ActiveRecord::Base
 
   def self.search(search)
     if search
-      find(:all, :conditions => ['last_name LIKE ?', "%#{search}%"])
+      find(:all, :conditions => ['last_name ILIKE ?', "%#{search}%"])
     else
-      find(:all)
+      nil
     end
   end
 
@@ -150,10 +154,10 @@ class User < ActiveRecord::Base
     truth
   end
 
-  def full_up
+ def full_up
     if self.subscriber == "Subscriber" && activities.where('created_at >=?', Date.current).count > 2 || groups.where('created_at >=?', Date.current).count > 2 || places.where('created_at >=?', Date.current).count > 2
-        truth = "filled"
-    end
+       truth = "filled"
+     end
     if self.subscriber == "PLUS" && activities.where('created_at >=?', Date.current).count > 4 || groups.where('created_at >=?', Date.current).count > 4 || places.where('created_at >=?', Date.current).count > 4
         truth = "filled"
     end

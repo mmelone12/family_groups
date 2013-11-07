@@ -3,29 +3,32 @@
     <div class="eight columns">
        <h3 class="matched_user">Premium Users - More Parent Matches Near You</h3>
       <% @matched_users.each do |match| %>
-    <h6><%= match.name %></h6>
+    <h6 class="matched"><%= match.name %></h6>
           <%= image_tag match.image_path %>  
     <%= match.name %> <%= match.profile_stats %> in <%= match.city %>. <%= match.kid_stats %> <%= match.parent_interests %> <%= match.parent_activities %>
     <br />
     <br />
     <p>Some of <%= match.name %>'s Interests:</p>
-    <% match.following.each do |interest| %>
-      <span><%= image_tag match.image_path, size: '30' %>
+    <% match.following.first(10).each do |interest| %>
+      <span><%= image_tag interest.image_path, size: '30' %>
     <% end %>
     <br/>
      <p>Some of <%= match.name %>'s Activities:</p>
-    <% match.activity_following.each do |activity| %>
-      <span><%= image_tag activity.image_path, size: '30' %>
+    <% match.activity_following.first(10).each do |activity| %>
+      <span><% if activity.image_path.present? %><%= image_tag activity.image_path, size: '30' %>
+            <% else %><%= image_tag activity.uploader_image, size: '30' %><% end %>
     <% end %>
     <br/> 
         <p>Some of <%= match.name %>'s Groups:</p>
-    <% match.group_following.each do |group| %>
-      <span><%= image_tag group.image_path, size: '30' %>
+    <% match.group_following.first(10).each do |group| %>
+      <span><% if group.image_path.present? %><%= image_tag group.image_path, size: '30' %>
+            <% else %> <%= image_tag group.uploader_image, size: '30' %><% end %>
     <% end %>
     <br/>
      <p>Some of <%= match.name %>'s Places:</p>
-    <% match.place_following.each do |activity| %>
-      <span><%= image_tag place.image_path, size: '30' %>
+    <% match.place_following.first(10).each do |place| %>
+      <span><% if place.image_path.present? %><%= image_tag place.image_path, size: '30' %>
+            <% else %><%= iamge_tag place.uploader_image, size: '30' %><% end %>
     <% end %>
     <br/> 
     <%= form_for :message, :url => {:controller => "sent", :action => "create"} do |f| %>
@@ -34,17 +37,20 @@
         <%= f.text_area :body, value: "*Ask a question to #{match.name} or simply introduce yourself!*
 
 Hi! It seems like we have some common interests. How are you handling being a parent in #{match.city}?" , class: "send_message5"  %>
-            <%= submit_tag "Send Message", class: "b-matched_user" %>
+            <%= submit_tag "Send Message", class: "b-matched_user2" %>
       <% end %>
       <br/>
       <% if current_user.friends.exclude?(match) %>
-        <h3>Are you friends with this person?</h3>
+        <h3 class="left">Are you friends with this person?</h3>
         <%= form_for(current_user.friendships.build(:friend_id =>
                      match)) do |f| %> 
              <div><%= hidden_field_tag :friend_id, match.id %></div>
-        <%= f.submit "Friend", class: "b-black" %>
+        <%= f.submit "Friend", class: "b-matched_user2" %>
+        <br/>
+        <br/>
         <% end %>
       <% end %>
+      <hr class="line slogan" />
     <% end %>
     </div>
   </div> 

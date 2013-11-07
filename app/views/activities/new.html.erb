@@ -1,28 +1,44 @@
+<div class="blank">
 <div id="content">
   <h1>Post a new Activity</h1>
 
     <div class="register_form">
       <%= form_for @activity, :html => {:multipart => true} do |f| %>
-
-        <%= f.label :title %>
+        <%= f.label "Activity Title" %>
         <%= f.text_field :title %>
 
-        <%= f.label :address %>
+        <%= f.label "Address" %>
+        <%= f.label "Please provide full address, including city and state", class: "small_label" %>
         <%= f.text_field :address %>
 
-        <%= f.label :desc %>
-        <%= f.text_field :desc %>
+        <%= f.label "Event Description" %>
+        <%= f.label "Give details such as relevant age groups and prices", class: "small_label" %>
+        <%= f.text_area :desc, size: '3x3' %>
 
-        <%= f.label :start_date %>
+        <%= f.label "When does this event happen" %>
+        <%= f.label "Select a start date if this is a one-time event", class: "small_label" %>
         <%= f.date_field :start_date %>
-        <br/>
-        <br/>
+        <%= f.label "Or tell us what days of the week and dates it regularly occurs", class: "small_label" %>
+        <%= f.text_field :when %>
 
+        <%= f.label "Link with more info*" %>
+        <%= f.label "Please give a working URL address", class: "small_label" %>
+        <%= f.text_field :article_link %>
+        <br/>
+        <%= f.label "Upload an image that helps visualize activity" %>
+        <%= f.label "Image should be square in shape", class: "small_label" %>
         <%= f.file_field :uploader_image %>
 
         <%= f.hidden_field :user_id, value: current_user.id %>
 
         <%= f.submit "Create Activity", class: "b-black" %>
       <% end %>
+      <p>* not required</p>
   </div>
+</div>
+</div>
+<div class="top_margin">
+<%= render 'shared/activity_error_messages' %>
+<div class="centered_button">
+<%= link_to "Return Home", root_path, class: 'b-new', style:'color:white' %>
 </div>
