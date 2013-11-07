@@ -13,9 +13,8 @@
     <%= activity.desc %>
     <br />
     <% if activity.link? %>
-    <h3>Check out the website at: 
       <br />
-        <%= link_to activity.link %></h3>
+        <%= link_to "Check out the website here.", activity.article_link %>
     <% end %>
     <div id="disappear_button<%= "#{activity.id}" %>">
     <%= form_for(current_user.activity_relationships.find_by(activity_followed_id: 

@@ -22,7 +22,7 @@ class Place < ActiveRecord::Base
     after_validation :geocode, :if => :address_changed?
 
   def image_if_blank
-    if uploader_image.blank?
+    if uploader_image.blank and image_path.blank?
       self.image_path = "rotate/shutterstock_138159347.jpg"
     end
   end

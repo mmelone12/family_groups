@@ -53,6 +53,16 @@ CSV.foreach(path_to_file, { :skip_blanks => true }) do |row|
   :special_needs => row[13],
   :image_path => row[14], 
   :non_parent => row[15],
-  :premium => row[16]
+  :subscriber => row[16]
 n=n+1
 end      
+
+file_name = "interests.csv"
+path_to_file = directory + file_name
+puts 'Loading Interest Records'
+n=0
+CSV.foreach(path_to_file, { :skip_blanks => true }) do |row|
+  Relationship.create! :follower_id => row[0],
+  :followed_id => row[1]
+n=n+1
+end 
