@@ -23,11 +23,14 @@ class GroupsController < ApplicationController
 
   def create
   	@group = Group.new(group_params)
-    @group.save
-    current_user.group_follow!(@group)
-  	respond_to do |format|
-      format.html { redirect_to(root_url) }
-      format.js 
+    if @group.save
+      current_user.group_follow!(@group)
+  	  respond_to do |format|
+        format.html { redirect_to(root_url) }
+        format.js 
+      end
+    else 
+      render 'new'
     end
   end
 

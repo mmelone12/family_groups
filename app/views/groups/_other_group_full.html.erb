@@ -1,12 +1,14 @@
 <div class="container main">
     <div class="two columns">
       <% if group.uploader_image.blank? %>
-        <%= image_tag "/assets/rotate/#{random_image}", size: "70x70" %>
+        <%= image_tag group.image_path, size: "70x70" %>
       <% else %>
         <%= image_tag group.uploader_image, size: "70x70" %>
-      <% end %>      
+      <% end %>     
+      <br/> 
+    <strong>Number of followers:</strong> <%= group.followers.count %> 
       <br />
-      City: <%= group.city %>
+      <strong>City:</strong> <%= group.city %><br/>
     </div> 
     <div class="six columns">
     <h6><%= group.name.html_safe.mb_chars.limit(50).to_s %></h6>

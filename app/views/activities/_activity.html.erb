@@ -3,7 +3,7 @@
     <div class="our-work">
         <a class="img-overlay">
           <div class= "min-height-activities">
-            <%= image_tag activity.image_path %>
+          <%= if activity.uploader_image.blank?; image_tag activity.image_path; else image_tag activity.uploader_image; end %>
             <div class="img-overlay-div">
              <div class="activities_showme"> 
             <h4>

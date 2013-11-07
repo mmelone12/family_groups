@@ -1,19 +1,15 @@
 <div class="container main">
     <div class="two columns">
-      <% if group.photo_url.blank? %>
-      <%= image_tag "/assets/rotate/#{random_image}", size: "70x70" %>
-      <% else %>
-      <%= image_tag group.photo_url, size: "70x70" %>
-      <% end %>      
-      Number of members: <%= group.members %>
-      <br />
-      City: <%= group.city.unpack("C*").pack("U*") %>
-      <% if group.next_event? %>
-      Next Event: <%= group.next_event.unpack("C*").pack("U*") %>
-      <% end %>
+        <% if group.photo_url.blank? %>
+          <%= image_tag "/assets/rotate/#{random_image}", size: '70x70' %>
+        <% else %>
+          <%= image_tag group.photo_url, size: '70x70' %>
+        <% end %>
+        <br/>
+      <strong>City:</strong> <%= group.city.unpack("C*").pack("U*") %><br/>
     </div> 
     <div class="six columns">
-    <h6><%= group.name.unpack("C*").pack("U*") %></h6>
+    <h6><%= group.name.unpack("C*").pack("U*") %></h6><br/>
     <%= group.description.unpack("C*").pack("U*") %>
     <br />
     <h3>Check out the website at: 

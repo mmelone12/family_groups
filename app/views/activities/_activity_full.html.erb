@@ -1,19 +1,25 @@
 <div id="content">
 <div class="container main">
     <div class="two columns">
-      <%= image_tag activity.image_path, size: "70x70" %>    
-      Number of followers: 
+        <% if activity.image_path.blank? %>
+          <%= image_tag activity.uploader_image, size:'70x70' %>
+        <% else %>
+          <%= image_tag activity.image_path, size:'70x70' %> 
+        <% end %> 
+        <br/>
+      <strong>Number of followers:</strong> <%= activity.followers.count %> 
       <br />
-      City: <%= activity.city %>
-      Date: <%= activity.start_date %>
+      <strong>City:</strong> <%= activity.city %><br/>
+      <strong>Date:</strong> <% if activity.when.present? %><%= activity.when %><% else %><%= activity.start_date %><% end %>
     </div> 
     <div class="six columns">
     <h6><%= activity.title %></h6>
-    <%= activity.desc %>
+    <br/>
+    <strong>Address: </strong><%= activity.address %><br/><br/>
+    <strong>Description: </strong><%= activity.desc %>
     <br />
-    <h3>Check out the website at: 
       <br />
-        <%= link_to activity.article_link %></h3>
+        <%= link_to "Check out the website for this activity here.", activity.article_link %>
           <div id="disappear_button<%= "#{activity.id}" %>">
             <%= form_for(current_user.activity_relationships.build(activity_followed_id: 
                              activity.id), remote: true) do |f| %> 

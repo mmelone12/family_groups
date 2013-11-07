@@ -1,25 +1,37 @@
 <div class="blank">
 <div id="content">
-  <h1>List a New Place</h1>
+  <h1>Post a new Place</h1>
 
     <div class="register_form">
       <%= form_for @place, :html => {:multipart => true} do |f| %>
-
-        <%= f.label :name %>
+        <%= f.label "Place Name" %>
         <%= f.text_field :name %>
 
-        <%= f.label :address %>
+        <%= f.label "Address" %>
+        <%= f.label "Please give entire street address, including city and state", class: "small_label" %>
         <%= f.text_field :address %>
 
-        <%= f.label :desc %>
-        <%= f.text_field :desc %>
+        <%= f.label "Place Description" %>
+        <%= f.text_area :desc, size: '3x3' %>
 
+        <%= f.label "Link with more info*" %>
+        <%= f.label "Please give a working URL address", class: "small_label" %>
+        <%= f.text_field :link %>
+        <br/>
+        <%= f.label "Upload an image that helps visualize place*" %>
+        <%= f.label "Image should be square in shape", class: "small_label" %>
         <%= f.file_field :uploader_image %>
 
         <%= f.hidden_field :user_id, value: current_user.id %>
 
         <%= f.submit "Create Place", class: "b-black" %>
       <% end %>
+      <p>* not required</p>
   </div>
 </div>
+</div>
+<div class="top_margin">
+<%= render 'shared/place_error_messages' %>
+<div class="centered_button">
+<%= link_to "Return Home", root_path, class: 'b-new', style:'color:white' %>
 </div>
