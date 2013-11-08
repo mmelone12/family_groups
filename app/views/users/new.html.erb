@@ -79,9 +79,9 @@
         </div>
         <br/>
         <%= f.label :avatar, "Pick a Profile Avatar" %>
-        <% Avatar.all.each do |avatar| %>  
-            <%= image_tag avatar.image_path, class: 'avatar_select' %>
-            <%= f.radio_button :image_path, avatar.image_path, class: 'avatar_button' %>
+        <% Avatar.all.each do |avatar| %> 
+                <%= image_tag avatar.image_path, class: 'avatar_select' %>
+                <%= f.radio_button :image_path, avatar.image_path, class: 'avatar_button' %>
         <% end %>  
         <br/>
         <%= f.label :password %>

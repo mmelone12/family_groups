@@ -1,8 +1,8 @@
 <div class="two-thirds column">
 				<nav id="menu" class="navigation">
 					<ul id="nav" class="clearfix">
-						<li><a href="index.html" class="active">Home<span>Dashboard</span></a>
-						</li>
+						<li data-no-turbolink><%= link_to root_url do %>Home
+							<span>Dashboard<% end %></span></li>
 						<li><%= link_to howitworks_path, class: 'static_page' do %>How It Works
 							<span>Take a Look<% end %></span></li>
 						<li><%= link_to contact_path, class: 'static_page' do %>Contact
