@@ -11,11 +11,11 @@
             </h4>
             <h5>
             <br />
-            <%= if group.description.html_safe.length > 130; group.description.html_safe.mb_chars.limit(129).to_s; else group.description.html_safe; end %>...<div class="learn_more"> Learn More</div>
+            <%= if group.description.html_safe.length > 130; group.description.html_safe.mb_chars.limit(129).to_s; else group.description.html_safe; end %>...<div class="learn_more"> <strong>Learn More</strong></div>
             </h5>
               </div>
                 <div class='sign_showme'>
-                  <div id="b-item", style="color:white">
+                  <div class="button1">
                   Follow
                   </div>
                 </div>
