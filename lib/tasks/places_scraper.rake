@@ -377,5 +377,6 @@ task :fetch_places => :environment do
                   end
                end   
             end
+          end
       end
 end
