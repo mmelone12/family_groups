@@ -59,7 +59,7 @@ end
 
 file_name = "interests.csv"
 path_to_file = directory + file_name
-puts 'Loading Interest Records'
+puts 'Loading Relationship Records'
 n=0
 CSV.foreach(path_to_file, { :skip_blanks => true }) do |row|
   Relationship.create! :follower_id => row[0],
