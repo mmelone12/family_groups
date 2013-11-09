@@ -5,6 +5,8 @@ class StaticPagesController < ApplicationController
   	@city = request.location.city
     if signed_in?
       @user = current_user
+      @male_avatars = Avatar.all.where('gender IS ?', nil)
+      @female_avatars = Avatar.all.where('gender IS NOT NULL')
       @message = current_user.sent_messages.build
       @messages = current_user.received_messages.paginate :per_page => 10, :page => params[:page], :include => :message, :order => "messages.created_at DESC"
       @sent_messages = current_user.sent_messages.paginate :per_page => 10, :page => params[:page], :order => "created_at DESC"
@@ -17,12 +19,12 @@ class StaticPagesController < ApplicationController
       @other_groups = Group.where(['group_id IS ? AND user_id <> ? AND city = ?', nil, current_user.id, @user.city])
       current_activity_ids = current_user.activity_following.pluck(:activity_followed_id)
       new_activities = Activity.where('start_date >= ? AND user_id <> ?', 1.days.ago(Time.now).to_date, current_user.id )
-      nearby_activities = new_activities.near(@user).all( :order => "start_date", :limit => 18)
+      nearby_activities = new_activities.near(@user, 100).all( :order => "start_date", :limit => 18)
       @activities = nearby_activities.reject { |activity| current_activity_ids.include?(activity.id) }
-      recurring_activities = Activity.where(['recurring = ?', "yes"]).near(@user).first(5)
+      recurring_activities = Activity.where(['recurring = ?', "yes"]).near(@user, 100).first(5)
       @recurring_activities = recurring_activities.reject { |activity| current_activity_ids.include?(activity.id) }
       current_place_ids = current_user.place_following.pluck(:place_followed_id)
-      @places = Place.near(@user).first(15).reject { |place| current_place_ids.include?(place.id) }
+      @places = Place.near(@user, 100).first(15).reject { |place| current_place_ids.include?(place.id) }
       other_user = User.near(@user).where.not(id: current_user.id).where(['gender = ?', current_user.gender ]).where(['single_parent = ? OR new_parent = ? OR special_needs = ?
         OR children_under_5 = ? OR children_5_10 = ? OR tweens = ? OR teens = ? OR non_parent = ?',
         current_user.single_parent, current_user.new_parent, current_user.special_needs,
@@ -53,12 +55,12 @@ class StaticPagesController < ApplicationController
     else
       @groups = RMeetup::Client.fetch(:groups, :lat => request.location.latitude, :lon => request.location.longitude, :topic => "parents").first(12)
       @interests = Interest.order("RANDOM()").first(15)
-      @places = Place.near(@city).first(15)
+      @places = Place.near(@city, 100).first(15)
       activities = Activity.where('start_date IS NOT NULL')
-      @activities = activities.near(@city).all( :order => "start_date", :limit => 15)
+      @activities = activities.near(@city, 100).all( :order => "start_date", :limit => 15)
       new_activities = Activity.where('start_date >= ?', 1.days.ago(Time.now).to_date)
-      @activities = new_activities.near(@city).all( :order => "start_date", :limit => 18)
-      @recurring_activities = Activity.where(['recurring = ?', "yes"]).near(@city).first(5)
+      @activities = new_activities.near(@city, 100).all( :order => "start_date", :limit => 18)
+      @recurring_activities = Activity.where(['recurring = ?', "yes"]).near(@city, 100).first(5)
     end
   end
 
