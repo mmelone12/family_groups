@@ -102,6 +102,8 @@ end
   end
 
   def new
+    @male_avatars = Avatar.all.where('gender IS ?', nil)
+    @female_avatars = Avatar.all.where('gender IS NOT NULL')
   	@user = User.new
   end
 

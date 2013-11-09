@@ -9,7 +9,7 @@ $(document).ready(function() {
     var url = $(this).attr('href');
     var dialog_form = $('<div id="dialog-form">Loading form...</div>').dialog({
       autoOpen: false,
-      width: 473,
+      width: 480,
       modal: true,
       open: function() {
         return $(this).load(url + ' #content');

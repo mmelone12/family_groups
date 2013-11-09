@@ -416,7 +416,7 @@ task :fetch_activities => :environment do
   require 'uri'
   require 'net/http'
 
-      City.each do |city|
+      City.all.each do |city|
             city_name = city.name
             city_format = city_name.downcase.split.join('-')
             state_name = city.state.downcase
