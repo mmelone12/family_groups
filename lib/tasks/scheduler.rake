@@ -416,10 +416,10 @@ task :fetch_activities => :environment do
   require 'uri'
   require 'net/http'
 
-      User.all.uniq_by(&:city).each do |user|
-            city_name = user.city
+      City.each do |city|
+            city_name = city.name
             city_format = city_name.downcase.split.join('-')
-            state_name = user.state.downcase
+            state_name = city.state.downcase
             agent = Mechanize.new
             pages = ["http://www.scout.me/family-and-kids-events--near--#{city_format}-#{state_name}", "http://www.scout.me/family--near--#{city_format}-#{state_name}" ]
             pages.each do |enter|
