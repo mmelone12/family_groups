@@ -79,15 +79,10 @@
         </div>
         <br/>
         <%= f.label :avatar, "Pick a Profile Avatar" %>
-        <% @female_avatars.all.each do |avatar| %> 
+        <% Avatar.all.each do |avatar| %> 
                 <%= image_tag avatar.image_path, class: 'avatar_select' %>
                 <%= f.radio_button :image_path, avatar.image_path, class: 'avatar_button' %>
         <% end %>
-        <br/>
-        <% @male_avatars.all.each do |male_avatar| %> 
-                <%= image_tag male_avatar.image_path, class: 'avatar_select' %>
-                <%= f.radio_button :image_path, male_avatar.image_path, class: 'avatar_button' %>
-        <% end %>   
         <br/>
         <%= f.label :password %>
         <%= f.password_field :password %>
