@@ -2,9 +2,8 @@ class Group < ActiveRecord::Base
 	belongs_to :user
 	before_save :image_if_blank
 	validates :user_id, presence: true
-	validates :name, presence: true, length: { maximum: 40}
-	validates :desc, presence: true, length: { maximum: 230}
-	validates :address, presence: true
+	validates :name, presence: true
+	validates :desc, presence: true
 
 	has_many :reverse_group_relationships, foreign_key: "group_followed_id",
                                             class_name: "GroupRelationship",
