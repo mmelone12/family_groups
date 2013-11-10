@@ -218,7 +218,10 @@ task :fetch_redtri2 => :environment do
               agent.page.search(".event").each do |activity|
                 article_link = activity.search("a").first.to_s[/(http[^"]+\w)/]
                 title = activity.search("h2 a").text.strip
-                cost = activity.search("span")[5].text.strip
+                cost_test = activity.search("span")[5]
+                if cost_test != nil
+                  cost = cost_test.text.strip
+                end
                 if cost = "Free" || "FREE"
                   formatted_cost = "This is a free event."
                 else

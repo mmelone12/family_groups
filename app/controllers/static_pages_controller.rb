@@ -55,11 +55,11 @@ class StaticPagesController < ApplicationController
       else
           newinterests = Interest.where("id NOT IN (?)", current_user.relationships.pluck(:followed_id))
           interest_ids = newinterests.find( :all, :select => 'id' ).map( &:id )
-          @interests = Interest.find( (1..35).map { interest_ids.delete_at( interest_ids.size * rand ) } )
+          @interests = Interest.find( (1..20).map { interest_ids.delete_at( interest_ids.size * rand ) } )
       end
     else
       @groups = RMeetup::Client.fetch(:groups, :lat => request.location.latitude, :lon => request.location.longitude, :topic => "parents").first(12)
-      @interests = Interest.order("RANDOM()").first(15)
+      @interests = Interest.order("RANDOM()").first(20)
       @places = Place.near(@city, 100).first(15)
       activities = Activity.where('start_date IS NOT NULL')
       new_activities = activities.where('start_date >= ?', 1.days.ago(Time.now).to_date)

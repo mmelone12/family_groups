@@ -184,7 +184,7 @@ class User < ActiveRecord::Base
       answer = "is a non-parent"
     end
     answer
-    if single_parent == "0" && new_parent == "0" && non_parent == nil
+    if single_parent == "0" && new_parent == "0" && non_parent == "0"
       if gender == "Male"
         first = ("is a dad living").html_safe
     end
@@ -238,13 +238,13 @@ class User < ActiveRecord::Base
   end
 
   def parent_interests
-    if gender = "Mom" && self.following.count >= 3
+    if gender = "Female" && self.following.count >= 3
       first_interest = following.order("RANDOM()").first.name
       second_interest = following.where('name <> ?', first_interest).order("RANDOM()").first.name
       third_interest = following.where('name <> ? AND name <>?', first_interest, second_interest).first.name
       ("Her interests include <strong>#{first_interest}</strong>, <strong>#{second_interest}</strong> and <strong>#{third_interest}</strong>.").html_safe
     end
-    if gender = "Dad" && self.following.count >= 3
+    if gender = "Male" && self.following.count >= 3
       first_interest = following.order("RANDOM()").first.name
       second_interest = following.where.not(name: first_interest).order("RANDOM()").first.name
       third_interest = following.where('name <> ? AND name <>?', first_interest, second_interest).first.name
@@ -253,12 +253,12 @@ class User < ActiveRecord::Base
   end
 
     def parent_activities
-    if self.gender = "Mom" && self.activity_following.count > 2
+    if self.gender = "Female" && self.activity_following.count > 2
       first_activity = activity_following.order("RANDOM()").first.title
       second_activity = activity_following.where('title <> ?', first_activity).first.title.truncate(33)
       ("Some of her activities include '#{first_activity.truncate(33)}'</strong> and <strong>'#{second_activity}'.").html_safe
     end
-    if self.gender = "Dad" && self.activity_following.count > 2
+    if self.gender = "Male" && self.activity_following.count > 2
       first_activity = activity_following.order("RANDOM()").first.title
       second_activity = activity_following.where.not(title: first_activity).first.title.truncate(33)
       ("Some of his activities include '#{first_activity.truncate(33)}' and '#{second_activity}'.").html_safe
