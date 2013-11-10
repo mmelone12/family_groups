@@ -1,9 +1,9 @@
 <div id="content">
-<%= image_tag 'fglogo1.png', size: '180x50', class: 'low_margin' %>
+<%= image_tag 'fglogo1.png', size: '195x50', class: 'low_margin' %>
   <h1>Comments? Ideas? Submissions? Or find inappropriate content?
   	<br/>
   	<br/>
-  	Email: <a href="#">contact@familygroups.org</a>
+  	Email: <%= mail_to "contact@familygroups.org", "contact@familygroups.com" %>
   	<br/>
   	<br/>
   	Our mission at Family Groups is to make life easier for new parents by connecting them to other parents in their community. Please let us know how we're doing.</h1>

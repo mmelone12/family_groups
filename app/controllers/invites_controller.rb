@@ -4,7 +4,7 @@ class InvitesController < ApplicationController
   		@invite = Invite.new(invite_params)
   		@invite.save
   		@recipient = @invite
-  		UserMailer.invite(@recipient).deliver
+  		#UserMailer.invite(@recipient).deliver
     	respond_to do |format|
       		format.html { redirect_to(root_url) }
      	  	format.js 

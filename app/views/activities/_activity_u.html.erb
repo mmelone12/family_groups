@@ -1,10 +1,10 @@
 <div class="four columns portfolio-item activities">
     <div class="our-work">
-        <a class="img-overlay">
+        <%= link_to activity_path(activity), class: "img-overlay2" do %>
         	<div class= "min-height-activities">
             <%= image_tag activity.image_path %>
             <div class="img-overlay-div">
-             <div class="sign_showme"> 
+
             <h4>
             <%= if activity.title.length > 35; activity.title.truncate(35) + "...  "; else activity.title; end %>
             </h4>
@@ -12,34 +12,31 @@
             <br />
             <%= if activity.desc.length > 130; activity.desc.truncate(130); else activity.desc; end %>...<div class="learn_more"> <strong>Learn More</strong></div>
             </h5>
-              </div>
-                <div class='sign_showme'>
-                  <div class="button", style="margin-left:60px">
+                  <div class="button", style="margin-left:52px">
                     <div class="button_modified">
-                  Follow
+                  Learn More
                     </div>
                   </div>
-                </div>
             </div>
           </div>
-        </a>
+        <% end %>
         <% if activity.title.length > 30 %>
         <h3>  
           <div class="smaller_size">
-            <%= link_to activity.title.truncate(30), "#", class: "sign_showme" %><span>
+            <%= link_to activity.title.truncate(30), activity_path(activity), class: "show_it" %><span>
             <% if activity.start_date.blank? %> 
-              <%= link_to activity.when.truncate(40), "#", class: "sign_showme" %>
+              <%= link_to activity.when.truncate(40), activity_path(activity), class: "show_it" %>
             <% else %>
-              <%= link_to activity.start_date.to_formatted_s(:rfc822), "#", class: "sign_showme" %>
+              <%= link_to activity.start_date.to_formatted_s(:rfc822), activity_path(activity), class: "show_it" %>
             <% end %></span>
           </div>
         </h3>
         <% else %>
-          <h3> <%= link_to activity.title, "#", class: "sign_showme" %><span>
+          <h3> <%= link_to activity.title, activity_path(activity), class: "show_it" %><span>
               <% if activity.start_date.blank? %> 
-                <%= link_to activity.when.truncate(40), "#", class: "sign_showme" %>
+                <%= link_to activity.when.truncate(40), activity_path(activity), class: "show_it" %>
               <% else %>
-                <%= link_to activity.start_date.to_formatted_s(:rfc822), "#", class: "sign_showme" %>
+                <%= link_to activity.start_date.to_formatted_s(:rfc822), activity_path(activity), class: "show_it" %>
               <% end %></span></h3>
         <% end %>
     </div>

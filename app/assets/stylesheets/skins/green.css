@@ -45,6 +45,10 @@ ul.tabs-nav li.active a {
 .home-blog a.img-overlay {
 	border-bottom: 1px solid #80b600;
 }
+
+.home-blog a.img-overlay1 {
+	border-bottom: 1px solid #80b600;	
+}
 .home-blog .home-post-type {
 	background: #80b600 url(../../assets/home-post-type.png) no-repeat;
 }

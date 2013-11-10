@@ -5,5 +5,4 @@ class Interest < ActiveRecord::Base
                                             class_name: "Relationship",
                                             dependent: :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
-  has_many :followed_users, through: :relationships, source: :followed
 end

@@ -1,4 +1,23 @@
-<div class="four columns">
-    <h3 class="sign_up">To find out more about this item, please sign up! It only takes a second and it's totally free.</h3>
-    <%= link_to "Join your community", signup_path, id: 'create_user', class: "b-new", style: "color:white" %>
-</div>
+<div class="container main">
+    <div class="two columns">
+        <% if group.photo_url.blank? %>
+          <%= image_tag "/assets/rotate/#{random_image}", size: '70x70' %>
+        <% else %>
+          <%= image_tag group.photo_url, size: '70x70' %>
+        <% end %>
+        <br/>
+      <strong>City:</strong> <%= group.city.unpack("C*").pack("U*") %><br/>
+    </div> 
+    <div class="six columns">
+    <h6><%= group.name.unpack("C*").pack("U*") %></h6><br/>
+    <%= group.description.unpack("C*").pack("U*") %>
+    <br />
+    <h3>Check out the website at: 
+      <br />
+        <%= link_to group.link %></h3>
+        <br />
+     <h3>If you want to find more places near you that local families like to hang out at, create a profile. It's totally free. 
+      <br />
+    <h3><%= link_to "Join your community", signup_path, id: 'create_user', class: "b-new", style: "color:white; margin-left:60px" %></h3>
+    </div>
+  </div>  

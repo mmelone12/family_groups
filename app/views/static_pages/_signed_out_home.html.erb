@@ -132,6 +132,7 @@
 				<% else %>
 				<% @groups.each do |group| %>
 					<%= render :partial => 'groups/group_u', :locals => { :group => group } %>
+					<%= render :partial => 'js/sign_up.js.erb', :locals => { :group => group } %>
 				<% end %>	
 				<% end %>
 				<% @interests.each do |interest| %>
@@ -177,5 +178,4 @@
 			</div>
 		</div>
 	</div>
-	<%= render 'js/sign_up.js.erb' %>
 	<%= render 'layouts/footer' %>

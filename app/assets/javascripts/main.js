@@ -30,6 +30,14 @@ function() {
 	$(this).find('.img-overlay-div').stop().fadeTo('fast', 0);
 });
 
+$('a.img-overlay2').hover( 
+function() {
+	$(this).find('.img-overlay-div2').stop().fadeTo('fast', 1);
+},
+function() {
+	$(this).find('.img-overlay-div2').stop().fadeTo('fast', 0);
+});
+
 /*----------------------------------------------------*/
 /*	Client List Overlay
 /*----------------------------------------------------*/

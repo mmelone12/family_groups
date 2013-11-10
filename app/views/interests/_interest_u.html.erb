@@ -1,26 +1,22 @@
 <div class="four columns portfolio-item interests">
     <div class="our-work">
-        <a class="img-overlay">
+      <%= link_to interest_path(interest), class: "img-overlay2" do %>
             <div class= "min-height-activities">
                 <%= image_tag interest.image_path %>
-            <div class="img-overlay-div">
-                <div class="sign_showme"> 
+            <div class="img-overlay-div2">
                     <h4><%= interest.name %></h4>
                     </br>
                     <h5><strong>Description:</strong>
                     </br>
                     <%= interest.desc.truncate(125) %></h5>
-                </div>
-                <div class='sign_showme'>
-                  <div class="button", style="margin-left:60px">
+                  <div class="button", style="margin-left:52px">
                     <div class="button_modified">
-                  Follow
-                    </div>
+                      Learn More
                   </div>
-                </div>
               </div>
             </div>
-        </a>
-        <h3><%= link_to interest.name, "#", class: "sign_showme" %></a><span>Learn More</span></h3>
+          </div>
+        <% end %>
+        <h3><%= link_to interest.name, interest_path(interest), class: "show_it" %></a><span>Learn More</span></h3>
    </div>
 </div>

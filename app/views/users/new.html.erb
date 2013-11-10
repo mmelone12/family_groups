@@ -32,10 +32,10 @@
     </div>
 
   <div class="container main">
-            <div class="right">
-
-<div id="content">
-  <%= image_tag 'fglogo1.png', size: '180x50', class: 'low_margin' %>
+    <div class="nine columns">
+        <div class="less_right">
+            <div id="content">
+  <%= image_tag 'fglogo1.png', size: '195x50', class: 'low_margin' %>
   <h1>Create Your Account and Start Finding New Activities</h1>
 
     <div class="register_form">
@@ -53,7 +53,7 @@
         <%= f.text_field :email %>
 
         <%= f.label :address, "Zip Code" %>
-        <%= f.label "If outside the US, enter City, State, Country", class: "small_label" %>
+        <%= f.label "Or enter a full City, State, Country", class: "small_label" %>
         <%= f.text_field :address %>
 
         <%= f.label "Are you Male or Female?" %>
@@ -79,10 +79,15 @@
         </div>
         <br/>
         <%= f.label :avatar, "Pick a Profile Avatar" %>
-        <% Avatar.all.each do |avatar| %> 
+        <% @female_avatars.all.each do |avatar| %> 
                 <%= image_tag avatar.image_path, class: 'avatar_select' %>
                 <%= f.radio_button :image_path, avatar.image_path, class: 'avatar_button' %>
-        <% end %>  
+        <% end %>
+        <br/>
+        <% @male_avatars.all.each do |avatar| %> 
+                <%= image_tag avatar.image_path, class: 'avatar_select' %>
+                <%= f.radio_button :image_path, avatar.image_path, class: 'avatar_button' %>
+        <% end %>    
         <br/>
         <%= f.label :password %>
         <%= f.password_field :password %>
@@ -90,9 +95,25 @@
         <%= f.label :password_confirmation, "Confirmation" %>
         <%= f.password_field :password_confirmation %>
 
-        <%= f.submit "Create my account", class: "b-black" %>
+        <%= f.submit "Create my account", class: "b-black", style: 'margin-left:60px' %>
       <% end %>
   </div>
 </div>
+</div>
+</div>
+  <div class="seven columns">
+    <div class="new_sidebar">
+    <br/>
+    <%= image_tag "interests/playdates.jpg", size: '270' %>
+    <br/>
+    <br/>
+    <br/>
+    <%= image_tag "interests/local.jpg", size: '270' %>
+    <br/>
+    <br/>
+    <br/>
+    <%= image_tag "places/garden.jpg", size: '270' %>
+    </div>
+  </div>
 </div>
 </div>

@@ -9,4 +9,8 @@ def index
         @interests = Interest.find( (1..40).map { interest_ids.delete_at( interest_ids.size * rand ) } )
     end
   end
+
+	def show
+		@interest = Interest.find(params[:id])
+	end
 end

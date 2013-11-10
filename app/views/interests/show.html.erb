@@ -1,0 +1,19 @@
+<div id="content">
+<div class="container main">
+    <div class="two columns">
+      <%= image_tag @interest.image_path, size: "70x70" %>    
+      <br/>
+      <strong>Number of followers:</strong> <%= @interest.followers.count %> 
+      <br />
+    </div> 
+    <div class="six columns">
+    <h6><%= @interest.name %></h6>
+    <%= @interest.desc %>
+    <br />
+    <br />
+    <h3>If you want to learn more or hear about other great interests, create an account. It's totally free. 
+      <br />
+    <h3><%= link_to "Join your community", signup_path, id: 'create_user', class: "b-new", style: "color:white; margin-left:60px" %></h3>
+    </div>
+</div> 
+</div>

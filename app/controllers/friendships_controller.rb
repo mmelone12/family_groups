@@ -5,7 +5,7 @@ class FriendshipsController < ApplicationController
       @friendship.save
       Message.create!({author_id: current_user.id, body: "I just friended you.", subject: "You've just been friended",
       to: User.find(@friendship.friend) })
-      UserMailer.friended(@friendship).deliver
+      #UserMailer.friended(@friendship).deliver
       respond_to do |format|
           format.html { redirect_to(root_url) }
           format.js 

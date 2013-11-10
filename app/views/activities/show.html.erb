@@ -1,26 +1,25 @@
 <div id="content">
 <div class="container main">
     <div class="two columns">
-      <%= image_tag @activity.image_path, size: "70x70" %>    
-      Number of followers: 
+        <% if @activity.image_path.blank? %>
+          <%= image_tag @activity.uploader_image, size:'70x70' %>
+        <% else %>
+          <%= image_tag @activity.image_path, size:'70x70' %> 
+        <% end %> 
+        <br/>
+      <strong>Number of followers:</strong> <%= @activity.followers.count %> 
       <br />
-      City: <%= @activity.city %>
-      Date: <%= @activity.start_date %>
-    </div> 
+      <strong>City:</strong> <%= @activity.city %><br/>
+      <strong>Date:</strong> <% if @activity.when.present? %><%= @activity.when %><% else %><%= @activity.start_date %><% end %>
+    </div>
     <div class="six columns">
     <h6><%= @activity.title %></h6>
     <%= @activity.desc %>
     <br />
-    <h3>Check out the website at: 
+    <br />
+    <h3>If you want to find more events like this where local families hang out, create an account. It's totally free. 
       <br />
-        <%= link_to @activity.article_link %></h3>
-          <div id="disappear_button<%= "#{@activity.id}" %>">
-            <%= form_for(current_user.activity_relationships.build(activity_followed_id: 
-                             @activity.id), remote: true) do |f| %> 
-                <div><%= f.hidden_field :activity_followed_id %></div>
-                <%= f.submit "Add to My Activities", class: "b-black" %>
-            <% end %>
-       </div>
+    <h3><%= link_to "Join your community", signup_path, id: 'create_user', class: "b-new", style: "color:white; margin-left:60px" %></h3>
     </div>
   </div>  
 </div>

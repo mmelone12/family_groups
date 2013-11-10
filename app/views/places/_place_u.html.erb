@@ -1,10 +1,9 @@
 <div class="four columns portfolio-item places">
     <div class="our-work">
-        <a class="img-overlay">
+        <%= link_to interest_path(interest), class: "img-overlay2" do %>
         	<div class= "min-height-activities">
             <%= image_tag place.image_path %>
             <div class="img-overlay-div">
-             <div class="sign_showme"> 
             <h4>
             <%= if place.name.length > 50; place.name.truncate(50) + "...  "; else place.name; end %>
             </h4>
@@ -12,25 +11,22 @@
             <br />
             <%= if place.desc.length > 130; place.desc.truncate(129); else place.desc; end %>...<div class="learn_more"> <strong>Learn More</strong></div>
             </h5>
-              </div>
-                <div class='sign_showme'>
-                  <div class="button", style="margin-left:60px">
+                  <div class="button", style="margin-left:52px">
                     <div class="button_modified">
-                  Follow
+                  Learn More
                     </div>
                   </div>
-                </div>
             </div>
           </div>
-        </a>
+        <% end %>
         <% if place.name.length > 30 %>
         <h3>  
           <div class="smaller_size">
-            <%= link_to place.name.truncate(50), "#", class: "sign_showme" %><span><%= link_to place.city, "#", class: "sign_showme" %></span>
+            <%= link_to place.name.truncate(50), place_path(place), class: "show_it" %><span><%= link_to place.city, place_path(place), class: "show_it" %></span>
           </div>
         </h3>
         <% else %>
-        <h3><%= link_to place.name.truncate(30), "#", class: "sign_showme" %><span><%= link_to place.city, "#", class: "sign_showme" %></span></h3>
+        <h3><%= link_to place.name.truncate(30), place_path(place), class: "show_it" %><span><%= link_to place.city, place_path(place), class: "show_it" %></span></h3>
         <% end %>
     </div>
 </div>				

@@ -4,10 +4,10 @@ $('.sign_showme').on('click', function(e) {
 
   $('<div id="dialog-form"></div>').dialog({
         autoOpen: true,
-        width: 480,
+        width: 550,
         modal: true,
         open: function() {
-            $(this).append($("<%= escape_javascript(render(:partial => 'layouts/sign_up')) %>"));
+            $(this).append($("<%= escape_javascript(render(:partial => 'layouts/sign_up', :locals => {:group => group})) %>"));
         },
         close: function() {
         $('#dialog-form').remove();

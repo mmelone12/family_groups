@@ -1,3 +1,26 @@
-<%= @place.id %>Hi!
-<%= @place.name %>
-<%= @place.desc %>
+<div id="content">
+<div class="container main">
+    <div class="two columns">
+        <% if @place.image_path.blank? %>
+          <%= image_tag @place.uploader_image, size:'70x70' %>
+        <% else %>
+          <%= image_tag @place.image_path, size:'70x70' %> 
+        <% end %>    
+      <strong>Number of followers:</strong> <%= @place.followers.count %> 
+      <br />
+      <strong>City:</strong> <%= @place.city %><br/>
+    </div> 
+    <div class="six columns">
+    <h6><%= @place.name %></h6>
+    <br/>
+    <strong>Address:</strong><%= @place.address %>
+    </br>
+    <%= @place.desc %>
+    <br />
+    <br />
+    <h3>If you want to find more places near you that local families like to hang out at, create a profile. It's totally free. 
+      <br />
+    <h3><%= link_to "Join your community", signup_path, id: 'create_user', class: "b-new", style: "color:white; margin-left:60px" %></h3>
+    </div>
+  </div>  
+</div>

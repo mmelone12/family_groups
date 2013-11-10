@@ -1238,3 +1238,79 @@ ActiveRecord::Base.connection.execute("SELECT SETVAL('message_id_seq', 1)")
                 <%= image_tag male_avatar.image_path, class: 'avatar_select' %>
                 <%= f.radio_button :image_path, male_avatar.image_path, class: 'avatar_button' %>
         <% end %> 
+
+
+  <div id="content">
+<div class="container main">
+    <div class="two columns">
+      <%= image_tag @activity.image_path, size: "70x70" %>    
+      Number of followers: 
+      <br />
+      City: <%= @activity.city %>
+      Date: <%= @activity.start_date %>
+    </div> 
+    <div class="six columns">
+    <h6><%= @activity.title %></h6>
+    <%= @activity.desc %>
+    <br />
+    <h3>Check out the website at: 
+      <br />
+        <%= link_to @activity.article_link %></h3>
+          <div id="disappear_button<%= "#{@activity.id}" %>">
+            <%= form_for(current_user.activity_relationships.build(activity_followed_id: 
+                             @activity.id), remote: true) do |f| %> 
+                <div><%= f.hidden_field :activity_followed_id %></div>
+                <%= f.submit "Add to My Activities", class: "b-black" %>
+            <% end %>
+       </div>
+    </div>
+  </div>  
+</div>
+
+<div class="four columns portfolio-item activities">
+    <div class="our-work">
+        <a class="img-overlay">
+        <%= link_to activity_path(activity), class: 'static_page', do %>
+          <div class= "min-height-activities">
+            <%= image_tag activity.image_path %>
+            <div class="img-overlay-div">
+
+            <h4>
+            <%= if activity.title.length > 35; activity.title.truncate(35) + "...  "; else activity.title; end %>
+            </h4>
+            <h5>
+            <br />
+            <%= if activity.desc.length > 130; activity.desc.truncate(130); else activity.desc; end %>...<div class="learn_more"> <strong>Learn More</strong></div>
+            </h5>
+
+
+                  <div class="button", style="margin-left:52px">
+                    <div class="button_modified">
+                  Learn More
+                    </div>
+                  </div>
+
+            </div>
+          </div>
+        <% end %>
+        <% if activity.title.length > 30 %>
+        <h3>  
+          <div class="smaller_size">
+            <%= link_to activity.title.truncate(30), "#", class: "sign_showme" %><span>
+            <% if activity.start_date.blank? %> 
+              <%= link_to activity.when.truncate(40), "#", class: "sign_showme" %>
+            <% else %>
+              <%= link_to activity.start_date.to_formatted_s(:rfc822), "#", class: "sign_showme" %>
+            <% end %></span>
+          </div>
+        </h3>
+        <% else %>
+          <h3> <%= link_to activity.title, "#", class: "sign_showme" %><span>
+              <% if activity.start_date.blank? %> 
+                <%= link_to activity.when.truncate(40), "#", class: "sign_showme" %>
+              <% else %>
+                <%= link_to activity.start_date.to_formatted_s(:rfc822), "#", class: "sign_showme" %>
+              <% end %></span></h3>
+        <% end %>
+    </div>
+  </div>      

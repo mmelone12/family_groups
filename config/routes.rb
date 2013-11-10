@@ -17,7 +17,7 @@ FamilyGroups::Application.routes.draw do
   resources :activity_relationships, only: [:create, :destroy]
   resources :places, only: [:new, :create, :destroy, :index]
   resources :place_relationships, only: [:create, :destroy]
-  resources :interests, only: [:index]
+  resources :interests, only: [:index, :show]
   resources :sent, only: [:new, :show, :create, :destroy]
   resources :mailbox, only: [:index]
   resources :messages, only: [:show]
