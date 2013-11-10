@@ -11,7 +11,7 @@ task :fetch_redtri => :environment do
                 title = activity.search("h2 a").text.strip
                 cost_test = activity.search("span")[5]
                 if cost_test != nil
-                  cost = cost_test.strip
+                  cost = cost_test.text.strip
                 end
                 if cost = "Free" || "FREE"
                   formatted_cost = "This is a free event."
