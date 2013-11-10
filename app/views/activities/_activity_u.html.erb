@@ -2,15 +2,14 @@
     <div class="our-work">
         <%= link_to activity_path(activity), class: "img-overlay2" do %>
         	<div class= "min-height-activities">
-            <%= image_tag activity.image_path %>
+             <%= if activity.uploader_image.blank?; image_tag activity.image_path; else image_tag activity.uploader_image; end %>
             <div class="img-overlay-div">
-
             <h4>
             <%= if activity.title.length > 35; activity.title.truncate(35) + "...  "; else activity.title; end %>
             </h4>
             <h5>
             <br />
-            <%= if activity.desc.length > 130; activity.desc.truncate(130); else activity.desc; end %>...<div class="learn_more"> <strong>Learn More</strong></div>
+            <%= if activity.desc.length > 130; activity.desc.truncate(130); else activity.desc; end %>...
             </h5>
                   <div class="button", style="margin-left:52px">
                     <div class="button_modified">

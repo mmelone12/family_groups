@@ -2,7 +2,7 @@
     <div class="our-work">
         <%= link_to interest_path(interest), class: "img-overlay2" do %>
         	<div class= "min-height-activities">
-            <%= image_tag place.image_path %>
+            <%= if place.uploader_image.blank?; image_tag place.image_path; else image_tag place.uploader_image; end %>
             <div class="img-overlay-div">
             <h4>
             <%= if place.name.length > 50; place.name.truncate(50) + "...  "; else place.name; end %>

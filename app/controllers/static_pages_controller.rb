@@ -62,8 +62,7 @@ class StaticPagesController < ApplicationController
       @interests = Interest.order("RANDOM()").first(15)
       @places = Place.near(@city, 100).first(15)
       activities = Activity.where('start_date IS NOT NULL')
-      @activities = activities.near(@city, 100).all( :order => "start_date", :limit => 15)
-      new_activities = Activity.where('start_date >= ?', 1.days.ago(Time.now).to_date)
+      new_activities = activities.where('start_date >= ?', 1.days.ago(Time.now).to_date)
       @activities = new_activities.near(@city, 100).all( :order => "start_date", :limit => 18)
       @recurring_activities = Activity.where(['recurring = ?', "yes"]).near(@city, 100).first(5)
     end
