@@ -185,14 +185,13 @@ class User < ActiveRecord::Base
     end
     if self.single_parent == "0" && self.new_parent == "0" && self.non_parent == "0"
       if self.gender == "Male"
-        first = ("is a dad living").html_safe
+        answer = "is a dad living"
       end
       if self.gender == "Female"
-        first = ("is a mom living").html_safe
+        answer = "is a mom living"
       end
     end
     answer
-    first
   end
 
   def kid_stats
