@@ -1,6 +1,6 @@
 <div class="four columns portfolio-item places">
     <div class="our-work">
-        <%= link_to interest_path(interest), class: "img-overlay2" do %>
+        <%= link_to place_path(place), class: "img-overlay2" do %>
         	<div class= "min-height-activities">
             <%= if place.uploader_image.blank?; image_tag place.image_path; else image_tag place.uploader_image; end %>
             <div class="img-overlay-div2">
