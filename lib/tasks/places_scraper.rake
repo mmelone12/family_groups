@@ -22,9 +22,9 @@ task :fetch_places => :environment do
                   page = agent.get("#{place_link}")
                   name = agent.page.search(".facet-title").text.strip.truncate(50)
                   desc = agent.page.search(".facet_description").text.strip.truncate(100)
-                  street_address = agent.page.search(".address").text.strip[/([^,]+\w)/].truncate(50)
-                  locality = agent.page.search(".locality").text.strip.truncate(50)
-                  state_address = agent.page.search(".state").text.strip.truncate(50)
+                  street_address = agent.page.search(".address").text.strip[/([^,]+\w)/]
+                  locality = agent.page.search(".locality").text.strip
+                  state_address = agent.page.search(".state").text.strip
                   if state_address.present?
                   address = street_address + ", " + locality + ", " + state_address
                   else
@@ -34,10 +34,10 @@ task :fetch_places => :environment do
                               address = street_address
                         end
                   end
-                  phone = agent.page.search(".facet_phone").text.strip.truncate(50)
-                  website = agent.page.search(".url span").text.strip.truncate(100)
+                  phone = agent.page.search(".facet_phone").text.strip
+                  website = agent.page.search(".url span").text.strip
                   if agent.page.link_with(:class => "facet_url url").present?
-                  link = agent.page.link_with(:class => "facet_url url").uri.to_s.truncate(100)
+                  link = agent.page.link_with(:class => "facet_url url").uri.to_s
                   end
                   if name.present?
                   url = URI.parse(URI.encode(image_test))
