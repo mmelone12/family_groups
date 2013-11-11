@@ -20,11 +20,11 @@ task :fetch_places => :environment do
                   res = req.request_head(url.path)
                   if res.code == "200"
                   page = agent.get("#{place_link}")
-                  name = agent.page.search(".facet-title").text.strip
-                  desc = agent.page.search(".facet_description").text.strip.truncate(200)
-                  street_address = agent.page.search(".address").text.strip[/([^,]+\w)/]
-                  locality = agent.page.search(".locality").text.strip
-                  state_address = agent.page.search(".state").text.strip
+                  name = agent.page.search(".facet-title").text.strip.truncate(50)
+                  desc = agent.page.search(".facet_description").text.strip.truncate(50)
+                  street_address = agent.page.search(".address").text.strip[/([^,]+\w)/].truncate(50)
+                  locality = agent.page.search(".locality").text.strip.truncate(50)
+                  state_address = agent.page.search(".state").text.strip.truncate(50)
                   if state_address.present?
                   address = street_address + ", " + locality + ", " + state_address
                   else
@@ -35,7 +35,7 @@ task :fetch_places => :environment do
                         end
                   end
                   phone = agent.page.search(".facet_phone").text.strip
-                  website = agent.page.search(".url span").text.strip
+                  website = agent.page.search(".url span").text.strip.truncate(200)
                   if agent.page.link_with(:class => "facet_url url").present?
                   link = agent.page.link_with(:class => "facet_url url").uri.to_s
                   end
