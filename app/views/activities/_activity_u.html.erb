@@ -23,7 +23,7 @@
         <h3>  
           <div class="smaller_size">
             <%= link_to activity.title.truncate(30), activity_path(activity), class: "show_it" %><span>
-            <% if activity.start_date.blank? %> 
+            <% if activity.start_date == "1/1/2010" %> 
               <%= link_to activity.when.truncate(40), activity_path(activity), class: "show_it" %>
             <% else %>
               <%= link_to activity.start_date.to_formatted_s(:rfc822), activity_path(activity), class: "show_it" %>
@@ -32,7 +32,7 @@
         </h3>
         <% else %>
           <h3> <%= link_to activity.title, activity_path(activity), class: "show_it" %><span>
-              <% if activity.start_date.blank? %> 
+              <% if activity.start_date == "1/1/2010" %> 
                 <%= link_to activity.when.truncate(40), activity_path(activity), class: "show_it" %>
               <% else %>
                 <%= link_to activity.start_date.to_formatted_s(:rfc822), activity_path(activity), class: "show_it" %>

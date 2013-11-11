@@ -111,6 +111,7 @@ end
   	@user = User.new(user_params)
   	  if @user.save
         sign_in @user
+        UserMailer.registration_confirmation(@user).deliver
   		  redirect_to(root_url)
   	  else 
   		  render 'new'
