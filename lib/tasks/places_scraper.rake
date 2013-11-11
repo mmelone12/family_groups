@@ -9,12 +9,12 @@ task :fetch_places => :environment do
             city_format = city_name.downcase.split.join('-')
             state_name = city.state.downcase
             agent = Mechanize.new
-            pages = ["http://www.scout.me/parks--near--#{city_format}-#{state_name}", "http://www.scout.me/childrens-museums--near--#{city_format}-#{state_name}", "http://www.scout.me/zoos-and-aquariums--near--#{city_format}-#{state_name}" ]
+            pages = ["http://www.scout.me/parks--near--#{city_format}-#{state_name}", "http://www.scout.me/zoos-and-aquariums--near--#{city_format}-#{state_name}" ]
             pages.each do |enter|
             page = agent.get(enter)
             agent.page.search(".content").each do |place|
                   image_test = place.search("img").to_s[/(http[^"]+\w)/].truncate(200)
-                  place_link = place.search("a").first.to_s[/(http[^"]+\w)/].truncate(200)
+                  place_link = place.search("a").first.to_s[/(http[^"]+\w)/]
                   url = URI.parse(place_link)
                   req = Net::HTTP.new(url.host, url.port)
                   res = req.request_head(url.path)
