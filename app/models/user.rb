@@ -174,24 +174,24 @@ class User < ActiveRecord::Base
   end
 
   def profile_stats
-    if single_parent == "1"
+    if self.single_parent == "1"
       answer = "is a single parent"
     end
-    if new_parent == "1"
+    if self.new_parent == "1"
       answer = "is a new parent"
     end
-    if non_parent == "1"
+    if self.non_parent == "1"
       answer = "is a non-parent"
     end
-    answer
-    if single_parent == "0" && new_parent == "0" && non_parent == "0"
-      if gender == "Male"
+    if self.single_parent == "0" && self.new_parent == "0" && self.non_parent == "0"
+      if self.gender == "Male"
         first = ("is a dad living").html_safe
-    end
-      if gender == "Female"
+      end
+      if self.gender == "Female"
         first = ("is a mom living").html_safe
       end
     end
+    answer
     first
   end
 

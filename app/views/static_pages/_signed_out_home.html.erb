@@ -119,6 +119,7 @@
 					<% end %>
 					<% @recurring_activities.each do |activity| %>
 						<%= render :partial => 'activities/activity_u', :locals => { :activity => activity } %>
+						<%= render :partial => 'activities/recurring_activity_u', :locals => { :activity => activity } %>
 					<% end %>
 				<% end %>
 				<% if @groups.blank? %>

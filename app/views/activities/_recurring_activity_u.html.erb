@@ -23,12 +23,12 @@
         <h3>  
           <div class="smaller_size">
             <%= link_to activity.title.truncate(30), activity_path(activity), class: "show_it" %><span>
-              <%= link_to activity.start_date.to_formatted_s(:rfc822), activity_path(activity), class: "show_it" %></span>
+              <%= link_to activity.when.truncate(40), activity_path(activity), class: "show_it" %></span>
           </div>
         </h3>
         <% else %>
           <h3> <%= link_to activity.title, activity_path(activity), class: "show_it" %><span>
-                <%= link_to activity.start_date.to_formatted_s(:rfc822), activity_path(activity), class: "show_it" %></span></h3>
+                <%= link_to activity.when.truncate(40), activity_path(activity), class: "show_it" %></span></h3>
         <% end %>
     </div>
   </div>			

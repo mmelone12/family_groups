@@ -81,7 +81,7 @@
 						<%= render :partial => 'js/activities.js.erb', :locals => { :activity => activity} %>
 					<% end %>
 					<% @recurring_activities.each do |activity| %>
-						<%= render :partial => 'activities/activity', :locals => { :activity => activity } %>
+						<%= render :partial => 'activities/recurring_activity', :locals => { :activity => activity } %>
 						<%= render :partial => 'js/activities.js.erb', :locals => { :activity => activity} %>
 					<% end %>
 					<% end %>
