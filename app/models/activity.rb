@@ -1,6 +1,6 @@
 class Activity < ActiveRecord::Base
 	belongs_to :user
-  before_save :image_if_blank
+  #before_save :image_if_blank
   validates :title, uniqueness: { case_sensitive: false }
   validates :address, presence: true
   validates :desc, presence: true
