@@ -13,7 +13,7 @@ task :fetch_places => :environment do
             pages.each do |enter|
             page = agent.get(enter)
             agent.page.search(".content").each do |place|
-                  image_test = place.search("img").to_s[/(http[^"]+\w)/].truncate(200)
+                  image_test = place.search("img").to_s[/(http[^"]+\w)/]
                   place_link = place.search("a").first.to_s[/(http[^"]+\w)/]
                   url = URI.parse(place_link)
                   req = Net::HTTP.new(url.host, url.port)
