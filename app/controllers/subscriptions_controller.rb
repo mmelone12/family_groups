@@ -16,10 +16,10 @@ class SubscriptionsController < ApplicationController
     @subscription = Subscription.new(subscription_params)
     if @subscription.save_with_payment 
     	if @subscription.plan_id == 1
-      		@user.update_attributes(:subscriber => "Subscriber")
+      		@user.update_attribute(:subscriber, "Subscriber")
       	end
       	if @subscription.plan_id == 2
-      		@user.update_attributes(:subscriber => "PLUS")
+      		@user.update_attribute(:subscriber, "PLUS")
       	end
       redirect_to root_url, :notice => "Thank you for subscribing!"
     else
