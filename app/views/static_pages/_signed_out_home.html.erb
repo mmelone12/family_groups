@@ -92,19 +92,6 @@
 		
 			<div class="container">
 				<div id="portfolio-wrapper">
-				<% if @places.blank? %>
-					<div class="four columns portfolio-item places">
-        				<br />
-        				<br />
-							<ul>
-				  				<li>We don't have places for <% @city %> today, but please check again in a few days!</li>
-			    			</ul>
-					</div>
-				<% else %>
-				<% @places.each do |place| %>
-					<%= render :partial => 'places/place_u', :locals => { :place => place } %>
-				<% end %>
-				<% end %>
 				<% if @activities.blank? && @recurring_activities.blank? %>
 					<div class="four columns portfolio-item activities">
         				<br />
@@ -137,6 +124,19 @@
 				<% end %>
 				<% @interests.each do |interest| %>
   					<%= render :partial => 'interests/interest_u', :locals => {:interest => interest} %> 
+				<% end %>
+				<% if @places.blank? %>
+					<div class="four columns portfolio-item places">
+        				<br />
+        				<br />
+							<ul>
+				  				<li>We don't have places for <% @city %> today, but please check again in a few days!</li>
+			    			</ul>
+					</div>
+				<% else %>
+				<% @places.each do |place| %>
+					<%= render :partial => 'places/place_u', :locals => { :place => place } %>
+				<% end %>
 				<% end %>	
 					<div class="four columns portfolio-item activities">
                 		<br />

@@ -53,20 +53,6 @@
 					<% else %>
 						<%= render partial: 'places/premium' %>
 					<% end %>
-					<% if @places.blank? && @recurring_activities.blank? %>
-					<div class="four columns portfolio-item places">
-        				<br />
-        				<br />
-							<ul>
-				  				<li>We don't have places for <% @user.city %> today, but please check again soon!</li>
-			    			</ul>
-					</div>
-					<% else %>
-  					<% @places.each do |place| %>
-						<%= render :partial => 'places/place', :locals => { :place => place } %>
-						<%= render :partial => 'js/places.js.erb', :locals => { :place => place } %>
-					<% end %>
-					<% end %>
 					<% if @activities.blank? && @recurring_activities.blank? %>
 					<div class="four columns portfolio-item activities">
         				<br />
@@ -106,6 +92,20 @@
 					<% @interests.each do |interest| %>
   						<%= render :partial => 'interests/interest', :locals => {:interest => interest} %> 
   						<%= render :partial => 'js/interests.js.erb', :locals => { :interest => interest } %>
+					<% end %>
+					<% if @places.blank? %>
+					<div class="four columns portfolio-item places">
+        				<br />
+        				<br />
+							<ul>
+				  				<li>We don't have places for <% @user.city %> today, but please check again soon!</li>
+			    			</ul>
+					</div>
+					<% else %>
+  					<% @places.each do |place| %>
+						<%= render :partial => 'places/place', :locals => { :place => place } %>
+						<%= render :partial => 'js/places.js.erb', :locals => { :place => place } %>
+					<% end %>
 					<% end %>
 					<div class="four columns portfolio-item activities">
                 		<br />
