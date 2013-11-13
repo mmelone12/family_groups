@@ -22,17 +22,12 @@
             </div>
           </div>
         </a>
-        <% if activity.title.length > 30 %>
         <h3>  
           <div class="smaller_size">
-            <%= link_to activity.title.truncate(30), "#", class: "activities_showme" %><span>
+            <%= link_to activity.title.truncate(60), "#", class: "activities_showme" %><span>
               <%= link_to activity.when.truncate(40), "#", class: "activities_showme" %></span>
           </div>
         </h3>
-        <% else %>
-          <h3> <%= link_to activity.title, "#", class: "activities_showme" %><span>
-                <%= link_to activity.when.truncate(40), "#", class: "activities_showme" %></span></h3>
-        <% end %>
     </div>
   </div>
 </div>    
