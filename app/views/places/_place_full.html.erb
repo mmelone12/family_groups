@@ -16,7 +16,7 @@
     <strong>Description: </strong><%= place.desc %>
     <br />
       <br />
-        <%= link_to place.link %></h3>
+      <strong><%= link_to "Check out the website for this place here.", place.link %></strong>
       <div id="disappear_button<%= "#{place.id}" %>">
           <%= form_for(current_user.place_relationships.build(place_followed_id: 
                              place.id), remote: true) do |f| %> 

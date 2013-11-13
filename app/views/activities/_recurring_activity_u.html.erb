@@ -4,8 +4,8 @@
         	<div class= "min-height-activities">
              <%= if activity.uploader_image.blank?; image_tag activity.image_path; else image_tag activity.uploader_image; end %>
             <div class="img-overlay-div2">
-            <h4>
-            <%= if activity.title.length > 35; activity.title.truncate(35) + "...  "; else activity.title; end %>
+            <h4 class="smaller">
+            <%= if activity.title.length > 60; activity.title.truncate(60) + "...  "; else activity.title; end %>
             </h4>
             <h5>
             <br />

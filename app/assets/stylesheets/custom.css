@@ -751,3 +751,7 @@ h3.left {
   margin-left: 90px;
   margin-right: -230px;
 }
+
+h4.smaller {
+  font-size: 15px;
+}

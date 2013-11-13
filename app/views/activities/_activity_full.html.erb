@@ -19,7 +19,7 @@
     <strong>Description: </strong><%= activity.desc %>
     <br />
       <br />
-        <%= link_to "Check out the website for this activity here.", activity.article_link %>
+      <strong><%= link_to "Check out the website for this activity here.", activity.article_link %></strong>
           <div id="disappear_button<%= "#{activity.id}" %>">
             <%= form_for(current_user.activity_relationships.build(activity_followed_id: 
                              activity.id), remote: true) do |f| %> 

@@ -18,8 +18,8 @@ class StaticPagesController < ApplicationController
       @firstgroups = @groups.first(20)
       @other_groups = Group.where(['group_id IS ? AND user_id <> ? AND city = ?', nil, current_user.id, @user.city])
       current_activity_ids = current_user.activity_following.pluck(:activity_followed_id)
-      new_activities = Activity.where('start_date >= ? AND user_id <> ?', 1.days.ago(Time.now).to_date, current_user.id )
-      nearby_activities = new_activities.near(@user, 100).all( :order => "start_date", :limit => 18)
+      new_activities = Activity.where('start_date >= ? AND user_id <> ?', 0.days.ago(Time.now).to_date, current_user.id )
+      nearby_activities = new_activities.near(@user, 100).all( :order => "start_date", :limit => 20 )
       @activities = nearby_activities.reject { |activity| current_activity_ids.include?(activity.id) }
       recurring_activities = Activity.where(['recurring = ?', "yes"]).near(@user, 100).first(5)
       @recurring_activities = recurring_activities.reject { |activity| current_activity_ids.include?(activity.id) }
@@ -62,7 +62,7 @@ class StaticPagesController < ApplicationController
       @interests = Interest.order("RANDOM()").first(20)
       @places = Place.near(@city, 100).first(15)
       activities = Activity.where('start_date IS NOT NULL')
-      new_activities = activities.where('start_date >= ?', 1.days.ago(Time.now).to_date)
+      new_activities = activities.where('start_date >= ?', 0.days.ago(Time.now).to_date)
       @activities = new_activities.near(@city, 100).all( :order => "start_date", :limit => 18)
       @recurring_activities = Activity.where(['recurring = ?', "yes"]).near(@city, 100).first(5)
     end

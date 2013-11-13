@@ -458,6 +458,7 @@ task :fetch_activities => :environment do
                   end
                   phone = agent.page.search(".facet_phone").text.strip
                   link = agent.page.search(".facet_url").text.strip
+                  user_id = "1"
                   if agent.page.link_with(:class => "facet_url").present?
                   article_link = agent.page.link_with(:class => "facet_url").uri.to_s
                   end
@@ -803,7 +804,7 @@ task :fetch_activities => :environment do
                   Activity.where(:title => title, :where => where, :start_date => start_date,
                   :start_time => start_time, :desc => desc, :address => address, :phone => phone,
                   :link => link, :website => website, :article_link => article_link, :website_link => 
-                  website_link, :image_path => image_path).first_or_create
+                  website_link, :image_path => image_path, :user_id => user_id).first_or_create
                   puts title, where, start_date, start_time, desc, address, phone, link, website
                   end
                 end
