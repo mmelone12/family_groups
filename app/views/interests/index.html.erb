@@ -1,5 +1,5 @@
 <%= render 'layouts/menu_and_tabs' %> 
-
+	</div>
 		<div class="container">
 			<div class="sixteen columns">
 				<hr class="line slogan" />
@@ -18,7 +18,8 @@
 				<div class="container">
 					<div id="portfolio-wrapper">
 					<% @interests.each do |interest| %>
-  						<%= render 'interests/interest', :interest => interest %> 
+  						<%= render 'interests/interest', :interest => interest %>
+  						<%= render :partial => 'js/interests.js.erb', :locals => { :interest => interest } %> 
 					<% end %>
 					</div>
 				</div>	

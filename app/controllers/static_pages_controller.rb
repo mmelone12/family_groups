@@ -51,7 +51,7 @@ class StaticPagesController < ApplicationController
       #matched_user = other_user.where(following.pluck(:id).include?(current_user_interest_ids))
       #@other_user1 = other_user
       if current_user.following.blank?
-          @interests = Interest.all
+          @interests = Interest.first(25)
       else
           newinterests = Interest.where("id NOT IN (?)", current_user.relationships.pluck(:followed_id))
           interest_ids = newinterests.find( :all, :select => 'id' ).map( &:id )
