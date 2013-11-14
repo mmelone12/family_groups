@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default :from => "contact@familygroups.org"
+  default :from => "Family Groups.org"
   
   def registration_confirmation(user)
     @user = user
