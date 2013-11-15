@@ -37,7 +37,7 @@
         <%= f.text_area :body, value: "*Ask a question to #{match.name} or simply introduce yourself!*
 
 Hi! It seems like we have some common interests. How are you handling being a parent in #{match.city}?" , class: "send_message5"  %>
-            <%= submit_tag "Send Message", class: "b-matched_user2", style: "margin-top:3px" %>
+            <%= submit_tag "Send Message", class: "b-matched_user2", style: "margin-top:1px" %>
       <% end %>
       <br/>
       <% if current_user.friends.exclude?(match) %>
