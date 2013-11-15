@@ -108,6 +108,8 @@ end
   end
 
   def create
+    @male_avatars = Avatar.all.where('gender IS ?', nil)
+    @female_avatars = Avatar.all.where('gender IS NOT NULL')
   	@user = User.new(user_params)
   	  if @user.save
         sign_in @user
