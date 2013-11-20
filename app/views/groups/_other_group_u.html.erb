@@ -2,8 +2,8 @@
     <div class="our-work">
         <a class="img-overlay">
         	<div class= "min-height">
-              <%= if group.uploader_image.blank?; image_tag "/assets/rotate/#{random_image}"; end %>
-              <%= image_tag group.uploader_image %>
+              <%= if group.uploader_image.blank?; image_tag "/assets/rotate/#{random_image}", alt: "Family Group"; end %>
+              <%= image_tag group.uploader_image, alt: "Family Groups" %>
             <div class="img-overlay-div">
               <div class="sign_showme">
             <h4>
