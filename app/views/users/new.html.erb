@@ -90,6 +90,7 @@
         <% end %>    
         <br/>
         <%= f.label :password %>
+        <%= f.label "Must be at least 6 characters", class: "small_label" %>
         <%= f.password_field :password %>
 
         <%= f.label :password_confirmation, "Confirmation" %>

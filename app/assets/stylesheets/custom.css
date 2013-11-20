@@ -767,3 +767,9 @@ h4.smaller {
   margin-left: -75px;
   margin-top: 26px;
 }
+
+h4.sign_up {
+  font-size: 12.5px;
+  margin-bottom: -19px;
+  line-height: 19px;
+}

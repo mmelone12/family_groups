@@ -17,7 +17,7 @@
     <% if group.link? %>
     <h3>Check out the website at: 
       <br />
-        <%= link_to group.link %></h3>
+        <%= link_to group.link, target: "blank" %></h3>
     <% end %>
       <div id="disappear_button<%= "#{group.id}" %>">
           <%= form_for(current_user.group_relationships.build(group_followed_id: 

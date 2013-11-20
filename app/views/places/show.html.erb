@@ -49,8 +49,9 @@
     </br>
     <%= @place.desc %>
     <br />
+    <% if @place.link.present? %>
     <br />
-    <strong><%= link_to "Check out the website for this place here.", @place.link %></strong>
+    <strong><%= link_to "Check out the website for this place here.", @place.link, target: "blank" %></strong><% end %>
     <br />
     <h3>If you want to find more places near you that local families like to hang out at, create a profile. It's totally free. 
       <br />

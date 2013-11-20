@@ -18,8 +18,9 @@
     <strong>Address: </strong><%= activity.address %><br/><br/>
     <strong>Description: </strong><%= activity.desc %>
     <br />
+    <% if activity.article_link.present? %>
       <br />
-      <strong><%= link_to "Check out the website for this activity here.", activity.article_link %></strong>
+      <strong><%= link_to "Check out the website for this activity here.", activity.article_link, target: "blank" %></strong><% end %>
           <div id="disappear_button<%= "#{activity.id}" %>">
             <%= form_for(current_user.activity_relationships.build(activity_followed_id: 
                              activity.id), remote: true) do |f| %> 
