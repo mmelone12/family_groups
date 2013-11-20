@@ -116,7 +116,7 @@ input[type="submit"].submit:hover, .button:hover {
 }
 .navigation ul ul {
 	position: absolute;
-	left: 0;
+	left: 0px;
 	top: 95px;
 	z-index: 100;
 	margin: 0 0 0 5px;
@@ -140,7 +140,7 @@ input[type="submit"].submit:hover, .button:hover {
 }
 .navigation ul li a {
 	text-decoration: none;
-	padding:20px 10px 15px;
+	padding:20px 10px 25px;
 	display: block;
 	font-family: 'OpenSansBold';
 	font-size: 12px;
@@ -148,7 +148,7 @@ input[type="submit"].submit:hover, .button:hover {
 	text-transform: uppercase;
 	position: relative;
 	z-index: 1;
-	margin-left: 5px;
+	margin-left: 0px;
 }
 .navigation ul ul li a {
 	text-decoration: none;
