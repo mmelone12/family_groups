@@ -13,6 +13,7 @@ gem 'will_paginate', '3.0.5'
 gem 'acts_as_tree'
 gem 'stripe'
 gem 'puma'
+gem 'sitemap_generator'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
