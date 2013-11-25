@@ -795,7 +795,6 @@ task :fetch_activities => :environment do
                 if address.include? "zoo" or address.include? "Zoo"
                   image_path = "activities/zoo.jpg"
                 end
-
                         end
             if image_path == nil
                   image_path = "activities/general.jpg"

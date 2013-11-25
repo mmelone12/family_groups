@@ -3,13 +3,13 @@
                   <p class="center">Interests you add to your profile will go here</p>
                   <br/>
                 <% else %>
-                  <% current_user.following.first(21).each do |interest| %>
+                  <% current_user.following(:limit => 21).each do |interest| %>
 
                     <%= render :partial => 'interests/followed_interests', :locals => { :interest => interest } %>
 
                     <%= render :partial => 'js/followed_interests.js.erb', :locals => { :interest => interest } %>
                   <% end %>
                   <div id= "see-all" data-no-turbolink>
-                    <%= link_to "See All My Interests", following_user_path(@user), class: "clickable" %>
+                    <%= link_to "See All My Interests", following_user_path(current_user), class: "clickable" %>
                   </div>
                 <% end %>

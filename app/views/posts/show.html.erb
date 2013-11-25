@@ -1,0 +1,76 @@
+<% if signed_in? %>
+    <div class="two-thirds column">
+        <nav id="menu" class="navigation">
+          <ul id="nav" class="clearfix">
+            <li data-no-turbolink><%= link_to root_url do %>Home
+              <span>Dashboard<% end %></span></li>
+            <li><%= link_to edit_user_path(@user), id: 'edit_user' do %>Settings
+              <span><%= @user.name %>'s Profile<% end %></span></li>
+            <li><a class="inbox">Mailbox<span><strong><%= @user.new_messages %></strong> new messages</span></a></li>
+            <li><%= link_to "Sign Out", signout_path, method: "delete" %>
+            </li>
+            <li><div class="on-top">
+            <a href="//www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark" ><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" /></a><br/></div>
+            <div class="fb-like" data-href="https://www.facebook.com/familygroups.org" data-width="5" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+<% else %>
+
+<div class="two-thirds column">
+                <nav id="menu" class="navigation">
+                    <ul id="nav" class="clearfix">
+                        <li data-no-turbolink><%= link_to root_url do %>Home
+              <span>Dashboard<% end %></span></li>
+                        <li><%= link_to howitworks_path, class: 'static_page' do %>How It Works
+                            <span>Take a Look<% end %></span></li>
+                        <li><%= link_to contact_path, class: 'static_page' do %>Contact
+                            <span>Talk to Us<% end %></span></li>
+                    </ul>
+                </nav>
+            </div>
+    </div>
+  </header>
+
+<% end %>
+
+
+  <div class="container main">
+      <div class="eight columns">
+          <%= image_tag 'premium_logo.jpg', class: 'premium_logo' %>
+      </div>
+<div class="eight columns">
+  <%= image_tag 'premium_ad_resized1.jpg', class: 'premium_ad' %>
+</div>
+    <div class="container">
+      <div class="sixteen columns">
+        <hr class="line slogan" />
+      </div>
+    </div>
+  </div>
+
+  <div class="container main">
+        <div class="less_right">
+
+<%= render :partial => @post %>
+
+<p>
+	<%= link_to 'Edit', edit_post_path(@post) %> |
+	<%= link_to 'Destroy', @post, :method => :delete, :confirm => "Are you sure?" %>
+	<%= link_to 'See All Posts', posts_path %>
+</p>
+
+<h2>Comments</h2>
+<div id="comments">
+	<%= render :partial => @post.comments %>
+</div>
+
+	<%= render partial: 'comments/comment_new' %>
+
+ </div>
+    </div>
+  <%= render 'layouts/footer' %>

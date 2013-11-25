@@ -1,0 +1,8 @@
+	<p><%= time_ago_in_words(post.created_at) %></p>
+	<div class="blog_title"><%= link_to_unless_current h(post.title), post, style: "color:black" %></div>
+	<br />
+	<br />
+	<%= h(ERB.new(post.body).result(binding).html_safe) %>
+	<%= simple_format h(post.body) %>
+	<br />
+	<br />

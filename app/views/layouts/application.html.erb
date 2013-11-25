@@ -4,6 +4,7 @@
   <title>Family Groups - Find local events and meet other great parents</title>
   <%= favicon_link_tag 'favicon.ico' %>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => false %>
+  <%= auto_discovery_link_tag :atom, posts_path(format: :atom) %>
   <%= javascript_include_tag "https://js.stripe.com/v1/", "application", "data-turbolinks-track" => false %>
   <%= csrf_meta_tags %>
   <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>

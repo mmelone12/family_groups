@@ -730,7 +730,7 @@ h3.left {
     color:white;
     cursor: pointer;
     display: block;
-  opacity: 0;
+    opacity: 0;
     height: 100%;
     left: 0;
     position: absolute;
@@ -772,4 +772,13 @@ h4.sign_up {
   font-size: 12.5px;
   margin-bottom: -19px;
   line-height: 19px;
+}
+
+/* BLOG STUFF */
+
+.blog_title {
+  font-size: 30px;
+  text-align: center;
+  color: black;
+  font-weight: bold;
 }

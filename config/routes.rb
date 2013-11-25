@@ -1,4 +1,5 @@
 FamilyGroups::Application.routes.draw do
+
   resources :users do
     member do
       get :following, :followers
@@ -25,6 +26,11 @@ FamilyGroups::Application.routes.draw do
   resources :invites, only: [:create]
   resources :plans, only: [:index]
   resources :subscriptions, only: [:new, :create]
+  resources :posts do 
+    member do
+      resources :comments
+    end
+  end
 
   root 'static_pages#home'
   match '/signup', to: 'users#new', via: 'get'
