@@ -4,10 +4,12 @@
           <ul id="nav" class="clearfix">
             <li data-no-turbolink><%= link_to root_url do %>Home
               <span>Dashboard<% end %></span></li>
-            <li><%= link_to edit_user_path(@user), id: 'edit_user' do %>Settings
-              <span><%= @user.name %>'s Profile<% end %></span></li>
-            <li><a class="inbox">Mailbox<span><strong><%= @user.new_messages %></strong> new messages</span></a></li>
-            <li><%= link_to "Sign Out", signout_path, method: "delete" %>
+            <li><%= link_to edit_user_path(@user), id: 'edit_user' do %>Profile
+              <span>Settings<% end %></span></li>
+            <li><a class="inbox">Inbox<span><strong><%= @user.new_messages %></strong> new messages</span></a></li>
+            <li><%= link_to posts_path do %>Blog
+              <span>News<% end %></span></li>
+            <li><%= link_to "Log Out", signout_path, method: "delete" %>
             </li>
             <li><div class="on-top">
             <a href="//www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark" ><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" /></a><br/></div>
@@ -28,8 +30,12 @@
               <span>Dashboard<% end %></span></li>
                         <li><%= link_to howitworks_path, class: 'static_page' do %>How It Works
                             <span>Take a Look<% end %></span></li>
-                        <li><%= link_to contact_path, class: 'static_page' do %>Contact
-                            <span>Talk to Us<% end %></span></li>
+                        <li><%= link_to posts_path do %>Blog
+                            <span>News<% end %></span></li>
+                                    <li><div class="on-top">
+            <a href="//www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark" ><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" /></a><br/></div>
+            <div class="fb-like" data-href="https://www.facebook.com/familygroups.org" data-width="5" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
+            </li>
                     </ul>
                 </nav>
             </div>
@@ -39,13 +45,10 @@
 <% end %>
 
 
-  <div class="container main">
-      <div class="eight columns">
-          <%= image_tag 'premium_logo.jpg', class: 'premium_logo' %>
+  <div class="container main", style="margin-top:-10px">
+      <div class="sixteen columns">
+          <%= image_tag 'premium_logo2.jpg' %>
       </div>
-<div class="eight columns">
-  <%= image_tag 'premium_ad_resized1.jpg', class: 'premium_ad' %>
-</div>
     <div class="container">
       <div class="sixteen columns">
         <hr class="line slogan" />
@@ -58,7 +61,11 @@
 
 <%= render :partial => @posts %>
 
-<%= link_to 'New Post', new_post_path %>
+<div class="paginate"><%= will_paginate @posts %></div>
+
+<% if signed_in? && current_user.subscriber == "Blogger" %>
+  <%= link_to 'New Post', new_post_path %>
+<% end %>
         </div>
     </div>
   <%= render 'layouts/footer' %>

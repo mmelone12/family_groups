@@ -1,6 +1,7 @@
-<p>
-	<strong>Posted 
+<br/><p class="posted_by">Posted by 
+		<%= comment.author %>
 		<%= time_ago_in_words(comment.created_at) %>
-		ago </strong> <br />
+		ago</p> <br /><br />
+<p class="blog_content">
 		<%= h(comment.body) %>
 </p>

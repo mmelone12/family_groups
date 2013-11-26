@@ -5,14 +5,16 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @user = current_user
-    @invite = Invite.new
-    @message = current_user.sent_messages.build
-    @messages = current_user.received_messages.paginate :per_page => 10, :page => params[:page], :include => :message, :order => "messages.created_at DESC"
-    @sent_messages = current_user.sent_messages.paginate :per_page => 10, :page => params[:page], :order => "created_at DESC"
-    @posts = Post.all
+    if signed_in?
+      @user = current_user
+      @invite = Invite.new
+      @message = current_user.sent_messages.build
+      @messages = current_user.received_messages.paginate :per_page => 10, :page => params[:page], :include => :message, :order => "messages.created_at DESC"
+      @sent_messages = current_user.sent_messages.paginate :per_page => 10, :page => params[:page], :order => "created_at DESC"
+    end
+    @posts = Post.all.paginate :per_page => 5, :page => params[:page], :order => 'created_at DESC'
       respond_to do |format|
-        format.html
+        format.html { render :layout => 'blog' }
         format.atom
       end
   end
@@ -20,12 +22,15 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
-    @user = current_user
-    @invite = Invite.new
-    @message = current_user.sent_messages.build
-    @messages = current_user.received_messages.paginate :per_page => 10, :page => params[:page], :include => :message, :order => "messages.created_at DESC"
-    @sent_messages = current_user.sent_messages.paginate :per_page => 10, :page => params[:page], :order => "created_at DESC"
+    if signed_in?
+      @user = current_user
+      @invite = Invite.new
+      @message = current_user.sent_messages.build
+      @messages = current_user.received_messages.paginate :per_page => 10, :page => params[:page], :include => :message, :order => "messages.created_at DESC"
+      @sent_messages = current_user.sent_messages.paginate :per_page => 10, :page => params[:page], :order => "created_at DESC"
+    end
     @post = Post.find(params[:id])
+    render :layout => 'blog'
   end
 
   # GET /posts/new
@@ -85,11 +90,10 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :body)
+      params.require(:post).permit(:title, :body, :author_name)
     end
 
     def authenticate
-      @user = User.find(707)
-      redirect_to(root_url) unless current_user?(@user)
+      redirect_to(root_url) unless current_user.subscriber == "Blogger"
     end
 end

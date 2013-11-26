@@ -1,6 +1,11 @@
 <%= form_for Comment.new do |f| %>
 	<p>
-		<%= f.label :body, "New Comment" %><br />
+		<div class="post_comment">Post a new comment</div>
+		  <div class="field">
+    		<%= f.label "Your Name" %>
+    		<%= f.text_field :author %>
+  	      </div>
+  	    <%= f.label :body, "Your Comment" %>
 		<%= f.text_area :body %>
 		<%= f.hidden_field :post_id, value: @post.id %>
 	</p>

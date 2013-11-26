@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Family Groups - Find local events and meet other great parents</title>
+  <%= favicon_link_tag 'favicon.ico' %>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => false %>
+  <%= auto_discovery_link_tag :atom, posts_path(format: :atom) %>
+  <%= javascript_include_tag "https://js.stripe.com/v1/", "application", "data-turbolinks-track" => false %>
+  <%= csrf_meta_tags %>
+  <meta name="description" content="Find local family groups, events and places and get matched to other parents through common interests.">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="msvalidate.01" content="C6D78C6B3C55E74D0B9E49F514A14D11" />
+	<div id="wrap">
+		<header>
+		<div class="container">
+			<div class="one-third column">
+				<div class="logo" data-no-turbolink>
+						<%= link_to image_tag("fglogoblog.jpg", :alt => "logo"), posts_path %>
+				</div>
+				<h1>
+					Find local events. Meet great parents.
+				</h1>
+			</div>
+		</head>
+		<body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+		<%= yield %>
+		</footer>
+		<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-45572101-1', 'familygroups.org');
+  ga('send', 'pageview');
+
+</script>
+<%= debug(params) if Rails.env.development? %>
+	</div>
+	<script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>
+		</body>
+</html>

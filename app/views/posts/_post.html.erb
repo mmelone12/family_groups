@@ -1,8 +1,13 @@
-	<p><%= time_ago_in_words(post.created_at) %></p>
+<div class="container">
+	<p class="post_date"><%= post.created_at.to_date.to_formatted_s(:long_ordinal) %></p>
 	<div class="blog_title"><%= link_to_unless_current h(post.title), post, style: "color:black" %></div>
+	
+		<hr class="line blog" />
+	
+	<div class="author_name"><%= image_tag post.author_picture, class: "author_portrait" %><p class="blog_author"><%= post.author_name %><p></div>
 	<br />
 	<br />
-	<%= h(ERB.new(post.body).result(binding).html_safe) %>
-	<%= simple_format h(post.body) %>
+	<p class="blog_content"><%= h(ERB.new(post.body).result(binding).html_safe) %></p>
 	<br />
 	<br />
+</div>

@@ -3,10 +3,12 @@
 					<ul id="nav" class="clearfix">
 						<li data-no-turbolink><%= link_to root_url do %>Home
 							<span>Dashboard<% end %></span></li>
-						<li><%= link_to edit_user_path(@user), id: 'edit_user' do %>Settings
-							<span><%= @user.name %>'s Profile<% end %></span></li>
-						<li><a class="inbox">Mailbox<span><strong><%= @user.new_messages %></strong> new messages</span></a></li>
-						<li><%= link_to "Sign Out", signout_path, method: "delete" %>
+						<li><%= link_to edit_user_path(@user), id: 'edit_user' do %>Profile
+							<span>Settings<% end %></span></li>
+						<li><a class="inbox">Inbox<span><strong><%= @user.new_messages %></strong> new messages</span></a></li>
+						<li><%= link_to posts_path do %>Blog
+							<span>News<% end %></span></li>
+						<li><%= link_to "Log Out", signout_path, method: "delete" %>
 						</li>
 						<li><div class="on-top">
 						<a href="//www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark" ><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" /></a><br/></div>

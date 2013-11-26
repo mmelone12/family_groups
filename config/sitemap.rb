@@ -7,7 +7,7 @@ SitemapGenerator::Sitemap.create do
   Place.find_each do |place|
     add place_path(place), :lastmod => place.updated_at
   end
-  Interest.find_each do |interest|
+  Interest.first(47).each do |interest|
     add interest_path(interest), :lastmod => interest.updated_at
   end
 end             
