@@ -3,7 +3,7 @@ task :fetch_redtri => :environment do
   require 'mechanize'
   
             agent = Mechanize.new
-            pages = [ "http://redtri.com/events/san-francisco/", "http://redtri.com/events/los-angeles/", "http://redtri.com/events/atlanta/", "http://redtri.com/events/chicago/", "http://redtri.com/events/new-york/", "http://redtri.com/events/seattle/", "http://redtri.com/events/socal/", "http://redtri.com/events/dc/" ]
+            pages = [ "http://redtri.com/events/san-francisco/" ]
             pages.each do |enter|
               page = agent.get(enter)
               agent.page.search(".event").each do |activity|
@@ -200,7 +200,7 @@ task :fetch_redtri => :environment do
                 if title.present?                       
                   Activity.where(:title => title, :start_date => start_date, :when => total_date, :desc => desc, :address => address, 
                     :article_link => article_link, :recurring => recurring, :image_path => image_path,
-                  :user_id => user_id).first_or_create
+                  :user_id => user_id).create
                   puts title, total_date, desc, address
                 end
              end  
@@ -409,7 +409,7 @@ task :fetch_redtri2 => :environment do
                 if title.present?                       
                   Activity.where(:title => title, :start_date => start_date, :when => total_date, :desc => desc, :address => address, 
                     :article_link => article_link, :recurring => recurring, :image_path => image_path,
-                  :user_id => user_id).first_or_create
+                  :user_id => user_id).create
                   puts title, total_date, desc, address
                 end
              end  
