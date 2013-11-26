@@ -69,5 +69,6 @@
         </div>
     </div>
   <%= render 'layouts/footer' %>
-  <%= render partial: 'js/settings.js.erb' %>
-  <%= render partial: 'js/mailbox.js.erb' %>
+  <% if signed_in? %>
+    <%= render partial: 'js/mailbox.js.erb' %>
+  <% end %>
