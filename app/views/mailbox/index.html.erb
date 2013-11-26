@@ -9,7 +9,7 @@
     <br/>
     <%= form_tag users_path, :method => 'get' do %>
     <p>
-      <%= text_field_tag :search, params[:search], value: "e.g. Smith", id: 'search_form' %>
+      <%= text_field_tag :search, params[:search], value: "Last Name Only, e.g. Smith", id: 'search_form' %>
       <%= submit_tag "Search for Users", :last_name => nil %>
     </p>
     <% end %>
