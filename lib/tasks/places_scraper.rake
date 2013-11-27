@@ -4,7 +4,7 @@ task :fetch_places => :environment do
   require 'uri'
   require 'net/http'
 
-      City.all.each do |city|
+      City.where(:id => 30 .. 64).all.each do |city|
             city_name = city.name
             city_format = city_name.downcase.split.join('-')
             state_name = city.state.downcase

@@ -3,7 +3,7 @@ task :fetch_redtri => :environment do
   require 'mechanize'
   
             agent = Mechanize.new
-            pages = [ "http://redtri.com/events/san-francisco/" ]
+            pages = [ "http://redtri.com/events/san-francisco/", "http://redtri.com/events/los-angeles/", "http://redtri.com/events/atlanta/", "http://redtri.com/events/chicago/", "http://redtri.com/events/new-york/", "http://redtri.com/events/seattle/", "http://redtri.com/events/socal/", "http://redtri.com/events/portland/", "http://redtri.com/events/dc/" ]
             pages.each do |enter|
               page = agent.get(enter)
               agent.page.search(".event").each do |activity|
