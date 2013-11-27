@@ -21,7 +21,7 @@ class StaticPagesController < ApplicationController
       new_activities = Activity.where('start_date >= ? AND user_id <> ?', 0.days.ago(Time.now).to_date, current_user.id )
       nearby_activities = new_activities.near(@user, 100).all( :order => "start_date", :limit => 20 )
       @activities = nearby_activities.reject { |activity| current_activity_ids.include?(activity.id) }
-      recurring_activities = Activity.where(['recurring = ?', "yes"]).near(@user, 100).first(5)
+      recurring_activities = Activity.where(['recurring = ?', "yes"]).near(@user, 100).order("RANDOM()").first(5)
       @recurring_activities = recurring_activities.reject { |activity| current_activity_ids.include?(activity.id) }
       current_place_ids = current_user.place_following.pluck(:place_followed_id)
       @places = Place.near(@user, 100).first(15).reject { |place| current_place_ids.include?(place.id) }
@@ -64,7 +64,7 @@ class StaticPagesController < ApplicationController
       activities = Activity.where('start_date IS NOT NULL')
       new_activities = activities.where('start_date >= ?', 0.days.ago(Time.now).to_date)
       @activities = new_activities.near(@city, 100).all( :order => "start_date", :limit => 18)
-      @recurring_activities = Activity.where(['recurring = ?', "yes"]).near(@city, 100).first(5)
+      @recurring_activities = Activity.where(['recurring = ?', "yes"]).near(@city, 100).order("RANDOM()").first(5)
     end
   end
 
