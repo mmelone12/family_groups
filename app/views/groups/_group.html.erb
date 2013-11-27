@@ -16,8 +16,8 @@
             </h5>
               </div>
        <%= form_for(@group, remote: true) do |f| %>
-       <%= f.hidden_field :name, value: group.name.html_safe.mb_chars.limit(20).to_s %>
-       <%= f.hidden_field :desc, value: group.description.html_safe.mb_chars.limit(119).to_s %>       
+       <%= f.hidden_field :name, value: group.name.html_safe.mb_chars.limit(80).to_s %>
+       <%= f.hidden_field :desc, value: group.description.html_safe.mb_chars.limit(250).to_s + ".." %>       
        <% if group.photo_url.blank? %>
           <%= f.hidden_field :image_path, value: "/assets/rotate/#{random_image}" %>
        <% else %>

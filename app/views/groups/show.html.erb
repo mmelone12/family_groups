@@ -1,0 +1,61 @@
+<div class="two-thirds column">
+                <nav id="menu" class="navigation">
+                    <ul id="nav" class="clearfix">
+                        <li data-no-turbolink><%= link_to root_url do %>Home
+              <span>Dashboard<% end %></span></li>
+                        <li><%= link_to howitworks_path, class: 'static_page' do %>How It Works
+                            <span>Take a Look<% end %></span></li>
+                        <li><%= link_to contact_path, class: 'static_page' do %>Contact
+                            <span>Talk to Us<% end %></span></li>
+                    </ul>
+                </nav>
+            </div>
+      <div class="sixteen columns">
+        <hr class="line" />
+      </div>
+    </div>
+  </header>
+
+  <div class="container main">
+    <h3 class="shortcodes">To see more activities, groups and places, sign up today! It's free.</h3>
+      <div class="eight columns">
+          <%= image_tag 'premium_logo.jpg', class: 'premium_logo' %>
+      </div>
+<div class="eight columns">
+  <%= image_tag 'premium_ad_resized1.jpg', class: 'premium_ad' %>
+</div>
+    <div class="container">
+      <div class="sixteen columns">
+        <hr class="line slogan" />
+      </div>
+    </div>
+    </div>
+<div id="content">
+<div class="container main">
+    <div class="two columns">
+        <% if @group.image_path.blank? %>
+          <%= image_tag @group.uploader_image, size:'70x70' %>
+        <% else %>
+          <%= image_tag @group.image_path, size:'70x70' %> 
+        <% end %> 
+        <br/>
+      <strong>Number of followers:</strong> <%= @group.followers.count %> 
+      <br />
+      <strong>City:</strong> <%= @group.city %><br/>
+    </div>
+    <div class="six columns">
+    <h6><%= @group.name %></h6>
+    <br/>
+    <%= @group.desc %>
+    <br />
+    <% if @group.link? %>
+    <br />
+    <strong><%= link_to "Check out the website for this activity here.", @group.link, target: "blank" %></strong><% end %>
+    <br />
+    <h3>If you want to find more events like this where local families hang out, create an account. It's totally free. 
+      <br />
+    <h3><%= link_to "Join your community", signup_path, id: 'create_user', class: "b-new", style: "color:white; margin-left:60px" %></h3>
+    </div>
+  </div>  
+</div>
+  <%= render 'layouts/footer' %>

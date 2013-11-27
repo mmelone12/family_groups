@@ -12,7 +12,7 @@ FamilyGroups::Application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy]
   resources :relationships, only: [:create, :destroy]
-  resources :groups, only: [:new, :create, :index]
+  resources :groups, only: [:new, :show, :create, :index]
   resources :group_relationships, only: [:create, :destroy]
   resources :activities, only: [:new, :show, :create, :destroy, :index]
   resources :activity_relationships, only: [:create, :destroy]
