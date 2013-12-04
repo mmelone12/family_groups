@@ -1,3 +1,40 @@
+<% title "Family Groups - How It Works" %>
+<div class="two-thirds column">
+                <nav id="menu" class="navigation">
+                    <ul id="nav" class="clearfix">
+                        <li><a href="index.html" class="active">Home<span>Dashboard</span></a>
+                        </li>
+                        <li><%= link_to howitworks_path, class: 'static_page' do %>How It Works
+                            <span>Take a Look<% end %></span></li>
+                        <li><%= link_to contact_path, class: 'static_page' do %>Contact
+                            <span>Talk to Us<% end %></span></li>
+                    </ul>
+                </nav>
+            </div>
+      <div class="sixteen columns">
+        <hr class="line" />
+      </div>
+    </div>
+  </header>
+
+  <div class="container main">
+    <h3 class="shortcodes">To see more activities, groups and places, sign up today! It's free.</h3>
+      <div class="eight columns">
+          <%= image_tag 'premium_logo.jpg', class: 'premium_logo' %>
+      </div>
+<div class="eight columns">
+  <%= image_tag 'premium_ad_resized1.jpg', class: 'premium_ad' %>
+</div>
+    <div class="container">
+      <div class="sixteen columns">
+        <hr class="line slogan" />
+      </div>
+    </div>
+    </div>
+
+  <div class="container main">
+    <div class="nine columns">
+        <div class="less_right">
 <div id="content">
   <%= image_tag "slider_graphic.jpg", size:'390x190', style:'margin-left:31px' %>
   <br/>
@@ -17,3 +54,7 @@
   4. Invite friends to join and grow the Family Groups community!</h1>
   <%= link_to "Join your community", signup_path, id: 'create_user', class: "b-new", style: "color:white" %> 
 </div>
+</div>
+</div>
+</div>
+<%= render 'layouts/footer' %>
