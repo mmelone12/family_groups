@@ -6,7 +6,7 @@
 						<li><%= link_to edit_user_path(@user), id: 'edit_user' do %>Profile
 							<span>Settings<% end %></span></li>
 						<li><a class="inbox">Inbox<span><strong><%= @user.new_messages %></strong> new messages</span></a></li>
-						<li><%= link_to posts_path do %>Blog
+						<li><%= link_to blog_path do %>Blog
 							<span>News<% end %></span></li>
 						<li><%= link_to "Log Out", signout_path, method: "delete" %>
 						</li>

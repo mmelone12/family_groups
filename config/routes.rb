@@ -26,7 +26,7 @@ FamilyGroups::Application.routes.draw do
   resources :invites, only: [:create]
   resources :plans, only: [:index]
   resources :subscriptions, only: [:new, :create]
-  resources :posts do 
+  resources :posts, only: [:show, :new, :edit, :create, :destroy] do 
     member do
       resources :comments
     end
@@ -41,6 +41,7 @@ FamilyGroups::Application.routes.draw do
   match '/howitworks', to: 'static_pages#howitworks', via: 'get'
   match '/premium', to: 'static_pages#premium', via: 'get'
   match '/signupalready', to: 'static_pages#signupalready', via: 'get'
+  match '/blog', to: 'posts#index', via: 'get'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
