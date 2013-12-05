@@ -14,9 +14,6 @@ SitemapGenerator::Sitemap.create do
   Group.first(10).each do |group|
     add group_path(group), :lastmod => group.updated_at
   end
-  Post.first(2).each do |post|
-    add post_path(post), :lastmod => post.updated_at
-  end
 end             
 
 # Set the host name for URL creation
