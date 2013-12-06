@@ -136,6 +136,9 @@ task :fetch_redtri => :environment do
                 if title.include? "camp" or title.include? "Camp"
                   image_path = "activities/campfire.jpg"
                 end
+                if title.include? "tree lighting" or title.include? "Tree Lighting" or title.include? "Tree Lighting" or title.include? "Ice" or title.include? "ice" or title.include? "holidays" or title.include? "Holidays"
+                  image_path = "activities/snowman.jpg"
+                end
                 if title.include? "christmas" or title.include? "xmas" or title.include? "Christmas" or title.include? "Xmas"
                   image_path = "activities/christmas_tree.jpg"
                 end
@@ -200,7 +203,7 @@ task :fetch_redtri => :environment do
                 if title.present?                       
                   Activity.where(:title => title, :start_date => start_date, :when => total_date, :desc => desc, :address => address, 
                     :article_link => article_link, :recurring => recurring, :image_path => image_path,
-                  :user_id => user_id).create
+                  :user_id => user_id).first_or_create
                   puts title, total_date, desc, address
                 end
              end  
@@ -345,6 +348,9 @@ task :fetch_redtri2 => :environment do
                 if title.include? "camp" or title.include? "Camp"
                   image_path = "activities/campfire.jpg"
                 end
+                if title.include? "tree lighting" or title.include? "Tree Lighting" or title.include? "Tree Lighting" or title.include? "Ice" or title.include? "ice" or title.include? "holidays" or title.include? "Holidays"
+                  image_path = "activities/snowman.jpg"
+                end
                 if title.include? "christmas" or title.include? "xmas" or title.include? "Christmas" or title.include? "Xmas"
                   image_path = "activities/christmas_tree.jpg"
                 end
@@ -409,7 +415,7 @@ task :fetch_redtri2 => :environment do
                 if title.present?                       
                   Activity.where(:title => title, :start_date => start_date, :when => total_date, :desc => desc, :address => address, 
                     :article_link => article_link, :recurring => recurring, :image_path => image_path,
-                  :user_id => user_id).create
+                  :user_id => user_id).first_or_create
                   puts title, total_date, desc, address
                 end
              end  
