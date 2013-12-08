@@ -800,12 +800,12 @@ p.post_date {
 
 p.blog_content {
   font-family: "Helvetica";
-  color: #606060;
+  color: #585858;
   font-size:17px;
-  margin-top: -10px;
+  margin-top: 5px;
   margin-bottom: 20px;
-  margin-right: 100px;
-  line-height: 20px;
+  margin-right: 140px;
+  line-height: 24px;
 }
 
 .blog_image_left {
@@ -825,15 +825,13 @@ p.blog_content {
 .author_name {
   font-size:12px;
   color: black;
-  margin-left: 30px;
+  margin-left: 40px;
   margin-top: 35px;
 }
 
 .author_portrait {
-  width: 6%;
-  height: 6%;
   border: 1px solid #333333;
-  margin-right: 10px;
+  margin-left: -10px;
   margin-top: -22px;
   position: absolute;
 }

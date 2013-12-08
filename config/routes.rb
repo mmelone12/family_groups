@@ -26,7 +26,7 @@ FamilyGroups::Application.routes.draw do
   resources :invites, only: [:create]
   resources :plans, only: [:index]
   resources :subscriptions, only: [:new, :create]
-  resources :posts, only: [:show, :new, :edit, :create, :destroy] do 
+  resources :posts, only: [:show, :new, :edit, :update, :create, :destroy] do 
     member do
       resources :comments
     end

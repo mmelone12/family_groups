@@ -12,7 +12,7 @@ class PostsController < ApplicationController
       @messages = current_user.received_messages.paginate :per_page => 10, :page => params[:page], :include => :message, :order => "messages.created_at DESC"
       @sent_messages = current_user.sent_messages.paginate :per_page => 10, :page => params[:page], :order => "created_at DESC"
     end
-    @posts = Post.all.paginate :per_page => 5, :page => params[:page], :order => 'created_at DESC'
+    @posts = Post.all.paginate :per_page => 2, :page => params[:page], :order => 'created_at DESC'
       respond_to do |format|
         format.html { render :layout => 'blog' }
       end
