@@ -203,7 +203,7 @@ task :fetch_redtri => :environment do
                 if title.present?                       
                   Activity.where(:title => title, :start_date => start_date, :when => total_date, :desc => desc, :address => address, 
                     :article_link => article_link, :recurring => recurring, :image_path => image_path,
-                  :user_id => user_id).first_or_create
+                  :user_id => user_id).create
                   puts title, total_date, desc, address
                 end
              end  
@@ -415,7 +415,7 @@ task :fetch_redtri2 => :environment do
                 if title.present?                       
                   Activity.where(:title => title, :start_date => start_date, :when => total_date, :desc => desc, :address => address, 
                     :article_link => article_link, :recurring => recurring, :image_path => image_path,
-                  :user_id => user_id).first_or_create
+                  :user_id => user_id).create
                   puts title, total_date, desc, address
                 end
              end  
@@ -626,7 +626,7 @@ task :fetch_activities => :environment do
                 if title.include? "exercise" or title.include? "Exercise" or title.include? "jog" or title.include? "Jog" or title.include? "workout" or title.include? "Workout" or title.include? "marathon" or title.include? "Marathon"
                   image_path = "activities/running_shoes.jpg"
                 end
-                if title.include? "Santa"
+                if title.include? "Santa" or title.include? "St. Nick"
                   image_path = "activities/santa_magic.jpg"
                 end
                 if title.include? "snow" or title.include? "Snow" or title.include? "winter" or title.include? "Winter" or title.include? "December"
@@ -786,7 +786,7 @@ task :fetch_activities => :environment do
                 if title.include? "exercise" or title.include? "Exercise" or title.include? "jog" or title.include? "Jog" or title.include? "workout" or title.include? "Workout" or title.include? "marathon" or title.include? "Marathon"
                   image_path = "activities/running_shoes.jpg"
                 end
-                if title.include? "Santa"
+                if title.include? "Santa" or title.include? "St. Nick"
                   image_path = "activities/santa_magic.jpg"
                 end
                 if title.include? "snow" or title.include? "Snow" or title.include? "winter" or title.include? "Winter" or title.include? "December"
