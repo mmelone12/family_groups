@@ -81,6 +81,25 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
+  $('.how_it_works').click(function(e) {
+    var url = $(this).attr('href');
+    var dialog_form = $('<div id="dialog-form">Loading form...</div>').dialog({
+      autoOpen: false,
+      width: 570,
+      modal: true,
+      open: function() {
+        return $(this).load(url + ' #content');
+      },
+      close: function() {
+        $('#dialog-form').remove();
+      }
+    });
+    dialog_form.dialog('open');
+    e.preventDefault();
+  });
+});
+
+$(document).ready(function() {
   $('.img-overlay2').click(function(e) {
     var url = $(this).attr('href');
     var dialog_form = $('<div id="dialog-form">Loading form...</div>').dialog({
