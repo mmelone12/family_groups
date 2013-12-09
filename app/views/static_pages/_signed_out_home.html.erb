@@ -95,7 +95,7 @@
 		
 			<div class="container">
 				<div id="portfolio-wrapper">
-				<% if @activities.blank? && @recurring_activities.blank? %>
+				<% if @activities.count < 8 %>
 					<div class="four columns portfolio-item activities">
         				<br />
         				<br />
