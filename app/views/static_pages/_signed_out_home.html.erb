@@ -69,7 +69,7 @@
 			<div class="container">
 				<div class="sixteen columns">
 					<h3 class="shortcodes">What's going on in <%= @city %>.</h3>
-					<% if @activities.blank? && @recurring_activities.blank? %>
+					<% if @activities.count < 5 %>
 					<div id="filters">
 						<ul class="option-set" data-option-key="filter">
 							<li><a href="#filter" data-option-value="*">See All</a></li>
@@ -95,7 +95,7 @@
 		
 			<div class="container">
 				<div id="portfolio-wrapper">
-				<% if @activities.count < 8 %>
+				<% if @activities.blank? && @recurring_activities.blank? %>
 					<div class="four columns portfolio-item activities">
         				<br />
         				<br />
