@@ -1,17 +1,17 @@
 SitemapGenerator::Sitemap.default_host = 'http://www.familygroups.org'
 SitemapGenerator::Sitemap.create do
-  add '/howitworks', :changefreq => 'monthly'
-  add '/blog', :changefreq => 'weekly'   
-  Activity.find_each do |activity|
+  add '/howitworks', :changefreq => 'weekly'
+  add '/blog', :changefreq => 'daily'   
+  Activity.all.uniq.find_each do |activity|
     add activity_path(activity), :lastmod => activity.updated_at
   end   
-  Place.find_each do |place|
+  Place.all.uniq.find_each do |place|
     add place_path(place), :lastmod => place.updated_at
   end
   Interest.first(47).each do |interest|
     add interest_path(interest), :lastmod => interest.updated_at
   end
-  Group.first(10).each do |group|
+  Group.all.uniq.first(10).each do |group|
     add group_path(group), :lastmod => group.updated_at
   end
 end             
