@@ -1,5 +1,5 @@
 <% title "Family Groups Blog - #{@post.title}" %>
-<% description "#{@post.body[400..555]}" %>
+<% description "#{@post.body.truncate(200)}" %>
 <% if signed_in? %>
     <div class="two-thirds column">
         <nav id="menu" class="navigation">
