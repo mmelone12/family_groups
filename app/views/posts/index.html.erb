@@ -59,6 +59,13 @@
   </div>
 
   <div class="container main">
+      <div class="contents_title">
+        Recent Posts</div>
+        <div class="table_of_contents">
+        <% Post.all(:order => "created_at DESC").each do |post| %>
+          <li><%= link_to post.title.truncate(70), post, style: "color:#5B5B5B" %></li>
+        <% end %>
+      </div>
         <div class="less_right">
 
 <%= render :partial => @posts %>

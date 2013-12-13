@@ -782,7 +782,8 @@ h4.sign_up {
   font-weight: bold;
   margin-top: 35px;
   margin-bottom: 20px;
-  line-height: 26px;
+  line-height: 40px;
+  margin-right: 260px;
 }
 
 p.post_date {
@@ -805,7 +806,8 @@ p.blog_content {
   font-size:17px;
   margin-top: 5px;
   margin-bottom: 20px;
-  margin-right: 140px;
+  margin-right: 270px;
+  margin-left: 10px;
   line-height: 24px;
 }
 
@@ -891,4 +893,31 @@ p.posted_by {
 
 h1.title {
   margin-right: -60px;
+}
+
+.contents_title {
+  margin-left: 810px;
+  color: #383838;
+  position: absolute;
+  font-weight: bolder;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.25);
+  font-size: 16px;
+}
+
+.table_of_contents {
+  margin-left: 760px;
+  margin-top: 22px;
+  position: absolute;
+  border-radius: 2px;
+  border: 1px solid #333333;
+  box-shadow: 0 4px 3px rgba(0,0,0,0.25);
+  background-color: #EAEAEA;
+  padding: 11px;
+  z-index: 1;
+}
+
+.table_of_contents li {
+  color: white;
+  font-family: "Helvetica";
+  font-size: 13px;
 }
