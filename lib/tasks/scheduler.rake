@@ -45,6 +45,9 @@ task :fetch_redtri => :environment do
                 if title.include? "beach" or title.include? "Beach" or address.include? "beach" or address.include? "Beach"
                   image_path = "activities/beach.jpg"
                 end
+                if title.include? "baby" or title.include? "Baby" or title.include? "Babies" or title.include? "babies" or title.include? "Infant" or title.include? "infant" or title.include? "Toddler" or title.include? "toddler"
+                  image_path = "activities/baby.jpg"
+                end
                 if title.include? "YMCA"
                   image_path = "activities/pool.jpg"
                 end
@@ -189,6 +192,9 @@ task :fetch_redtri => :environment do
                 end
                 if title.include? "snow" or title.include? "Snow" or title.include? "winter" or title.include? "Winter" or title.include? "December"
                   image_path = "activities/snowman.jpg"
+                end
+                if title.include? "gingerbread" or title.include? "Gingerbread"
+                  image_path = "activities/gingerbread.jpg"
                 end
                 if title.include? "story" or title.include? "Story" or title.include? "once upon a time" or title.include? "Once upon a time" or title.include? "Once Upon A Time" or title.include? "reading" or title.include? "Reading" or title.include? "tale" or title.include? "Tale"
                   image_path = "activities/story.jpg"
@@ -257,6 +263,9 @@ task :fetch_redtri2 => :environment do
                 if title.include? "beach" or title.include? "Beach" or address.include? "beach" or address.include? "Beach"
                   image_path = "activities/beach.jpg"
                 end
+                if title.include? "baby" or title.include? "Baby" or title.include? "Babies" or title.include? "babies" or title.include? "Infant" or title.include? "infant" or title.include? "Toddler" or title.include? "toddler"
+                  image_path = "activities/baby.jpg"
+                end
                 if title.include? "YMCA"
                   image_path = "activities/pool.jpg"
                 end
@@ -401,6 +410,9 @@ task :fetch_redtri2 => :environment do
                 end
                 if title.include? "snow" or title.include? "Snow" or title.include? "winter" or title.include? "Winter" or title.include? "December"
                   image_path = "activities/snowman.jpg"
+                end
+                if title.include? "gingerbread" or title.include? "Gingerbread"
+                  image_path = "activities/gingerbread.jpg"
                 end
                 if title.include? "story" or title.include? "Story" or title.include? "once upon a time" or title.include? "Once upon a time" or title.include? "Once Upon A Time" or title.include? "reading" or title.include? "Reading" or title.include? "tale" or title.include? "Tale"
                   image_path = "activities/story.jpg"
