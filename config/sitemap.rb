@@ -2,7 +2,7 @@ SitemapGenerator::Sitemap.default_host = 'http://www.familygroups.org'
 SitemapGenerator::Sitemap.create do
   add '/howitworks', :changefreq => 'weekly'
   add '/blog', :changefreq => 'daily'   
-  Activity.all.uniq.find_each do |activity|
+  Activity.first(1000).uniq.each do |activity|
     add activity_path(activity), :lastmod => activity.updated_at
   end   
   Place.all.uniq.find_each do |place|
