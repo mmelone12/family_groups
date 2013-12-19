@@ -11,11 +11,11 @@ SitemapGenerator::Sitemap.create do
   Interest.first(47).each do |interest|
     add interest_path(interest), :lastmod => interest.updated_at
   end
+  Post.find_each do |post|
+    add post_path(post), :lastmod => post.updated_at
+  end
   Group.all.uniq.first(10).each do |group|
     add group_path(group), :lastmod => group.updated_at
-  end
-  Post.all.uniq.find_each do |post|
-    add post_path(post), :lastmod => post.updated_at
   end
 end             
 
