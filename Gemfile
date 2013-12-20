@@ -14,6 +14,7 @@ gem 'acts_as_tree'
 gem 'stripe'
 gem 'puma'
 gem 'sitemap_generator'
+gem 'fog'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
