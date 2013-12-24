@@ -3,7 +3,7 @@
     <div class="our-work">
         <a class="img-overlay">
         	<div class= "min-height-activities">
-            <%= if place.uploader_image.blank?; image_tag place.image_path; else image_tag place.uploader_image; end %>
+            <%= if place.uploader_image.blank?; image_tag place.image_path, size: "420x420"; else image_tag place.uploader_image, size: "420x420"; end %>
             <div class="img-overlay-div">
              <div class="places_showme"> 
             <h4>
