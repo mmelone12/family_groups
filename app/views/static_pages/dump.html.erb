@@ -1378,3 +1378,21 @@ for like "button" style
 content="Find local family groups, events and places and get matched to other moms and dads through common interests."
 
 "A blog and an app that helps you find local family groups, events and places and get matched to other parents through common interests."
+
+  Activity.all.uniq.find_each do |activity|
+    add activity_path(activity), :lastmod => activity.updated_at
+  end   
+  Place.all.uniq.find_each do |place|
+    add place_path(place), :lastmod => place.updated_at
+  end
+  Interest.all.uniq.find_each do |interest|
+    add interest_path(interest), :lastmod => interest.updated_at
+  end
+  Group.all.uniq.first(10).each do |group|
+    add group_path(group), :lastmod => group.updated_at
+  end
+end   
+
+<div id="tab1" class="tab-content"><h4 class="sign_up">Finding other families to hang out and schedule playdates with can be hard. With Family Groups, you can find local family events, places and groups and discover moms and dads with similar interests.</h4>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"
