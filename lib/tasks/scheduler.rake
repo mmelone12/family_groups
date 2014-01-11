@@ -449,13 +449,13 @@ task :fetch_activities => :environment do
             pages.each do |enter|
             page = agent.get(enter)
             agent.page.search(".title").each do |group|
+                  title = group.text.strip.truncate(235)
                   group_link = group.search("a").first.to_s[/(http[^"]+\w)/]
                   url = URI.parse(group_link)
                   req = Net::HTTP.new(url.host, url.port)
                   res = req.request_head(url.path)
                   if res.code == "200"
                     page = agent.get("#{group_link}")
-                    title = agent.page.search(".title").text.strip.truncate(235)
                     where = agent.page.search(".venue").text.strip.truncate(235)
                     month = agent.page.search(".month").text.strip
                     day = agent.page.search(".day").text.strip
@@ -491,7 +491,7 @@ task :fetch_activities => :environment do
                   website = agent.page.search(".website a").text.strip.truncate(235)
                   website_link = agent.page.search(".links a").to_s[/(http[^"]+\w)/]
                   if title.present? && start_date.present?
-                  image_path = agent.page.search(".card").to_s[/(http[^"]+\w)/]
+                  image_path = agent.page.search(".photo").to_s[/(http[^"]+\w)/]
                   url = URI.parse(URI.encode(image_path))
 
                   Net::HTTP.start(url.host, url.port) do |http|
@@ -500,7 +500,7 @@ task :fetch_activities => :environment do
                         when Net::HTTPSuccess, Net::HTTPRedirection
                               case response.content_type
                               when "image/png", "image/gif", "image/jpeg"
-                                    image_path = group.search(".card").to_s[/(http[^"]+\w)/]
+                                    image_path = agent.page.search(".photo").to_s[/(http[^"]+\w)/]
                               else
                                     if title.include? "child" or title.include? "Child" or title.include? "kid" or title.include? "Kid"
                                        image_path = "activities/child.jpg"
@@ -823,12 +823,14 @@ task :fetch_activities => :environment do
             if image_path == nil
                   image_path = "activities/general.jpg"
             end
+            if title.present? && start_date.present?
                         
                   Activity.where(:title => title, :where => where, :start_date => start_date,
                   :start_time => start_time, :desc => desc, :address => address, :phone => phone,
                   :link => link, :website => website, :article_link => article_link, :website_link => 
                   website_link, :image_path => image_path, :user_id => user_id, :when => format_date).first_or_create
                   puts title, where, start_date, start_time, desc, address, phone, link, website
+                end
                   end
                 end
              end   
