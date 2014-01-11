@@ -488,7 +488,7 @@ task :fetch_activities => :environment do
                   link = agent.page.search(".source a").text.strip.truncate(235)
                   user_id = "1"
                   article_link = agent.page.search(".list .source").to_s[/(http[^"]+\w)/].truncate(235)
-                  website = agent.page.search(".website a").text.strip.trunate(235)
+                  website = agent.page.search(".website a").text.strip.truncate(235)
                   website_link = agent.page.search(".links a").to_s[/(http[^"]+\w)/].truncate(235)
                   if title.present? && start_date.present?
                   image_path = agent.page.search(".card").to_s[/(http[^"]+\w)/]
