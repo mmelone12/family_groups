@@ -447,6 +447,10 @@ task :fetch_activities => :environment do
             agent = Mechanize.new
             pages = ["http://www.scout.me/family-and-kids-events--near--#{city_format}-#{state_name}", "http://www.scout.me/family--near--#{city_format}-#{state_name}" ]
             pages.each do |enter|
+              url = URI.parse(enter)
+              req = Net::HTTP.new(url.host, url.port)
+              res = req.request_head(url.path)
+                if res.code == "200"
             page = agent.get(enter)
             agent.page.search(".title").each do |group|
                   title = group.text.strip.truncate(235)
@@ -828,6 +832,7 @@ task :fetch_activities => :environment do
                   :link => link, :website => website, :article_link => article_link, :website_link => 
                   website_link, :image_path => image_path, :user_id => user_id, :when => format_date).first_or_create
                   puts title, where, start_date, start_time, desc, address, phone, link, website
+                end
                 end
                 end
              end   
