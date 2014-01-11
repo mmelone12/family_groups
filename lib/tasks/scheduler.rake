@@ -448,7 +448,7 @@ task :fetch_activities => :environment do
             pages = ["http://www.scout.me/family-and-kids-events--near--#{city_format}-#{state_name}", "http://www.scout.me/family--near--#{city_format}-#{state_name}" ]
             pages.each do |enter|
             page = agent.get(enter)
-            agent.page.search(".title").first(20).each do |group|
+            agent.page.search(".title").each do |group|
                   group_link = group.search("a").first.to_s[/(http[^"]+\w)/]
                   url = URI.parse(group_link)
                   req = Net::HTTP.new(url.host, url.port)
