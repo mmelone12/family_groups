@@ -2,7 +2,7 @@
     <div class="our-work">
         <%= link_to activity_path(activity), class: "img-overlay2" do %>
         	<div class= "min-height-activities">
-             <%= if activity.uploader_image.blank?; image_tag activity.image_path, alt: "A great event for families", size: "420x420"; else image_tag activity.uploader_image, size: "420x420"; end %>
+             <%= if activity.uploader_image.blank?; image_tag activity.image_path, alt: "A great event for families"; else image_tag activity.uploader_image; end %>
             <div class="img-overlay-div2">
             <h4 class="smaller">
             <%= if activity.title.length > 60; activity.title.truncate(60) + "...  "; else activity.title; end %>

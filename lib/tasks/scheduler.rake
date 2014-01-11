@@ -448,25 +448,27 @@ task :fetch_activities => :environment do
             pages = ["http://www.scout.me/family-and-kids-events--near--#{city_format}-#{state_name}", "http://www.scout.me/family--near--#{city_format}-#{state_name}" ]
             pages.each do |enter|
             page = agent.get(enter)
-            agent.page.search(".content").each do |group|
-                  image_path = group.search("img").to_s[/(http[^"]+\w)/]
+            agent.page.search(".title").first(20).each do |group|
                   group_link = group.search("a").first.to_s[/(http[^"]+\w)/]
                   url = URI.parse(group_link)
                   req = Net::HTTP.new(url.host, url.port)
                   res = req.request_head(url.path)
                   if res.code == "200"
-                  page = agent.get("#{group_link}")
-                  title = agent.page.search(".facet-title").text.strip
-                  where = agent.page.search(".venue").text.strip
-                  start_date = agent.page.search(".value-title").to_s[/(2013[^T]+\d)/]
-                  start_time = agent.page.search(".time").text.strip
-                  desc = agent.page.search(".facet_description").text.strip.truncate(200)
-                  street_address = agent.page.search(".address").text.strip[/([^,]+\w)/]
-                  locality = agent.page.search(".locality").text.strip
-                  state_address = agent.page.search(".state").text.strip
-                  if state_address.present?
-                  address = street_address + ", " + locality + ", " + state_address
-                  else
+                    page = agent.get("#{group_link}")
+                    title = agent.page.search(".title").text.strip
+                    where = agent.page.search(".venue").text.strip
+                    month = agent.page.search(".month").text.strip
+                    day = agent.page.search(".day").text.strip
+                    start_date = month + " " + day + " " + "2014"
+                    start_time = agent.page.search(".heading").text.strip[/(\d+).*\z/]
+                    format_date = month + " " + day + " at " + start_time
+                    desc = agent.page.search(".text").text.strip.truncate(200)
+                    street_address = agent.page.search(".address span:nth-child(1)").text.strip
+                    locality = agent.page.search("br+ span").text.strip
+                    state_address = city.state.upcase
+                    if state_address.present?
+                      address = street_address + ", " + locality + ", " + state_address
+                    else
                         if locality.present?
                               address = street_address + ", " + locality
                         else
@@ -474,18 +476,14 @@ task :fetch_activities => :environment do
                         end
 
                   end
-                  phone = agent.page.search(".facet_phone").text.strip
-                  link = agent.page.search(".facet_url").text.strip
+                  phone = agent.page.search(".details span").text.strip
+                  link = agent.page.search(".source a").text.strip
                   user_id = "1"
-                  if agent.page.link_with(:class => "facet_url").present?
-                  article_link = agent.page.link_with(:class => "facet_url").uri.to_s
-                  end
-                  website = agent.page.search(".url span").text.strip
-                  if agent.page.link_with(:class => "facet_url url").present?
-                  website_link = agent.page.link_with(:class => "facet_url url").uri.to_s
-                  end
+                  article_link = agent.page.search(".list .source").to_s[/(http[^"]+\w)/]
+                  website = agent.page.search(".website a").text.strip
+                  website_link = agent.page.search(".links a").to_s[/(http[^"]+\w)/]
                   if title.present? && start_date.present?
-
+                  image_path = agent.page.search(".card").to_s[/(http[^"]+\w)/]
                   url = URI.parse(URI.encode(image_path))
 
                   Net::HTTP.start(url.host, url.port) do |http|
@@ -494,11 +492,11 @@ task :fetch_activities => :environment do
                         when Net::HTTPSuccess, Net::HTTPRedirection
                               case response.content_type
                               when "image/png", "image/gif", "image/jpeg"
-                                    image_path = group.search("img").to_s[/(http[^"]+\w)/]
+                                    image_path = group.search(".card").to_s[/(http[^"]+\w)/]
                               else
                                     if title.include? "child" or title.include? "Child" or title.include? "kid" or title.include? "Kid"
-                  image_path = "activities/child.jpg"
-                end
+                                       image_path = "activities/child.jpg"
+                              end
                 if title.include? "beach" or title.include? "Beach" or address.include? "beach" or address.include? "Beach"
                   image_path = "activities/beach.jpg"
                 end
@@ -821,7 +819,7 @@ task :fetch_activities => :environment do
                   Activity.where(:title => title, :where => where, :start_date => start_date,
                   :start_time => start_time, :desc => desc, :address => address, :phone => phone,
                   :link => link, :website => website, :article_link => article_link, :website_link => 
-                  website_link, :image_path => image_path, :user_id => user_id).first_or_create
+                  website_link, :image_path => image_path, :user_id => user_id, :when => format_date).first_or_create
                   puts title, where, start_date, start_time, desc, address, phone, link, website
                   end
                 end

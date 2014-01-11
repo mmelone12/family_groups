@@ -10,7 +10,7 @@ class ActivitiesController < ApplicationController
     new_activities = Activity.where('start_date >= ? AND user_id <> ?', 1.days.ago(Time.now).to_date, current_user.id )
     nearby_activities = new_activities.near(@user).all( :order => "start_date", :limit => 30)
     @activities = nearby_activities.reject { |activity| current_activity_ids.include?(activity.id) }
-    recurring_activities = Activity.where(['recurring = ?', "yes"]).near(@user).first(20)
+    recurring_activities = Activity.where(['recurring = ? AND created_at >= ?', "yes", 20.days.ago(Time.now.to_date)]).near(@user).first(20)
     @recurring_activities = recurring_activities.reject { |activity| current_activity_ids.include?(activity.id) }
     @invite = Invite.new
     @message = current_user.sent_messages.build

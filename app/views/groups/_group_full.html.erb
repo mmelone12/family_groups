@@ -12,9 +12,8 @@
     <h6><%= group.name.unpack("C*").pack("U*") %></h6><br/>
     <%= group.description.unpack("C*").pack("U*") %>
     <br />
-    <h3>Check out the website at: 
-      <br />
-        <%= link_to group.link, target: "blank" %></h3>
+    <h3>
+        <%= link_to "Check out the website here", group.link, target: "blank" %></h3>
         <div id="disappear_button<%= "#{group.id}" %>">
         <%= form_for(@group, remote: true) do |f| %>
           <%= f.hidden_field :name, value: group.name.html_safe.mb_chars.limit(80).to_s %>
