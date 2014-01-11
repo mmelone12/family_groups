@@ -445,7 +445,7 @@ task :fetch_activities => :environment do
             city_format = city_name.downcase.split.join('-')
             state_name = city.state.downcase
             agent = Mechanize.new
-            pages = ["http://www.scout.me/family-and-kids-events--near--#{city_format}-#{state_name}", "http://www.scout.me/family--near--#{city_format}-#{state_name}" ]
+            pages = ["http://www.scout.me/family-and-kids-events--near--#{city_format}-#{state_name}" ]
             pages.each do |enter|
               url = URI.parse(enter)
               req = Net::HTTP.new(url.host, url.port)
