@@ -461,7 +461,7 @@ task :fetch_activities => :environment do
                     month = agent.page.search(".month").text.strip
                     day = agent.page.search(".day").text.strip
                     start_date1 = month + " " + day + " " + "2014"
-                      if start_date1.valid_date?
+                      if Date.valid_date?(start_date1)
                         start_date = start_date1
                       else
                         start_date = "Jan 1, 2011"
