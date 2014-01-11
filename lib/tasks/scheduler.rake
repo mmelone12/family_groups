@@ -455,8 +455,8 @@ task :fetch_activities => :environment do
                   res = req.request_head(url.path)
                   if res.code == "200"
                     page = agent.get("#{group_link}")
-                    title = agent.page.search(".title").text.strip
-                    where = agent.page.search(".venue").text.strip
+                    title = agent.page.search(".title").text.strip.truncate(235)
+                    where = agent.page.search(".venue").text.strip.truncate(235)
                     month = agent.page.search(".month").text.strip
                     day = agent.page.search(".day").text.strip
                     if month.chars.count == 3
@@ -470,8 +470,8 @@ task :fetch_activities => :environment do
                     else
                       format_date = "Jan. 1, 2011"
                     end
-                    desc = agent.page.search(".text").text.strip.truncate(200)
-                    street_address = agent.page.search(".address span:nth-child(1)").text.strip
+                    desc = agent.page.search(".text").text.strip.truncate(230)
+                    street_address = agent.page.search(".address span:nth-child(1)").text.strip.truncate(210)
                     locality = agent.page.search("br+ span").text.strip
                     state_address = city.state.upcase
                     if state_address.present?
@@ -485,11 +485,11 @@ task :fetch_activities => :environment do
 
                   end
                   phone = agent.page.search(".details span").text.strip
-                  link = agent.page.search(".source a").text.strip
+                  link = agent.page.search(".source a").text.strip.truncate(235)
                   user_id = "1"
-                  article_link = agent.page.search(".list .source").to_s[/(http[^"]+\w)/]
-                  website = agent.page.search(".website a").text.strip
-                  website_link = agent.page.search(".links a").to_s[/(http[^"]+\w)/]
+                  article_link = agent.page.search(".list .source").to_s[/(http[^"]+\w)/].truncate(235)
+                  website = agent.page.search(".website a").text.strip.trunate(235)
+                  website_link = agent.page.search(".links a").to_s[/(http[^"]+\w)/].truncate(235)
                   if title.present? && start_date.present?
                   image_path = agent.page.search(".card").to_s[/(http[^"]+\w)/]
                   url = URI.parse(URI.encode(image_path))
