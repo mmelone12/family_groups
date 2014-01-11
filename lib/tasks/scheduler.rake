@@ -461,7 +461,11 @@ task :fetch_activities => :environment do
                     day = agent.page.search(".day").text.strip
                     start_date = month + " " + day + " " + "2014"
                     start_time = agent.page.search(".heading").text.strip[/(\d+).*\z/]
-                    format_date = month + " " + day + " at " + start_time
+                    if month.present? && day.present? && start_time.present?
+                      format_date = month + " " + day + " at " + start_time
+                    else
+                      format_date = "Jan. 1, 2011"
+                    end
                     desc = agent.page.search(".text").text.strip.truncate(200)
                     street_address = agent.page.search(".address span:nth-child(1)").text.strip
                     locality = agent.page.search("br+ span").text.strip
