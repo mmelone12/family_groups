@@ -829,6 +829,7 @@ task :fetch_activities => :environment do
                   website_link, :image_path => image_path, :user_id => user_id, :when => format_date).first_or_create
                   puts title, where, start_date, start_time, desc, address, phone, link, website
                 end
+                end
              end   
          end
         end
