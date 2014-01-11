@@ -439,7 +439,6 @@ task :fetch_activities => :environment do
   require 'mechanize'
   require 'uri'
   require 'net/http'
-  require 'date'
 
       City.all.each do |city|
             city_name = city.name
@@ -460,14 +459,13 @@ task :fetch_activities => :environment do
                     where = agent.page.search(".venue").text.strip
                     month = agent.page.search(".month").text.strip
                     day = agent.page.search(".day").text.strip
-                    start_date1 = month + " " + day + " " + "2014"
-                      if Date.valid_date?(start_date1)
-                        start_date = start_date1
-                      else
-                        start_date = "Jan 1, 2011"
-                      end
+                    if month.chars.count == 3
+                      start_date = month + " " + day + " " + "2014"
+                    else 
+                      start_date = "Jan 1, 2011"
+                    end
                     start_time = agent.page.search(".heading").text.strip[/(\d+).*\z/]
-                    if month.present? && day.present? && start_time.present?
+                    if month.chars.count == 3 && day.present? && start_time.present?
                       format_date = month + " " + day + " at " + start_time
                     else
                       format_date = "Jan. 1, 2011"
