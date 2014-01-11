@@ -490,10 +490,9 @@ task :fetch_activities => :environment do
                   article_link = agent.page.search(".list .source").to_s[/(http[^"]+\w)/]
                   website = agent.page.search(".website a").text.strip.truncate(235)
                   website_link = agent.page.search(".links a").to_s[/(http[^"]+\w)/]
-                  if title.present? && start_date.present?
                   image_path = agent.page.search(".photo").to_s[/(http[^"]+\w)/]
+                  if title.present? && start_date.present? && image_path.present?
                   url = URI.parse(URI.encode(image_path))
-
                   Net::HTTP.start(url.host, url.port) do |http|
                         response = http.head(url.path)
                         case response
@@ -504,7 +503,7 @@ task :fetch_activities => :environment do
                               else
                                     if title.include? "child" or title.include? "Child" or title.include? "kid" or title.include? "Kid"
                                        image_path = "activities/child.jpg"
-                              end
+                                    end
                 if title.include? "beach" or title.include? "Beach" or address.include? "beach" or address.include? "Beach"
                   image_path = "activities/beach.jpg"
                 end
@@ -823,15 +822,12 @@ task :fetch_activities => :environment do
             if image_path == nil
                   image_path = "activities/general.jpg"
             end
-            if title.present? && start_date.present?
                         
                   Activity.where(:title => title, :where => where, :start_date => start_date,
                   :start_time => start_time, :desc => desc, :address => address, :phone => phone,
                   :link => link, :website => website, :article_link => article_link, :website_link => 
                   website_link, :image_path => image_path, :user_id => user_id, :when => format_date).first_or_create
                   puts title, where, start_date, start_time, desc, address, phone, link, website
-                end
-                  end
                 end
              end   
          end

@@ -1443,7 +1443,7 @@ end
                   if agent.page.link_with(:class => "facet_url url").present?
                   website_link = agent.page.link_with(:class => "facet_url url").uri.to_s
                   end
-                  if title.present? && start_date.present?
+                  if title.present? && start_date.present? && image_path.present?
 
                   url = URI.parse(URI.encode(image_path))
 
@@ -1461,3 +1461,11 @@ end
                 if title.include? "beach" or title.include? "Beach" or address.include? "beach" or address.include? "Beach"
                   image_path = "activities/beach.jpg"
                 end
+
+                                    start_date1 = month + " " + day + " " + "2014"
+                    start_date2 = startdate1.split('-').reverse.map(&:to_i)
+                      if Date.valid_date?(start_date2)
+                        start_date = start_date1
+                      else
+                        start_date = "Jan 1, 2011"
+                      end
