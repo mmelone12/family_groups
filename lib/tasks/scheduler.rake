@@ -487,9 +487,9 @@ task :fetch_activities => :environment do
                   phone = agent.page.search(".details span").text.strip
                   link = agent.page.search(".source a").text.strip.truncate(235)
                   user_id = "1"
-                  article_link = agent.page.search(".list .source").to_s[/(http[^"]+\w)/].truncate(235)
+                  article_link = agent.page.search(".list .source").to_s[/(http[^"]+\w)/]
                   website = agent.page.search(".website a").text.strip.truncate(235)
-                  website_link = agent.page.search(".links a").to_s[/(http[^"]+\w)/].truncate(235)
+                  website_link = agent.page.search(".links a").to_s[/(http[^"]+\w)/]
                   if title.present? && start_date.present?
                   image_path = agent.page.search(".card").to_s[/(http[^"]+\w)/]
                   url = URI.parse(URI.encode(image_path))
