@@ -1,7 +1,7 @@
 class Activity < ActiveRecord::Base
 	belongs_to :user
   #before_save :image_if_blank
-  validates :title, presence: true
+  validates :title, :presence => true, :uniqueness => {:scope => :start_date}
   validates :address, presence: true
   validates :desc, presence: true
   #validate :has_image
