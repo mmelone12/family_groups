@@ -209,7 +209,7 @@ task :fetch_redtri => :environment do
                 if title.present?                       
                   Activity.where(:title => title, :start_date => start_date, :when => total_date, :desc => desc, :address => address, 
                     :article_link => article_link, :recurring => recurring, :image_path => image_path,
-                  :user_id => user_id).create
+                  :user_id => user_id).create!
                   puts title, total_date, desc, address
                 end
              end  
