@@ -1469,3 +1469,16 @@ end
                       else
                         start_date = "Jan 1, 2011"
                       end
+
+                      from post.show 
+
+                      <div id="comments">
+  <%= render :partial => @post.comments %>
+</div>
+
+  <%= render partial: 'comments/comment_new' %>
+  signed out page:                  <li><%= link_to blog_path do %>Blog
+                      <span>Family Stories<% end %></span></li>
+
+    signed_in      <li><%= link_to blog_path do %>Blog
+                      <span>Family Stories<% end %></span></li>
